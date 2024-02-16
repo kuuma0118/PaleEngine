@@ -5,6 +5,7 @@
 #include "Engine/Components/PostProcess.h"
 #include "Engine/3D/Model/Model.h"
 #include "Engine/2D/Sprite.h"
+#include <Engine/Components/Particle/ParticleSystem.h>
 
 class GameScene : public IScene {
 public:
@@ -34,11 +35,16 @@ public:
 	void Draw(GameManager* gameManager) override;
 
 private:
-	//Input
-	Input* input_ = nullptr;
-	//オーディオクラス
-	Audio* audio_ = nullptr;
+	//モデル
+	std::unique_ptr<Model> model_ = nullptr;
+	//ワールドトランスフォーム
+	WorldTransform worldTransform_{};
 	//ポストプロセス
 	PostProcess* postProcess_ = nullptr;
-
+	//レーザーのスケール
+	Vector3 laserScale_ = { 1.0f,10.0f,1.0f };
+	//レーザーの速さ
+	float laserSpeed_ = 2.0f;
+	//パーティクルシステム
+	ParticleSystem* particleSystem_ = nullptr;
 };

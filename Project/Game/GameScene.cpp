@@ -7,10 +7,13 @@ GameScene::GameScene() {};
 GameScene::~GameScene() {};
 
 void GameScene::Initialize(GameManager* gameManager) {
-	//Inputのインスタンスを取得
-	input_ = Input::GetInstance();
-	//オーディオクラスのインスタンスを取得
-	audio_ = Audio::GetInstance();
+	//モデルの作成
+	model_.reset(Model::CreateFromOBJ("Resources/Laser", "Laser.obj"));
+	model_->GetDirectionalLight()->SetEnableLighting(false);
+	//ワールドトランスフォームの初期化
+	worldTransform_.translation_ = position;
+	worldTransform_.scale_ = scale;
+
 	//ポストプロセスのインスタンスを取得
 	postProcess_ = PostProcess::GetInstance();
 };

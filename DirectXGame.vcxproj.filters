@@ -103,6 +103,24 @@
     <Filter Include="Shader">
       <UniqueIdentifier>{de3f9224-098b-4c48-8260-fa6a820477ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Project\GameObject\Beam">
+      <UniqueIdentifier>{b7a53874-6ed4-4fcf-9a36-d6f313eca7bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\GameObject\Beam">
+      <UniqueIdentifier>{b0d213aa-3c98-4164-9c60-70e7185f37a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\GameObject\State">
+      <UniqueIdentifier>{8a527d99-6d79-4e7b-9a97-cfc8b96143fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Project\GameObject\State">
+      <UniqueIdentifier>{a9ede43d-7d6c-4876-b8e7-fc441284a6a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Project\GameObject\BeamMuzzle">
+      <UniqueIdentifier>{a63e4ec7-e3a8-4ae2-a0cb-6e4b53e85aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\GameObject\BeamMuzzle">
+      <UniqueIdentifier>{f2e234ae-ef90-4148-b989-1ef843e72b33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -209,6 +227,12 @@
     </ClCompile>
     <ClCompile Include="Project\Game\GameScene.cpp">
       <Filter>ソース ファイル\Project\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Beam.cpp">
+      <Filter>ソース ファイル\Project\GameObject\Beam</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\BeamState.cpp">
+      <Filter>ソース ファイル\Project\GameObject\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +355,15 @@
     </ClInclude>
     <ClInclude Include="Project\Game\GameManager.h">
       <Filter>ヘッダー ファイル\Project\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Beam.h">
+      <Filter>ヘッダー ファイル\Project\GameObject\Beam</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\IState.h">
+      <Filter>ヘッダー ファイル\Project\GameObject\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\BeamState.h">
+      <Filter>ヘッダー ファイル\Project\GameObject\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
