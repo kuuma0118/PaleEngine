@@ -1,6 +1,6 @@
 #pragma once
-#include "Engine/Base/TextureManager.h"
-#include "Engine/Utility/MathFunction.h"
+#include "Base/TextureManager.h"
+#include "Utility/MathFunction.h"
 #include "EmitterBuilder.h"
 
 class ParticleSystem {

@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include "CollisionConfig.h"
-#include "Engine/Utility/MathFunction.h"
+#include "Utility/MathFunction.h"
 
 class Collider {
 public:

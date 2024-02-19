@@ -2,67 +2,92 @@
 #include "3D/Model/Model.h"
 #include "3D/Matrix/WorldTransform.h"
 #include "2D/ImGuiManager.h"
+#include "Components/Input.h"
 #include "Utility/CollisionManager/Collider.h"
-#include "Utility/CollisionManager/CollisionConfig.h"
+#include "3D/Model/ParticleModel.h"
 #include "Components/Particle/ParticleSystem.h"
-#include "Utility/MathFunction.h"
-#include <3D/Matrix/ViewProjection.h>
+#include "3D/Matrix/ViewProjection.h"
 
-
-class Beam : public Collider {
+class Player
+{
 public:
-	//レーザーが消えるまでの時間
-	static int deadTime;
+	
+	~Player();
 
-	/// <summary>
-	/// 初期化
-	/// </summary>
-	/// <param name="position">座標</param>
-	void Initialize(const Vector3& position, const Vector3& scale);
+	void Initialize();
 
-	/// <summary>
-	/// 更新
-	/// </summary>
 	void Update();
 
-	/// <summary>
-	/// 描画
-	/// </summary>
-	/// <param name="viewProjection">ビュープロジェクション</param>
-	void Draw(const ViewProjection& viewProjection);
+	void Draw(const ViewProjection viewProjection);
 
-	/// <summary>
-	/// 死亡フラグを取得
-	/// </summary>
-	/// <returns>死亡フラグ</returns>
-	bool IsDead() { return isDead_; };
+	void ApplyGlobalVariables();
 
-	
-	/// <summary>
-	/// ワールド座標を取得
-	/// </summary>
-	/// <returns>ワールド座標</returns>
-	Vector3 GetWorldPosition() override;
+	void ModelMotion();
 
-	/// <summary>
-	/// パーティクルシステムを設定
-	/// </summary>
-	/// <param name="particleSystem"></param>
-	void SetParticleSystem(ParticleSystem* particleSystem) { particleSystem_ = particleSystem; }
+	void DrawSprite();
+
+	void StartAnimation();
+
+	void DrawParticle(const ViewProjection& viewProjection);
 
 private:
-	//モデル
-	std::unique_ptr<Model> model_ = nullptr;
-	//ワールドトランスフォーム
-	WorldTransform worldTransform_{};
-	//死亡フラグ
-	bool isDead_ = false;
-	int deadTimer_ = 0;
-	//レーザーのスケール
-	Vector3 laserScale_ = { 1.0f,10.0f,1.0f };
-	//レーザーの速さ
-	float laserSpeed_ = 2.0f;
-	//パーティクルシステム
-	ParticleSystem* particleSystem_ = nullptr;
+	Input* input_ = nullptr;
+
+	XINPUT_STATE joyState_;
+
+	std::unique_ptr<Model> playerModelDummy_ = nullptr;
+
+	std::unique_ptr<Model> platformModel_ = nullptr;
+
+	WorldTransform playerWorldTransform_;
+
+	uint32_t textureHandle_ = 0u;
+
+	//自機の横移動スピード
+	float playerMoveSpeed_ = 0.05f;
+
+	//モデルとモーション
+	enum {
+		Stay,
+		Move,
+	};
+
+	int  motionMode_;
+	Vector3 prePlayerTranslation_;
+
+	WorldTransform platformMotionWorldTransform_;
+
+	struct platformMotionStruct {
+		Vector3 translation_; /*playerWorldTransform_.translation_を基準としたLocal座標*/
+		Vector3 rotation_;/*playerWorldTransform_.rotation_を基準としたLocal回転*/
+		Vector3 scale_;/*playerWorldTransform_.scale_を基準としたLocalスケール*/
+		Vector4 color_;/*色やんね*/
+	};
+
+	platformMotionStruct platformMotion_;
+
+	//横移動
+	struct platformMotionMoveStruct {
+		float maxFlex_;/*伸び具合*/
+		float duration;/*伸びるのにかかる時間*/
+		float time;
+		float timePlus;
+		Vector3 flex_;
+		Vector3 flexPos_;
+	};
+
+	//そもそものサイズ
+	Vector3 NormalScale_;
+
+	platformMotionMoveStruct platformMotionMove_;
+
+	float tutorialSpace = 16.0f;
+	Vector2 tutorialSpriteSize = { 131.0f * 2.0f,36.0f * 2.0f };
+
+	//パーティクル
+	std::unique_ptr<ParticleModel> particleModel_ = nullptr;
+	std::unique_ptr<ParticleSystem> particleSystem_ = nullptr;
 };
+
+
 

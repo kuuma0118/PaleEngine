@@ -1,7 +1,7 @@
 #pragma once
-#include "Engine/Base/FireControlSystem.h"
-#include "Engine/Externals/DirectXTex/DirectXTex.h"
-#include "Engine/Externals/DirectXTex/d3dx12.h"
+#include "Base/FireControlSystem.h"
+#include "Externals/DirectXTex/DirectXTex.h"
+#include "Externals/DirectXTex/d3dx12.h"
 #include <array>
 
 /// <summary>

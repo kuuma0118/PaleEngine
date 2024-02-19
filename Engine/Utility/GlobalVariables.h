@@ -1,12 +1,12 @@
 #pragma once
-#include "Engine/2D/ImGuiManager.h"
+#include "2D/ImGuiManager.h"
 #include "MathFunction.h"
 #include <iostream>
 #include <fstream>
 #include <variant>
 #include <string>
 #include <map>
-#include <Engine/Externals/nlohmann/json.hpp>
+#include <Externals/nlohmann/json.hpp>
 
 class GlobalVariables {
 public:

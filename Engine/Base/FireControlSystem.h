@@ -1,6 +1,6 @@
 #pragma once
-#include "Engine/Base/WinApp.h"
-#include "Engine/Utility/Log.h"
+#include "Base/WinApp.h"
+#include "Utility/Log.h"
 #include <d3d12.h>
 #include <dxgi1_6.h>
 #include <chrono>

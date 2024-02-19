@@ -1,8 +1,8 @@
 #pragma once
-#include "Engine/Base/TextureManager.h"
-#include "Engine/Components/Particle/ParticleSystem.h"
-#include "Engine/3D/Matrix/ViewProjection.h"
-#include "Engine/Utility/MathFunction.h"
+#include "Base/TextureManager.h"
+#include "Components/Particle/ParticleSystem.h"
+#include "3D/Matrix/ViewProjection.h"
+#include "Utility/MathFunction.h"
 #include <dxcapi.h>
 #include <fstream>
 #include <list>

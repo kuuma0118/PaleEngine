@@ -1,11 +1,11 @@
 #pragma once
 #include "IScene.h"
-#include "Engine/Components/Input.h"
-#include "Engine/Components/Audio.h"
-#include "Engine/Components/PostProcess.h"
-#include "Engine/3D/Model/Model.h"
-#include "Engine/2D/Sprite.h"
-#include <Engine/Components/Particle/ParticleSystem.h>
+#include "Components/Input.h"
+#include "Components/Audio.h"
+#include "Components/PostProcess.h"
+#include "3D/Model/Model.h"
+#include "2D/Sprite.h"
+#include <Components/Particle/ParticleSystem.h>
 
 class GameScene : public IScene {
 public:

@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/Utility/MathStruct.h"
+#include "Utility/MathStruct.h"
 #include <cstdint>
 #include <d3d12.h>
 #include <wrl.h>

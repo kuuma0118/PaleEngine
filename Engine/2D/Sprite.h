@@ -1,7 +1,7 @@
 #pragma once
-#include "Engine/Base/FireControlSystem.h"
-#include "Engine/Base/TextureManager.h"
-#include "Engine/Utility/MathFunction.h"
+#include "Base/FireControlSystem.h"
+#include "Base/TextureManager.h"
+#include "Utility/MathFunction.h"
 #include <array>
 #include <dxcapi.h>
 #pragma comment(lib,"dxcompiler.lib")

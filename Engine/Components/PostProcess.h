@@ -1,6 +1,6 @@
 #pragma once
-#include "Engine/Base/FireControlSystem.h"
-#include "Engine/Utility/MathFunction.h"
+#include "Base/FireControlSystem.h"
+#include "Utility/MathFunction.h"
 #include <array>
 #include <dxcapi.h>
 #include <vector>

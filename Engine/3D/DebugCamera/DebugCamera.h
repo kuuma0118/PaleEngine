@@ -1,9 +1,9 @@
 #pragma once
-#include "Engine/Components/Input.h"
-#include "Engine/3D/Matrix/WorldTransform.h"
-#include "Engine/3D/Matrix/ViewProjection.h"
-#include "Engine/2D/ImGuiManager.h"
-#include "Engine/Utility/MathFunction.h"
+#include "Components/Input.h"
+#include "3D/Matrix/WorldTransform.h"
+#include "3D/Matrix/ViewProjection.h"
+#include "2D/ImGuiManager.h"
+#include "Utility/MathFunction.h"
 
 class DebugCamera{
 public:

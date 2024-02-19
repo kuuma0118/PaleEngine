@@ -1,6 +1,6 @@
 #pragma once
-#include "Engine/3D/Matrix/WorldTransform.h"
-#include "Engine/3D/Matrix/ViewProjection.h"
+#include "3D/Matrix/WorldTransform.h"
+#include "3D/Matrix/ViewProjection.h"
 #include "Mesh.h"
 #include "Material.h"
 #include "DirectionalLight.h"
