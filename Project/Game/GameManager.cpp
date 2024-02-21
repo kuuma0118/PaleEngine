@@ -1,16 +1,12 @@
 #include "GameManager.h"
-#include "GameTitleScene.h"
-#include "GameSelectScene.h"
 #include "GameScene.h"
-#include "GameClearScene.h"
-#include "GameOverScene.h"
 #include "Utility/GlobalVariables.h"
 
 GameManager::GameManager() {
 
 	//ゲームウィンドウ作成
 	winApp_ = WinApp::GetInstance();
-	winApp_->CreateGameWindow(L"LE2B_30_ワタナベ_クウマ_チョコレートアタック", winApp_->kClientWidth, winApp_->kClientHeight);
+	winApp_->CreateGameWindow(L"LE2B_23_CG3", winApp_->kClientWidth, winApp_->kClientHeight);
 
 	//DirectXの初期化
 	dxCommon_ = DirectXCommon::GetInstance();
@@ -52,7 +48,7 @@ GameManager::GameManager() {
 	Random::Initialize();
 
 	//シーンの初期化
-	currentScene_ = new GameTitleScene();
+	currentScene_ = new GameScene();
 	currentScene_->Initialize(this);
 }
 
