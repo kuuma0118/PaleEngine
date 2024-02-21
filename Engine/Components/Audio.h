@@ -53,7 +53,7 @@ public:
 	/// <summary>
 	/// シングルトンインスタンスの取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>シングルトンインスタンス</returns>
 	static Audio* GetInstance();
 
 	/// <summary>
@@ -76,14 +76,14 @@ public:
 	/// <summary>
 	/// 音声データの読み込み
 	/// </summary>
-	/// <param name="filename"></param>
-	/// <returns></returns>
+	/// <param name="filename">ファイル名</param>
+	/// <returns>オーディオハンドル</returns>
 	uint32_t SoundLoadWave(const char* filename);
 
 	/// <summary>
 	/// 音声データ開放
 	/// </summary>
-	/// <param name="soundData"></param>
+	/// <param name="soundData">サウンドデータ</param>
 	void SoundUnload(SoundData* soundData);
 
 	///// <summary>
@@ -96,14 +96,14 @@ public:
 	/// <summary>
 	/// 音声再生
 	/// </summary>
-	/// <param name="audioHandle"></param>
-	/// <param name="roopFlag"></param>
+	/// <param name="audioHandle">オーディオハンドル</param>
+	/// <param name="roopFlag">ループするか</param>
 	void SoundPlayWave(uint32_t audioHandle, bool roopFlag);
 
 	/// <summary>
 	/// 音声停止
 	/// </summary>
-	/// <param name="audioHandle"></param>
+	/// <param name="audioHandle">オーディオハンドル</param>
 	void StopAudio(uint32_t audioHandle);
 
 private:

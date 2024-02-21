@@ -12,10 +12,11 @@ Matrix4x4 Sprite::sMatProjection_{};
 
 
 void Sprite::StaticInitialize() {
+
 	//デバイスの取得
-	sDevice_ = FCS::GetInstance()->GetDevice();
+	sDevice_ = DirectXCommon::GetInstance()->GetDevice();
 	//コマンドリストの取得
-	sCommandList_ = FCS::GetInstance()->GetCommandList();
+	sCommandList_ = DirectXCommon::GetInstance()->GetCommandList();
 
 	//DXCの初期化
 	Sprite::InitializeDXC();
@@ -29,6 +30,7 @@ void Sprite::StaticInitialize() {
 
 
 void Sprite::Release() {
+	
 	sDxcUtils_.Reset();
 	sDxcCompiler_.Reset();
 	sIncludeHandler_.Reset();
@@ -40,6 +42,7 @@ void Sprite::Release() {
 
 
 Sprite* Sprite::Create(uint32_t textureHandle, Vector2 position) {
+
 	//スプライトを作成
 	Sprite* sprite = new Sprite();
 	sprite->Initialize(textureHandle, position);
@@ -60,8 +63,10 @@ void Sprite::PostDraw() {}
 
 
 void Sprite::Draw() {
+
 	//マテリアルの更新
 	Sprite::UpdateMaterial();
+
 	//行列の更新
 	Sprite::UpdateMatrix();
 
@@ -83,6 +88,7 @@ void Sprite::Draw() {
 
 
 void Sprite::InitializeDXC() {
+
 	//dxccompilerを初期化
 	HRESULT hr = DxcCreateInstance(CLSID_DxcUtils, IID_PPV_ARGS(&sDxcUtils_));
 	assert(SUCCEEDED(hr));
@@ -97,6 +103,7 @@ void Sprite::InitializeDXC() {
 
 
 Sprite::ComPtr<IDxcBlob> Sprite::CompileShader(const std::wstring& filePath, const wchar_t* profile) {
+
 	//これからシェーダーをコンパイルする旨をログに出す
 	Log(ConvertString(std::format(L"Begin CompileShader, path:{}, profile:{}\n", filePath, profile)));
 	//hlslファイルを読む
@@ -158,6 +165,7 @@ Sprite::ComPtr<IDxcBlob> Sprite::CompileShader(const std::wstring& filePath, con
 
 
 void Sprite::CreatePipelineStateObject() {
+
 	//RootSignature作成
 	D3D12_ROOT_SIGNATURE_DESC descriptionRootSignature{};
 	descriptionRootSignature.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
@@ -353,6 +361,7 @@ void Sprite::CreatePipelineStateObject() {
 
 
 void Sprite::Initialize(uint32_t textureHandle, Vector2 position) {
+
 	//テクスチャハンドルの初期化
 	textureHandle_ = textureHandle;
 	//座標の初期化
@@ -375,8 +384,9 @@ void Sprite::Initialize(uint32_t textureHandle, Vector2 position) {
 
 
 void Sprite::CreateVertexBuffer() {
+
 	//頂点リソースを作る
-	vertexResource_ = FCS::GetInstance()->CreateBufferResource(sizeof(VertexData) * 6);
+	vertexResource_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(VertexData) * 6);
 
 	//リソースの先頭のアドレスから使う
 	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
@@ -405,8 +415,9 @@ void Sprite::CreateVertexBuffer() {
 
 
 void Sprite::CreateMaterialResource() {
+
 	//マテリアル用のリソースを作る。今回はcolor1つ分のサイズを用意する
-	materialResource_ = FCS::GetInstance()->CreateBufferResource(sizeof(MaterialData));
+	materialResource_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(MaterialData));
 	//マテリアルにデータを書き込む
 	MaterialData* materialData = nullptr;
 	//書き込むためのアドレスを取得
@@ -418,6 +429,7 @@ void Sprite::CreateMaterialResource() {
 
 
 void Sprite::UpdateMaterial() {
+
 	//マテリアルにデータを書き込む
 	MaterialData* materialData = nullptr;
 	//書き込むためのアドレスを取得
@@ -432,8 +444,9 @@ void Sprite::UpdateMaterial() {
 
 
 void Sprite::CreateWVPResource() {
+
 	//WVP用のリソースを作る。Matrix4x4 1つ分のサイズを用意する
-	wvpResource_ = FCS::GetInstance()->CreateBufferResource(sizeof(Matrix4x4));
+	wvpResource_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(Matrix4x4));
 	//データを書き込む
 	Matrix4x4* wvpData = nullptr;
 	//書き込むためのアドレスを取得
@@ -444,6 +457,7 @@ void Sprite::CreateWVPResource() {
 
 
 void Sprite::UpdateMatrix() {
+
 	//ワールド行列の作成
 	Matrix4x4 worldMatrix = MakeAffineMatrix(Vector3(size_.x, size_.y, 1.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(position_.x, position_.y, 0.0f));
 	//ビュー行列の作成

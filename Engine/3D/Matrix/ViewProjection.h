@@ -1,7 +1,6 @@
 #pragma once
+#include "Base/DirectXCommon.h"
 #include "Utility/MathFunction.h"
-#include <d3d12.h>
-#include <wrl.h>
 
 struct ConstBuffDataViewProjection {
 	Matrix4x4 view;
@@ -12,11 +11,20 @@ struct ConstBuffDataViewProjection {
 /// ビュープロジェクション
 /// </summary>
 struct ViewProjection {
+	///// <summary>
+	///// 初期化
+	///// </summary>
+	//void Initialize();
 
 	/// <summary>
-	/// 初期化
+	/// コンストラクタ
 	/// </summary>
-	void Initialize();
+	ViewProjection();
+
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
+	~ViewProjection();
 
 	/// <summary>
 	/// ビュー行列の更新

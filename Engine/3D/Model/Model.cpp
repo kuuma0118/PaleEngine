@@ -1,9 +1,4 @@
 #include "Model.h"
-#include "Engine/Base/FireControlSystem.h"
-#include "Engine/Base/TextureManager.h"
-#include <cassert>
-#include <fstream>
-#include <sstream>
 
 //実体定義
 ID3D12Device* Model::sDevice_ = nullptr;
@@ -17,10 +12,11 @@ std::list<Model::ModelData> Model::modelDatas_{};
 
 
 void Model::StaticInitialize() {
+
 	//デバイスの取得
-	sDevice_ = FCS::GetInstance()->GetDevice();
+	sDevice_ = DirectXCommon::GetInstance()->GetDevice();
 	//コマンドリストの取得
-	sCommandList_ = FCS::GetInstance()->GetCommandList();
+	sCommandList_ = DirectXCommon::GetInstance()->GetCommandList();
 
 	//DXCの初期化
 	Model::InitializeDXC();
@@ -31,6 +27,7 @@ void Model::StaticInitialize() {
 
 
 void Model::Release() {
+
 	sDxcUtils_.Reset();
 	sDxcCompiler_.Reset();
 	sIncludeHandler_.Reset();
@@ -40,10 +37,10 @@ void Model::Release() {
 
 
 Model* Model::CreateFromOBJ(const std::string& directoryPath, const std::string& filename) {
+
 	//モデルを生成
 	Model* model = new Model();
 
-	//同じモデルがないか探す
 	for (ModelData modelData : modelDatas_) {
 		if (modelData.name == filename) {
 			//メッシュの作成
@@ -87,8 +84,72 @@ Model* Model::CreateFromOBJ(const std::string& directoryPath, const std::string&
 	return model;
 }
 
+Model* Model::CreateSphere() {
+
+	//モデルを生成
+	Model* model = new Model();
+
+	//メッシュの作成
+	std::vector<Mesh::VertexData> vertices{};
+	const float pi = 3.14f;
+	const uint32_t kSubdivision = 16;
+	uint32_t latIndex = 0;
+	uint32_t lonIndex = 0;
+	//経度分割一つ分の角度φd
+	const float kLonEvery = pi * 2.0f / float(kSubdivision);
+	//緯度分割一つ分の角度θd
+	const float kLatEvery = pi / float(kSubdivision);
+	//緯度の方向に分割
+	for (latIndex = 0; latIndex < kSubdivision; ++latIndex) {
+		float lat = -pi / 2.0f + kLatEvery * latIndex;//θ
+		//経度の方向に分割しながら線を描く
+		for (lonIndex = 0; lonIndex < kSubdivision; ++lonIndex) {
+			uint32_t start = (latIndex * kSubdivision + lonIndex) * 6;
+			float lon = lonIndex * kLonEvery;//φ
+			//頂点にデータを入力する。基準点a
+			vertices.push_back(Mesh::VertexData{ {std::cos(lat) * std::cos(lon),std::sin(lat),std::cos(lat) * std::sin(lon),1.0f},
+				{ float(lonIndex) / float(kSubdivision),1.0f - float(latIndex) / float(kSubdivision)},
+				{std::cos(lat) * std::cos(lon),std::sin(lat),std::cos(lat) * std::sin(lon)} });
+
+			//残りの５頂点も順番に計算して入力していく
+			vertices.push_back(Mesh::VertexData{ {std::cos(lat + kLatEvery) * std::cos(lon),std::sin(lat + kLatEvery),std::cos(lat + kLatEvery) * std::sin(lon),1.0f},
+				{float(lonIndex) / float(kSubdivision),1.0f - float(latIndex + 1) / float(kSubdivision)},
+				{std::cos(lat + kLatEvery) * std::cos(lon),std::sin(lat + kLatEvery),std::cos(lat + kLatEvery) * std::sin(lon)} });
+
+			vertices.push_back(Mesh::VertexData{ {std::cos(lat) * std::cos(lon + kLonEvery),std::sin(lat),std::cos(lat) * std::sin(lon + kLonEvery),1.0f},
+				{float(lonIndex + 1) / float(kSubdivision),1.0f - float(latIndex) / float(kSubdivision)},
+				{std::cos(lat) * std::cos(lon + kLonEvery),std::sin(lat),std::cos(lat) * std::sin(lon + kLonEvery)} });
+
+			vertices.push_back(Mesh::VertexData{ { std::cos(lat) * std::cos(lon + kLonEvery),std::sin(lat),std::cos(lat) * std::sin(lon + kLonEvery),1.0f},
+				{float(lonIndex + 1) / float(kSubdivision),1.0f - float(latIndex) / float(kSubdivision)},
+				{std::cos(lat) * std::cos(lon + kLonEvery),std::sin(lat),std::cos(lat) * std::sin(lon + kLonEvery)} });
+
+			vertices.push_back(Mesh::VertexData{ {std::cos(lat + kLatEvery) * std::cos(lon),std::sin(lat + kLatEvery),std::cos(lat + kLatEvery) * std::sin(lon),1.0f},
+				{float(lonIndex) / float(kSubdivision),1.0f - float(latIndex + 1) / float(kSubdivision)},
+				{std::cos(lat + kLatEvery) * std::cos(lon),std::sin(lat + kLatEvery),std::cos(lat + kLatEvery) * std::sin(lon)} });
+
+			vertices.push_back(Mesh::VertexData{ {std::cos(lat + kLatEvery) * std::cos(lon + kLonEvery),std::sin(lat + kLatEvery),std::cos(lat + kLatEvery) * std::sin(lon + kLonEvery),1.0f},
+				{float(lonIndex + 1) / float(kSubdivision),1.0f - float(latIndex + 1) / float(kSubdivision)},
+				{std::cos(lat + kLatEvery) * std::cos(lon + kLonEvery),std::sin(lat + kLatEvery),std::cos(lat + kLatEvery) * std::sin(lon + kLonEvery)} });
+		}
+	}
+
+	model->mesh_ = std::make_unique<Mesh>();
+	model->mesh_->Initialize(vertices);
+
+	//マテリアルの作成
+	model->material_ = std::make_unique<Material>();
+	model->material_->Initialize();
+
+	model->directionalLight_ = std::make_unique<DirectionalLight>();
+	model->directionalLight_->Initialize();
+
+	return model;
+}
+
 
 void Model::PreDraw() {
+
 	//RootSignatureを設定。PSOに設定しているけど別途設定が必要
 	sCommandList_->SetGraphicsRootSignature(sRootSignature_.Get());
 	//PSOを設定
@@ -96,14 +157,14 @@ void Model::PreDraw() {
 }
 
 
-void Model::PostDraw() {
-
-}
+void Model::PostDraw() {}
 
 
 void Model::Draw(const WorldTransform& worldTransform, const ViewProjection& viewProjection) {
+
 	//マテリアルの更新
 	material_->Update();
+
 	//DirectionalLightの更新
 	directionalLight_->Update();
 
@@ -127,8 +188,10 @@ void Model::Draw(const WorldTransform& worldTransform, const ViewProjection& vie
 
 
 void Model::Draw(const WorldTransform& worldTransform, const ViewProjection& viewProjection, uint32_t textureHandle) {
+
 	//マテリアルの更新
 	material_->Update();
+
 	//DirectionalLightの更新
 	directionalLight_->Update();
 
@@ -152,6 +215,7 @@ void Model::Draw(const WorldTransform& worldTransform, const ViewProjection& vie
 
 
 void Model::InitializeDXC() {
+
 	//dxccompilerを初期化
 	HRESULT hr = DxcCreateInstance(CLSID_DxcUtils, IID_PPV_ARGS(&sDxcUtils_));
 	assert(SUCCEEDED(hr));
@@ -166,6 +230,7 @@ void Model::InitializeDXC() {
 
 
 Model::ComPtr<IDxcBlob> Model::CompileShader(const std::wstring& filePath, const wchar_t* profile) {
+
 	//これからシェーダーをコンパイルする旨をログに出す
 	Log(ConvertString(std::format(L"Begin CompileShader, path:{}, profile:{}\n", filePath, profile)));
 	//hlslファイルを読む
@@ -227,6 +292,7 @@ Model::ComPtr<IDxcBlob> Model::CompileShader(const std::wstring& filePath, const
 
 
 void Model::CreatePipelineStateObject() {
+
 	//RootSignature作成
 	D3D12_ROOT_SIGNATURE_DESC descriptionRootSignature{};
 	descriptionRootSignature.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
@@ -445,7 +511,6 @@ Model::ModelData Model::LoadObjFile(const std::string& directoryPath, const std:
 	}
 	return modelData;
 }
-
 
 Model::MaterialData Model::LoadMaterialTemplateFile(const std::string& directoryPath, const std::string& filename) {
 	MaterialData materialData;//構築するMaterialData

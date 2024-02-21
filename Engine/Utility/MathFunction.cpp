@@ -8,7 +8,6 @@ Vector3 Add(const Vector3& v1, const Vector3& v2) {
 	return result;
 }
 
-
 Vector3 Subtract(const Vector3& v1, const Vector3& v2) {
 	Vector3 result{};
 	result.x = v1.x - v2.x;
@@ -16,7 +15,6 @@ Vector3 Subtract(const Vector3& v1, const Vector3& v2) {
 	result.z = v1.z - v2.z;
 	return result;
 }
-
 
 Vector3 Multiply(const Vector3& v1, const Vector3& v2) {
 	Vector3 result{};
@@ -26,40 +24,14 @@ Vector3 Multiply(const Vector3& v1, const Vector3& v2) {
 	return result;
 }
 
-
-Vector3 Multiply(const float& v1, const Vector3& v2) {
-	Vector3 result{};
-
-	result.x = v1 * v2.x;
-	result.y = v1 * v2.y;
-	result.z = v1 * v2.z;
-
-	return result;
-}
-
-
-Vector3 Normalize(const Vector3& v) {
-	Vector3 result{};
-
-	float date = sqrtf(v.x * v.x + v.y * v.y + v.z * v.z);
-	if (date != 0) {
-		result.x = v.x / date;
-		result.y = v.y / date;
-		result.z = v.z / date;
-	}
-	return result;
-}
-
-
-
 float Length(const Vector3& v) {
 	float result{};
 	result = sqrtf(v.x * v.x + v.y * v.y + v.z * v.z);
 	return result;
 }
 
-
-Matrix4x4 Subtract(const Matrix4x4& m1, const Matrix4x4& m2) {
+Matrix4x4 Subtract(const Matrix4x4& m1, const Matrix4x4& m2)
+{
 	Matrix4x4 result;
 
 	result.m[0][0] = m1.m[0][0] - m2.m[0][0];
@@ -85,7 +57,6 @@ Matrix4x4 Subtract(const Matrix4x4& m1, const Matrix4x4& m2) {
 	return result;
 }
 
-
 Matrix4x4 Multiply(const Matrix4x4& m1, const Matrix4x4& m2) {
 	Matrix4x4 result{};
 	result.m[0][0] = m1.m[0][0] * m2.m[0][0] + m1.m[0][1] * m2.m[1][0] + m1.m[0][2] * m2.m[2][0] + m1.m[0][3] * m2.m[3][0];
@@ -110,7 +81,6 @@ Matrix4x4 Multiply(const Matrix4x4& m1, const Matrix4x4& m2) {
 
 	return result;
 }
-
 
 Matrix4x4 Inverse(const Matrix4x4& m) {
 	Matrix4x4 result{};
@@ -171,7 +141,6 @@ Matrix4x4 Inverse(const Matrix4x4& m) {
 	return result;
 }
 
-
 Matrix4x4 MakeIdentity4x4() {
 	Matrix4x4 result{};
 	result.m[0][0] = 1.0f;
@@ -196,7 +165,6 @@ Matrix4x4 MakeIdentity4x4() {
 
 	return result;
 }
-
 
 Matrix4x4 MakeTranslateMatrix(const Vector3& translate) {
 	Matrix4x4 result;
@@ -223,7 +191,6 @@ Matrix4x4 MakeTranslateMatrix(const Vector3& translate) {
 	return result;
 }
 
-
 Matrix4x4 MakeScaleMatrix(const Vector3& scale) {
 	Matrix4x4 result;
 	result.m[0][0] = scale.x;
@@ -248,7 +215,6 @@ Matrix4x4 MakeScaleMatrix(const Vector3& scale) {
 
 	return result;
 }
-
 
 Matrix4x4 MakeRotateXMatrix(float radian) {
 	Matrix4x4 result{};
@@ -275,7 +241,6 @@ Matrix4x4 MakeRotateXMatrix(float radian) {
 	return result;
 }
 
-
 Matrix4x4 MakeRotateYMatrix(float radian) {
 	Matrix4x4 result{};
 	result.m[0][0] = std::cos(radian);
@@ -301,7 +266,6 @@ Matrix4x4 MakeRotateYMatrix(float radian) {
 	return result;
 }
 
-
 Matrix4x4 MakeRotateZMatrix(float radian) {
 	Matrix4x4 result{};
 	result.m[0][0] = std::cos(radian);
@@ -326,7 +290,6 @@ Matrix4x4 MakeRotateZMatrix(float radian) {
 
 	return result;
 }
-
 
 Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotate, const Vector3& translate) {
 	Matrix4x4 rotateXMatrix = MakeRotateXMatrix(rotate.x);
@@ -357,7 +320,6 @@ Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotate, const Ve
 	return result;
 }
 
-
 Matrix4x4 MakePerspectiveFovMatrix(float fovY, float aspectRatio, float nearClip, float farClip) {
 	Matrix4x4 result{};
 	result.m[0][0] = (1.0f / std::tan(fovY / 2)) / aspectRatio;
@@ -382,7 +344,6 @@ Matrix4x4 MakePerspectiveFovMatrix(float fovY, float aspectRatio, float nearClip
 
 	return result;
 }
-
 
 Matrix4x4 MakeOrthographicMatrix(float left, float top, float right, float bottom, float nearClip, float farClip) {
 	assert(left != right);
@@ -411,7 +372,6 @@ Matrix4x4 MakeOrthographicMatrix(float left, float top, float right, float botto
 	return result;
 }
 
-
 Vector3 TransformNormal(const Vector3& vector, const Matrix4x4& matrix) {
 	Vector3 result;
 	result.x = vector.x * matrix.m[0][0] + vector.y * matrix.m[1][0] + vector.z * matrix.m[2][0];
@@ -420,18 +380,40 @@ Vector3 TransformNormal(const Vector3& vector, const Matrix4x4& matrix) {
 	return result;
 }
 
-
 float Lerp(const float& v1, const float& v2, float t) {
 	float result{};
 	result = v1 + t * (v2 - v1);
 	return result;
 }
 
-
 Vector3 Lerp(const Vector3& v1, const Vector3& v2, float t) {
 	Vector3 result{};
 	result.x = v1.x + t * (v2.x - v1.x);
 	result.y = v1.y + t * (v2.y - v1.y);
 	result.z = v1.z + t * (v2.z - v1.z);
+	return result;
+}
+
+Vector3 Multiply(const float& v1, const Vector3& v2)
+{
+	Vector3 result{};
+
+	result.x = v1 * v2.x;
+	result.y = v1 * v2.y;
+	result.z = v1 * v2.z;
+
+	return result;
+}
+
+Vector3 Normalize(const Vector3& v)
+{
+	Vector3 result{};
+
+	float date = sqrtf(v.x * v.x + v.y * v.y + v.z * v.z);
+	if (date != 0) {
+		result.x = v.x / date;
+		result.y = v.y / date;
+		result.z = v.z / date;
+	}
 	return result;
 }

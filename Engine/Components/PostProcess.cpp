@@ -2,30 +2,21 @@
 
 
 //実態定義
-PostProcess* PostProcess::instance = nullptr;
 uint32_t PostProcess::descriptorSizeRTV;
 uint32_t PostProcess::descriptorSizeSRV;
 uint32_t PostProcess::descriptorSizeDSV;
 
 
 PostProcess* PostProcess::GetInstance() {
-	if (instance == nullptr) {
-		instance = new PostProcess();
-	}
-	return instance;
-}
-
-
-void PostProcess::DeleteInstance() {
-	delete instance;
-	instance = nullptr;
+	static PostProcess instance;
+	return &instance;
 }
 
 
 void PostProcess::Initialize() {
 
 	//DirectXCommonのインスタンスを取得
-	dxCommon_ = FCS::GetInstance();
+	dxCommon_ = DirectXCommon::GetInstance();
 	//コマンドリストを取得
 	commandList_ = dxCommon_->GetCommandList();
 	//デバイスを取得

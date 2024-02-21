@@ -1,9 +1,9 @@
 #include "DirectionalLight.h"
-#include "Engine/Base/FireControlSystem.h"
 
 void DirectionalLight::Initialize() {
+
 	//lightingResourceの作成
-	lightingResource_ = FCS::GetInstance()->CreateBufferResource(sizeof(ConstBufferDataDirectionalLight));
+	lightingResource_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(ConstBufferDataDirectionalLight));
 
 	//lightingResourceに書き込む
 	ConstBufferDataDirectionalLight* directionalLightData = nullptr;
@@ -17,6 +17,7 @@ void DirectionalLight::Initialize() {
 }
 
 void DirectionalLight::Update() {
+
 	//lightingResourceに書き込む
 	ConstBufferDataDirectionalLight* directionalLightData = nullptr;
 	lightingResource_->Map(0, nullptr, reinterpret_cast<void**>(&directionalLightData));
@@ -29,6 +30,7 @@ void DirectionalLight::Update() {
 }
 
 void DirectionalLight::SetGraphicsCommand(UINT rootParameterIndex) {
+
 	//lightingResourceの場所を設定
-	FCS::GetInstance()->GetCommandList()->SetGraphicsRootConstantBufferView(rootParameterIndex, lightingResource_->GetGPUVirtualAddress());
+	DirectXCommon::GetInstance()->GetCommandList()->SetGraphicsRootConstantBufferView(rootParameterIndex, lightingResource_->GetGPUVirtualAddress());
 }

@@ -1,13 +1,19 @@
 #pragma once
-#include "3D/Matrix/WorldTransform.h"
-#include "3D/Matrix/ViewProjection.h"
 #include "Mesh.h"
 #include "Material.h"
 #include "DirectionalLight.h"
-#include <memory>
+#include "Base/DirectXCommon.h"
+#include "Base/TextureManager.h"
+#include "3D/Matrix/WorldTransform.h"
+#include "3D/Matrix/ViewProjection.h"
+#include "Utility/MathFunction.h"
+
+#include <cassert>
 #include <dxcapi.h>
+#include <fstream>
 #include <list>
 #include <string>
+#include <sstream>
 #pragma comment(lib,"dxcompiler.lib")
 
 /// <summary>
@@ -69,8 +75,14 @@ public:
 	/// </summary>
 	/// <param name="directoryPath"></param>
 	/// <param name="filename"></param>
-	/// <returns></returns>
+	/// <returns>モデル</returns>
 	static Model* CreateFromOBJ(const std::string& directoryPath, const std::string& filename);
+
+	/// <summary>
+	/// 球の作成
+	/// </summary>
+	/// <returns>球</returns>
+	static Model* CreateSphere();
 
 	/// <summary>
 	/// 描画前処理
@@ -85,28 +97,28 @@ public:
 	/// <summary>
 	/// 描画
 	/// </summary>
-	/// <param name="worldTransform"></param>
-	/// <param name="viewProjection"></param>
+	/// <param name="worldTransform">ワールドトランスフォーム</param>
+	/// <param name="viewProjection">ビュープロジェクション</param>
 	void Draw(const WorldTransform& worldTransform, const ViewProjection& viewProjection);
 
 	/// <summary>
 	/// 描画(テクスチャ指定)
 	/// </summary>
-	/// <param name="worldTransform"></param>
-	/// <param name="viewProjection"></param>
-	/// <param name="textureHandle"></param>
+	/// <param name="worldTransform">ワールドトランスフォーム</param>
+	/// <param name="viewProjection">ビュープロジェクション</param>
+	/// <param name="textureHandle">テクスチャハンドル</param>
 	void Draw(const WorldTransform& worldTransform, const ViewProjection& viewProjection, uint32_t textureHandle);
 
 	/// <summary>
 	/// DirectionalLightを取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>DirectionalLight</returns>
 	DirectionalLight* GetDirectionalLight() { return directionalLight_.get(); };
 
 	/// <summary>
 	/// マテリアルを取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>マテリアル</returns>
 	Material* GetMaterial() { return material_.get(); };
 
 private:
@@ -116,11 +128,11 @@ private:
 	static void InitializeDXC();
 
 	/// <summary>
-	/// シェーダーコンパイル
+	/// シェーダーをコンパイルする
 	/// </summary>
-	/// <param name="filePath"></param>
-	/// <param name="profile"></param>
-	/// <returns></returns>
+	/// <param name="filePath">Compilerするshaderのファイルパス</param>
+	/// <param name="profile">Compilerで使用するProfile</param>
+	/// <returns>実行用のバイナリ</returns>
 	static ComPtr<IDxcBlob> CompileShader(
 		const std::wstring& filePath,
 		const wchar_t* profile);
@@ -133,16 +145,16 @@ private:
 	/// <summary>
 	/// Objファイルの読み込み
 	/// </summary>
-	/// <param name="directoryPath"></param>
-	/// <param name="filename"></param>
+	/// <param name="directoryPath">ディレクトリ名</param>
+	/// <param name="filename">ファイル名</param>
 	/// <returns></returns>
 	ModelData LoadObjFile(const std::string& directoryPath, const std::string& filename);
 
 	/// <summary>
 	/// mtlファイルの読み込み
 	/// </summary>
-	/// <param name="directoryPath"></param>
-	/// <param name="filename"></param>
+	/// <param name="directoryPath">ディレクトリ名</param>
+	/// <param name="filename">ファイル名</param>
 	/// <returns></returns>
 	MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const std::string& filename);
 
@@ -166,7 +178,7 @@ private:
 	//マテリアルデータ
 	std::unique_ptr<Material> material_ = nullptr;
 	//DirectionalLight
-	std::unique_ptr<DirectionalLight> directionalLight_ = nullptr;
+	std::unique_ptr<DirectionalLight> directionalLight_;
 	//テクスチャハンドル
 	uint32_t textureHandle_{};
 

@@ -1,7 +1,6 @@
 #pragma once
+#include "Base/DirectXCommon.h"
 #include "Utility/MathFunction.h"
-#include <d3d12.h>
-#include <wrl.h>
 
 /// <summary>
 /// マテリアル
@@ -33,55 +32,55 @@ public:
 	/// <summary>
 	/// グラフィックスコマンドのセット
 	/// </summary>
-	/// <param name="rootParameterIndex"></param>
+	/// <param name="rootParameterIndex">ルートパラメータの番号</param>
 	void SetGraphicsCommand(UINT rootParameterIndex);
 
 	/// <summary>
 	/// 色を取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>色</returns>
 	const Vector4& GetColor() const { return color_; };
 
 	/// <summary>
 	/// 色を設定
 	/// </summary>
-	/// <param name="color"></param>
+	/// <param name="color">色</param>
 	void SetColor(const Vector4& color) { color_ = color; };
 
 	/// <summary>
 	/// uv座標を取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>uv座標</returns>
 	const Vector2& GetTranslation() const { return translation_; };
 
 	/// <summary>
 	/// uv座標を設定
 	/// </summary>
-	/// <param name="translation"></param>
+	/// <param name="translation">uv座標</param>
 	void SetTranslation(const Vector2& translation) { translation_ = translation; };
 
 	/// <summary>
 	/// uv角度を取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>uv角度</returns>
 	const float& GetRotation() const { return rotation_; };
 
 	/// <summary>
 	/// uv角度を設定
 	/// </summary>
-	/// <param name="rotation"></param>
+	/// <param name="rotation">uv角度</param>
 	void SetRotation(const float& rotation) { rotation_ = rotation; };
 
 	/// <summary>
 	/// uvスケールを取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>uvスケール</returns>
 	const Vector2& GetScale() const { return scale_; };
 
 	/// <summary>
 	/// uvスケールを設定
 	/// </summary>
-	/// <param name="scale"></param>
+	/// <param name="scale">uvスケール</param>
 	void SetScale(const Vector2& scale) { scale_ = scale; };
 
 private:

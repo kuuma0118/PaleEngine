@@ -1,6 +1,7 @@
 #pragma once
 #include "Base/WinApp.h"
-#include "Base/FireControlSystem.h"
+#include "Base/DirectXCommon.h"
+
 #include "Externals/imgui/imgui.h"
 #include "Externals/imgui/imgui_impl_dx12.h"
 
@@ -12,7 +13,7 @@ public:
 	/// <summary>
 	/// シングルトンインスタンスの取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>シングルトンインスタンス</returns>
 	static ImGuiManager* GetInstance();
 
 	/// <summary>
@@ -50,7 +51,7 @@ private:
 	//ウィンドウズアプリケーション
 	WinApp* winApp_ = nullptr;
 	//DirectXCommon
-	FCS* dxCommon_ = nullptr;
+	DirectXCommon* dxCommon_ = nullptr;
 	//SRV用ヒープ
 	Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> srvDescriptorHeap_ = nullptr;
 

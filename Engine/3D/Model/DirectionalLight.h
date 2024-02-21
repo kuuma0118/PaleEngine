@@ -1,8 +1,6 @@
 #pragma once
-#include "Utility/MathStruct.h"
-#include <cstdint>
-#include <d3d12.h>
-#include <wrl.h>
+#include "Base/DirectXCommon.h"
+#include "Utility/MathFunction.h"
 
 /// <summary>
 /// ライト
@@ -57,61 +55,61 @@ public:
 	/// <summary>
 	/// ライティングのフラグを取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>ライティングのフラグ</returns>
 	const int32_t& GetEnableLighting() const { return enableLighting_; };
 
 	/// <summary>
 	/// ライティングのフラグを設定
 	/// </summary>
-	/// <param name="enableLighting"></param>
+	/// <param name="enableLighting">ライティングのフラグ</param>
 	void SetEnableLighting(const int32_t& enableLighting) { enableLighting_ = enableLighting; };
 
 	/// <summary>
 	/// ライティングの種類を取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>ライティングの種類</returns>
 	const int32_t& GetLightingMethod() const { return int32_t(lightingMethod_); };
 
 	/// <summary>
 	/// ライティングの種類を設定
 	/// </summary>
-	/// <param name="lightingMethod"></param>
+	/// <param name="lightingMethod">ライティングの種類</param>
 	void SetLightingMethod(const int32_t& lightingMethod) { lightingMethod_ = LightingMethod(lightingMethod); };
 
 	/// <summary>
 	/// 色を取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>色</returns>
 	const Vector4& GetColor() const { return color_; };
 
 	/// <summary>
 	/// 色を設定
 	/// </summary>
-	/// <param name="color"></param>
+	/// <param name="color">色</param>
 	void SetColor(const Vector4& color) { color_ = color; };
 
 	/// <summary>
 	/// 向きを取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>向き</returns>
 	const Vector3& GetDirection() const { return direction_; };
 
 	/// <summary>
 	/// 向きを設定
 	/// </summary>
-	/// <param name="direction"></param>
+	/// <param name="direction">向き</param>
 	void SetDirection(const Vector3& direction) { direction_ = direction; };
 
 	/// <summary>
 	/// 輝度を取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>輝度</returns>
 	const float& GetIntensity() const { return intensity_; };
 
 	/// <summary>
 	/// 輝度を設定
 	/// </summary>
-	/// <param name="intensity"></param>
+	/// <param name="intensity">輝度</param>
 	void SetIntensity(const float& intensity) { intensity_ = intensity; };
 
 private:

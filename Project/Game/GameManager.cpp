@@ -1,14 +1,19 @@
 #include "GameManager.h"
+#include "GameTitleScene.h"
+#include "GameSelectScene.h"
 #include "GameScene.h"
-#include "Engine/Utility/GlobalVariables.h"
+#include "GameClearScene.h"
+#include "GameOverScene.h"
+#include "Utility/GlobalVariables.h"
 
 GameManager::GameManager() {
-	//ウィンドウズアプリケーションの初期化
+
+	//ゲームウィンドウ作成
 	winApp_ = WinApp::GetInstance();
-	winApp_->CreateGameWindow(L"DirectXGame", WinApp::kClientWidth, WinApp::kClientHeight);
+	winApp_->CreateGameWindow(L"LE2B_30_ワタナベ_クウマ_チョコレートアタック", winApp_->kClientWidth, winApp_->kClientHeight);
 
 	//DirectXの初期化
-	dxCommon_ = FCS::GetInstance();
+	dxCommon_ = DirectXCommon::GetInstance();
 	dxCommon_->Initialize();
 
 	//TextureManagerの初期化
@@ -19,20 +24,23 @@ GameManager::GameManager() {
 	imguiManager_ = ImGuiManager::GetInstance();
 	imguiManager_->Initialize();
 
-	//入力クラスの初期化
-	input_ = Input::GetInstance();
-	input_->Initialize();
-
-	//オーディオクラスの初期化
+	//Audioの初期化
 	audio_ = Audio::GetInstance();
 	audio_->Initialize();
 
-	//ポストプロセスの初期化
+	//Inputの初期化
+	input_ = Input::GetInstance();
+	input_->Initialize();
+
+	//PostProcessの初期化
 	postProcess_ = PostProcess::GetInstance();
 	postProcess_->Initialize();
 
 	//モデルの静的初期化
 	Model::StaticInitialize();
+
+	//パーティクルの静的初期化
+	ParticleModel::StaticInitialize();
 
 	//スプライトの静的初期化
 	Sprite::StaticInitialize();
@@ -40,41 +48,34 @@ GameManager::GameManager() {
 	//グローバル変数の読み込み
 	GlobalVariables::GetInstance()->LoadFiles();
 
+	//ランダムエンジンの初期化
+	Random::Initialize();
+
 	//シーンの初期化
-	currentScene_ = new GameScene();
+	currentScene_ = new GameTitleScene();
 	currentScene_->Initialize(this);
 }
 
 GameManager::~GameManager() {
+
 	//シーンの削除
 	delete currentScene_;
 	currentScene_ = nullptr;
-	//スプライトの解放
-	Sprite::Release();
-	//モデルの解放
+
 	Model::Release();
-	//ポストプロセスの解放
-	PostProcess::DeleteInstance();
-	//オーディオの解放
-	audio_->Finalize();
-	//ImGuiの解放
-	imguiManager_->ShutDown();
-	//TextureManagerの解放
-	TextureManager::DeleteInstnace();
-	//DirectXCommonの解放
-	FCS::DeleteInstance();
-	//ゲームウィンドウを閉じる
-	winApp_->CloseGameWindow();
+	ParticleModel::Release();
+	Sprite::Release();
 }
 
 void GameManager::ChangeScene(IScene* newScene) {
-	delete currentScene_;
+
 	currentScene_ = nullptr;
 	currentScene_ = newScene;
 	currentScene_->Initialize(this);
 }
 
 void GameManager::run() {
+
 	while (true) {
 		//メッセージ処理
 		if (winApp_->ProcessMessage()) {
@@ -83,10 +84,8 @@ void GameManager::run() {
 
 		//ImGui受付開始
 		imguiManager_->Begin();
-		//入力クラスの更新
+		//Inputの更新
 		input_->Update();
-		//グローバル変数の更新
-		GlobalVariables::GetInstance()->Update();
 		//ゲームシーンの更新
 		currentScene_->Update(this);
 		//ポストプロセスの更新
@@ -103,4 +102,10 @@ void GameManager::run() {
 		//描画終了
 		dxCommon_->PostDraw();
 	}
+	//ImGuiの解放処理
+	imguiManager_->ShutDown();
+	//Audioの解放処理
+	audio_->Finalize();
+	//ゲームウィンドウ削除
+	winApp_->CloseGameWindow();
 }

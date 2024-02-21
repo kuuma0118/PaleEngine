@@ -1,8 +1,12 @@
 #pragma once
-#include "Base/FireControlSystem.h"
+#include "Base/DirectXCommon.h"
+#include "Utility/Log.h"
 #include "Externals/DirectXTex/DirectXTex.h"
 #include "Externals/DirectXTex/d3dx12.h"
 #include <array>
+#include <cassert>
+#include <thread>
+#include <vector>
 
 /// <summary>
 /// テクスチャの管理クラス
@@ -11,6 +15,7 @@ class TextureManager {
 public:
 	//ディスクリプタの最大数
 	static const size_t kNumDescriptors = 256;
+
 	//インクリメントサイズ
 	static uint32_t descriptorSizeSRV;
 
@@ -35,18 +40,13 @@ public:
 	/// <summary>
 	/// シングルトンインスタンスの取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>シングルトンインスタンス</returns>
 	static TextureManager* GetInstance();
-
-	/// <summary>
-	/// シングルトンインスタンスの削除
-	/// </summary>
-	static void DeleteInstnace();
 
 	/// <summary>
 	/// テクスチャを読み込む
 	/// </summary>
-	/// <param name="filePath"></param>
+	/// <param name="filePath">ファイルパス</param>
 	/// <returns></returns>
 	static uint32_t Load(const std::string& filePath);
 
@@ -63,15 +63,15 @@ public:
 	/// <summary>
 	/// ディスクリプタテーブルを設定
 	/// </summary>
-	/// <param name="rootParameterIndex"></param>
-	/// <param name="textureHandle"></param>
+	/// <param name="rootParameterIndex">ルートパラメータの番号</param>
+	/// <param name="textureHandle">テクスチャ番号</param>
 	void SetGraphicsRootDescriptorTable(UINT rootParameterIndex, uint32_t textureHandle);
 
 	/// <summary>
 	/// テクスチャの情報を取得
 	/// </summary>
-	/// <param name="textureHandle"></param>
-	/// <returns></returns>
+	/// <param name="textureHandle">テクスチャハンドル</param>
+	/// <returns>テクスチャの情報</returns>
 	const D3D12_RESOURCE_DESC GetResourceDesc(uint32_t textureHandle);
 
 	/// <summary>
@@ -92,53 +92,51 @@ private:
 	/// <summary>
 	/// テクスチャを読み込む
 	/// </summary>
-	/// <param name="filePath"></param>
+	/// <param name="filePath">ファイルパス</param>
 	/// <returns></returns>
 	uint32_t LoadInternal(const std::string& filePath);
 
 	/// <summary>
 	/// テクスチャデータの読み込み
 	/// </summary>
-	/// <param name="filePath">名</param>
+	/// <param name="filePath">ファイル名</param>
 	/// <returns></returns>
 	DirectX::ScratchImage LoadTexture(const std::string& filePath);
 
 	/// <summary>
 	/// テクスチャのリソースを作成
 	/// </summary>
-	/// <param name="metadata"></param>
-	/// <returns></returns>
+	/// <param name="metadata">テクスチャの情報</param>
+	/// <returns>テクスチャのリソース</returns>
 	Microsoft::WRL::ComPtr<ID3D12Resource> CreateTextureResource(const DirectX::TexMetadata& metadata);
 
 	/// <summary>
 	/// リソースにテクスチャのデータを転送
 	/// </summary>
-	/// <param name="texture"></param>
-	/// <param name="mipImages"></param>
-	/// <returns></returns>
+	/// <param name="texture">テクスチャのリソース</param>
+	/// <param name="mipImages">テクスチャのデータ</param>
+	/// <returns>中間リソース</returns>
 	Microsoft::WRL::ComPtr<ID3D12Resource> UploadTextureData(ID3D12Resource* texture, const DirectX::ScratchImage& mipImages);
 
 	/// <summary>
 	/// CPUディスクリプタハンドルを取得
 	/// </summary>
-	/// <param name="descriptorHeap"></param>
-	/// <param name="descriptorSize"></param>
-	/// <param name="index"></param>
-	/// <returns></returns>
+	/// <param name="descriptorHeap">ディスクリプタヒープ</param>
+	/// <param name="descriptorSize">ディスクリプタのサイズ</param>
+	/// <param name="index">ディスクリプタヒープの番号</param>
+	/// <returns>CPUディスクリプタハンドル</returns>
 	D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandle(ID3D12DescriptorHeap* descriptorHeap, const uint32_t descriptorSize, uint32_t index);
 
 	/// <summary>
 	/// GPUディスクリプタハンドルを取得
 	/// </summary>
-	/// <param name="descriptorHeap"></param>
-	/// <param name="descriptorSize"></param>
-	/// <param name="index"></param>
-	/// <returns></returns>
+	/// <param name="descriptorHeap">ディスクリプタヒープ</param>
+	/// <param name="descriptorSize">ディスクリプタのサイズ</param>
+	/// <param name="index">ディスクリプタヒープの番号</param>
+	/// <returns>GPUディスクリプタハンドル</returns>
 	D3D12_GPU_DESCRIPTOR_HANDLE GetGPUDescriptorHandle(ID3D12DescriptorHeap* descriptorHeap, const uint32_t descriptorSize, uint32_t index);
 
 private:
-	//インスタンス
-	static TextureManager* instance;
 	//デバイス
 	ID3D12Device* device_ = nullptr;
 	//コマンドリスト

@@ -1,7 +1,6 @@
 #pragma once
+#include "Base/DirectXCommon.h"
 #include "Utility/MathFunction.h"
-#include <d3d12.h>
-#include <wrl.h>
 
 struct ConstBuffDataWorldTransform {
 	Matrix4x4 world;
@@ -11,11 +10,20 @@ struct ConstBuffDataWorldTransform {
 /// ワールドトランスフォーム
 /// </summary>
 struct WorldTransform {
+	///// <summary>
+	///// 初期化
+	///// </summary>
+	//void Initialize();
 
 	/// <summary>
-	/// 初期化
+	/// コンストラクタ
 	/// </summary>
-	void Initialize();
+	WorldTransform();
+
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
+	~WorldTransform();
 
 	/// <summary>
 	/// ワールド行列を転送

@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <cstdint>
+
 #include "Externals/imgui/imgui_impl_win32.h"
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
@@ -14,27 +15,27 @@ public:
 	static const int32_t kClientHeight = 720;
 
 	/// <summary>
-	/// シングルトンインスタンスの取得
+	/// シングルトンインスタンスを取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>シングルトンインスタンス</returns>
 	static WinApp* GetInstance();
 
 	/// <summary>
 	/// ウィンドウプロシージャ
 	/// </summary>
-	/// <param name="hwnd"></param>
-	/// <param name="msg"></param>
-	/// <param name="wparam"></param>
-	/// <param name="lparam"></param>
-	/// <returns></returns>
+	/// <param name="hwnd">ウィンドウハンドル</param>
+	/// <param name="msg">メッセージ番号</param>
+	/// <param name="wparam">メッセージ情報1</param>
+	/// <param name="lparam">メッセージ情報2</param>
+	/// <returns>成否</returns>
 	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 	/// <summary>
 	/// ゲームウィンドウの作成
 	/// </summary>
-	/// <param name="title"></param>
-	/// <param name="clientWidth"></param>
-	/// <param name="clientHeight"></param>
+	/// <param name="title">ウィンドウタイトル</param>
+	/// <param name="clientWidth">クライアント領域の幅</param>
+	/// <param name="clientHeight">クライアント領域の高さ</param>
 	void CreateGameWindow(const wchar_t* title, int32_t clientWidth, int32_t clientHeight);
 
 	/// <summary>
@@ -45,19 +46,19 @@ public:
 	/// <summary>
 	/// メッセージの処理
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>終了かどうか</returns>
 	bool ProcessMessage();
 
 	/// <summary>
-	/// ウィンドウハンドルの取得
+	/// ウィンドウハンドルを取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>ウィンドウハンドル</returns>
 	HWND GetHwnd() const { return hwnd_; };
 
 	/// <summary>
 	/// インスタンスハンドルの取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>インスタンスハンドル</returns>
 	HINSTANCE GetHInstance() { return wc_.hInstance; };
 
 private:
@@ -75,3 +76,4 @@ private:
 	HWND hwnd_{};
 
 };
+

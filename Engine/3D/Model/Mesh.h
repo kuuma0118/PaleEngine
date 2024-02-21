@@ -1,7 +1,6 @@
 #pragma once
+#include "Base/DirectXCommon.h"
 #include "Utility/MathFunction.h"
-#include <d3d12.h>
-#include <wrl.h>
 #include <vector>
 
 /// <summary>
@@ -25,7 +24,7 @@ public:
 	/// <summary>
 	/// メッシュの初期化
 	/// </summary>
-	/// <param name="vertices"></param>
+	/// <param name="vertices">頂点データ</param>
 	void Initialize(const std::vector<VertexData>& vertices);
 
 	/// <summary>

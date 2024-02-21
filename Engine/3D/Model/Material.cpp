@@ -1,9 +1,9 @@
 #include "Material.h"
-#include "Engine/Base/FireControlSystem.h"
 
 void Material::Initialize() {
+
 	//マテリアルリソースの作成
-	materialResource_ = FCS::GetInstance()->CreateBufferResource(sizeof(ConstBufferDataMaterial));
+	materialResource_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(ConstBufferDataMaterial));
 
 	//マテリアルリソースに書き込む
 	ConstBufferDataMaterial* materialData = nullptr;
@@ -14,6 +14,7 @@ void Material::Initialize() {
 }
 
 void Material::Update() {
+
 	//行列の作成
 	Matrix4x4 uvTransformMatrix = MakeScaleMatrix(Vector3{ scale_.x,scale_.y,1.0f });
 	uvTransformMatrix = Multiply(uvTransformMatrix, MakeRotateZMatrix(rotation_));
@@ -28,6 +29,7 @@ void Material::Update() {
 }
 
 void Material::SetGraphicsCommand(UINT rootParameterIndex) {
+
 	//マテリアルリソースを設定
-	FCS::GetInstance()->GetCommandList()->SetGraphicsRootConstantBufferView(rootParameterIndex, materialResource_->GetGPUVirtualAddress());
+	DirectXCommon::GetInstance()->GetCommandList()->SetGraphicsRootConstantBufferView(rootParameterIndex, materialResource_->GetGPUVirtualAddress());
 }

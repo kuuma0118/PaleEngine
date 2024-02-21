@@ -12,9 +12,9 @@ std::list<ParticleModel::ModelData> ParticleModel::modelDatas_{};
 
 void ParticleModel::StaticInitialize() {
 	//デバイスの取得
-	sDevice_ = FCS::GetInstance()->GetDevice();
+	sDevice_ = DirectXCommon::GetInstance()->GetDevice();
 	//コマンドリストの取得
-	sCommandList_ = FCS::GetInstance()->GetCommandList();
+	sCommandList_ = DirectXCommon::GetInstance()->GetCommandList();
 
 	//DXCの初期化
 	ParticleModel::InitializeDXC();
@@ -355,7 +355,7 @@ void ParticleModel::Initialize(const ModelData& modelData) {
 
 void ParticleModel::CreateVertexResource() {
 	//頂点リソースを作る
-	vertexResource_ = FCS::GetInstance()->CreateBufferResource(sizeof(VertexData) * vertices_.size());
+	vertexResource_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(VertexData) * vertices_.size());
 
 	//リソースの先頭のアドレスから使う
 	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
@@ -374,7 +374,7 @@ void ParticleModel::CreateVertexResource() {
 
 void ParticleModel::CreateMaterialResource() {
 	//マテリアル用のリソースを作る。今回はcolor1つ分のサイズを用意する
-	materialResource_ = FCS::GetInstance()->CreateBufferResource(sizeof(ConstBuffDataMaterial));
+	materialResource_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(ConstBuffDataMaterial));
 	//マテリアルにデータを書き込む
 	ConstBuffDataMaterial* materialData = nullptr;
 	//書き込むためのアドレスを取得

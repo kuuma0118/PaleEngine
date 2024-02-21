@@ -1,14 +1,16 @@
-#include "IScene.h"
-#include "Base/D3DResourceLeakChecker.h"
 #include "Base/WinApp.h"
-#include "Base/FireControlSystem.h"
+#include "Base/DirectXCommon.h"
 #include "Base/TextureManager.h"
+#include "Base/D3DResourceLeakChecker.h"
+#include "Components/Audio.h"
+#include "Components/Input.h"
+#include "Components/PostProcess.h"
 #include "3D/Model/Model.h"
+#include "3D/Model/ParticleModel.h"
 #include "2D/Sprite.h"
 #include "2D/ImGuiManager.h"
-#include "Components/Input.h"
-#include "Components/Audio.h"
-#include "Components/PostProcess.h"
+#include "Utility/Random.h"
+#include "IScene.h"
 #include <memory>
 
 class GameManager {
@@ -26,7 +28,7 @@ public:
 	/// <summary>
 	/// シーン切り替え
 	/// </summary>
-	/// <param name="newScene"></param>
+	/// <param name="newScene">新しいシーン</param>
 	void ChangeScene(IScene* newScene);
 
 	/// <summary>
@@ -35,23 +37,13 @@ public:
 	void run();
 
 private:
-	//リークチェッカー
-	D3DResourceLeakChecker leakCheck;
-	//ウィンドウズアプリケーション
+	static D3DResourceLeakChecker leakCheck;
 	WinApp* winApp_ = nullptr;
-	//DirectX基盤クラス
-	FCS* dxCommon_ = nullptr;
-	//テクスチャ管理クラス
+	DirectXCommon* dxCommon_ = nullptr;
 	TextureManager* textureManager_ = nullptr;
-	//ImGuiManager
 	ImGuiManager* imguiManager_ = nullptr;
-	//入力クラス
-	Input* input_ = nullptr;
-	//オーディオクラス
 	Audio* audio_ = nullptr;
-	//ポストプロセス
+	Input* input_ = nullptr;
 	PostProcess* postProcess_ = nullptr;
-	//現在のシーン
-	IScene* currentScene_ = nullptr;
-
+	IScene* currentScene_;
 };

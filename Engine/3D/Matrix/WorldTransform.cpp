@@ -1,13 +1,21 @@
 #include "WorldTransform.h"
-#include "Engine/Base/FireControlSystem.h"
 
-void WorldTransform::Initialize() {
+//void WorldTransform::Initialize() {
+//	//CBVの作成
+//	constBuff_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(ConstBuffDataWorldTransform));
+//}
+
+WorldTransform::WorldTransform() {
 	//CBVの作成
-	constBuff_ = FCS::GetInstance()->CreateBufferResource(sizeof(ConstBuffDataWorldTransform));
+	constBuff_ = DirectXCommon::GetInstance()->CreateBufferResource(sizeof(ConstBuffDataWorldTransform));
 }
 
+WorldTransform::~WorldTransform() {
+
+}
 
 void WorldTransform::TransferMatrix() {
+
 	//Resourceに書き込む
 	ConstBuffDataWorldTransform* worldTransformData = nullptr;
 	constBuff_->Map(0, nullptr, reinterpret_cast<void**>(&worldTransformData));
@@ -15,8 +23,8 @@ void WorldTransform::TransferMatrix() {
 	constBuff_->Unmap(0, nullptr);
 }
 
-
 void WorldTransform::UpdateMatrix() {
+
 	//ワールド行列を計算
 	matWorld_ = MakeAffineMatrix(scale_, rotation_, translation_);
 

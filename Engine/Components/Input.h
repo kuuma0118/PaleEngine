@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	/// シングルインスタンスの取得
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>シングルトンインスタンス</returns>
 	static Input* GetInstance();
 
 	/// <summary>
@@ -98,12 +98,6 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	bool GetJoystickState(XINPUT_STATE& state);
-
-private:
-	Input() = default;
-	~Input() = default;
-	Input(const Input&) = delete;
-	const Input& operator = (const Input&) = delete;
 
 private:
 	//WindowsAPI
