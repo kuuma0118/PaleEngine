@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "GameManager.h"
 #include "Components/PostProcess.h"
+#include "3D/Model/DirectionalLight.h"
 #include <cassert>
 
 GameScene::GameScene() {};
@@ -38,6 +39,12 @@ void GameScene::Update(GameManager* gameManager) {
 	player_->Update();
 
 	viewProjection_.UpdateMatrix();
+
+#ifdef _DEBUG
+	ImGui::Begin("light");
+	ImGui::DragFloat3("translation", &viewProjection_.translation_.x, 0.001f, -100, 100);
+	ImGui::End();
+#endif
 };
 
 void GameScene::Draw(GameManager* gameManager) {
@@ -71,8 +78,6 @@ void GameScene::Draw(GameManager* gameManager) {
 
 	//パーティクルモデルの描画
 	ParticleModel::PreDraw();
-
-	player_->DrawParticle(viewProjection_);
 
 	ParticleModel::PostDraw();
 

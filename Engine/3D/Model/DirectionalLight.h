@@ -122,8 +122,8 @@ private:
 	//ライトの色
 	Vector4 color_ = { 1.0f,1.0f,1.0f,1.0f };
 	//ライトの向き
-	Vector3 direction_ = { 0.0f,-1.0f,0.0f };
+	Vector3 direction_ = { 1.0f,-1.0f,0.0f };
 	//輝度
-	float intensity_ = 1.0f;
+	float intensity_ = 1.5f;
 
 };

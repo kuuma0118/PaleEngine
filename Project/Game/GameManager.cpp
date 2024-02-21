@@ -1,5 +1,6 @@
 #include "GameManager.h"
 #include "GameScene.h"
+
 #include "Utility/GlobalVariables.h"
 
 GameManager::GameManager() {
