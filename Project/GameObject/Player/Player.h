@@ -43,6 +43,8 @@ private:
 	//パーティクル
 	std::unique_ptr<ParticleModel> particleModel_ = nullptr;
 	std::unique_ptr<ParticleSystem> particleSystem_ = nullptr;
+	std::unique_ptr<ParticleModel> particleModelB_ = nullptr;
+	std::unique_ptr<ParticleSystem> particleSystemB_ = nullptr;
 };
 
 
