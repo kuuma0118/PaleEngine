@@ -12,24 +12,23 @@
 #include "3D/Matrix/WorldTransform.h"
 #include "3D/Matrix/ViewProjection.h"
 #include "Utility/CollisionManager/CollisionManager.h"
-
 #include <memory>
-#include "../GameObject/Player/Player.h"
 
-class GameScene : public IScene
+class GameTitleScene : public IScene
 {
 public:
 	//トランジションの時間
 	static const int kTransitionTime = 60;
+
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	GameScene();
+	GameTitleScene();
 
 	/// <summary>
 	/// デストラクタ
 	/// </summary>
-	~GameScene();
+	~GameTitleScene();
 
 	/// <summary>
 	/// 初期化
@@ -53,29 +52,54 @@ private:
 	Audio* audio_ = nullptr;
 	//Input
 	Input* input_ = nullptr;
-	//DebugCamera
-	DebugCamera* debugCamera_ = nullptr;
-	//DebugCameraの切り替え
-	bool isDebugCameraActive_ = false;
-	//カメラ
-	ViewProjection viewProjection_{};
 
-	//テクスチャ
+	XINPUT_STATE joyState_;
+
+	//パーティクルモデルの作成
 	uint32_t textureHandle_ = 0;
+	std::unique_ptr<ParticleModel> particleModel_ = nullptr;
+	//パーティクル
+	std::unique_ptr<ParticleSystem> particleSystem_ = nullptr;
+	//ビュープロジェクション
+	ViewProjection viewProjection_{};
 
 	//サウンド
 	uint32_t soundHandle_ = 0u;
+	uint32_t titleSoundHandle_ = 0u;
+
+	int soundCount_ = 0;
+
 
 	//ワールドトランスフォーム
-	WorldTransform worldTransform1_{};
-	WorldTransform worldTransform2_{};
+	WorldTransform playerWorldTransform_{};
+	WorldTransform weaponWorldTransform_{};
 
+	//自機の横移動スピード
+	float playerMoveSpeed_ = 0.05f;
 
-	XINPUT_STATE joyState_;
+	//武器の横移動スピード
+	float weaponMoveSpeed_ = 0.05f;
+
+	//タイトル用のスプライト
+	std::unique_ptr<Sprite>  titleSprite_ = nullptr;
+	//タイトルのテクスチャ
+	uint32_t titleTextureHandle_ = 0;
+
+	//コントローラーのスプライト
+	std::unique_ptr<Sprite>  controllerSprite_ = nullptr;
+	//コントローラーのテクスチャ
+	uint32_t controllerTextureHandle_ = 0;
+
 	//プレスAのスプライト
 	std::unique_ptr<Sprite>  pressASprite_ = nullptr;
 	//プレスAのテクスチャ
 	uint32_t pressATextureHandle_ = 0;
+
+	//4x3のスプライト
+	std::unique_ptr<Sprite> x4x3Sprite_;
+	//4x3のテクスチャ
+	uint32_t x4x3TextureHandle_ = 0;
+
 	//トランジション用のスプライト
 	std::unique_ptr<Sprite> transitionSprite_ = nullptr;
 	//トランジションのテクスチャ
@@ -87,6 +111,5 @@ private:
 	bool isTransitionEnd_ = false;
 	//トランジションのタイマー
 	float transitionTimer_ = 0;
-	std::unique_ptr<Player> player_ = nullptr;
-
 };
+

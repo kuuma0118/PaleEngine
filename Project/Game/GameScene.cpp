@@ -1,7 +1,9 @@
 #include "GameScene.h"
+#include "GameTitleScene.h"
 #include "GameManager.h"
 #include "Components/PostProcess.h"
 #include <cassert>
+#include <algorithm>
 
 GameScene::GameScene() {};
 
@@ -19,7 +21,9 @@ void GameScene::Initialize(GameManager* gameManager) {
 	input_ = Input::GetInstance();
 	//デバッグカメラの生成
 	debugCamera_ = new DebugCamera();
-
+	pressATextureHandle_ = TextureManager::Load("Resources/Images/PressAbutton.png");
+	pressASprite_.reset(Sprite::Create(pressATextureHandle_,
+		{ WinApp::GetInstance()->kClientWidth * 0.5f - 508.0f * 0.5f , 550.0f }));
 	// 自キャラの生成
 	player_ = std::make_unique<Player>();
 	// 自キャラの初期化
@@ -35,7 +39,17 @@ void GameScene::Initialize(GameManager* gameManager) {
 
 void GameScene::Update(GameManager* gameManager) {
 
+	Input::GetInstance()->GetJoystickState(joyState_);
+
 	player_->Update();
+
+	if (joyState_.Gamepad.wButtons & XINPUT_GAMEPAD_A)
+	{
+		gameManager->ChangeScene(new GameTitleScene);
+	}
+	ImGui::Begin("light");
+	ImGui::DragFloat3("translation", &viewProjection_.translation_.x, 0.001f, -100, 100);
+	ImGui::End();
 
 	viewProjection_.UpdateMatrix();
 };
@@ -85,6 +99,8 @@ void GameScene::Draw(GameManager* gameManager) {
 	Sprite::PreDraw(Sprite::kBlendModeNormal);
 
 	player_->DrawSprite();
+
+	pressASprite_->Draw();
 
 	Sprite::PostDraw();
 

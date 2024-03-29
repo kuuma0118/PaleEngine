@@ -37,7 +37,7 @@ public:
 	void run();
 
 private:
-	static D3DResourceLeakChecker leakCheck;
+	
 	WinApp* winApp_ = nullptr;
 	DirectXCommon* dxCommon_ = nullptr;
 	TextureManager* textureManager_ = nullptr;

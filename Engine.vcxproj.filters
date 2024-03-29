@@ -225,6 +225,9 @@
     <ClCompile Include="Engine\3D\Particle\ChageParticle.cpp">
       <Filter>ソース ファイル\Engine\3D\Particle</Filter>
     </ClCompile>
+    <ClCompile Include="Project\Game\GameTitleScene.cpp">
+      <Filter>ソース ファイル\Project\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Base\WinApp.h">
@@ -352,6 +355,9 @@
     </ClInclude>
     <ClInclude Include="Engine\3D\Particle\ChageParticle.h">
       <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Game\GameTitleScene.h">
+      <Filter>ヘッダー ファイル\Project\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
