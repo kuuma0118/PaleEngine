@@ -34,43 +34,6 @@ void Player::Initialize()
 	particleSystemB_ = std::make_unique<ParticleSystem>();
 	particleSystemB_->Initialize();
 
-	////エミッターの作成
-	//ParticleEmitter* particleEmitter = EmitterBuilder()
-	//	.SetArea({ -1.0f,-1.0f,0.0f }, { 1.0f,-1.0f,0.0f })
-	//	.SetAzimuth(0.0f, 0.0f)
-	//	.SetColor({ 1.0f,1.0f,1.0f,0.5f }, { 1.0f,1.0f,1.0f,0.5f })
-	//	.SetCount(10)
-	//	.SetDeleteTime(10)
-	//	.SetElevation(0.0f, 0.0f)
-	//	.SetEmitterName("PlayerMove")
-	//	.SetFrequency(0.001f)
-	//	.SetLifeTime(1.0f, 1.0f)
-	//	.SetParticleType(ParticleEmitter::ParticleType::kScale)
-	//	.SetRotation({ 0.0f,0.0f,0.0f }, { 0.0f,0.0f,0.0f })
-	//	.SetScale({ 0.1f,0.1f,0.1f }, { 0.1f,0.1f,0.1f })
-	//	.SetTranslation(playerWorldTransform_.translation_)
-	//	.SetVelocity({ 0.3f,0.3f,0.3f }, { 0.3f,0.3f,0.3f })
-	//	.Build();
-	//particleSystem_->AddParticleEmitter(particleEmitter);
-
-	////エミッターの作成
-	//ParticleEmitter* particleEmitterB = EmitterBuilder()
-	//	.SetArea({ -1.0f,-1.0f,0.0f }, { 1.0f,-1.0f,0.0f })
-	//	.SetAzimuth(0.0f, 0.0f)
-	//	.SetColor({ 1.0f,1.0f,0.1f,1.0f }, { 1.0f,1.0f,0.1f,1.0f })
-	//	.SetCount(10)
-	//	.SetDeleteTime(10)
-	//	.SetElevation(0.0f, 0.0f)
-	//	.SetEmitterName("PlayerMoveB")
-	//	.SetFrequency(0.001f)
-	//	.SetLifeTime(1.0f, 2.0f)
-	//	.SetParticleType(ParticleEmitter::ParticleType::kNormal)
-	//	.SetRotation({ 0.0f,0.0f,0.0f }, { 0.0f,0.0f,0.0f })
-	//	.SetScale({ 0.03f,0.03f,0.03f }, { 0.1f,0.1f,0.1f })
-	//	.SetTranslation(playerWorldTransform_.translation_)
-	//	.SetVelocity({ 0.01f,0.01f,0.01f }, { 0.03f,0.03f,0.03f })
-	//	.Build();
-	//particleSystemB_->AddParticleEmitter(particleEmitterB);
 }
 
 void Player::Update() 
