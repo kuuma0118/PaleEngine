@@ -98,21 +98,21 @@ void Player::Update()
 	}
 
 	//エミッターが消えていたら再生成
-	if (particleSystem_->GetParticleEmitter("PlayerMoveB") == nullptr) {
+	if (particleSystemB_->GetParticleEmitter("PlayerMoveB") == nullptr) {
 		//エミッターの作成
 		ParticleEmitter* particleEmitterB = EmitterBuilder()
 			.SetArea({ -1.0f,-1.0f,0.0f }, { 1.0f,-1.0f,0.0f })
 			.SetAzimuth(0.0f, 0.0f)
 			.SetColor({ 1.0f,1.0f,0.1f,1.0f }, { 1.0f,1.0f,0.1f,1.0f })
 			.SetCount(10)
-			.SetDeleteTime(1)
+			.SetDeleteTime(10)
 			.SetElevation(0.0f, 0.0f)
 			.SetEmitterName("PlayerMoveB")
 			.SetFrequency(0.001f)
 			.SetLifeTime(1.0f, 1.0f)
 			.SetParticleType(ParticleEmitter::ParticleType::kNormal)
 			.SetRotation({ 0.0f,0.0f,0.0f }, { 0.0f,0.0f,0.0f })
-			.SetScale({ 0.03f,0.03f,0.03f }, { 0.1f,0.1f,0.1f })
+			.SetScale({ 0.1f,0.1f,0.1f }, { 0.1f,0.1f,0.1f })
 			.SetTranslation(playerWorldTransform_.translation_)
 			.SetVelocity({ 0.03f,0.03f,0.03f }, { 0.03f,0.03f,0.03f })
 			.Build();
