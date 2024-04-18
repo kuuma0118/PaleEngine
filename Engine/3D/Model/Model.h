@@ -7,7 +7,11 @@
 #include "3D/Matrix/WorldTransform.h"
 #include "3D/Matrix/ViewProjection.h"
 #include "Utility/MathFunction.h"
+#include "Utility/pch.h"
 
+#include<vector>
+#include<format>
+#include<xstring>
 #include <cassert>
 #include <dxcapi.h>
 #include <fstream>
@@ -15,6 +19,33 @@
 #include <string>
 #include <sstream>
 #pragma comment(lib,"dxcompiler.lib")
+
+/// <summary>
+	/// 頂点データ
+	/// </summary>
+struct VertexData {
+	Vector4 position;
+	Vector2 texcoord;
+	Vector3 normal;
+};
+
+struct MaterialData
+{
+	uint32_t handle{};
+	string textureFilePath{};
+};
+
+struct  SModelData
+{
+	vector<VertexData> vertices;
+	MaterialData material;
+	string texFilePath;
+	uint32_t texHandle;
+	string normalilePath;
+	uint32_t normalTexHandle;
+	string basefilePath;
+	uint32_t baseTexHandle;
+};
 
 /// <summary>
 /// 3Dモデル
@@ -25,6 +56,7 @@ private:
 	template <class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
 
 public:
+
 	/// <summary>
 	/// ルートパラメータの番号
 	/// </summary>
@@ -59,6 +91,8 @@ public:
 		Matrix4x4 WVP;
 		Matrix4x4 World;
 	};
+
+	static Model* GetInstance();
 
 	/// <summary>
 	/// 静的初期化
@@ -148,7 +182,14 @@ private:
 	/// <param name="directoryPath">ディレクトリ名</param>
 	/// <param name="filename">ファイル名</param>
 	/// <returns></returns>
-	ModelData LoadObjFile(const std::string& directoryPath, const std::string& filename);
+	ModelData LoadObjFile(const std::string& directoryPath);
+
+	/// <summary>
+	/// ハンドルのobjデータのGet
+	/// </summary>
+	/// <param name="filename">ファイル名</param>
+	/// <returns></returns>
+	static bool ChackLoadObj(string filePath);
 
 	/// <summary>
 	/// mtlファイルの読み込み

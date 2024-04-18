@@ -353,6 +353,9 @@
     <ClInclude Include="Engine\3D\Particle\ChageParticle.h">
       <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Utility\pch.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Object3d.VS.hlsl">
