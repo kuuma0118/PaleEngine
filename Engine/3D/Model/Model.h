@@ -20,207 +20,159 @@
 #include <sstream>
 #pragma comment(lib,"dxcompiler.lib")
 
-/// <summary>
-	/// 頂点データ
-	/// </summary>
-struct VertexData {
-	Vector4 position;
-	Vector2 texcoord;
-	Vector3 normal;
-};
-
-struct MaterialData
+/ class Model
 {
-	uint32_t handle{};
-	string textureFilePath{};
-};
-
-struct  SModelData
-{
-	vector<VertexData> vertices;
-	MaterialData material;
-	string texFilePath;
-	uint32_t texHandle;
-	string normalilePath;
-	uint32_t normalTexHandle;
-	string basefilePath;
-	uint32_t baseTexHandle;
-};
-
-/// <summary>
-/// 3Dモデル
-/// </summary>
-class Model {
-private:
-	//エイリアステンプレート
-	template <class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
-
 public:
-
-	/// <summary>
-	/// ルートパラメータの番号
-	/// </summary>
-	enum class RootParameterIndex {
-		Material,
-		WorldlTransform,
-		ViewProjection,
-		Texture,
-		DirectionalLight
+	enum DiffuseReflectionType
+	{
+		LambertianReflectance,
+		HalfLambert,
 	};
 
-	/// <summary>
-	/// マテリアルデータ構造体
-	/// </summary>
+	enum SpecularReflectionType
+	{
+		PhongReflectionModel,
+		BlinnPhongReflectionModel,
+		NoSpecularReflection,
+	};
+
+	//ノード構造体
+	struct Node {
+		Matrix4x4 localMatrix{};
+		std::string name;
+		std::vector<Node> children;
+	};
+
+	//マテリアルデータ構造体
 	struct MaterialData {
 		std::string textureFilePath;
 	};
 
-	/// <summary>
-	/// モデルデータ構造体
-	/// </summary>
+	//モデルデータ構造体
 	struct ModelData {
-		std::vector<Mesh::VertexData> vertices;
+		std::vector<VertexDataPosUVNormal> vertices;
 		MaterialData material;
-		std::string name;
+		Node rootNode;
 	};
 
-	/// <summary>
-	/// 定数バッファ用の構造体
-	/// </summary>
-	struct ConstBufferDataTransformationMatrix {
-		Matrix4x4 WVP;
-		Matrix4x4 World;
+	//Keyframe構造体
+	template <typename tValue>
+	struct Keyframe {
+		float time;
+		tValue value;
+	};
+	using KeyframeVector3 = Keyframe<Vector3>;
+	using KeyframeQuaternion = Keyframe<Quaternion>;
+
+	//AnimationCurve構造体
+	template <typename tValue>
+	struct AnimationCurve {
+		std::vector<Keyframe<tValue>> keyframes;
 	};
 
-	static Model* GetInstance();
+	//NodeAnimation構造体
+	struct NodeAnimation {
+		AnimationCurve<Vector3> translate;
+		AnimationCurve<Quaternion> rotate;
+		AnimationCurve<Vector3> scale;
+	};
 
-	/// <summary>
-	/// 静的初期化
-	/// </summary>
-	static void StaticInitialize();
+	//Animation構造体
+	struct Animation {
+		float duration;//アニメーション全体の尺(単位は秒)
+		//NodeAnimationの集合。Node名でひけるようにしておく
+		std::map<std::string, NodeAnimation> nodeAnimations;
+	};
 
-	/// <summary>
-	/// 静的メンバ変数の解放
-	/// </summary>
-	static void Release();
+	void Create(const ModelData& modelData, const Animation& animationData, DrawPass drawPass);
 
-	/// <summary>
-	/// モデルの作成
-	/// </summary>
-	/// <param name="directoryPath"></param>
-	/// <param name="filename"></param>
-	/// <returns>モデル</returns>
-	static Model* CreateFromOBJ(const std::string& directoryPath, const std::string& filename);
+	void Update(WorldTransform& worldTransform);
 
-	/// <summary>
-	/// 球の作成
-	/// </summary>
-	/// <returns>球</returns>
-	static Model* CreateSphere();
+	void Draw(WorldTransform& worldTransform, const Camera& camera);
 
-	/// <summary>
-	/// 描画前処理
-	/// </summary>
-	static void PreDraw();
+	const Vector4& GetColor() const { return color_; };
 
-	/// <summary>
-	/// 描画後処理
-	/// </summary>
-	static void PostDraw();
+	void SetColor(const Vector4& color) { color_ = color; };
 
-	/// <summary>
-	/// 描画
-	/// </summary>
-	/// <param name="worldTransform">ワールドトランスフォーム</param>
-	/// <param name="viewProjection">ビュープロジェクション</param>
-	void Draw(const WorldTransform& worldTransform, const ViewProjection& viewProjection);
+	const Vector2& GetUVScale() const { return uvScale_; };
 
-	/// <summary>
-	/// 描画(テクスチャ指定)
-	/// </summary>
-	/// <param name="worldTransform">ワールドトランスフォーム</param>
-	/// <param name="viewProjection">ビュープロジェクション</param>
-	/// <param name="textureHandle">テクスチャハンドル</param>
-	void Draw(const WorldTransform& worldTransform, const ViewProjection& viewProjection, uint32_t textureHandle);
+	void SetUVScale(const Vector2& uvScale) { uvScale_ = uvScale; };
 
-	/// <summary>
-	/// DirectionalLightを取得
-	/// </summary>
-	/// <returns>DirectionalLight</returns>
-	DirectionalLight* GetDirectionalLight() { return directionalLight_.get(); };
+	const float GetUVRotation() const { return uvRotation_; };
 
-	/// <summary>
-	/// マテリアルを取得
-	/// </summary>
-	/// <returns>マテリアル</returns>
-	Material* GetMaterial() { return material_.get(); };
+	void SetUVRotation(const float uvRotation) { uvRotation_ = uvRotation; };
+
+	const Vector2& GetUVTranslation() const { return uvTranslation_; };
+
+	void SetUVTranslation(const Vector2& uvTranslation) { uvTranslation_ = uvTranslation; };
+
+	const int32_t& GetEnableLighting() const { return enableLighting_; };
+
+	void SetEnableLighting(const int32_t enableLighting) { enableLighting_ = enableLighting; };
+
+	const int32_t& GetDiffuseReflectionType() const { return int32_t(diffuseReflectionType_); };
+
+	void SetDiffuseReflectionType(const int32_t diffuseReflectionType) { diffuseReflectionType_ = DiffuseReflectionType(diffuseReflectionType); };
+
+	const int32_t& GetSpecularReflectionType() const { return int32_t(specularReflectionType_); };
+
+	void SetSpecularReflectionType(const int32_t specularReflectionType) { specularReflectionType_ = SpecularReflectionType(specularReflectionType); };
+
+	const float& GetShininess() const { return shininess_; };
+
+	void SetShininess(const float shininess) { shininess_ = shininess; };
+
+	const Vector3& GetSpecularColor() const { return specularColor_; };
+
+	void SetSpecularColor(const Vector3& specularColor) { specularColor_ = specularColor; };
+
+	void SetTexture(const std::string& textureName);
 
 private:
-	/// <summary>
-	/// DXCの初期化
-	/// </summary>
-	static void InitializeDXC();
+	void CreateVertexBuffer();
 
-	/// <summary>
-	/// シェーダーをコンパイルする
-	/// </summary>
-	/// <param name="filePath">Compilerするshaderのファイルパス</param>
-	/// <param name="profile">Compilerで使用するProfile</param>
-	/// <returns>実行用のバイナリ</returns>
-	static ComPtr<IDxcBlob> CompileShader(
-		const std::wstring& filePath,
-		const wchar_t* profile);
+	void CreateMaterialConstBuffer();
 
-	/// <summary>
-	/// PSOの作成
-	/// </summary>
-	static void CreatePipelineStateObject();
+	void UpdateMaterailConstBuffer();
 
-	/// <summary>
-	/// Objファイルの読み込み
-	/// </summary>
-	/// <param name="directoryPath">ディレクトリ名</param>
-	/// <param name="filename">ファイル名</param>
-	/// <returns></returns>
-	ModelData LoadObjFile(const std::string& directoryPath);
+	Vector3 CalculateValue(const std::vector<KeyframeVector3>& keyframes, float time);
 
-	/// <summary>
-	/// ハンドルのobjデータのGet
-	/// </summary>
-	/// <param name="filename">ファイル名</param>
-	/// <returns></returns>
-	static bool ChackLoadObj(string filePath);
-
-	/// <summary>
-	/// mtlファイルの読み込み
-	/// </summary>
-	/// <param name="directoryPath">ディレクトリ名</param>
-	/// <param name="filename">ファイル名</param>
-	/// <returns></returns>
-	MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const std::string& filename);
+	Quaternion CalculateValue(const std::vector<KeyframeQuaternion>& keyframes, float time);
 
 private:
-	//デバイス
-	static ID3D12Device* sDevice_;
-	//コマンドリスト
-	static ID3D12GraphicsCommandList* sCommandList_;
-	//DXC
-	static ComPtr<IDxcUtils> sDxcUtils_;
-	static ComPtr<IDxcCompiler3> sDxcCompiler_;
-	static ComPtr<IDxcIncludeHandler> sIncludeHandler_;
-	//RootSignature
-	static ComPtr<ID3D12RootSignature> sRootSignature_;
-	//PipelineStateObject
-	static ComPtr<ID3D12PipelineState> sGraphicsPipelineState_;
-	//モデルデータ
-	static std::list<ModelData> modelDatas_;
-	//頂点データ
-	std::unique_ptr<Mesh> mesh_ = nullptr;
-	//マテリアルデータ
-	std::unique_ptr<Material> material_ = nullptr;
-	//DirectionalLight
-	std::unique_ptr<DirectionalLight> directionalLight_;
-	//テクスチャハンドル
-	uint32_t textureHandle_{};
+	ModelData modelData_{};
 
+	Animation animationData_{};
+
+	std::unique_ptr<UploadBuffer> vertexBuffer_ = nullptr;
+
+	D3D12_VERTEX_BUFFER_VIEW vertexBufferView_{};
+
+	std::unique_ptr<UploadBuffer> materialConstBuffer_ = nullptr;
+
+	Vector4 color_ = { 1.0f,1.0f,1.0f,1.0f };
+
+	Vector2 uvScale_ = { 1.0f,1.0f };
+
+	float uvRotation_ = 0.0f;
+
+	Vector2 uvTranslation_ = { 0.0f,0.0f };
+
+	int32_t enableLighting_ = true;
+
+	DiffuseReflectionType diffuseReflectionType_ = DiffuseReflectionType::HalfLambert;
+
+	SpecularReflectionType specularReflectionType_ = SpecularReflectionType::BlinnPhongReflectionModel;
+
+	float shininess_ = 40.0f;
+
+	Vector3 specularColor_ = { 1.0f,1.0f,1.0f };
+
+	DrawPass drawPass_ = Opaque;
+
+	const Texture* texture_ = nullptr;
+
+	float animationTime_ = 0.0f;
+
+	friend class ParticleSystem;
 };
