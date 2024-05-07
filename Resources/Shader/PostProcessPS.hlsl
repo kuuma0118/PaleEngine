@@ -134,6 +134,7 @@ PixelShaderOutput main(VertexShaderOutput input)
         textureColor *= 1.0 - dot(uv, uv);
     }
 
+  
     output.color = textureColor;
     
     return output;

@@ -28,6 +28,8 @@ public:
 private:
 	Input* input_ = nullptr;
 
+	std::unique_ptr<Model> playerModel_ = nullptr;
+
 	WorldTransform playerWorldTransform_;
 
 	uint32_t textureHandle_ = 0u;

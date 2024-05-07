@@ -10,10 +10,12 @@ Player::~Player()
 void Player::Initialize()
 {
   
+	playerModel_.reset(Model::CreateFromOBJ("Resources/Boss", "Boss.obj"));
+
 	textureHandle_ = TextureManager::Load("Resources/uvChecker.png");
 
 	//Player
-	playerWorldTransform_.translation_.x = 2.0f;
+	playerWorldTransform_.translation_.x = 0.0f;
 	playerWorldTransform_.translation_.y = 0.0f;
 	playerWorldTransform_.scale_ = { 0.8f,0.8f,0.8f };
 
@@ -66,7 +68,7 @@ void Player::Update()
 
 void Player::Draw(const ViewProjection viewProjection)
 {
-
+	playerModel_->Draw(playerWorldTransform_,viewProjection);
 }
 
 void Player::ApplyGlobalVariables()

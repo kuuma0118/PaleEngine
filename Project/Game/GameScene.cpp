@@ -72,7 +72,7 @@ void GameScene::Draw(GameManager* gameManager) {
 	//パーティクルモデルの描画
 	ParticleModel::PreDraw();
 
-	player_->DrawParticle(viewProjection_);
+//	player_->DrawParticle(viewProjection_);
 
 	ParticleModel::PostDraw();
 
