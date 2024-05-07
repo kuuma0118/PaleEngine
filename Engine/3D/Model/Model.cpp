@@ -450,19 +450,13 @@ void Model::CreatePipelineStateObject() {
 	assert(SUCCEEDED(hr));
 }
 
-Model::ModelData Model::LoadObjFile(const std::string& directoryPath) {
-	if (ChackLoadObj(directoryPath))
-	{
-		//始めてだったら加算
-		ModelManager::GetInstance()->objHandle_++;
-
-		uint32_t modelHandle = ModelManager::GetInstance()->objHandle_;
-		SModelData modelData = {};
-
-		Assimp::Importer importer;
-		string file("Resources/Models/" + directoryPath + "/" + directoryPath + ".obj");
-		const aiScene* scene = importer.ReadFile(file.c_str(), aiProcess_FlipWindingOrder | aiProcess_FlipUVs);
-		assert(scene->HasMeshes());
+Model::ModelData Model::LoadObjFile(const std::string& directoryPath, const std::string& filename) {
+	SModelData modelData = {};
+	//Model::ModelData modelData;
+	Assimp::Importer importer;
+	std::string filePath = directoryPath + "/" + filename;
+	const aiScene* scene = importer.ReadFile(filePath.c_str(), aiProcess_FlipWindingOrder | aiProcess_FlipUVs);
+	assert(scene->HasMeshes());//メッシュがないのは対応しない
 
 		//mesh解析
 		for (uint32_t meshIndex = 0; meshIndex < scene->mNumMeshes; ++meshIndex)
@@ -509,47 +503,10 @@ Model::ModelData Model::LoadObjFile(const std::string& directoryPath) {
 			}
 		}
 
-		TextureManager::UnUsedFilePath();
-		uint32_t texHandle = TextureManager::LoadPngTexture(modelData.material.textureFilePath);
-		modelData.material.handle = texHandle;
-
-		if (ModelManager::GetInstance()->isLoadNormalMap_)
-		{
-			const string normalFilePath = "Resources/Models/" + directoryPath + "/normalMap.png";
-			TextureManager::UnUsedFilePath();
-			uint32_t normalHandle = TextureManager::LoadPngTexture(normalFilePath);
-			modelData.normalTexHandle = normalHandle;
-			ModelManager::GetInstance()->isLoadNormalMap_ = false;
-		}
-		if (ModelManager::GetInstance()->isUsesubsurface_)
-		{
-			const string baseFilePath = "Resources/Models/" + directoryPath + "/baseTex.png";
-			TextureManager::UnUsedFilePath();
-			uint32_t baseTexHandle = TextureManager::LoadPngTexture(baseFilePath);
-			modelData.baseTexHandle = baseTexHandle;
-			ModelManager::GetInstance()->isUsesubsurface_ = false;
-
-		}
-
-		unique_ptr<Model>model = make_unique <Model>();
-		model->CreateObj(modelData);
-		ModelManager::GetInstance()->objModelDatas_[directoryPath] = make_unique<ModelObjData>(modelData, modelHandle, move(model));
-
-		return modelHandle;
-	}
-	ModelManager::GetInstance()->isLoadNormalMap_ = false;
-	ModelManager::GetInstance()->isUsesubsurface_ = false;
-	return ModelManager::GetInstance()->objModelDatas_[directoryPath]->GetIndex();
+		
 }
 
-bool ModelManager::ChackLoadObj(string filePath)
-{
-	if (ModelManager::GetInstance()->objModelDatas_.find(filePath) == ModelManager::GetInstance()->objModelDatas_.end())
-	{
-		return true;
-	}
-	return false;
-}
+
 
 //Model::ModelData Model::LoadObjFile(const std::string& directoryPath, const std::string& filename) {
 //	ModelData modelData;//構築するModelData

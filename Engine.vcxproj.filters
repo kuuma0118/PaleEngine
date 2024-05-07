@@ -85,12 +85,6 @@
     <Filter Include="ソース ファイル\Project\Game">
       <UniqueIdentifier>{df44f77d-af5b-4575-983d-f18398fb8d92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Engine\3D\DebugCamera">
-      <UniqueIdentifier>{460158d2-3e9c-4573-a8fd-d0c4f9137aa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Engine\3D\DebugCamera">
-      <UniqueIdentifier>{3ef29a89-0edb-4db7-89a0-9a0d973bb5a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Project\GameObject">
       <UniqueIdentifier>{d46a3d4b-9f62-48c5-826b-5bb98ccec81a}</UniqueIdentifier>
     </Filter>
@@ -108,6 +102,15 @@
     </Filter>
     <Filter Include="ソース ファイル\Engine\3D\Particle">
       <UniqueIdentifier>{000d993a-d8e3-43d1-b3a5-8aa6c97e467d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\3D\Camera">
+      <UniqueIdentifier>{3ef29a89-0edb-4db7-89a0-9a0d973bb5a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\3D\Camera">
+      <UniqueIdentifier>{460158d2-3e9c-4573-a8fd-d0c4f9137aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Base\plain">
+      <UniqueIdentifier>{16732be2-9861-4847-9376-fd0998b24b0b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +183,6 @@
     <ClCompile Include="Engine\Utility\GlobalVariables.cpp">
       <Filter>ソース ファイル\Engine\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\3D\DebugCamera\DebugCamera.cpp">
-      <Filter>ソース ファイル\Engine\3D\DebugCamera</Filter>
-    </ClCompile>
     <ClCompile Include="Project\Game\GameManager.cpp">
       <Filter>ソース ファイル\Project\Game</Filter>
     </ClCompile>
@@ -224,6 +224,15 @@
     </ClCompile>
     <ClCompile Include="Engine\3D\Particle\ChageParticle.cpp">
       <Filter>ソース ファイル\Engine\3D\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Model\ModelManager.cpp">
+      <Filter>ソース ファイル\Engine\3D\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Camera\Camera.cpp">
+      <Filter>ソース ファイル\Engine\3D\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Camera\DebugCamera.cpp">
+      <Filter>ソース ファイル\Engine\3D\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,9 +314,6 @@
     <ClInclude Include="Engine\Utility\GlobalVariables.h">
       <Filter>ヘッダー ファイル\Engine\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\3D\DebugCamera\DebugCamera.h">
-      <Filter>ヘッダー ファイル\Engine\3D\DebugCamera</Filter>
-    </ClInclude>
     <ClInclude Include="Project\Game\IScene.h">
       <Filter>ヘッダー ファイル\Project\Game</Filter>
     </ClInclude>
@@ -355,6 +361,18 @@
     </ClInclude>
     <ClInclude Include="Engine\Utility\pch.h">
       <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Model\ModelManager.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Camera\DebugCamera.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Camera\Camera.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\plain\UploadBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base\plain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
