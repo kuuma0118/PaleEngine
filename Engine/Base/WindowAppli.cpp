@@ -1,13 +1,14 @@
-#include "WinApp.h"
+#include "WindowAppli.h"
+#include "Externals/imgui/imgui_impl_win32.h"
 #pragma comment(lib,"winmm.lib")
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
-WinApp* WinApp::GetInstance() {
-	static WinApp instance;
+WindowAppli* WindowAppli::GetInstance() {
+	static WindowAppli instance;
 	return &instance;
 }
 
-LRESULT CALLBACK WinApp::WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
-
+LRESULT CALLBACK WindowAppli::WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
 	//ImGuiにメッセージを伝える
 	if (ImGui_ImplWin32_WndProcHandler(hwnd, msg, wparam, lparam)) {
 		return true;
@@ -26,10 +27,12 @@ LRESULT CALLBACK WinApp::WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM l
 	return DefWindowProc(hwnd, msg, wparam, lparam);
 }
 
-void WinApp::CreateGameWindow(const wchar_t* title, int32_t clientWidth, int32_t clientHeight) {
-
+void WindowAppli::CreateGameWindow(const wchar_t* title, int32_t clientWidth, int32_t clientHeight) {
 	//COM初期化
 	HRESULT hr = CoInitializeEx(0, COINIT_MULTITHREADED);
+
+	//システムタイマーの分解能をあげる
+	timeBeginPeriod(1);
 
 	//ウィンドウプロシージャ
 	wc_.lpfnWndProc = WindowProc;
@@ -64,22 +67,16 @@ void WinApp::CreateGameWindow(const wchar_t* title, int32_t clientWidth, int32_t
 		nullptr);
 	//ウィンドウを表示する
 	ShowWindow(hwnd_, SW_SHOW);
-
-	//システムタイマーの分解能をあげる
-	timeBeginPeriod(1);
 }
 
-void WinApp::CloseGameWindow() {
-
+void WindowAppli::CloseGameWindow() {
 	//ゲームウィンドウを閉じる
 	CloseWindow(hwnd_);
-
 	//COM終了
 	CoUninitialize();
 }
 
-bool WinApp::ProcessMessage() {
-
+bool WindowAppli::ProcessMessage() {
 	//メッセージ
 	MSG msg{};
 

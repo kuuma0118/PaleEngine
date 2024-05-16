@@ -109,6 +109,9 @@
     <Filter Include="ソース ファイル\Engine\3D\Particle">
       <UniqueIdentifier>{000d993a-d8e3-43d1-b3a5-8aa6c97e467d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Math">
+      <UniqueIdentifier>{fb2414b8-1018-480e-900e-06f958623931}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -224,6 +227,60 @@
     </ClCompile>
     <ClCompile Include="Engine\3D\Particle\ChageParticle.cpp">
       <Filter>ソース ファイル\Engine\3D\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\WindowAppli.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\ColorBuffer.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\CommandContext.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\CommandQueue.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\DepthBuffer.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\DescriptorHeap.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\Display.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\FrameRateController.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\GraphicsCore.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\ImGuiManager.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\PipelineState.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\Renderer.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\RootParameter.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\RootSignature.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\StructuredBuffer.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\Texture.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\UploadBuffer.cpp">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\MathFunction.cpp">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -352,6 +409,93 @@
     </ClInclude>
     <ClInclude Include="Engine\3D\Particle\ChageParticle.h">
       <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\WindowAppli.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\ColorBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\CommandContext.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\CommandQueue.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\ConstantBuffers.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\DepthBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\DescriptorHandle.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\DescriptorHeap.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Display.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\FrameRateController.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\GpuResource.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\GraphicsCore.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\ImGuiManager.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\PipelineState.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Renderer.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\RootParameter.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\RootSignature.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\StructuredBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Texture.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\UploadBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\AABB.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\MathFunction.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Matrix4x4.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\OBB.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Quaternion.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Sphere.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Vector2.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Vector3.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Vector4.h">
+      <Filter>ヘッダー ファイル\Engine\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
