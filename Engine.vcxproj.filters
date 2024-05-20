@@ -112,6 +112,9 @@
     <Filter Include="ヘッダー ファイル\Engine\Math">
       <UniqueIdentifier>{fb2414b8-1018-480e-900e-06f958623931}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\3D\Light">
+      <UniqueIdentifier>{0e904649-4ad6-4d75-9c52-acd5a1d713a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -282,15 +285,18 @@
     <ClCompile Include="Engine\Math\MathFunction.cpp">
       <Filter>ヘッダー ファイル\Engine\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Utility\ShaderCompiler.cpp">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Light\LightManager.cpp">
+      <Filter>ヘッダー ファイル\Engine\3D\Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Base\WinApp.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Base\DirectXCommon.h">
-      <Filter>ヘッダー ファイル\Engine\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Base\D3DResourceLeakChecker.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Utility\Log.h">
@@ -496,6 +502,21 @@
     </ClInclude>
     <ClInclude Include="Engine\Math\Vector4.h">
       <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utility\ShaderCompiler.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Light\DirectionalLight.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Light\LightManager.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Light\PointLight.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Light\SpotLight.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Light</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

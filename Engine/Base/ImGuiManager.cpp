@@ -1,6 +1,6 @@
 #include "ImGuiManager.h"
-#include "Engine/Externals/imgui/imgui_impl_win32.h"
-#include "Engine/Externals/imgui/imgui_impl_dx12.h"
+#include "Externals/imgui/imgui_impl_win32.h"
+#include "Externals/imgui/imgui_impl_dx12.h"
 
 ImGuiManager* ImGuiManager::GetInstance() {
 	static ImGuiManager instance;
@@ -9,7 +9,7 @@ ImGuiManager* ImGuiManager::GetInstance() {
 
 void ImGuiManager::Initialize() {
 	//Applicationのインスタンスを取得
-	application_ = Application::GetInstance();
+	application_ = WindowAppli::GetInstance();
 
 	//GraphicsCoreのインスタンスを取得
 	graphicsCore_ = GraphicsCore::GetInstance();

@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/3D/Lights/LightManager.h"
+#include "3D/Light/LightManager.h"
 #include "ColorBuffer.h"
 #include "DepthBuffer.h"
 #include "PipelineState.h"

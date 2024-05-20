@@ -1,8 +1,8 @@
 #pragma once
-#include "Engine/Base/Application.h"
-#include "Engine/Base/GraphicsCore.h"
-#include "Engine/Base/DescriptorHeap.h"
-#include "Engine/Externals/imgui/imgui.h"
+#include "Base/WindowAppli.h"
+#include "Base/GraphicsCore.h"
+#include "Base/DescriptorHeap.h"
+#include "Externals/imgui/imgui.h"
 #include <memory>
 
 class ImGuiManager {
@@ -26,7 +26,7 @@ private:
 	ImGuiManager& operator=(const ImGuiManager&) = delete;
 
 private:
-	Application* application_ = nullptr;
+	WindowAppli* application_ = nullptr;
 
 	GraphicsCore* graphicsCore_ = nullptr;
 

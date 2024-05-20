@@ -103,6 +103,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\2D\ImGuiManager.cpp" />
     <ClCompile Include="Engine\2D\Sprite.cpp" />
     <ClCompile Include="Engine\3D\DebugCamera\DebugCamera.cpp" />
+    <ClCompile Include="Engine\3D\Light\LightManager.cpp" />
     <ClCompile Include="Engine\3D\Matrix\ViewProjection.cpp" />
     <ClCompile Include="Engine\3D\Matrix\WorldTransform.cpp" />
     <ClCompile Include="Engine\3D\Model\DirectionalLight.cpp" />
@@ -166,6 +167,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Utility\Log.cpp" />
     <ClCompile Include="Engine\Utility\MathFunction.cpp" />
     <ClCompile Include="Engine\Utility\Random.cpp" />
+    <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Project\GameObject\Player\Player.cpp" />
     <ClCompile Include="Project\Game\GameManager.cpp" />
@@ -175,6 +177,10 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\2D\ImGuiManager.h" />
     <ClInclude Include="Engine\2D\Sprite.h" />
     <ClInclude Include="Engine\3D\DebugCamera\DebugCamera.h" />
+    <ClInclude Include="Engine\3D\Light\DirectionalLight.h" />
+    <ClInclude Include="Engine\3D\Light\LightManager.h" />
+    <ClInclude Include="Engine\3D\Light\PointLight.h" />
+    <ClInclude Include="Engine\3D\Light\SpotLight.h" />
     <ClInclude Include="Engine\3D\Matrix\ViewProjection.h" />
     <ClInclude Include="Engine\3D\Matrix\WorldTransform.h" />
     <ClInclude Include="Engine\3D\Model\DirectionalLight.h" />
@@ -193,7 +199,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Base\CommandContext.h" />
     <ClInclude Include="Engine\Base\CommandQueue.h" />
     <ClInclude Include="Engine\Base\ConstantBuffers.h" />
-    <ClInclude Include="Engine\Base\D3DResourceLeakChecker.h" />
     <ClInclude Include="Engine\Base\DepthBuffer.h" />
     <ClInclude Include="Engine\Base\DescriptorHandle.h" />
     <ClInclude Include="Engine\Base\DescriptorHeap.h" />
@@ -239,6 +244,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Utility\Log.h" />
     <ClInclude Include="Engine\Utility\MathFunction.h" />
     <ClInclude Include="Engine\Utility\Random.h" />
+    <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
     <ClInclude Include="Project\GameObject\Player\Player.h" />
     <ClInclude Include="Project\Game\GameManager.h" />
     <ClInclude Include="Project\Game\GameScene.h" />
