@@ -1,8 +1,8 @@
 #pragma once
 #include "GpuResource.h"
 #include "DescriptorHandle.h"
-#include "Engine/Externals/DirectXTex/DirectXTex.h"
-#include "Engine/Externals/DirectXTex/d3dx12.h"
+#include "Externals/DirectXTex/DirectXTex.h"
+#include "Externals/DirectXTex/d3dx12.h"
 #include <cstdint>
 #include <string>
 

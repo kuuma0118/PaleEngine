@@ -85,23 +85,11 @@
     <Filter Include="ソース ファイル\Project\Game">
       <UniqueIdentifier>{df44f77d-af5b-4575-983d-f18398fb8d92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Engine\3D\DebugCamera">
-      <UniqueIdentifier>{460158d2-3e9c-4573-a8fd-d0c4f9137aa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Engine\3D\DebugCamera">
-      <UniqueIdentifier>{3ef29a89-0edb-4db7-89a0-9a0d973bb5a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Project\GameObject">
       <UniqueIdentifier>{d46a3d4b-9f62-48c5-826b-5bb98ccec81a}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Project\GameObject">
       <UniqueIdentifier>{b63892bf-a8e3-49fa-94cc-2e7e4a27d9c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Project\GameObject\Player">
-      <UniqueIdentifier>{0059095f-5a58-441c-9631-e3c3f30228aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Project\GameObject\Player">
-      <UniqueIdentifier>{ceb9aa83-a170-492b-a38a-df5b563b65cd}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\Engine\3D\Particle">
       <UniqueIdentifier>{71b65ba6-f153-4508-8627-cae41e83b521}</UniqueIdentifier>
@@ -114,6 +102,24 @@
     </Filter>
     <Filter Include="ヘッダー ファイル\Engine\3D\Light">
       <UniqueIdentifier>{0e904649-4ad6-4d75-9c52-acd5a1d713a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\3D\Camera">
+      <UniqueIdentifier>{3ef29a89-0edb-4db7-89a0-9a0d973bb5a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\3D\Camera">
+      <UniqueIdentifier>{460158d2-3e9c-4573-a8fd-d0c4f9137aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\FrameWork">
+      <UniqueIdentifier>{e1de7ffb-2017-4899-9533-726646f5fdae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\FrameWork\GameCore">
+      <UniqueIdentifier>{ed49e42c-e193-4321-b2ff-6d2ec1fbd663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\FrameWork\GameObj">
+      <UniqueIdentifier>{a3a8eaed-7836-4e1b-b8ea-effd0bd41e69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\FrameWork\GameScene">
+      <UniqueIdentifier>{a65f648f-1c7d-4c01-921a-0102115aa146}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -133,9 +139,6 @@
       <Filter>ソース ファイル\Engine\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Engine\3D\Matrix\WorldTransform.cpp">
-      <Filter>ソース ファイル\Engine\3D\Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\3D\Matrix\ViewProjection.cpp">
       <Filter>ソース ファイル\Engine\3D\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Externals\imgui\imgui.cpp">
@@ -171,23 +174,11 @@
     <ClCompile Include="Engine\3D\Model\Model.cpp">
       <Filter>ソース ファイル\Engine\3D\Model</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\3D\Model\Mesh.cpp">
-      <Filter>ソース ファイル\Engine\3D\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\3D\Model\Material.cpp">
-      <Filter>ソース ファイル\Engine\3D\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\3D\Model\DirectionalLight.cpp">
-      <Filter>ソース ファイル\Engine\3D\Model</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Utility\CollisionManager\CollisionManager.cpp">
       <Filter>ソース ファイル\Engine\Utility\CollisionManager</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Utility\GlobalVariables.cpp">
       <Filter>ソース ファイル\Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\3D\DebugCamera\DebugCamera.cpp">
-      <Filter>ソース ファイル\Engine\3D\DebugCamera</Filter>
     </ClCompile>
     <ClCompile Include="Project\Game\GameManager.cpp">
       <Filter>ソース ファイル\Project\Game</Filter>
@@ -204,9 +195,6 @@
     <ClCompile Include="Engine\Components\PostProcess.cpp">
       <Filter>ソース ファイル\Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Project\GameObject\Player\Player.cpp">
-      <Filter>ソース ファイル\Project\GameObject\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\3D\Particle\ParticleEmitter.cpp">
       <Filter>ソース ファイル\Engine\3D\Particle</Filter>
     </ClCompile>
@@ -216,20 +204,11 @@
     <ClCompile Include="Engine\3D\Particle\EmitterBuilder.cpp">
       <Filter>ソース ファイル\Engine\3D\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\3D\Model\ParticleModel.cpp">
-      <Filter>ソース ファイル\Engine\3D\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\3D\Particle\BaseParticle.cpp">
-      <Filter>ソース ファイル\Engine\3D\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\3D\Particle\ParticleSystem.cpp">
       <Filter>ソース ファイル\Engine\3D\Particle</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Utility\Random.cpp">
       <Filter>ソース ファイル\Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\3D\Particle\ChageParticle.cpp">
-      <Filter>ソース ファイル\Engine\3D\Particle</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Base\WindowAppli.cpp">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
@@ -291,6 +270,30 @@
     <ClCompile Include="Engine\3D\Light\LightManager.cpp">
       <Filter>ヘッダー ファイル\Engine\3D\Light</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\3D\Camera\Camera.cpp">
+      <Filter>ヘッダー ファイル\Engine\3D\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Camera\DebugCamera.cpp">
+      <Filter>ヘッダー ファイル\Engine\3D\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FrameWork\Game\GameCore.cpp">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FrameWork\Object\GameObjectManager.cpp">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FrameWork\Object\IGameObject.cpp">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameObj</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FrameWork\Scene\SceneManager.cpp">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Particle\ParticleManager.cpp">
+      <Filter>ソース ファイル\Engine\3D\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\3D\Model\ModelManager.cpp">
+      <Filter>ソース ファイル\Engine\3D\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Base\WinApp.h">
@@ -306,9 +309,6 @@
       <Filter>ヘッダー ファイル\Engine\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Engine\3D\Matrix\WorldTransform.h">
-      <Filter>ヘッダー ファイル\Engine\3D\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\3D\Matrix\ViewProjection.h">
       <Filter>ヘッダー ファイル\Engine\3D\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Externals\imgui\imconfig.h">
@@ -347,15 +347,6 @@
     <ClInclude Include="Engine\3D\Model\Model.h">
       <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\3D\Model\Mesh.h">
-      <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\3D\Model\Material.h">
-      <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\3D\Model\DirectionalLight.h">
-      <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Utility\CollisionManager\Collider.h">
       <Filter>ヘッダー ファイル\Engine\Utility\CollisionManager</Filter>
     </ClInclude>
@@ -367,9 +358,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Utility\GlobalVariables.h">
       <Filter>ヘッダー ファイル\Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\3D\DebugCamera\DebugCamera.h">
-      <Filter>ヘッダー ファイル\Engine\3D\DebugCamera</Filter>
     </ClInclude>
     <ClInclude Include="Project\Game\IScene.h">
       <Filter>ヘッダー ファイル\Project\Game</Filter>
@@ -389,9 +377,6 @@
     <ClInclude Include="Engine\Components\PostProcess.h">
       <Filter>ヘッダー ファイル\Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Project\GameObject\Player\Player.h">
-      <Filter>ヘッダー ファイル\Project\GameObject\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\3D\Particle\ParticleEmitter.h">
       <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
     </ClInclude>
@@ -401,20 +386,11 @@
     <ClInclude Include="Engine\3D\Particle\EmitterBuilder.h">
       <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\3D\Model\ParticleModel.h">
-      <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\3D\Particle\BaseParticle.h">
-      <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\3D\Particle\ParticleSystem.h">
       <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Utility\Random.h">
       <Filter>ヘッダー ファイル\Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\3D\Particle\ChageParticle.h">
-      <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Base\WindowAppli.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
@@ -517,6 +493,39 @@
     </ClInclude>
     <ClInclude Include="Engine\3D\Light\SpotLight.h">
       <Filter>ヘッダー ファイル\Engine\3D\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utility\D3DResourceLeakChecker.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Camera\Camera.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Camera\DebugCamera.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Model\ModelManager.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FrameWork\Game\GameCore.h">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameCore</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FrameWork\Object\GameObjectManager.h">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FrameWork\Object\IGameObject.h">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameObj</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FrameWork\Scene\ParticularScene.h">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FrameWork\Scene\IScene.h">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FrameWork\Scene\SceneManager.h">
+      <Filter>ヘッダー ファイル\Engine\FrameWork\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\3D\Particle\ParticleManager.h">
+      <Filter>ヘッダー ファイル\Engine\3D\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

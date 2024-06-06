@@ -1,51 +1,50 @@
 #pragma once
-#include "Base/DirectXCommon.h"
-#include "Utility/MathFunction.h"
+#include "Base/UploadBuffer.h"
+#include "Base/ConstantBuffers.h"
+#include "Math/Quaternion.h"
+#include <memory>
 
-struct ConstBuffDataWorldTransform {
-	Matrix4x4 world;
-};
+class WorldTransform
+{
+public:
+	void Initialize();
 
-/// <summary>
-/// ワールドトランスフォーム
-/// </summary>
-struct WorldTransform {
-	///// <summary>
-	///// 初期化
-	///// </summary>
-	//void Initialize();
-
-	/// <summary>
-	/// コンストラクタ
-	/// </summary>
-	WorldTransform();
-
-	/// <summary>
-	/// デストラクタ
-	/// </summary>
-	~WorldTransform();
-
-	/// <summary>
-	/// ワールド行列を転送
-	/// </summary>
 	void TransferMatrix();
 
-	/// <summary>
-	/// 行列の計算・転送
-	/// </summary>
-	void UpdateMatrix();
+	void UpdateMatrixFromEuler();
 
-	//CBV
-	Microsoft::WRL::ComPtr<ID3D12Resource> constBuff_ = nullptr;
-	//スケール
+	void UpdateMatrixFromQuaternion();
+
+	UploadBuffer* GetConstantBuffer() const { return constBuff_.get(); };
+
+	WorldTransform& operator=(const WorldTransform& rhs)
+	{
+		if (this != &rhs)
+		{
+			scale_ = rhs.scale_;
+			rotation_ = rhs.rotation_;
+			quaternion_ = rhs.quaternion_;
+			translation_ = rhs.translation_;
+			matWorld_ = rhs.matWorld_;
+			parent_ = rhs.parent_;
+		}
+		return *this;
+	}
+
+private:
+	std::unique_ptr<UploadBuffer> constBuff_ = nullptr;
+
+public:
 	Vector3 scale_ = { 1.0f,1.0f,1.0f };
-	//角度
-	Vector3 rotation_ = { 0.0f,0.0f,0.0f };
-	//座標
-	Vector3 translation_ = { 0.0f,0.0f,0.0f };
-	//ワールド行列
-	Matrix4x4 matWorld_{};
-	//親となるワールド変換へのポインタ
-	const WorldTransform* parent_ = nullptr;
 
+	Vector3 rotation_ = { 0.0f,0.0f,0.0f };
+
+	Vector3 translation_ = { 0.0f,0.0f,0.0f };
+
+	Quaternion quaternion_ = { 0.0f,0.0f,0.0f,1.0f };
+
+	Matrix4x4 matWorld_{};
+
+	const WorldTransform* parent_ = nullptr;
 };
+

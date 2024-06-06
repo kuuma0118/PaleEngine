@@ -1,5 +1,5 @@
 #pragma once
-#include "Base/WinApp.h"
+#include "Base/WindowAppli.h"
 #include <memory>
 #include <wrl.h>
 #define DIRECTINPUT_VERSION 0x0800//DirectInputのバージョン指定
@@ -101,7 +101,7 @@ public:
 
 private:
 	//WindowsAPI
-	WinApp* winApp_ = nullptr;
+	WindowAppli* winApp_ = nullptr;
 	//DirectInput
 	ComPtr<IDirectInput8> directInput_ = nullptr;
 	//KeyboardDevice

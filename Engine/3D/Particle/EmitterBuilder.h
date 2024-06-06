@@ -1,47 +1,41 @@
 #pragma once
 #include "ParticleEmitter.h"
 
-class EmitterBuilder{
+class ParticleEmitterBuilder
+{
 public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	EmitterBuilder();
+	ParticleEmitterBuilder();
 
 	/// <summary>
 	/// デストラクタ
 	/// </summary>
-	~EmitterBuilder();
+	~ParticleEmitterBuilder();
 
 	/// <summary>
 	/// エミッターの名前を設定
 	/// </summary>
 	/// <param name="name"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetEmitterName(const std::string& name);
+	ParticleEmitterBuilder& SetEmitterName(const std::string& name);
 
 	/// <summary>
-	/// パーティクルの種類を設定
-	/// </summary>
-	/// <param name="particleType"></param>
-	/// <returns></returns>
-	EmitterBuilder& SetParticleType(ParticleEmitter::ParticleType particleType);
-
-	/// <summary>
-	/// パーティクルの位置を設定
+	/// エミッターの座標を設定
 	/// </summary>
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetTranslation(const Vector3& translation);
+	ParticleEmitterBuilder& SetTranslation(const Vector3& translation);
 
 	/// <summary>
-	/// 発生範囲を設定
+	/// パーティクルの発生範囲を設定
 	/// </summary>
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetArea(const Vector3& min, const Vector3& max);
+	ParticleEmitterBuilder& SetPopArea(const Vector3& min, const Vector3& max);
 
 	/// <summary>
 	/// パーティクルの角度を設定
@@ -49,7 +43,15 @@ public:
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetRotation(const Vector3& min, const Vector3& max);
+	ParticleEmitterBuilder& SetPopRotation(const Vector3& min, const Vector3& max);
+
+	/// <summary>
+	/// パーティクルのQuaternionを設定
+	/// </summary>
+	/// <param name="min"></param>
+	/// <param name="max"></param>
+	/// <returns></returns>
+	ParticleEmitterBuilder& SetPopQuaternion(const Quaternion& quaternion);
 
 	/// <summary>
 	/// パーティクルのスケールを設定
@@ -57,7 +59,7 @@ public:
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetScale(const Vector3& min, const Vector3& max);
+	ParticleEmitterBuilder& SetPopScale(const Vector3& min, const Vector3& max);
 
 	/// <summary>
 	/// パーティクルの方位角を設定
@@ -65,7 +67,7 @@ public:
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetAzimuth(float min, float max);
+	ParticleEmitterBuilder& SetPopAzimuth(float min, float max);
 
 	/// <summary>
 	/// パーティクルの仰角を設定
@@ -73,7 +75,7 @@ public:
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetElevation(float min, float max);
+	ParticleEmitterBuilder& SetPopElevation(float min, float max);
 
 	/// <summary>
 	/// パーティクルの初速度を設定
@@ -81,7 +83,7 @@ public:
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetVelocity(const Vector3& min, const Vector3& max);
+	ParticleEmitterBuilder& SetPopVelocity(const Vector3& min, const Vector3& max);
 
 	/// <summary>
 	/// パーティクルの色を設定
@@ -89,7 +91,7 @@ public:
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetColor(const Vector4& min, const Vector4& max);
+	ParticleEmitterBuilder& SetPopColor(const Vector4& min, const Vector4& max);
 
 	/// <summary>
 	/// パーティクルの寿命を設定
@@ -97,28 +99,44 @@ public:
 	/// <param name="min"></param>
 	/// <param name="max"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetLifeTime(float min, float max);
+	ParticleEmitterBuilder& SetPopLifeTime(float min, float max);
 
 	/// <summary>
 	/// 一度に発生する数
 	/// </summary>
 	/// <param name="count"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetCount(uint32_t count);
+	ParticleEmitterBuilder& SetPopCount(uint32_t count);
 
 	/// <summary>
 	/// 発生頻度
 	/// </summary>
 	/// <param name="frequency"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetFrequency(float frequency);
+	ParticleEmitterBuilder& SetPopFrequency(float frequency);
 
 	/// <summary>
 	/// エミッターの寿命を設定
 	/// </summary>
 	/// <param name="frequency"></param>
 	/// <returns></returns>
-	EmitterBuilder& SetDeleteTime(float deleteTime);
+	ParticleEmitterBuilder& SetDeleteTime(float deleteTime);
+
+	/// <summary>
+	/// 加速フィールドを設定
+	/// </summary>
+	/// <param name="acceleration"></param>
+	/// <param name="area"></param>
+	/// <returns></returns>
+	ParticleEmitterBuilder& SetAccelerationField(const AccelerationField& accelerationField);
+
+	/// <summary>
+	/// 重力フィールドを設定
+	/// </summary>
+	/// <param name="acceleration"></param>
+	/// <param name="area"></param>
+	/// <returns></returns>
+	ParticleEmitterBuilder& SetGravityField(const GravityField& gravityField);
 
 	/// <summary>
 	/// エミッターを作成
@@ -129,6 +147,5 @@ public:
 private:
 	//エミッター
 	ParticleEmitter* particleEmitter_ = nullptr;
-
 };
 

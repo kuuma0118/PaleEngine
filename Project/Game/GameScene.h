@@ -4,7 +4,7 @@
 #include "Components/Audio.h"
 #include "Components/Input.h"
 #include "2D/ImGuiManager.h"
-#include "3D/DebugCamera/DebugCamera.h"
+#include "3D/Camera/DebugCamera.h"
 
 #include "3D/Model/Model.h"
 #include "3D/Model/ParticleModel.h"

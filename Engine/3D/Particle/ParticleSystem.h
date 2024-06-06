@@ -1,84 +1,53 @@
 #pragma once
-#include "Base/TextureManager.h"
+#include "Base/StructuredBuffer.h"
+#include "Base/DescriptorHandle.h"
+#include "3D/Model/ModelManager.h"
 #include "EmitterBuilder.h"
 
-class ParticleSystem {
-private:
-	//エイリアステンプレート
-	template <class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
-
+class ParticleSystem
+{
 public:
 	//パーティクルの最大数
-	const uint32_t kMaxInstance = 10000;
+	const uint32_t kMaxInstance = 1000;
 
-	//GPUに送る構造体
-	struct ParticleForGPU {
-		Matrix4x4 world;
-		Vector4 color;
-	};
-
-	/// <summary>
-	/// 初期化
-	/// </summary>
 	void Initialize();
 
-	/// <summary>
-	/// 更新
-	/// </summary>
 	void Update();
 
-	/// <summary>
-	/// エミッターの追加
-	/// </summary>
-	/// <param name="particleEmitter"></param>
+	void Draw(const Camera& camera);
+
+	void Clear();
+
 	void AddParticleEmitter(ParticleEmitter* particleEmitter) { particleEmitters_.push_back(std::unique_ptr<ParticleEmitter>(particleEmitter)); };
 
-	/// <summary>
-	/// GPUハンドルを取得
-	/// </summary>
-	/// <returns></returns>
-	const uint32_t& GetSrvIndex() const { return srvIndex_; };
-
-	/// <summary>
-	/// インスタンス数を取得
-	/// </summary>
-	/// <returns></returns>
-	const uint32_t& GetNumInstance() const { return numInstance_; };
-
-	/// <summary>
-	/// エミッターを取得
-	/// </summary>
-	/// <param name="name"></param>
-	/// <returns></returns>
 	ParticleEmitter* GetParticleEmitter(const std::string& name);
 
-	/// <summary>
-	/// エミッターのリストを取得
-	/// </summary>
-	/// <param name="name"></param>
-	/// <returns></returns>
 	std::list<ParticleEmitter*> GetParticleEmitters(const std::string& name);
 
+	const bool GetIsBillBoard() const { return isBillboard_; };
+
+	void SetIsBillBoard(const bool isBillboard) { isBillboard_ = isBillboard; };
+
+	void SetModel(Model* model) { model_ = model; };
+
+	void SetTexture(const std::string& name) { model_ ? model_->SetTexture(name) : defaultModel_->SetTexture(name); };
+
 private:
-	/// <summary>
-	/// Instancing用のリソースの作成
-	/// </summary>
 	void CreateInstancingResource();
 
-	/// <summary>
-	/// パーティクルのデータをGPUに転送
-	/// </summary>
-	void UpdateInstancingResource();
+	void UpdateInstancingResource(const Camera& camera);
 
 private:
-	//Instancing用のWorldTransform
-	ComPtr<ID3D12Resource> instancingResource_ = nullptr;
-	//Instancing用のSRVの番号
-	uint32_t srvIndex_ = 0;
-	//エミッターのリスト
-	std::list<std::unique_ptr<ParticleEmitter>> particleEmitters_{};
-	//インスタンス数
+	std::unique_ptr<StructuredBuffer> instancingResource_ = nullptr;
+
 	uint32_t numInstance_ = 0;
 
+	std::list<std::unique_ptr<ParticleEmitter>> particleEmitters_{};
+
+	std::unique_ptr<Model> defaultModel_ = nullptr;
+
+	Model* model_ = nullptr;
+
+	bool isBillboard_ = true;
 };
 

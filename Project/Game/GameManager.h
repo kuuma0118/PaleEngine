@@ -1,7 +1,7 @@
-#include "Base/WinApp.h"
-#include "Base/DirectXCommon.h"
+#include "Base/WindowAppli.h"
+#include "Base/GraphicsCore.h"
 #include "Base/TextureManager.h"
-#include "Base/D3DResourceLeakChecker.h"
+#include "Utility/D3DResourceLeakChecker.h"
 #include "Components/Audio.h"
 #include "Components/Input.h"
 #include "Components/PostProcess.h"
@@ -38,8 +38,8 @@ public:
 
 private:
 	static D3DResourceLeakChecker leakCheck;
-	WinApp* winApp_ = nullptr;
-	DirectXCommon* dxCommon_ = nullptr;
+	WindowAppli* winApp_ = nullptr;
+	GraphicsCore* dxCommon_ = nullptr;
 	TextureManager* textureManager_ = nullptr;
 	ImGuiManager* imguiManager_ = nullptr;
 	Audio* audio_ = nullptr;

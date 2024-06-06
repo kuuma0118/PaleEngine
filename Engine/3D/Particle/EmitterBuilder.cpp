@@ -1,102 +1,114 @@
 #include "EmitterBuilder.h"
 
-EmitterBuilder::EmitterBuilder()
+ParticleEmitterBuilder::ParticleEmitterBuilder()
 {
 	particleEmitter_ = new ParticleEmitter();
 }
 
-EmitterBuilder::~EmitterBuilder()
+ParticleEmitterBuilder::~ParticleEmitterBuilder()
 {
 
 }
 
-EmitterBuilder& EmitterBuilder::SetEmitterName(const std::string& name)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetEmitterName(const std::string& name)
 {
 	particleEmitter_->name_ = name;
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetParticleType(ParticleEmitter::ParticleType particleType)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetTranslation(const Vector3& translation)
 {
-	particleEmitter_->particleType_ = particleType;
+	particleEmitter_->translation_ = translation;
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetTranslation(const Vector3& translation)
-{
-	particleEmitter_->popTranslation_ = translation;
-	return *this;
-}
-
-EmitterBuilder& EmitterBuilder::SetArea(const Vector3& min, const Vector3& max)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopArea(const Vector3& min, const Vector3& max)
 {
 	particleEmitter_->popArea_ = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetRotation(const Vector3& min, const Vector3& max)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopRotation(const Vector3& min, const Vector3& max)
 {
 	particleEmitter_->popRotation_ = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetScale(const Vector3& min, const Vector3& max)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopQuaternion(const Quaternion& quaternion)
+{
+	particleEmitter_->popQuaternion_ = quaternion;
+	return *this;
+}
+
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopScale(const Vector3& min, const Vector3& max)
 {
 	particleEmitter_->popScale_ = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetAzimuth(float min, float max)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopAzimuth(float min, float max)
 {
 	particleEmitter_->popAzimuth = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetElevation(float min, float max)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopElevation(float min, float max)
 {
 	particleEmitter_->popElevation = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetVelocity(const Vector3& min, const Vector3& max) 
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopVelocity(const Vector3& min, const Vector3& max)
 {
 	particleEmitter_->popVelocity_ = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetColor(const Vector4& min, const Vector4& max)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopColor(const Vector4& min, const Vector4& max)
 {
 	particleEmitter_->popColor_ = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetLifeTime(float min, float max)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopLifeTime(float min, float max)
 {
 	particleEmitter_->popLifeTime_ = { min,max };
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetCount(uint32_t count)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopCount(uint32_t count)
 {
 	particleEmitter_->popCount_ = count;
+
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetFrequency(float frequency)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetPopFrequency(float frequency)
 {
 	particleEmitter_->popFrequency_ = frequency;
 	particleEmitter_->frequencyTime_ = frequency;
 	return *this;
 }
 
-EmitterBuilder& EmitterBuilder::SetDeleteTime(float deleteTime)
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetDeleteTime(float deleteTime)
 {
 	particleEmitter_->deleteTime_ = deleteTime;
 	return *this;
 }
 
-ParticleEmitter* EmitterBuilder::Build()
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetAccelerationField(const AccelerationField& accelerationField)
 {
-	//particleEmitter_->Initialize();
+	particleEmitter_->accelerationField_ = accelerationField;
+	return *this;
+}
+
+ParticleEmitterBuilder& ParticleEmitterBuilder::SetGravityField(const GravityField& gravityField)
+{
+	particleEmitter_->gravityField_ = gravityField;
+	return *this;
+}
+
+ParticleEmitter* ParticleEmitterBuilder::Build()
+{
 	return particleEmitter_;
 }

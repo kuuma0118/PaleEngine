@@ -20,12 +20,6 @@ void GameScene::Initialize(GameManager* gameManager) {
 	//デバッグカメラの生成
 	debugCamera_ = new DebugCamera();
 
-	// 自キャラの生成
-	player_ = std::make_unique<Player>();
-	// 自キャラの初期化
-	// 自キャラの初期化
-	player_->Initialize();
-
 	//ポストプロセスの有効化
 	PostProcess::GetInstance()->SetIsPostProcessActive(true);
 	PostProcess::GetInstance()->SetIsBloomActive(true);
@@ -53,17 +47,9 @@ void GameScene::Draw(GameManager* gameManager) {
 
 #pragma endregion
 
-	//深度バッファをクリア
-	DirectXCommon::GetInstance()->ClearDepthBuffer();
-
 #pragma region モデルの描画
 
-	//モデルの描画
-	Model::PreDraw();
 
-	player_->Draw(viewProjection_);
-
-	Model::PostDraw();
 
 #pragma endregion
 

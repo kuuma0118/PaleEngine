@@ -1,5 +1,5 @@
 #pragma once
-#include "Base/DirectXCommon.h"
+#include "Base/GraphicsCore.h"
 #include "Utility/MathFunction.h"
 #include <array>
 #include <dxcapi.h>
