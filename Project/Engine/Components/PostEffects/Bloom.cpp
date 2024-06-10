@@ -1,5 +1,5 @@
 #include "Bloom.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Base/Renderer.h"
 #include "Engine/Utility/ShaderCompiler.h"
 
@@ -47,7 +47,7 @@ void Bloom::Update()
 void Bloom::Apply(const DescriptorHandle& srvHandle)
 {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//高輝度を描画
 	RenderHighLuminance(srvHandle);
@@ -245,7 +245,7 @@ void Bloom::CreateBloomPipelineState()
 void Bloom::RenderHighLuminance(const DescriptorHandle& srvHandle)
 {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//リソースの状態遷移
 	commandContext->TransitionResource(*highLumColorBuffer_, D3D12_RESOURCE_STATE_RENDER_TARGET);
@@ -275,7 +275,7 @@ void Bloom::RenderHighLuminance(const DescriptorHandle& srvHandle)
 void Bloom::ApplyGaussianBlur()
 {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	for (uint32_t i = 0; i < kMaxBlurCount; ++i)
 	{

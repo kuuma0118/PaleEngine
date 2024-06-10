@@ -1,5 +1,5 @@
 #include "Model.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Base/TextureManager.h"
 #include "Engine/Math/MathFunction.h"
 

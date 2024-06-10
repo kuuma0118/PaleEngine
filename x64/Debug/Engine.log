@@ -1,0 +1,563 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1101,5): warning MSB8027: ImGuiManager.cpp という名前の複数のファイルでは、同じ場所に出力が生成されます。これにより、不適切なビルド結果が生じる可能性があります。関連するファイルは Engine\2D\ImGuiManager.cpp, Engine\Base\ImGuiManager.cpp です。
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1101,5): warning MSB8027: MathFunction.cpp という名前の複数のファイルでは、同じ場所に出力が生成されます。これにより、不適切なビルド結果が生じる可能性があります。関連するファイルは Engine\Math\MathFunction.cpp, Engine\Utility\MathFunction.cpp です。
+  Camera.cpp
+  DebugCamera.cpp
+  LightManager.cpp
+  WorldTransform.cpp
+  Model.cpp
+  ModelManager.cpp
+  EmitterBuilder.cpp
+  Particle.cpp
+  ParticleEmitter.cpp
+  ParticleManager.cpp
+  ParticleSystem.cpp
+  WindowAppli.cpp
+  ColorBuffer.cpp
+  CommandContext.cpp
+  CommandQueue.cpp
+  DepthBuffer.cpp
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(8,17): error C2600: 'WorldTransform::WorldTransform': コンパイラで生成された特殊メンバー関数を定義できません (クラスで最初に宣言されなければなりません)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(10,15): error C2653: 'DirectXCommon': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(8,17): message : コンパイラでのこの診断により関数 'WorldTransform::WorldTransform(void)' が生成されました。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(10,30): error C3861: 'GetInstance': 識別子が見つかりませんでした
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(8,17): message : コンパイラでのこの診断により関数 'WorldTransform::WorldTransform(void)' が生成されました。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(13,18): error C2600: 'WorldTransform::~WorldTransform': コンパイラで生成された特殊メンバー関数を定義できません (クラスで最初に宣言されなければなりません)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(21,12): error C2660: 'UploadBuffer::Map': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Base\UploadBuffer.h(9,8): message : 'UploadBuffer::Map' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\3D\Matrix\WorldTransform.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(21,12): message : 引数リスト '(int, nullptr, void **)' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(23,12): error C2660: 'UploadBuffer::Unmap': 関数に 2 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Base\UploadBuffer.h(11,7): message : 'UploadBuffer::Unmap' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\3D\Matrix\WorldTransform.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(23,12): message : 引数リスト '(int, nullptr)' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(26,22): error C2039: 'UpdateMatrix': 'WorldTransform' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(7,7): message : 'WorldTransform' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(29,2): error C2065: 'matWorld_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(29,31): error C2065: 'scale_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(29,39): error C2065: 'rotation_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(29,50): error C2065: 'translation_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(29,14): error C3861: 'MakeAffineMatrix': 識別子が見つかりませんでした
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(32,6): error C2065: 'parent_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(33,3): error C2065: 'matWorld_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(33,24): error C2065: 'matWorld_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(33,35): error C2065: 'parent_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(33,15): error C3861: 'Multiply': 識別子が見つかりませんでした
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(37,18): error C2352: 'WorldTransform::TransferMatrix': 非静的メンバー関数の呼び出しにはオブジェクトが必要です
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.cpp(17,22): message : 'WorldTransform::TransferMatrix' の宣言を確認してください
+  DescriptorHeap.cpp
+C:\Users\kuuma\CG3\Engine\3D\Matrix\ViewProjection.h(2,10): fatal  error C1083: include ファイルを開けません。'Base/DirectXCommon.h':No such file or directory (ソース ファイルをコンパイルしています Engine\3D\Camera\DebugCamera.cpp)
+  DirectXCommon.cpp
+c1xx : fatal  error C1083: ソース ファイルを開けません。'Engine\Base\DirectXCommon.cpp':No such file or directory
+  Display.cpp
+  FrameRateController.cpp
+  GraphicsCore.cpp
+  ImGuiManager.cpp
+  PipelineState.cpp
+  Renderer.cpp
+  RootParameter.cpp
+  RootSignature.cpp
+  StructuredBuffer.cpp
+  Texture.cpp
+  TextureManager.cpp
+  UploadBuffer.cpp
+  WinApp.cpp
+c1xx : fatal  error C1083: ソース ファイルを開けません。'Engine\Base\WinApp.cpp':No such file or directory
+  Input.cpp
+  PostProcess.cpp
+  GameCore.cpp
+  GameObjectManager.cpp
+C:\Users\kuuma\CG3\Engine\Components\Input.cpp(13,12): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\Input.cpp(13,31): error C2440: '=': 'Input *' から 'WindowAppli *' に変換できません。
+C:\Users\kuuma\CG3\Engine\Components\Input.cpp(13,31): message : 指示された型は関連がありません。変換には reinterpret_cast、C スタイル キャストまたはかっこで囲まれた関数スタイル キャストが必要です。
+  IGameObject.cpp
+  SceneManager.cpp
+C:\Users\kuuma\CG3\Engine\Base\TextureManager.cpp(2,10): fatal  error C1083: include ファイルを開けません。'Engine/Utilities/Log.h':No such file or directory
+  MathFunction.cpp
+  ShaderCompiler.cpp
+  main.cpp
+  GameManager.cpp
+  GameScene.cpp
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C2143: 構文エラー: ';' が '*' の前にありません。 (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,36): error C2238: ';' の前に無効なトークンがあります。 (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(19,2): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(19,14): error C2653: 'DirectXCommon': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(21,17): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(23,12): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(39,20): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(64,32): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(65,32): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(66,32): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(69,73): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(69,96): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(69,110): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(69,133): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(69,39): error C2660: 'PostProcess::CreateDepthStencilTextureResource': 関数に 1 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(283,25): message : 'PostProcess::CreateDepthStencilTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(69,39): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(76,67): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(76,90): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(76,104): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(76,127): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(76,45): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(76,45): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(77,69): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(77,92): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(77,106): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(77,129): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(77,47): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(77,47): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(78,68): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(78,91): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(78,105): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(78,128): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(78,46): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(78,46): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(79,71): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(79,94): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(79,108): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(79,131): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(79,49): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(79,49): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(80,66): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(80,89): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(80,103): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(80,126): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(80,44): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(80,44): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(81,66): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(81,89): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(81,103): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(81,126): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(81,44): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(81,44): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(82,78): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(82,101): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(82,115): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(82,138): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(82,56): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(82,56): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(83,78): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(83,101): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(83,115): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(83,138): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(83,56): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(83,56): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(84,72): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(84,95): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(84,113): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(84,136): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(84,50): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(84,50): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(85,72): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(85,95): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(85,113): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(85,136): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(85,50): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(85,50): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(86,85): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(86,108): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(86,126): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(86,149): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(86,63): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(86,63): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(87,85): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(87,108): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(87,126): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(87,149): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(87,63): error C2660: 'PostProcess::CreateTextureResource': 関数に 3 個の引数を指定できません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(275,25): message : 'PostProcess::CreateTextureResource' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\Components\PostProcess.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(87,63): message : 引数リスト '()' を一致させようとしているとき
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(119,24): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(123,27): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(123,50): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(124,28): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(124,51): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(138,30): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(142,33): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(142,56): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(143,34): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(143,57): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(150,25): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(158,23): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(168,23): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(176,34): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(186,28): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(276,25): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(276,48): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(277,26): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(277,49): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(289,22): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(289,45): error C2039: 'kClientWidth': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(291,23): error C2653: 'WinApp': 識別子がクラス名でも名前空間名でもありません。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(291,46): error C2039: 'kClientHeight': 'PostProcess' のメンバーではありません
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(12,7): message : 'PostProcess' の宣言を確認してください
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(340,2): error C2065: 'dxCommon_': 定義されていない識別子です。
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(364,6): error C3861: 'ConvertString': 識別子が見つかりませんでした
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(364,2): error C3861: 'Log': 識別子が見つかりませんでした
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.cpp(364,98): fatal  error C1003: プログラム内のエラーが 100 個を超えました。コンパイルは中断されます。
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(5,16): error C2011: 'Vector2': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector2.h(2,8): message : 'Vector2' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,16): error C2011: 'Vector3': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector3.h(2,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,16): error C2011: 'Vector4': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector4.h(2,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(17,18): error C2011: 'Matrix4x4': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Matrix4x4.h(3,8): message : 'Matrix4x4' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(21,13): error C2011: 'AABB': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\AABB.h(4,8): message : 'AABB' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(30,11): error C2079: 'PostProcess::VertexPosUV::pos' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(31,11): error C2079: 'PostProcess::VertexPosUV::texcoord' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C2143: 構文エラー: ';' が '*' の前にありません。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,36): error C2238: ';' の前に無効なトークンがあります。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,19): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector3.h(2,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(49,1): message : コンパイラでのこの診断により関数 'WorldTransform::WorldTransform(void)' が生成されました。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Framework\Object\IGameObject.h(46,32): message : 関数 'WorldTransform::WorldTransform(void)' のリファレンスをご覧ください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,22): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector3.h(2,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(49,1): message : コンパイラでのこの診断により関数 'WorldTransform::WorldTransform(void)' が生成されました。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Framework\Object\IGameObject.h(46,32): message : 関数 'WorldTransform::WorldTransform(void)' のリファレンスをご覧ください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,25): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector3.h(2,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(49,1): message : コンパイラでのこの診断により関数 'WorldTransform::WorldTransform(void)' が生成されました。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Framework\Object\IGameObject.h(46,32): message : 関数 'WorldTransform::WorldTransform(void)' のリファレンスをご覧ください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(46,21): error C2027: 認識できない型 'Matrix4x4' が使われています。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Matrix4x4.h(3,8): message : 'Matrix4x4' の宣言を確認してください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(49,1): message : コンパイラでのこの診断により関数 'WorldTransform::WorldTransform(void)' が生成されました。 (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\Framework\Object\IGameObject.h(46,32): message : 関数 'WorldTransform::WorldTransform(void)' のリファレンスをご覧ください (ソース ファイルをコンパイルしています Engine\FrameWork\Game\GameCore.cpp)
+C:\Users\kuuma\CG3\Engine\FrameWork\Game\GameCore.cpp(2,10): fatal  error C1083: include ファイルを開けません。'Engine/Utilities/GlobalVariables.h':No such file or directory
+C:\Users\kuuma\CG3\Engine\2D\ImGuiManager.h(2,10): fatal  error C1083: include ファイルを開けません。'Base/WinApp.h':No such file or directory (ソース ファイルをコンパイルしています Project\Game\GameScene.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C2143: 構文エラー: ';' が '*' の前にありません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,36): error C2238: ';' の前に無効なトークンがあります。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector2.h(3,1): error C2011: 'Vector2': 'struct' 型の再定義 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(5,8): message : 'Vector2' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector3.h(3,1): error C2011: 'Vector3': 'struct' 型の再定義 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector4.h(3,1): error C2011: 'Vector4': 'struct' 型の再定義 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Matrix4x4.h(4,1): error C2011: 'Matrix4x4': 'struct' 型の再定義 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(17,8): message : 'Matrix4x4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(10,10): error C2079: 'VertexDataPosUVNormal::position' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(11,10): error C2079: 'VertexDataPosUVNormal::texcoord' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(12,10): error C2079: 'VertexDataPosUVNormal::normal' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(17,10): error C2079: 'VertexDataPosUV::position' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(18,10): error C2079: 'VertexDataPosUV::texcoord' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(23,10): error C2079: 'ConstBuffDataMaterial::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(24,12): error C2079: 'ConstBuffDataMaterial::uvTransform' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(29,10): error C2079: 'ConstBuffDataMaterial::specularColor' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(34,12): error C2079: 'ConstBuffDataWorldTransform::world' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(35,12): error C2079: 'ConstBuffDataWorldTransform::worldInverseTranspse' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(40,10): error C2079: 'ConstBuffDataCamera::worldPosition' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(42,12): error C2079: 'ConstBuffDataCamera::view' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(43,12): error C2079: 'ConstBuffDataCamera::projection' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(48,10): error C2079: 'ConstBuffDataDirectionalLight::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(49,10): error C2079: 'ConstBuffDataDirectionalLight::direction' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(57,10): error C2079: 'ConstBuffDataPointLight::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(58,10): error C2079: 'ConstBuffDataPointLight::position' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(68,10): error C2079: 'ConstBuffDataSpotLight::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(69,10): error C2079: 'ConstBuffDataSpotLight::position' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(71,10): error C2079: 'ConstBuffDataSpotLight::direction' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(81,12): error C2079: 'ParticleForGPU::world' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(82,10): error C2079: 'ParticleForGPU::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,10): error C2079: 'DirectionalLight::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,10): error C2079: 'DirectionalLight::direction_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,19): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,19): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25): error C2439: 'DirectionalLight::color_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,10): message : 'DirectionalLight::color_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,23): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,23): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27): error C2439: 'DirectionalLight::direction_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,10): message : 'DirectionalLight::direction_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(8,43): error C2440: 'return': 'const int' から 'const Vector4 &' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(8,43): message : 理由: 'const int' から 'const Vector4' へは変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(8,43): message : 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(10,49): error C2027: 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(12,47): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(12,47): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(12,47): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(14,61): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,10): error C2079: 'PointLight::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,10): error C2079: 'PointLight::position_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,16): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,16): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33): error C2439: 'PointLight::color_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,10): message : 'PointLight::color_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35): error C2439: 'PointLight::position_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,10): message : 'PointLight::position_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(8,43): error C2440: 'return': 'const int' から 'const Vector4 &' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(8,43): message : 理由: 'const int' から 'const Vector4' へは変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(8,43): message : 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(10,49): error C2027: 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(12,46): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(12,46): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(12,46): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(14,58): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,10): error C2079: 'SpotLight::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,10): error C2079: 'SpotLight::position_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,10): error C2079: 'SpotLight::direction_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,16): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,16): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45): error C2439: 'SpotLight::color_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,10): message : 'SpotLight::color_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47): error C2439: 'SpotLight::position_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,10): message : 'SpotLight::position_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,23): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,23): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51): error C2439: 'SpotLight::direction_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,10): message : 'SpotLight::direction_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(8,43): error C2440: 'return': 'const int' から 'const Vector4 &' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(8,43): message : 理由: 'const int' から 'const Vector4' へは変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(8,43): message : 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(10,49): error C2027: 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(12,46): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(12,46): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(12,46): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(14,58): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(20,47): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(20,47): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(20,47): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(22,61): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,10): error C2079: 'Camera::rotation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,10): error C2079: 'Camera::translation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(45,12): error C2079: 'Camera::matView_' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(47,12): error C2079: 'Camera::matProjection_' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41): error C2439: 'Camera::rotation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,10): message : 'Camera::rotation_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,25): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,25): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43): error C2439: 'Camera::translation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,10): message : 'Camera::translation_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,10): error C2079: 'WorldTransform::scale_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,10): error C2079: 'WorldTransform::rotation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,10): error C2079: 'WorldTransform::translation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(46,12): error C2079: 'WorldTransform::matWorld_' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,19): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,19): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38): error C2439: 'WorldTransform::scale_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,10): message : 'WorldTransform::scale_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40): error C2439: 'WorldTransform::rotation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,10): message : 'WorldTransform::rotation_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,25): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,25): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42): error C2439: 'WorldTransform::translation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,10): message : 'WorldTransform::translation_' の宣言を確認してください (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(29,13): error C2079: 'Model::Node::localMatrix' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(141,10): error C2079: 'Model::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(143,10): error C2079: 'Model::uvScale_' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(147,10): error C2079: 'Model::uvTranslation_' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(157,10): error C2079: 'Model::specularColor_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(141,19): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(141): fatal  error C1003: プログラム内のエラーが 100 個を超えました。コンパイルは中断されます。 (ソース ファイルをコンパイルしています main.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C2143: 構文エラー: ';' が '*' の前にありません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,15): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Components\PostProcess.h(326,36): error C2238: ';' の前に無効なトークンがあります。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector2.h(3,1): error C2011: 'Vector2': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(5,8): message : 'Vector2' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector3.h(3,1): error C2011: 'Vector3': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Vector4.h(3,1): error C2011: 'Vector4': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Math\Matrix4x4.h(4,1): error C2011: 'Matrix4x4': 'struct' 型の再定義 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(17,8): message : 'Matrix4x4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(10,10): error C2079: 'VertexDataPosUVNormal::position' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(11,10): error C2079: 'VertexDataPosUVNormal::texcoord' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(12,10): error C2079: 'VertexDataPosUVNormal::normal' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(17,10): error C2079: 'VertexDataPosUV::position' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(18,10): error C2079: 'VertexDataPosUV::texcoord' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(23,10): error C2079: 'ConstBuffDataMaterial::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(24,12): error C2079: 'ConstBuffDataMaterial::uvTransform' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(29,10): error C2079: 'ConstBuffDataMaterial::specularColor' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(34,12): error C2079: 'ConstBuffDataWorldTransform::world' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(35,12): error C2079: 'ConstBuffDataWorldTransform::worldInverseTranspse' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(40,10): error C2079: 'ConstBuffDataCamera::worldPosition' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(42,12): error C2079: 'ConstBuffDataCamera::view' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(43,12): error C2079: 'ConstBuffDataCamera::projection' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(48,10): error C2079: 'ConstBuffDataDirectionalLight::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(49,10): error C2079: 'ConstBuffDataDirectionalLight::direction' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(57,10): error C2079: 'ConstBuffDataPointLight::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(58,10): error C2079: 'ConstBuffDataPointLight::position' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(68,10): error C2079: 'ConstBuffDataSpotLight::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(69,10): error C2079: 'ConstBuffDataSpotLight::position' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(71,10): error C2079: 'ConstBuffDataSpotLight::direction' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(81,12): error C2079: 'ParticleForGPU::world' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Base\ConstantBuffers.h(82,10): error C2079: 'ParticleForGPU::color' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,10): error C2079: 'DirectionalLight::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,10): error C2079: 'DirectionalLight::direction_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,19): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,19): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25): error C2439: 'DirectionalLight::color_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(25,10): message : 'DirectionalLight::color_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,23): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,23): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27): error C2439: 'DirectionalLight::direction_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(27,10): message : 'DirectionalLight::direction_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(8,43): error C2440: 'return': 'const int' から 'const Vector4 &' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(8,43): message : 理由: 'const int' から 'const Vector4' へは変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(8,43): message : 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(10,49): error C2027: 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(12,47): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(12,47): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(12,47): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\DirectionalLight.h(14,61): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,10): error C2079: 'PointLight::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,10): error C2079: 'PointLight::position_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,16): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,16): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33): error C2439: 'PointLight::color_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(33,10): message : 'PointLight::color_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35): error C2439: 'PointLight::position_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(35,10): message : 'PointLight::position_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(8,43): error C2440: 'return': 'const int' から 'const Vector4 &' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(8,43): message : 理由: 'const int' から 'const Vector4' へは変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(8,43): message : 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(10,49): error C2027: 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(12,46): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(12,46): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(12,46): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\PointLight.h(14,58): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,10): error C2079: 'SpotLight::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,10): error C2079: 'SpotLight::position_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,10): error C2079: 'SpotLight::direction_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,16): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,16): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45): error C2439: 'SpotLight::color_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(45,10): message : 'SpotLight::color_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47): error C2439: 'SpotLight::position_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(47,10): message : 'SpotLight::position_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,23): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,23): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51): error C2439: 'SpotLight::direction_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(51,10): message : 'SpotLight::direction_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(8,43): error C2440: 'return': 'const int' から 'const Vector4 &' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(8,43): message : 理由: 'const int' から 'const Vector4' へは変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(8,43): message : 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(10,49): error C2027: 認識できない型 'Vector4' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(13,8): message : 'Vector4' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(12,46): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(12,46): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(12,46): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(14,58): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(20,47): error C2440: 'return': 'const int' から 'const Vector3 &' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(20,47): message : 理由: 'const int' から 'const Vector3' へは変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(20,47): message : 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Light\SpotLight.h(22,61): error C2027: 認識できない型 'Vector3' が使われています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\Utility\MathFunction.h(9,8): message : 'Vector3' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,10): error C2079: 'Camera::rotation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,10): error C2079: 'Camera::translation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(45,12): error C2079: 'Camera::matView_' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(47,12): error C2079: 'Camera::matProjection_' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41): error C2439: 'Camera::rotation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(41,10): message : 'Camera::rotation_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,25): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,25): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43): error C2439: 'Camera::translation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Camera\Camera.h(43,10): message : 'Camera::translation_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,10): error C2079: 'WorldTransform::scale_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,10): error C2079: 'WorldTransform::rotation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,10): error C2079: 'WorldTransform::translation_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(46,12): error C2079: 'WorldTransform::matWorld_' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,19): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,19): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38): error C2439: 'WorldTransform::scale_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(38,10): message : 'WorldTransform::scale_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,22): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,22): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40): error C2439: 'WorldTransform::rotation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(40,10): message : 'WorldTransform::rotation_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,25): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,25): message : 初期化子に含まれている要素が多すぎます (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42): error C2439: 'WorldTransform::translation_': 指定されたメンバーは初期化できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Matrix\WorldTransform.h(42,10): message : 'WorldTransform::translation_' の宣言を確認してください (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(29,13): error C2079: 'Model::Node::localMatrix' が 未定義の struct 'Matrix4x4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(141,10): error C2079: 'Model::color_' が 未定義の struct 'Vector4' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(143,10): error C2079: 'Model::uvScale_' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(147,10): error C2079: 'Model::uvTranslation_' が 未定義の struct 'Vector2' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(157,10): error C2079: 'Model::specularColor_' が 未定義の struct 'Vector3' で使用しています。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(141,19): error C2440: '初期化中': 'initializer list' から 'int' に変換できません。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)
+C:\Users\kuuma\CG3\Engine\3D\Model\Model.h(141): fatal  error C1003: プログラム内のエラーが 100 個を超えました。コンパイルは中断されます。 (ソース ファイルをコンパイルしています Project\Game\GameManager.cpp)

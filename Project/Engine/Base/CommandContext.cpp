@@ -1,11 +1,11 @@
 #include "CommandContext.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include <cassert>
 
 void CommandContext::Initialize()
 {
 	//デバイスを取得
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
 	//コマンドアロケータを作成する
 	HRESULT hr = device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&commandAllocator_));

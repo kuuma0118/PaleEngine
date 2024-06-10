@@ -1,11 +1,11 @@
 #include "UploadBuffer.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include <cassert>
 
 void UploadBuffer::Create(size_t sizeInBytes)
 {
 	//デバイスの取得
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
 	//バッファサイズの初期化
 	bufferSize_ = sizeInBytes;

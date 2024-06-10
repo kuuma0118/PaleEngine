@@ -1,8 +1,8 @@
 #pragma once
-#include "Engine/Framework/Game/GameCore.h"
+#include "Engine/Framework/Game/GameDirectionCenter.h"
 #include "Application/Src/Scene/SceneFactory.h"
 
-class GameManager : public GameCore
+class GameManager : public GameDirectionCenter
 {
 public:
 	void Initialize() override;

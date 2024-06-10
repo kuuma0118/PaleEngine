@@ -32,7 +32,6 @@
     <ClCompile Include="Engine\3D\Lights\LightManager.cpp" />
     <ClCompile Include="Engine\3D\Model\Model.cpp" />
     <ClCompile Include="Engine\3D\Model\ModelManager.cpp" />
-    <ClCompile Include="Engine\3D\Model\WorldTransform.cpp" />
     <ClCompile Include="Engine\Base\WindowAppli.cpp" />
     <ClCompile Include="Engine\Base\ColorBuffer.cpp" />
     <ClCompile Include="Engine\Base\CommandContext.cpp" />
@@ -40,8 +39,8 @@
     <ClCompile Include="Engine\Base\DepthBuffer.cpp" />
     <ClCompile Include="Engine\Base\DescriptorHeap.cpp" />
     <ClCompile Include="Engine\Base\Display.cpp" />
-    <ClCompile Include="Engine\Base\FrameRateController.cpp" />
-    <ClCompile Include="Engine\Base\GraphicsCore.cpp" />
+    <ClCompile Include="Engine\Base\FramePerSsecondGenerate.cpp" />
+    <ClCompile Include="Engine\Base\GraphicsDirectionCenter.cpp" />
     <ClCompile Include="Engine\Base\ImGuiManager.cpp" />
     <ClCompile Include="Engine\Base\PipelineState.cpp" />
     <ClCompile Include="Engine\Base\Renderer.cpp" />
@@ -92,6 +91,7 @@
     <ClCompile Include="Engine\Framework\Object\IGameObject.cpp" />
     <ClCompile Include="Engine\Framework\Scene\SceneManager.cpp" />
     <ClCompile Include="Engine\Math\MathFunction.cpp" />
+    <ClCompile Include="Engine\Math\WorldTransform.cpp" />
     <ClCompile Include="Engine\Utility\GlobalVariables.cpp" />
     <ClCompile Include="Engine\Utility\Log.cpp" />
     <ClCompile Include="Engine\Utility\Random.cpp" />
@@ -115,7 +115,6 @@
     <ClInclude Include="Engine\3D\Lights\SpotLight.h" />
     <ClInclude Include="Engine\3D\Model\Model.h" />
     <ClInclude Include="Engine\3D\Model\ModelManager.h" />
-    <ClInclude Include="Engine\3D\Model\WorldTransform.h" />
     <ClInclude Include="Engine\Base\WindowAppli.h" />
     <ClInclude Include="Engine\Base\ColorBuffer.h" />
     <ClInclude Include="Engine\Base\CommandContext.h" />
@@ -125,9 +124,9 @@
     <ClInclude Include="Engine\Base\DescriptorHandle.h" />
     <ClInclude Include="Engine\Base\DescriptorHeap.h" />
     <ClInclude Include="Engine\Base\Display.h" />
-    <ClInclude Include="Engine\Base\FrameRateController.h" />
+    <ClInclude Include="Engine\Base\FramePerSsecondGenerate.h" />
     <ClInclude Include="Engine\Base\GpuResource.h" />
-    <ClInclude Include="Engine\Base\GraphicsCore.h" />
+    <ClInclude Include="Engine\Base\GraphicsDirectionCenter.h" />
     <ClInclude Include="Engine\Base\ImGuiManager.h" />
     <ClInclude Include="Engine\Base\PipelineState.h" />
     <ClInclude Include="Engine\Base\Renderer.h" />
@@ -162,7 +161,7 @@
     <ClInclude Include="Engine\Externals\imgui\imstb_rectpack.h" />
     <ClInclude Include="Engine\Externals\imgui\imstb_textedit.h" />
     <ClInclude Include="Engine\Externals\imgui\imstb_truetype.h" />
-    <ClInclude Include="Engine\Framework\Game\GameCore.h" />
+    <ClInclude Include="Engine\Framework\Game\GameDirectionCenter.h" />
     <ClInclude Include="Engine\Framework\Object\GameObjectManager.h" />
     <ClInclude Include="Engine\Framework\Object\IGameObject.h" />
     <ClInclude Include="Engine\Framework\Scene\IntangibleScene.h" />
@@ -177,6 +176,7 @@
     <ClInclude Include="Engine\Math\Vector2.h" />
     <ClInclude Include="Engine\Math\Vector3.h" />
     <ClInclude Include="Engine\Math\Vector4.h" />
+    <ClInclude Include="Engine\Math\WorldTransform.h" />
     <ClInclude Include="Engine\Utility\D3DResourceLeakChecker.h" />
     <ClInclude Include="Engine\Utility\GlobalVariables.h" />
     <ClInclude Include="Engine\Utility\Log.h" />

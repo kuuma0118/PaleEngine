@@ -1,5 +1,5 @@
 #include "Sprite.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Base/TextureManager.h"
 #include "Engine/Math/MathFunction.h"
 
@@ -19,7 +19,7 @@ void Sprite::Draw()
 	UpdateVertexBuffer();
 	UpdateMaterialResource();
 	UpdateWVPResource();
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	TextureManager* textureManager = TextureManager::GetInstance();
 	commandContext->SetVertexBuffer(vertexBufferView_);
 	commandContext->SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

@@ -1,5 +1,5 @@
 #include "Fog.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Base/Renderer.h"
 #include "Engine/Utility/ShaderCompiler.h"
 
@@ -30,7 +30,7 @@ void Fog::Update()
 void Fog::Apply(const DescriptorHandle& srvHandle)
 {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//リソースの状態遷移
 	commandContext->TransitionResource(*colorBuffer_, D3D12_RESOURCE_STATE_RENDER_TARGET);

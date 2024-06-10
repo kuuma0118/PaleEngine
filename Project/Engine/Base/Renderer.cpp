@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include "Engine/Utility/ShaderCompiler.h"
 #include <algorithm>
 #include <cassert>
@@ -76,7 +76,7 @@ void Renderer::Render()
 	DrawPass currentRenderingType = Opaque;
 
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//RootSignatureを設定
 	commandContext->SetRootSignature(modelRootSignature_);
@@ -117,7 +117,7 @@ void Renderer::Render()
 void Renderer::PreDraw()
 {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//リソースの状態遷移
 	commandContext->TransitionResource(*sceneColorBuffer_, D3D12_RESOURCE_STATE_RENDER_TARGET);
@@ -154,32 +154,32 @@ void Renderer::PreDraw()
 	commandContext->SetScissor(scissorRect);
 
 	//DescriptorHeapを設定
-	commandContext->SetDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, GraphicsCore::GetInstance()->GetDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV));
+	commandContext->SetDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, GraphicsDirectionCenter::GetInstance()->GetDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV));
 }
 
 void Renderer::PostDraw()
 {
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	commandContext->TransitionResource(*sceneColorBuffer_, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
 	commandContext->TransitionResource(*linearDepthColorBuffer_, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
 }
 
 void Renderer::ClearRenderTarget()
 {
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	commandContext->ClearColor(*sceneColorBuffer_);
 	commandContext->ClearColor(*linearDepthColorBuffer_);
 }
 
 void Renderer::ClearDepthBuffer()
 {
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	commandContext->ClearDepth(*sceneDepthBuffer_);
 }
 
 void Renderer::PreDrawSprites(BlendMode blendMode) {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	//RootSignatureを設定
 	commandContext->SetRootSignature(spriteRootSignature_);
 	//PipelineStateを設定
@@ -192,7 +192,7 @@ void Renderer::PostDrawSprites() {
 
 void Renderer::PreDrawParticles() {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	//RootSignatureを設定
 	commandContext->SetRootSignature(particleRootSignature_);
 	//PipelineStateを設定

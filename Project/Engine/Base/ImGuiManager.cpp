@@ -12,7 +12,7 @@ void ImGuiManager::Initialize() {
 	application_ = WindowAppli::GetInstance();
 
 	//GraphicsCoreのインスタンスを取得
-	graphicsCore_ = GraphicsCore::GetInstance();
+	graphicsCore_ = GraphicsDirectionCenter::GetInstance();
 
 	//SRVDescriptorHeapの作成
 	srvDescriptorHeap_ = std::make_unique<DescriptorHeap>();

@@ -1,5 +1,5 @@
 #include "ParticleSystem.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Math/MathFunction.h"
 #include <numbers>
 
@@ -37,7 +37,7 @@ void ParticleSystem::Update()
 void ParticleSystem::Draw(const Camera& camera)
 {
 	UpdateInstancingResource(camera);
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	Model* model = model_ ? model_ : defaultModel_.get();
 	commandContext->SetVertexBuffer(model->vertexBufferView_);
 	commandContext->SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

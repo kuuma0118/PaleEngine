@@ -1,10 +1,10 @@
 #include "StructuredBuffer.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include <cassert>
 
 void StructuredBuffer::Create(uint32_t numElements, uint32_t elementSize)
 {
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
 	elementCount_ = numElements;
 	elementSize_ = elementSize;
@@ -47,7 +47,7 @@ void StructuredBuffer::CreateDerivedViews(ID3D12Device* device, uint32_t numElem
 	srvDesc.Buffer.Flags = D3D12_BUFFER_SRV_FLAG_NONE;
 	srvDesc.Buffer.NumElements = numElements;
 	srvDesc.Buffer.StructureByteStride = UINT(elementSize);
-	srvHandle_ = GraphicsCore::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+	srvHandle_ = GraphicsDirectionCenter::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 	device->CreateShaderResourceView(resource_.Get(), &srvDesc, srvHandle_);
 }
 

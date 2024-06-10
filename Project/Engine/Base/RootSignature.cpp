@@ -1,5 +1,5 @@
 #include "RootSignature.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include "Engine/Utility/Log.h"
 
 void RootSignature::Create(UINT numRootParameters, UINT numStaticSamplers)
@@ -35,7 +35,7 @@ void RootSignature::Finalize()
         assert(false);
     }
     //バイナリを元に生成
-    ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+    ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
     hr = device->CreateRootSignature(0, signatureBlob->GetBufferPointer(),
         signatureBlob->GetBufferSize(), IID_PPV_ARGS(&rootSignature_));
     assert(SUCCEEDED(hr));

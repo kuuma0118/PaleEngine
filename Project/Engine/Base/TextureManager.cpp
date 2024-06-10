@@ -1,5 +1,5 @@
 #include "TextureManager.h"
-#include "Engine/Utilities/Log.h"
+#include "Engine/Utility/Log.h"
 
 //実体定義
 TextureManager* TextureManager::instance_ = nullptr;

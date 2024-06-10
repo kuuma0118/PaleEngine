@@ -1,5 +1,5 @@
 #include "GaussianBlur.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Utility/ShaderCompiler.h"
 
 //実態定義
@@ -141,7 +141,7 @@ void GaussianBlur::Update()
 
 void GaussianBlur::PreBlur(uint32_t index)
 {
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//リソースの状態遷移
 	commandContext->TransitionResource(*blurBuffers_[index], D3D12_RESOURCE_STATE_RENDER_TARGET);
@@ -182,6 +182,6 @@ void GaussianBlur::PreBlur(uint32_t index)
 
 void GaussianBlur::PostBlur(uint32_t index)
 {
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 	commandContext->TransitionResource(*blurBuffers_[index], D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
 }

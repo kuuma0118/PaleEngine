@@ -1,9 +1,9 @@
 #include "Texture.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 
 void Texture::Create(const DirectX::ScratchImage& mipImages)
 {
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
 	currentState_ = D3D12_RESOURCE_STATE_COPY_DEST;
 
@@ -42,13 +42,13 @@ void Texture::CreateDerivedViews(ID3D12Device* device, DXGI_FORMAT format)
 	srvDesc.Format = format;
 	srvDesc.Texture2D.MipLevels = 1;
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-	srvHandle_ = GraphicsCore::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+	srvHandle_ = GraphicsDirectionCenter::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 	device->CreateShaderResourceView(resource_.Get(), &srvDesc, srvHandle_);
 }
 
 void Texture::UploadTextureData(const Microsoft::WRL::ComPtr<ID3D12Resource>& texture, const DirectX::ScratchImage& mipImages)
 {
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 	//CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
 	//CommandQueue* commandQueue = GraphicsCore::GetInstance()->GetCommandQueue();
 	CommandContext commandContext{};

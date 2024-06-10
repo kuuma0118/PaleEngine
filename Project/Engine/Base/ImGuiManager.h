@@ -1,6 +1,6 @@
 #pragma once
 #include "Engine/Base/WindowAppli.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Base/DescriptorHeap.h"
 #include "Engine/Externals/imgui/imgui.h"
 #include <memory>
@@ -28,7 +28,7 @@ private:
 private:
 	WindowAppli* application_ = nullptr;
 
-	GraphicsCore* graphicsCore_ = nullptr;
+	GraphicsDirectionCenter* graphicsCore_ = nullptr;
 
 	std::unique_ptr<DescriptorHeap> srvDescriptorHeap_ = nullptr;
 };

@@ -1,11 +1,11 @@
 #include "DescriptorHeap.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include <cassert>
 
 void DescriptorHeap::Initialize(D3D12_DESCRIPTOR_HEAP_TYPE type, UINT numDescriptors, bool shaderVisible)
 {
     //デバイスの取得
-    ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+    ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
     //ディスクリプタヒープの作成
     D3D12_DESCRIPTOR_HEAP_DESC descriptorHeapDesc{};

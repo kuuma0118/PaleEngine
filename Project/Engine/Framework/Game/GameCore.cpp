@@ -1,15 +1,15 @@
-#include "GameCore.h"
+#include "GameDirectionCenter.h"
 #include "Engine/Utility/GlobalVariables.h"
 #include "Engine/Utility/Random.h"
 
-void GameCore::Initialize()
+void GameDirectionCenter::Initialize()
 {
 	//Applicationの初期化
-	application_ = WindowAppli::GetInstance();
-	application_->CreateGameWindow(L"DirectXGame", WindowAppli::kClientWidth, WindowAppli::kClientHeight);
+	windowAppli_ = WindowAppli::GetInstance();
+	windowAppli_->CreateGameWindow(L"DirectXGame", WindowAppli::kClientWidth, WindowAppli::kClientHeight);
 
 	//GraphicsCoreの初期化
-	graphicsCore_ = GraphicsCore::GetInstance();
+	graphicsCore_ = GraphicsDirectionCenter::GetInstance();
 	graphicsCore_->Initialize();
 
 	//TextureManagerの初期化
@@ -54,7 +54,7 @@ void GameCore::Initialize()
 	Random::Initialize();
 }
 
-void GameCore::Finalize()
+void GameDirectionCenter::Finalize()
 {
 	//LightManagerの開放
 	LightManager::Destroy();
@@ -90,13 +90,13 @@ void GameCore::Finalize()
 	TextureManager::Destroy();
 
 	//GraphicsCoreの解放
-	GraphicsCore::Destroy();
+	GraphicsDirectionCenter::Destroy();
 
 	//ゲームウィンドウを閉じる
-	application_->CloseGameWindow();
+	windowAppli_->CloseGameWindow();
 }
 
-void GameCore::Update()
+void GameDirectionCenter::Update()
 {
 	//Inputの更新
 	input_->Update();
@@ -126,7 +126,7 @@ void GameCore::Update()
 	imguiManager_->End();
 }
 
-void GameCore::Draw()
+void GameDirectionCenter::Draw()
 {
 	//描画前処理
 	renderer_->PreDraw();
@@ -156,13 +156,13 @@ void GameCore::Draw()
 	graphicsCore_->PostDraw();
 }
 
-bool GameCore::IsEndRequest()
+bool GameDirectionCenter::IsEndRequest()
 {
-	bool endRequest = application_->ProcessMessage();
+	bool endRequest = windowAppli_->ProcessMessage();
 	return endRequest;
 }
 
-void GameCore::Run()
+void GameDirectionCenter::Run()
 {
 	//初期化
 	Initialize();

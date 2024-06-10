@@ -1,11 +1,11 @@
 #include "CommandQueue.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include <cassert>
 
 void CommandQueue::Initialize()
 {
 	//デバイスを取得
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
 	//コマンドキューを作成する
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc{};

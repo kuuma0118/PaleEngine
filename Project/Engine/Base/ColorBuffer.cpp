@@ -1,10 +1,10 @@
 #include "ColorBuffer.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include <cassert>
 
 void ColorBuffer::CreateFromSwapChain(ID3D12Resource* baseResource)
 {
-	GraphicsCore* graphicsCore = GraphicsCore::GetInstance();
+	GraphicsDirectionCenter* graphicsCore = GraphicsDirectionCenter::GetInstance();
 
 	ID3D12Device* device = graphicsCore->GetDevice();
 
@@ -22,7 +22,7 @@ void ColorBuffer::CreateFromSwapChain(ID3D12Resource* baseResource)
 
 void ColorBuffer::Create(uint32_t width, uint32_t height, DXGI_FORMAT format)
 {
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
 	currentState_ = D3D12_RESOURCE_STATE_COMMON;
 
@@ -57,7 +57,7 @@ void ColorBuffer::Create(uint32_t width, uint32_t height, DXGI_FORMAT format)
 
 void ColorBuffer::Create(uint32_t width, uint32_t height, DXGI_FORMAT format, float* clearColor)
 {
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
 	currentState_ = D3D12_RESOURCE_STATE_COMMON;
 
@@ -99,7 +99,7 @@ void ColorBuffer::CreateDerivedViews(ID3D12Device* device, DXGI_FORMAT format)
 	D3D12_RENDER_TARGET_VIEW_DESC rtvDesc{};
 	rtvDesc.ViewDimension = D3D12_RTV_DIMENSION_TEXTURE2D;
 	rtvDesc.Format = format;
-	rtvHandle_ = GraphicsCore::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+	rtvHandle_ = GraphicsDirectionCenter::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
 	device->CreateRenderTargetView(resource_.Get(), &rtvDesc, rtvHandle_);
 
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc{};
@@ -107,6 +107,6 @@ void ColorBuffer::CreateDerivedViews(ID3D12Device* device, DXGI_FORMAT format)
 	srvDesc.Format = format;
 	srvDesc.Texture2D.MipLevels = 1;
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-	srvHandle_ = GraphicsCore::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+	srvHandle_ = GraphicsDirectionCenter::GetInstance()->AllocateDescriptor(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 	device->CreateShaderResourceView(resource_.Get(), &srvDesc, srvHandle_);
 }

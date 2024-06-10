@@ -1,5 +1,5 @@
 #include "PostEffects.h"
-#include "Engine/Base/GraphicsCore.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include "Engine/Base/Renderer.h"
 #include "Engine/Utility/ShaderCompiler.h"
 
@@ -78,7 +78,7 @@ void PostEffects::Update()
 void PostEffects::Apply()
 {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//VertexBufferViewを設定
 	commandContext->SetVertexBuffer(vertexBufferView_);
@@ -105,7 +105,7 @@ void PostEffects::Apply()
 void PostEffects::Draw()
 {
 	//コマンドリストを取得
-	CommandContext* commandContext = GraphicsCore::GetInstance()->GetCommandContext();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
 
 	//RootSignatureを設定
 	commandContext->SetRootSignature(rootSignature_);

@@ -1,5 +1,5 @@
 #include "PipelineState.h"
-#include "GraphicsCore.h"
+#include "GraphicsDirectionCenter.h"
 #include <cassert>
 
 void PipelineState::SetRootSignature(const RootSignature* rootSignature)
@@ -63,7 +63,7 @@ void PipelineState::SetDepthStencilState(const D3D12_DEPTH_STENCIL_DESC& depthSt
 void PipelineState::Finalize()
 {
 	pipelineStateDesc_.pRootSignature = rootSignature_->GetRootSignature();
-	ID3D12Device* device = GraphicsCore::GetInstance()->GetDevice();
+	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 	HRESULT hr = device->CreateGraphicsPipelineState(&pipelineStateDesc_, IID_PPV_ARGS(&pipelineState_));
 	assert(SUCCEEDED(hr));
 }
