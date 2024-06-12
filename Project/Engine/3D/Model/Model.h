@@ -43,13 +43,14 @@ public:
 	//モデルデータ構造体
 	struct ModelData {
 		std::vector<VertexDataPosUVNormal> vertices;
+		std::vector<uint32_t> indices;
 		MaterialData material;
 		Node rootNode;
 	};
 
 	//Keyframe構造体
 	template <typename tValue>
-	struct Keyframe{
+	struct Keyframe {
 		float time;
 		tValue value;
 	};
@@ -145,6 +146,8 @@ public:
 private:
 	void CreateVertexBuffer();
 
+	void CreateIndexBuffer();
+
 	void CreateMaterialConstBuffer();
 
 	void UpdateMaterailConstBuffer();
@@ -167,6 +170,10 @@ private:
 	std::unique_ptr<UploadBuffer> vertexBuffer_ = nullptr;
 
 	D3D12_VERTEX_BUFFER_VIEW vertexBufferView_{};
+
+	std::unique_ptr<UploadBuffer> indexBuffer_ = nullptr;
+
+	D3D12_INDEX_BUFFER_VIEW indexBufferView_{};
 
 	std::unique_ptr<UploadBuffer> materialConstBuffer_ = nullptr;
 
@@ -196,4 +203,3 @@ private:
 
 	friend class ParticleSystem;
 };
-
