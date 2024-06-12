@@ -1,4 +1,5 @@
 #include "ModelManager.h"
+#include "Engine/Math/MathFunction.h"
 #include <cassert>
 #include <fstream>
 #include <sstream>
@@ -129,15 +130,13 @@ Model::ModelData ModelManager::LoadModelFile(const std::string& directoryPath, c
 Model::Node ModelManager::ReadNode(aiNode* node)
 {
 	Model::Node result{};
-	aiMatrix4x4 aiLocalMatrix = node->mTransformation;//nodeのlocalMatrixを取得
-	aiLocalMatrix.Transpose();//列ベクトル形式を行ベクトル形式に転置
-	for (uint32_t i = 0; i < 4; i++)
-	{
-		for (uint32_t j = 0; j < 4; j++)
-		{
-			result.localMatrix.m[i][j] = aiLocalMatrix[i][j];
-		}
-	}
+	aiVector3D scale, translate;
+	aiQuaternion rotate;
+	node->mTransformation.Decompose(scale, rotate, translate);//assimpの行列からSRTを抽出する関数を利用
+	result.scale = { scale.x,scale.y,scale.z };//Scaleはそのまま
+	result.rotate = { rotate.x,-rotate.y,-rotate.z,rotate.w };//X軸を反転、さらに回転方向が逆なので軸を反転させる
+	result.translate = { -translate.x,translate.y,translate.z };//X軸を反転
+	result.localMatrix = Mathf::MakeAffineMatrix(result.scale, result.rotate, result.translate);
 	result.name = node->mName.C_Str();//Node名を格納
 	result.children.resize(node->mNumChildren);//子供の数だけ確保
 	for (uint32_t childIndex = 0; childIndex < node->mNumChildren; ++childIndex)
@@ -194,107 +193,3 @@ Model::Animation ModelManager::LoadAnimationFile(const std::string& directoryPat
 	//解析完了
 	return animation;
 }
-
-//Model::ModelData ModelManager::LoadObjFile(const std::string& directoryPath, const std::string& filename)
-//{
-//	Model::ModelData modelData;//構築するModelData
-//	std::vector<Vector4> positions;//位置
-//	std::vector<Vector3> normals;//法線
-//	std::vector<Vector2> texcoords;//テクスチャ座標
-//	std::string line;//ファイルから読んだ1行を格納するもの
-//	std::ifstream file(directoryPath + "/" + filename);//ファイルを開く
-//	assert(file.is_open());//とりあえず開けなかったら止める
-//
-//	while (std::getline(file, line))
-//	{
-//		std::string identifier;
-//		std::istringstream s(line);
-//		s >> identifier;//先頭の識別子を読む
-//
-//		//identifierに応じた処理
-//		if (identifier == "v")
-//		{
-//			Vector4 position;
-//			s >> position.x >> position.y >> position.z;
-//			position.z *= -1.0f;
-//			position.w = 1.0f;
-//			positions.push_back(position);
-//		}
-//		else if (identifier == "vt")
-//		{
-//			Vector2 texcoord;
-//			s >> texcoord.x >> texcoord.y;
-//			texcoord.y = 1.0f - texcoord.y;
-//			texcoords.push_back(texcoord);
-//		}
-//		else if (identifier == "vn")
-//		{
-//			Vector3 normal;
-//			s >> normal.x >> normal.y >> normal.z;
-//			normal.z *= -1.0f;
-//			normals.push_back(normal);
-//		}
-//		else if (identifier == "f")
-//		{
-//			VertexDataPosUVNormal triangle[3];
-//			//面は三角形限定。その他は未対応
-//			for (int32_t faceVertex = 0; faceVertex < 3; ++faceVertex)
-//			{
-//				std::string vertexDefinition;
-//				s >> vertexDefinition;
-//				//頂点の要素へのIndexは「位置/UV/法線」で格納されているので、分解してIndexを取得する
-//				std::istringstream v(vertexDefinition);
-//				uint32_t elementIndices[3];
-//				for (int32_t element = 0; element < 3; ++element)
-//				{
-//					std::string index;
-//					std::getline(v, index, '/');// /区切りでインデックスを読んでいく
-//					elementIndices[element] = std::stoi(index);
-//				}
-//				//要素へのIndexから、実際の要素の値を取得して、頂点を構築する
-//				Vector4 position = positions[elementIndices[0] - 1];
-//				Vector2 texcoord = texcoords[elementIndices[1] - 1];
-//				Vector3 normal = normals[elementIndices[2] - 1];
-//				triangle[faceVertex] = { position,texcoord,normal };
-//			}
-//			//頂点を逆順で登録することで、回り順を逆にする
-//			modelData.vertices.push_back(triangle[2]);
-//			modelData.vertices.push_back(triangle[1]);
-//			modelData.vertices.push_back(triangle[0]);
-//		}
-//		else if (identifier == "mtllib")
-//		{
-//			//materialTempalteLibraryファイルの名前を取得する
-//			std::string materialFilename;
-//			s >> materialFilename;
-//			//基本的にobjファイルと同一階層にmtlは存在させるので、ディレクトリ名とファイル名を渡す
-//			modelData.material = LoadMaterialTemplateFile(directoryPath, materialFilename);
-//		}
-//	}
-//	return modelData;
-//}
-//
-//Model::MaterialData ModelManager::LoadMaterialTemplateFile(const std::string& directoryPath, const std::string& filename)
-//{
-//	Model::MaterialData materialData;//構築するMaterialData
-//	std::string line;//ファイルから読んだ1行を格納するもの
-//	std::ifstream file(directoryPath + "/" + filename);//ファイルを開く
-//	assert(file.is_open());//とりあえず開けなかったら止める
-//
-//	while (std::getline(file, line))
-//	{
-//		std::string identifier;
-//		std::istringstream s(line);
-//		s >> identifier;
-//
-//		//identifierに応じた処理
-//		if (identifier == "map_Kd")
-//		{
-//			std::string textureFilename;
-//			s >> textureFilename;
-//			//連結してファイルパスにする
-//			materialData.textureFilePath = directoryPath + "/" + textureFilename;
-//		}
-//	}
-//	return materialData;
-//}
