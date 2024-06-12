@@ -19,13 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application\Src\Game\GameManager.cpp" />
-    <ClCompile Include="Application\Src\Scene\GameClearScene.cpp" />
-    <ClCompile Include="Application\Src\Scene\GameOverScene.cpp" />
-    <ClCompile Include="Application\Src\Scene\GamePlayScene.cpp" />
-    <ClCompile Include="Application\Src\Scene\GameTitleScene.cpp" />
-    <ClCompile Include="Application\Src\Scene\LoadScene.cpp" />
-    <ClCompile Include="Application\Src\Scene\SceneFactory.cpp" />
     <ClCompile Include="Engine\2D\Sprite.cpp" />
     <ClCompile Include="Engine\3D\Camera\Camera.cpp" />
     <ClCompile Include="Engine\3D\Camera\DebugCamera.cpp" />
@@ -96,16 +89,16 @@
     <ClCompile Include="Engine\Utility\Log.cpp" />
     <ClCompile Include="Engine\Utility\Random.cpp" />
     <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
+    <ClCompile Include="Games\Game\GameManager.cpp" />
+    <ClCompile Include="Games\Scene\GameClearScene.cpp" />
+    <ClCompile Include="Games\Scene\GameOverScene.cpp" />
+    <ClCompile Include="Games\Scene\GamePlayScene.cpp" />
+    <ClCompile Include="Games\Scene\GameTitleScene.cpp" />
+    <ClCompile Include="Games\Scene\LoadScene.cpp" />
+    <ClCompile Include="Games\Scene\SceneFactory.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application\Src\Game\GameManager.h" />
-    <ClInclude Include="Application\Src\Scene\GameClearScene.h" />
-    <ClInclude Include="Application\Src\Scene\GameOverScene.h" />
-    <ClInclude Include="Application\Src\Scene\GamePlayScene.h" />
-    <ClInclude Include="Application\Src\Scene\GameTitleScene.h" />
-    <ClInclude Include="Application\Src\Scene\LoadScene.h" />
-    <ClInclude Include="Application\Src\Scene\SceneFactory.h" />
     <ClInclude Include="Engine\2D\Sprite.h" />
     <ClInclude Include="Engine\3D\Camera\Camera.h" />
     <ClInclude Include="Engine\3D\Camera\DebugCamera.h" />
@@ -182,6 +175,13 @@
     <ClInclude Include="Engine\Utility\Log.h" />
     <ClInclude Include="Engine\Utility\Random.h" />
     <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
+    <ClInclude Include="Games\Game\GameManager.h" />
+    <ClInclude Include="Games\Scene\GameClearScene.h" />
+    <ClInclude Include="Games\Scene\GameOverScene.h" />
+    <ClInclude Include="Games\Scene\GamePlayScene.h" />
+    <ClInclude Include="Games\Scene\GameTitleScene.h" />
+    <ClInclude Include="Games\Scene\LoadScene.h" />
+    <ClInclude Include="Games\Scene\SceneFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Engine\Externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">

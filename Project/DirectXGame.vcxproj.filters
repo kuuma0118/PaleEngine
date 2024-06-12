@@ -136,26 +136,26 @@
     <Filter Include="ヘッダー ファイル\Project">
       <UniqueIdentifier>{58c797e5-46b2-400a-820b-dcc2492ebad2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Project\Game">
-      <UniqueIdentifier>{b7f14911-79fa-482d-a122-b1b19d56e618}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Project\Scene">
-      <UniqueIdentifier>{6c4c76da-1ad8-453a-bcae-0983edf22b5c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Project\Object">
       <UniqueIdentifier>{f4a52438-51f2-43f3-a85d-2f363fc43a1d}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Project">
       <UniqueIdentifier>{003d5007-1406-47b9-8cfb-25367899599f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Project\Game">
-      <UniqueIdentifier>{acca2a71-25d1-4236-b4dd-822b8f906fb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Project\Scene">
-      <UniqueIdentifier>{c7302bb2-fd7b-4662-8898-9d5f4bd04862}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Project\Object">
       <UniqueIdentifier>{a22bb862-0d9b-414b-a041-a5727980e4a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Project\Game">
+      <UniqueIdentifier>{80d4d47a-3f5b-42c2-8e99-1d4d7ccd31a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Project\Scene">
+      <UniqueIdentifier>{88fc70d1-8fea-47a8-94a0-236d4804697d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Game">
+      <UniqueIdentifier>{8384a1a0-333d-4691-9be9-c89cf14ef271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Scene">
+      <UniqueIdentifier>{fcf1a88d-47f6-4c4a-bb6c-7969a43994a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -282,24 +282,6 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル\Engine\Framework\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Application\Src\Game\GameManager.cpp">
-      <Filter>ソース ファイル\Project\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Application\Src\Scene\GameClearScene.cpp">
-      <Filter>ソース ファイル\Project\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Application\Src\Scene\GameOverScene.cpp">
-      <Filter>ソース ファイル\Project\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Application\Src\Scene\GamePlayScene.cpp">
-      <Filter>ソース ファイル\Project\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Application\Src\Scene\GameTitleScene.cpp">
-      <Filter>ソース ファイル\Project\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Application\Src\Scene\SceneFactory.cpp">
-      <Filter>ソース ファイル\Project\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Base\CommandContext.cpp">
       <Filter>ソース ファイル\Engine\Base</Filter>
     </ClCompile>
@@ -311,9 +293,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Base\Display.cpp">
       <Filter>ソース ファイル\Engine\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Application\Src\Scene\LoadScene.cpp">
-      <Filter>ソース ファイル\Project\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Externals\imgui\imgui.cpp">
       <Filter>ImGui</Filter>
@@ -350,6 +329,27 @@
     </ClCompile>
     <ClCompile Include="Engine\Math\WorldTransform.cpp">
       <Filter>ソース ファイル\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Game\GameManager.cpp">
+      <Filter>ソース ファイル\Project\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Scene\GameClearScene.cpp">
+      <Filter>ソース ファイル\Project\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Scene\GameOverScene.cpp">
+      <Filter>ソース ファイル\Project\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Scene\GamePlayScene.cpp">
+      <Filter>ソース ファイル\Project\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Scene\LoadScene.cpp">
+      <Filter>ソース ファイル\Project\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Scene\GameTitleScene.cpp">
+      <Filter>ソース ファイル\Project\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Scene\SceneFactory.cpp">
+      <Filter>ソース ファイル\Project\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -527,24 +527,6 @@
     <ClInclude Include="Engine\Math\Vector3.h">
       <Filter>ヘッダー ファイル\Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Application\Src\Game\GameManager.h">
-      <Filter>ヘッダー ファイル\Project\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Application\Src\Scene\GameClearScene.h">
-      <Filter>ヘッダー ファイル\Project\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Application\Src\Scene\GameOverScene.h">
-      <Filter>ヘッダー ファイル\Project\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Application\Src\Scene\GamePlayScene.h">
-      <Filter>ヘッダー ファイル\Project\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Application\Src\Scene\GameTitleScene.h">
-      <Filter>ヘッダー ファイル\Project\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Application\Src\Scene\SceneFactory.h">
-      <Filter>ヘッダー ファイル\Project\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Base\CommandContext.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
     </ClInclude>
@@ -556,9 +538,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Base\FramePerSsecondGenerate.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Application\Src\Scene\LoadScene.h">
-      <Filter>ヘッダー ファイル\Project\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Externals\imgui\imconfig.h">
       <Filter>ImGui</Filter>
@@ -601,6 +580,27 @@
     </ClInclude>
     <ClInclude Include="Engine\Math\WorldTransform.h">
       <Filter>ヘッダー ファイル\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\Game\GameManager.h">
+      <Filter>ヘッダー ファイル\Project\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\Scene\SceneFactory.h">
+      <Filter>ヘッダー ファイル\Project\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\Scene\LoadScene.h">
+      <Filter>ヘッダー ファイル\Project\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\Scene\GameTitleScene.h">
+      <Filter>ヘッダー ファイル\Project\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\Scene\GamePlayScene.h">
+      <Filter>ヘッダー ファイル\Project\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\Scene\GameOverScene.h">
+      <Filter>ヘッダー ファイル\Project\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\Scene\GameClearScene.h">
+      <Filter>ヘッダー ファイル\Project\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
