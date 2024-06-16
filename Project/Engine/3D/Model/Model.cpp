@@ -31,6 +31,9 @@ void Model::Create(const ModelData& modelData, const Animation& animationData, D
 	//頂点バッファの作成
 	CreateVertexBuffer();
 
+	//Indexバッファの作成	
+	CreateIndexBuffer();
+
 	//マテリアル用のリソースの作成
 	CreateMaterialConstBuffer();
 }
