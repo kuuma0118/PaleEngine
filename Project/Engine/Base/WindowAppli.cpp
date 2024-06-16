@@ -37,7 +37,7 @@ void WindowAppli::CreateGameWindow(const wchar_t* title, int32_t clientWidth, in
 	//ウィンドウプロシージャ
 	wc_.lpfnWndProc = WindowProc;
 	//ウィンドウクラス名
-	wc_.lpszClassName = L"CG2WindowClass";
+	wc_.lpszClassName = L"PaleEngine";
 	//インスタンスハンドル
 	wc_.hInstance = GetModuleHandle(nullptr);
 	//カーソル

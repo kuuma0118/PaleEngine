@@ -79,7 +79,7 @@
     <ClCompile Include="Engine\Externals\imgui\imgui_widgets.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MinSpace</Optimization>
     </ClCompile>
-    <ClCompile Include="Engine\Framework\Game\GameCore.cpp" />
+    <ClCompile Include="Engine\Framework\Game\GameDirectionCenter.cpp" />
     <ClCompile Include="Engine\Framework\Object\GameObjectManager.cpp" />
     <ClCompile Include="Engine\Framework\Object\IGameObject.cpp" />
     <ClCompile Include="Engine\Framework\Scene\SceneManager.cpp" />

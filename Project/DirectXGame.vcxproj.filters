@@ -264,7 +264,7 @@
     <ClCompile Include="Engine\Components\Particle\ParticleSystem.cpp">
       <Filter>ソース ファイル\Engine\Components\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Framework\Game\GameCore.cpp">
+    <ClCompile Include="Engine\Framework\Game\GameDirectionCenter.cpp">
       <Filter>ソース ファイル\Engine\Framework\Game</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Framework\Object\GameObjectManager.cpp">

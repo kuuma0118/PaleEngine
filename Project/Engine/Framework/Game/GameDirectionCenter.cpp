@@ -6,7 +6,7 @@ void GameDirectionCenter::Initialize()
 {
 	//Applicationの初期化
 	windowAppli_ = WindowAppli::GetInstance();
-	windowAppli_->CreateGameWindow(L"DirectXGame", WindowAppli::kClientWidth, WindowAppli::kClientHeight);
+	windowAppli_->CreateGameWindow(L"PaleEngine", WindowAppli::kClientWidth, WindowAppli::kClientHeight);
 
 	//GraphicsCoreの初期化
 	graphicsCore_ = GraphicsDirectionCenter::GetInstance();
