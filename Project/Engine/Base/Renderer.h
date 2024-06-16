@@ -45,6 +45,7 @@ public:
 		kTexture,
 		//ライト
 		kDirectionalLight,
+		kMatrixPalette,
 	};
 
 	static Renderer* GetInstance();
@@ -60,8 +61,14 @@ public:
 		D3D12_GPU_VIRTUAL_ADDRESS worldTransformCBV,
 		D3D12_GPU_VIRTUAL_ADDRESS cameraCBV,
 		D3D12_GPU_DESCRIPTOR_HANDLE textureSRV,
+		D3D12_GPU_DESCRIPTOR_HANDLE matrixPaletteSRV,
 		UINT indexCount,
 		DrawPass drawPass);
+
+	void AddDebugObject(D3D12_VERTEX_BUFFER_VIEW vertexBufferView, 
+	D3D12_GPU_VIRTUAL_ADDRESS worldTransformCBV,
+		D3D12_GPU_VIRTUAL_ADDRESS cameraCBV,
+		UINT indexCount);
 
 	void Render();
 
@@ -101,6 +108,8 @@ private:
 
 	void Sort();
 
+	void CreateDebugPipelineState();
+
 private:
 	struct SortObject {
 		D3D12_VERTEX_BUFFER_VIEW vertexBufferView;
@@ -110,13 +119,24 @@ private:
 		D3D12_GPU_VIRTUAL_ADDRESS worldTransformCBV;
 		D3D12_GPU_VIRTUAL_ADDRESS cameraCBV;
 		D3D12_GPU_DESCRIPTOR_HANDLE textureSRV;
+		D3D12_GPU_DESCRIPTOR_HANDLE matrixPaletteSRV;
 		UINT indexCount;
 		DrawPass type;
+	};
+
+	struct DebugObject
+	{
+		D3D12_VERTEX_BUFFER_VIEW vertexBufferView;
+		D3D12_GPU_VIRTUAL_ADDRESS worldTransformCBV;
+		D3D12_GPU_VIRTUAL_ADDRESS cameraCBV;
+		UINT vertexCount;
 	};
 
 	static Renderer* instance_;
 
 	std::vector<SortObject> sortObjects_{};
+
+	std::vector<DebugObject> debugObjects_{};
 
 	std::unique_ptr<ColorBuffer> sceneColorBuffer_ = nullptr;
 
@@ -134,6 +154,8 @@ private:
 
 	RootSignature particleRootSignature_{};
 
+	RootSignature debugRootSignature_{};
+
 	std::vector<PipelineState> modelPipelineStates_{};
 
 	std::vector<PipelineState> skinningModelPipelineStates_{};
@@ -141,4 +163,6 @@ private:
 	std::vector<PipelineState> spritePipelineStates_{};
 
 	std::vector<PipelineState> particlePipelineStates_{};
+
+	std::vector<PipelineState> debugPipelineStates_{};
 };

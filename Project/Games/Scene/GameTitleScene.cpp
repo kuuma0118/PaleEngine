@@ -26,10 +26,6 @@ void GameTitleScene::Update()
 
 	camera_.UpdateMatrix();
 
-	model_->ApplyAnimation();
-
-	model_->Update(worldTransform_);
-
 	ImGui::Begin("GameTitleScene");
 	ImGui::DragFloat3("WorldTransform.translation", &worldTransform_.translation_.x, 0.1f);
 	ImGui::DragFloat3("WorldTransform.rotation", &worldTransform_.rotation_.x, 0.1f);

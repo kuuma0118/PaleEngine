@@ -27,7 +27,7 @@ public:
 
 	void SetVertexBuffer(const D3D12_VERTEX_BUFFER_VIEW& vertexBufferView);
 
-	void SetVertexBuffers(UINT startSlot, UINT numViews, const D3D12_VERTEX_BUFFER_VIEW* vertexBufferView);
+	void SetVertexBuffers(UINT startSlot, UINT count, const D3D12_VERTEX_BUFFER_VIEW vertexBufferViews[]);
 
 	void SetIndexBuffer(const D3D12_INDEX_BUFFER_VIEW& indexBufferView);
 
