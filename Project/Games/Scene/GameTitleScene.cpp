@@ -11,10 +11,28 @@ void GameTitleScene::Initialize()
 
 	audio_ = Audio::GetInstance();
 
+	//ゲームオブジェクトをクリア
+	gameObjectManager_ = GameObjectManager::GetInstance();
+	gameObjectManager_->Clear();
+
 	camera_.Initialize();
 
 	worldTransform_.Initialize();
 
+	//プレイヤーの生成
+	playerModel_.reset(ModelManager::CreateFromModelFile("Player.gltf", Opaque));
+	playerModelHead_.reset(ModelManager::CreateFromModelFile("PlayerHead.obj", Opaque));
+	playerModelHead_->GetMaterial()->SetEnableLighting(false);
+	playerModelBody_.reset(ModelManager::CreateFromModelFile("PlayerBody.obj", Opaque));
+	playerModelBody_->GetMaterial()->SetEnableLighting(false);
+	playerModelL_Arm_.reset(ModelManager::CreateFromModelFile("PlayerL_arm.obj", Opaque));
+	playerModelL_Arm_->GetMaterial()->SetEnableLighting(false);
+	playerModelR_Arm_.reset(ModelManager::CreateFromModelFile("PlayerR_arm.obj", Opaque));
+	playerModelR_Arm_->GetMaterial()->SetEnableLighting(false);
+	std::vector<Model*> playerModels = { playerModel_.get() };
+	player_ = GameObjectManager::CreateGameObject<Player>();
+	player_->SetModels(playerModels);
+	player_->SetTag("Player");
 }
 
 void GameTitleScene::Finalize()
@@ -25,6 +43,9 @@ void GameTitleScene::Finalize()
 void GameTitleScene::Update() 
 {
 	worldTransform_.UpdateMatrixFromEuler();
+
+	//ゲームオブジェクトの更新
+	gameObjectManager_->Update();
 
 	camera_.UpdateMatrix();
 
@@ -51,7 +72,8 @@ void GameTitleScene::Draw()
 	renderer_->ClearDepthBuffer();
 
 #pragma region 3Dオブジェクト描画
-	
+	//ゲームオブジェクトのモデル描画
+	gameObjectManager_->Draw(camera_);
 	//3Dオブジェクト描画
 	renderer_->Render();
 #pragma endregion

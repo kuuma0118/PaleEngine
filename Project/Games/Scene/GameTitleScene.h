@@ -8,6 +8,7 @@
 #include "Engine/Framework/Object/GameObjectManager.h"
 #include "Engine/2D/Sprite.h"	
 #include "Engine/Math/MathFunction.h"
+#include "Games/GameObj/Player/Player.h"
 
 class GameTitleScene : public IScene
 {
@@ -37,6 +38,16 @@ private:
 
 	//ゲームオブジェクトマネージャー	
 	GameObjectManager* gameObjectManager_ = nullptr;
+
+	//プレイヤー
+	std::unique_ptr<Model> playerModel_ = nullptr;
+	std::unique_ptr<Model> playerModelHead_ = nullptr;
+	std::unique_ptr<Model> playerModelBody_ = nullptr;
+	std::unique_ptr<Model> playerModelL_Arm_ = nullptr;
+	std::unique_ptr<Model> playerModelR_Arm_ = nullptr;
+	Player* player_ = nullptr;
+
+
 
 	std::unique_ptr<Model> model_ = nullptr;
 };

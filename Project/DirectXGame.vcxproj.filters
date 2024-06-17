@@ -360,6 +360,9 @@
     <ClCompile Include="Engine\3D\Model\Mesh.cpp">
       <Filter>ソース ファイル\Engine\3D\Model</Filter>
     </ClCompile>
+    <ClCompile Include="Games\GameObj\Player\Player.cpp">
+      <Filter>ソース ファイル\Project\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\2D\Sprite.h">
@@ -619,6 +622,9 @@
     </ClInclude>
     <ClInclude Include="Engine\3D\Model\Mesh.h">
       <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Player\Player.h">
+      <Filter>ヘッダー ファイル\Project\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
