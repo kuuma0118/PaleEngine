@@ -1,4 +1,7 @@
 #include "GameTitleScene.h"
+#include "Engine/Framework/Scene/SceneManager.h"	
+#include "Engine/Base/TextureManager.h"	
+#include <numbers>
 
 void GameTitleScene::Initialize()
 {
@@ -12,7 +15,6 @@ void GameTitleScene::Initialize()
 
 	worldTransform_.Initialize();
 
-	model_.reset(ModelManager::CreateFromModelFile("AnimatedCube.gltf", Opaque));
 }
 
 void GameTitleScene::Finalize()
@@ -49,8 +51,7 @@ void GameTitleScene::Draw()
 	renderer_->ClearDepthBuffer();
 
 #pragma region 3Dオブジェクト描画
-	model_->Draw(worldTransform_, camera_);
-
+	
 	//3Dオブジェクト描画
 	renderer_->Render();
 #pragma endregion

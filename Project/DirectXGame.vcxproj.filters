@@ -351,7 +351,7 @@
     <ClCompile Include="Games\Scene\SceneFactory.cpp">
       <Filter>ソース ファイル\Project\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\3D\Model\Skining.cpp">
+    <ClCompile Include="Engine\3D\Model\SkiningAnimation.cpp">
       <Filter>ソース ファイル\Engine\3D\Model</Filter>
     </ClCompile>
     <ClCompile Include="Engine\3D\Model\Material.cpp">
