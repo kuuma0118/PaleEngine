@@ -14,19 +14,8 @@ void Player::Initialize()
 	{
 		worldTransforms[i].Initialize();
 	}
-	worldTransforms[kHead].translation_ = { 0.0f,1.85f,0.0f };
-	worldTransforms[kHead].rotation_ = { 0.0f,0.0f,0.0f };
-	worldTransforms[kL_Arm].translation_ = { -0.7f,1.8f,0.0f };
-	worldTransforms[kL_Arm].rotation_ = { 0.0f,0.0f,0.0f };
-	worldTransforms[kR_Arm].translation_ = { 0.7f,1.8f,0.0f };
-	worldTransforms[kR_Arm].rotation_ = { 0.0f,0.0f,0.0f };
 
-	//親子付け
-	worldTransforms[kBody].parent_ = &worldTransform_;
-	worldTransforms[kHead].parent_ = &worldTransforms[kBody];
-	worldTransforms[kL_Arm].parent_ = &worldTransforms[kBody];
-	worldTransforms[kR_Arm].parent_ = &worldTransforms[kBody];
-
+	
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
 
@@ -69,6 +58,10 @@ void Player::Update()
 
 	//モデルの更新
 	models_[0]->Update(worldTransform_, animationNumber_);
+
+	MoveAnimation();
+
+	models_[0]->GetAnimation()->PlayAnimation();
 
 	ImGui::Begin("Player");
 	ImGui::Text("AnimationNumber : %d", animationNumber_);

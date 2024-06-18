@@ -18,17 +18,10 @@ void GameTitleScene::Initialize()
 	camera_.Initialize();
 
 	worldTransform_.Initialize();
-
+	
 	//プレイヤーの生成
-	playerModel_.reset(ModelManager::CreateFromModelFile("Player.gltf", Opaque));
-	playerModelHead_.reset(ModelManager::CreateFromModelFile("PlayerHead.obj", Opaque));
-	playerModelHead_->GetMaterial()->SetEnableLighting(false);
-	playerModelBody_.reset(ModelManager::CreateFromModelFile("PlayerBody.obj", Opaque));
-	playerModelBody_->GetMaterial()->SetEnableLighting(false);
-	playerModelL_Arm_.reset(ModelManager::CreateFromModelFile("PlayerL_arm.obj", Opaque));
-	playerModelL_Arm_->GetMaterial()->SetEnableLighting(false);
-	playerModelR_Arm_.reset(ModelManager::CreateFromModelFile("PlayerR_arm.obj", Opaque));
-	playerModelR_Arm_->GetMaterial()->SetEnableLighting(false);
+	playerModel_.reset(ModelManager::CreateFromModelFile("walk.gltf", Opaque));
+
 	std::vector<Model*> playerModels = { playerModel_.get() };
 	player_ = GameObjectManager::CreateGameObject<Player>();
 	player_->SetModels(playerModels);
@@ -46,6 +39,8 @@ void GameTitleScene::Update()
 
 	//ゲームオブジェクトの更新
 	gameObjectManager_->Update();
+
+	playerModel_->Update(worldTransform_,1);
 
 	camera_.UpdateMatrix();
 
