@@ -7,14 +7,6 @@ void Player::Initialize()
 	//ワールドトランスフォームの初期化
 	worldTransform_.Initialize();
 	worldTransform_.translation_.z = -20.0f;
-	//worldTransform_.scale_ = { 0.8f,0.8f,0.8f };
-
-	//パーツのワールドトランスフォームの初期化
-	for (uint32_t i = 0; i < kCountOfParts; ++i)
-	{
-		worldTransforms[i].Initialize();
-	}
-
 	
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
@@ -51,17 +43,16 @@ void Player::Update()
 	//ワールドトランスフォームの更新
 	worldTransform_.quaternion_ = Mathf::Normalize(Mathf::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f));
 	worldTransform_.UpdateMatrixFromQuaternion();
-	for (uint32_t i = 0; i < kCountOfParts; ++i)
-	{
-		worldTransforms[i].UpdateMatrixFromEuler();
-	}
 
 	//モデルの更新
-	models_[0]->Update(worldTransform_, animationNumber_);
+	model_->Update(worldTransform_, animationNumber_);
 
-	MoveAnimation();
-
-	models_[0]->GetAnimation()->PlayAnimation();
+	//アニメーションを再生
+	if (!model_->GetAnimation()->IsPlaying())
+	{
+		animationNumber_ = 0;
+		model_->GetAnimation()->PlayAnimation();
+	}
 
 	ImGui::Begin("Player");
 	ImGui::Text("AnimationNumber : %d", animationNumber_);
@@ -75,7 +66,7 @@ void Player::Draw(const Camera& camera)
 	//{
 	//	models_[i]->Draw(worldTransforms[i], camera);
 	//}
-	models_[0]->Draw(worldTransform_, camera);
+	model_->Draw(worldTransform_, camera);
 
 }
 
@@ -96,85 +87,6 @@ const Vector3 Player::GetWorldPosition() const
 	pos.y = worldTransform_.matWorld_.m[3][1] + 1.0f;
 	pos.z = worldTransform_.matWorld_.m[3][2];
 	return pos;
-}
-
-
-void Player::BehaviorRootInitialize()
-{
-	gravity_ = { 0.0f,0.0f,0.0f };
-	if (!particleSystem_->GetParticleEmitter("Move"))
-	{
-		Vector3 translation = { worldTransforms[kBody].matWorld_.m[3][0], 0.0f ,worldTransforms[kBody].matWorld_.m[3][2] };
-		ParticleEmitter* emitter = ParticleEmitterBuilder()
-			.SetDeleteTime(60)
-			.SetEmitterName("Move")
-			.SetPopArea({ -0.5f,0.0f,-0.5f }, { 0.5f,0.0f,0.5f })
-			.SetPopAzimuth(0.0f, 0.0f)
-			.SetPopColor({ 0.1f,0.1f,0.1f,1.0f }, { 0.1f,0.1f,0.1f,1.0f })
-			.SetPopCount(1)
-			.SetPopElevation(0.0f, 0.0f)
-			.SetPopFrequency(0.01f)
-			.SetPopLifeTime(0.2f, 0.4f)
-			.SetPopQuaternion(destinationQuaternion_)
-			.SetPopRotation({ 0.0f,0.0f,0.0f }, { 0.0f,0.0f,0.0f })
-			.SetPopScale({ 0.1f,0.1f,0.1f }, { 0.2f,0.2f,0.2f })
-			.SetPopVelocity({ 0.0f,0.0f,0.0f }, { 0.0f,0.0f,0.0f })
-			.SetTranslation(translation)
-			.Build();
-		particleSystem_->AddParticleEmitter(emitter);
-	}
-	worldTransforms[kBody].rotation_.x = 0.0f;
-	worldTransforms[kBody].rotation_.y = 0.0f;
-}
-
-void Player::BehaviorRootUpdate()
-{
-	//移動処理
-	const float speed = 0.6f;
-	Move(speed);
-
-	//移動しているときにアニメーションをする
-	if (velocity_ != Vector3{ 0.0f,0.0f,0.0f })
-	{
-		MoveAnimation();
-
-		//アニメーションを再生
-		if (!models_[0]->GetAnimation()->IsPlaying())
-		{
-			animationNumber_ = 0;
-			models_[0]->GetAnimation()->PlayAnimation();
-		}
-
-		//パーティクルの座標を更新
-		Vector3 translation = { worldTransforms[kBody].matWorld_.m[3][0], 0.0f ,worldTransforms[kBody].matWorld_.m[3][2] };
-		ParticleEmitter* emitter = particleSystem_->GetParticleEmitter("Move");
-		if (emitter)
-		{
-			emitter->SetPopCount(1);
-			emitter->SetTranslation(translation);
-		}
-		//エミッターが消えてたら再生成
-		else
-		{
-			ParticleEmitter* emitter = ParticleEmitterBuilder()
-				.SetDeleteTime(60)
-				.SetEmitterName("Move")
-				.SetPopArea({ -0.5f,0.0f,-0.5f }, { 0.5f,0.0f,0.5f })
-				.SetPopAzimuth(0.0f, 0.0f)
-				.SetPopColor({ 0.1f,0.1f,0.1f,1.0f }, { 0.1f,0.1f,0.1f,1.0f })
-				.SetPopCount(1)
-				.SetPopElevation(0.0f, 0.0f)
-				.SetPopFrequency(0.01f)
-				.SetPopLifeTime(0.2f, 0.4f)
-				.SetPopQuaternion(destinationQuaternion_)
-				.SetPopRotation({ 0.0f,0.0f,0.0f }, { 0.0f,0.0f,0.0f })
-				.SetPopScale({ 0.1f,0.1f,0.1f }, { 0.2f,0.2f,0.2f })
-				.SetPopVelocity({ 0.0f,0.0f,0.0f }, { 0.0f,0.0f,0.0f })
-				.SetTranslation(translation)
-				.Build();
-			particleSystem_->AddParticleEmitter(emitter);
-		}
-	}
 }
 
 void Player::MoveAnimation()

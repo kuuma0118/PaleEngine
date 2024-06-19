@@ -21,11 +21,14 @@ void GameTitleScene::Initialize()
 	
 	//プレイヤーの生成
 	playerModel_.reset(ModelManager::CreateFromModelFile("walk.gltf", Opaque));
+	playerModel_->GetMaterial()->SetEnableLighting(false);
+	playerModel_->GetMaterial()->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f });
+	playerWorldTransform_.Initialize();
+	playerWorldTransform_.translation_.y = 1.0f;
+	playerWorldTransform_.scale_ = { 1.0f,1.0f,1.0f };
+	playerWorldTransform_.quaternion_ = Mathf::MakeRotateAxisAngleQuaternion({ 0.0f,1.0f,0.0f }, std::numbers::pi_v<float>);
 
-	std::vector<Model*> playerModels = { playerModel_.get() };
-	player_ = GameObjectManager::CreateGameObject<Player>();
-	player_->SetModels(playerModels);
-	player_->SetTag("Player");
+
 }
 
 void GameTitleScene::Finalize()
@@ -40,7 +43,7 @@ void GameTitleScene::Update()
 	//ゲームオブジェクトの更新
 	gameObjectManager_->Update();
 
-	playerModel_->Update(worldTransform_,1);
+	playerModel_->Update(worldTransform_,0);
 
 	camera_.UpdateMatrix();
 

@@ -36,44 +36,24 @@ public:
 
 	const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
 
-	void SetModels(const std::vector<Model*> models) { models_ = models; };
-
 	void SetCamera(const Camera* camera) { camera_ = camera; };
-
-	void SetLockOn(const LockOn* lockOn) { lockOn_ = lockOn; }
 
 	const Vector3& GetVelocity() const { return velocity_; };
 
 
 
 private:
-	void BehaviorRootInitialize();
-
-	void BehaviorRootUpdate();
 
 	void MoveAnimation();
 
 	void Move(const float speed);
 
 	void Rotate(const Vector3& v);
-
-private:
-	enum Parts
-	{
-		kBody,
-		kHead,
-		kL_Arm,
-		kR_Arm,
-		kCountOfParts
-	};
-
 	
 private:
-	//モデル
-	std::vector<Model*> models_{};
 
 	//ワールドトランスフォーム
-	WorldTransform worldTransforms[kCountOfParts]{};
+	WorldTransform worldTransforms_{};
 
 	//入力クラス
 	Input* input_ = nullptr;
@@ -99,9 +79,6 @@ private:
 	//パーティクル
 	std::unique_ptr<Model> particleModel_ = nullptr;
 	ParticleSystem* particleSystem_ = nullptr;
-
-	
-	bool isDashAttack_ = false;
 
 	//アニメーションの番号
 	uint32_t animationNumber_ = 0;
