@@ -23,11 +23,9 @@ void GameTitleScene::Initialize()
 	playerModel_.reset(ModelManager::CreateFromModelFile("walk.gltf", Opaque));
 	playerModel_->GetMaterial()->SetEnableLighting(false);
 	playerModel_->GetMaterial()->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f });
-	playerWorldTransform_.Initialize();
-	playerWorldTransform_.translation_.y = 1.0f;
-	playerWorldTransform_.scale_ = { 1.0f,1.0f,1.0f };
-	playerWorldTransform_.quaternion_ = Mathf::MakeRotateAxisAngleQuaternion({ 0.0f,1.0f,0.0f }, std::numbers::pi_v<float>);
-
+	player_ = GameObjectManager::CreateGameObject<Player>();
+	player_->SetModel(playerModel_.get());
+	player_->SetTag("Player");
 
 }
 
@@ -38,19 +36,16 @@ void GameTitleScene::Finalize()
 
 void GameTitleScene::Update() 
 {
-	worldTransform_.UpdateMatrixFromEuler();
+
+	camera_.UpdateMatrix();
 
 	//ゲームオブジェクトの更新
 	gameObjectManager_->Update();
 
-	playerModel_->Update(worldTransform_,0);
-
-	camera_.UpdateMatrix();
-
 	ImGui::Begin("GameTitleScene");
-	ImGui::DragFloat3("WorldTransform.translation", &worldTransform_.translation_.x, 0.1f);
-	ImGui::DragFloat3("WorldTransform.rotation", &worldTransform_.rotation_.x, 0.1f);
-	ImGui::DragFloat3("WorldTransform.scale", &worldTransform_.scale_.x, 0.1f);
+	ImGui::DragFloat3("WorldTransform.translation", &playerWorldTransform_.translation_.x, 0.1f);
+	ImGui::DragFloat3("WorldTransform.rotation", &playerWorldTransform_.rotation_.x, 0.1f);
+	ImGui::DragFloat3("WorldTransform.scale", &playerWorldTransform_.scale_.x, 0.1f);
 	ImGui::DragFloat3("Camera.translation", &camera_.translation_.x, 0.1f);
 	ImGui::DragFloat3("Camera.rotation", &camera_.rotation_.x, 0.1f);
 	ImGui::End();
@@ -70,6 +65,7 @@ void GameTitleScene::Draw()
 	renderer_->ClearDepthBuffer();
 
 #pragma region 3Dオブジェクト描画
+
 	//ゲームオブジェクトのモデル描画
 	gameObjectManager_->Draw(camera_);
 	//3Dオブジェクト描画

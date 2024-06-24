@@ -345,9 +345,6 @@
     <ClCompile Include="Games\Scene\LoadScene.cpp">
       <Filter>ソース ファイル\Project\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Games\Scene\GameTitleScene.cpp">
-      <Filter>ソース ファイル\Project\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Games\Scene\SceneFactory.cpp">
       <Filter>ソース ファイル\Project\Scene</Filter>
     </ClCompile>
@@ -362,6 +359,9 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\Player\Player.cpp">
       <Filter>ソース ファイル\Project\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\Scene\GameTitleScene.cpp">
+      <Filter>ヘッダー ファイル\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

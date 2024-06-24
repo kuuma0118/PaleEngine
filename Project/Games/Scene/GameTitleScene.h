@@ -42,7 +42,7 @@ private:
 	//プレイヤー
 	std::unique_ptr<Model> playerModel_ = nullptr;
 	WorldTransform playerWorldTransform_{};
-
+	Player* player_ = nullptr;
 
 
 	std::unique_ptr<Model> model_ = nullptr;

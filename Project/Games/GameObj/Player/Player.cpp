@@ -6,7 +6,7 @@ void Player::Initialize()
 {
 	//ワールドトランスフォームの初期化
 	worldTransform_.Initialize();
-	worldTransform_.translation_.z = -20.0f;
+	worldTransform_.translation_.z = 2.0f;
 	
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
@@ -42,6 +42,7 @@ void Player::Update()
 
 	//ワールドトランスフォームの更新
 	worldTransform_.quaternion_ = Mathf::Normalize(Mathf::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f));
+	worldTransform_.UpdateMatrixFromEuler();
 	worldTransform_.UpdateMatrixFromQuaternion();
 
 	//モデルの更新
@@ -54,6 +55,10 @@ void Player::Update()
 		model_->GetAnimation()->PlayAnimation();
 	}
 
+	////移動処理
+	//const float speed = 0.6f;
+	//Move(speed);
+
 	ImGui::Begin("Player");
 	ImGui::Text("AnimationNumber : %d", animationNumber_);
 	ImGui::End();
@@ -61,13 +66,7 @@ void Player::Update()
 
 void Player::Draw(const Camera& camera)
 {
-	//プレイヤーのモデルの描画
-	//for (uint32_t i = 0; i < kCountOfParts; ++i)
-	//{
-	//	models_[i]->Draw(worldTransforms[i], camera);
-	//}
 	model_->Draw(worldTransform_, camera);
-
 }
 
 void Player::DrawUI()
