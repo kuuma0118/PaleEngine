@@ -1,5 +1,5 @@
 #include "StructuredBuffer.h"
-#include "GraphicsDirectionCenter.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include <cassert>
 
 void StructuredBuffer::Create(uint32_t numElements, uint32_t elementSize)

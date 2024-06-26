@@ -1,6 +1,6 @@
 #pragma once
-#include "ColorBuffer.h"
-#include "DepthBuffer.h"
+#include "Buffer/ColorBuffer.h"
+#include "Buffer/DepthBuffer.h"
 #include "RootSignature.h"
 #include "PipelineState.h"
 

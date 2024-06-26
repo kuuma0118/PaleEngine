@@ -7,14 +7,12 @@ void CommandContext::Initialize()
 	//デバイスを取得
 	ID3D12Device* device = GraphicsDirectionCenter::GetInstance()->GetDevice();
 
-	//コマンドアロケータを作成する
+	//コマンドアロケータを
 	HRESULT hr = device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&commandAllocator_));
-	//コマンドアロケーターの生成がうまくいかなかったので起動できない
 	assert(SUCCEEDED(hr));
 
-	//コマンドリストを作成する
+	//コマンドリストを作成
 	hr = device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator_.Get(), nullptr, IID_PPV_ARGS(&commandList_));
-	//コマンドリストの作成がうまくできなかったので起動できない
 	assert(SUCCEEDED(hr));
 }
 

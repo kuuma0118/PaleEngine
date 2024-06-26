@@ -1,6 +1,6 @@
 #pragma once
-#include "Engine/Base/UploadBuffer.h"
-#include "Engine/Base/ConstantBuffers.h"
+#include "Engine/Base/Buffer/UploadBuffer.h"
+#include "Engine/Base/Buffer/ConstantBuffers.h"
 #include <memory>
 
 class Camera

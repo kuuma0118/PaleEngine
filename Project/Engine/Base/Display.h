@@ -1,7 +1,7 @@
 #pragma once
 #include "WindowAppli.h"
-#include "ColorBuffer.h"
-#include "DepthBuffer.h"
+#include "Buffer/ColorBuffer.h"
+#include "Buffer/DepthBuffer.h"
 #include <array>
 #include <memory>
 #include <dxgi1_6.h>
@@ -21,7 +21,7 @@ private:
 	void CreateResources();
 
 private:
-	WindowAppli* application_ = nullptr;
+	WindowAppli* ｗindowAppli_ = nullptr;
 
 	Microsoft::WRL::ComPtr<IDXGISwapChain4> swapChain_ = nullptr;
 

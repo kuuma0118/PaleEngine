@@ -1,6 +1,6 @@
 #pragma once
-#include "GpuResource.h"
-#include "DescriptorHandle.h"
+#include "Engine/Base/GpuResource.h"
+#include "Engine/Base/DescriptorHandle.h"
 #include <cstdint>
 
 class DepthBuffer : public GpuResource

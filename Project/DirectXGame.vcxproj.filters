@@ -157,6 +157,12 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{8e9d453e-e5cb-477e-8295-83376b761f17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Base\Buffer">
+      <UniqueIdentifier>{22b8354e-c71d-4918-a6dc-95043f49daba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Base\Buffer">
+      <UniqueIdentifier>{5540e6ca-7fbc-4c6e-b91a-4c330c773324}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -180,12 +186,6 @@
     <ClCompile Include="Engine\Base\WindowAppli.cpp">
       <Filter>ソース ファイル\Engine\Base</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Base\ColorBuffer.cpp">
-      <Filter>ソース ファイル\Engine\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Base\DepthBuffer.cpp">
-      <Filter>ソース ファイル\Engine\Base</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Base\DescriptorHeap.cpp">
       <Filter>ソース ファイル\Engine\Base</Filter>
     </ClCompile>
@@ -207,16 +207,10 @@
     <ClCompile Include="Engine\Base\RootSignature.cpp">
       <Filter>ソース ファイル\Engine\Base</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Base\StructuredBuffer.cpp">
-      <Filter>ソース ファイル\Engine\Base</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Base\Texture.cpp">
       <Filter>ソース ファイル\Engine\Base</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Base\TextureManager.cpp">
-      <Filter>ソース ファイル\Engine\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Base\UploadBuffer.cpp">
       <Filter>ソース ファイル\Engine\Base</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Components\Input\Input.cpp">
@@ -363,6 +357,18 @@
     <ClCompile Include="Games\Scene\GameTitleScene.cpp">
       <Filter>ヘッダー ファイル\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Base\Buffer\ColorBuffer.cpp">
+      <Filter>ソース ファイル\Engine\Base\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\Buffer\DepthBuffer.cpp">
+      <Filter>ソース ファイル\Engine\Base\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\Buffer\StructuredBuffer.cpp">
+      <Filter>ソース ファイル\Engine\Base\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Base\Buffer\UploadBuffer.cpp">
+      <Filter>ソース ファイル\Engine\Base\Buffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\2D\Sprite.h">
@@ -392,16 +398,10 @@
     <ClInclude Include="Engine\3D\Model\ModelManager.h">
       <Filter>ヘッダー ファイル\Engine\3D\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Base\UploadBuffer.h">
-      <Filter>ヘッダー ファイル\Engine\Base</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Base\TextureManager.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Base\Texture.h">
-      <Filter>ヘッダー ファイル\Engine\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Base\StructuredBuffer.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Base\RootSignature.h">
@@ -429,15 +429,6 @@
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Base\DescriptorHandle.h">
-      <Filter>ヘッダー ファイル\Engine\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Base\DepthBuffer.h">
-      <Filter>ヘッダー ファイル\Engine\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Base\ConstantBuffers.h">
-      <Filter>ヘッダー ファイル\Engine\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Base\ColorBuffer.h">
       <Filter>ヘッダー ファイル\Engine\Base</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Base\WindowAppli.h">
@@ -625,6 +616,21 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\Player\Player.h">
       <Filter>ヘッダー ファイル\Project\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Buffer\ColorBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Buffer\ConstantBuffers.h">
+      <Filter>ヘッダー ファイル\Engine\Base\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Buffer\DepthBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Buffer\UploadBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Base\Buffer\StructuredBuffer.h">
+      <Filter>ヘッダー ファイル\Engine\Base\Buffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

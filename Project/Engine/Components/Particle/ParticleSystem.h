@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/Base/StructuredBuffer.h"
+#include "Engine/Base/Buffer/StructuredBuffer.h"
 #include "Engine/Base/DescriptorHandle.h"
 #include "Engine/3D/Model/ModelManager.h"
 #include "ParticleEmitterBuilder.h"

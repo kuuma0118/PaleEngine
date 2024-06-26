@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/Base/Texture.h"
-#include "Engine/Base/UploadBuffer.h"
-#include "Engine/Base/ConstantBuffers.h"
+#include "Engine/Base/Buffer/UploadBuffer.h"
+#include "Engine/Base/Buffer/ConstantBuffers.h"
 #include "Engine/Math/Vector2.h"
 #include "Engine/Math/Vector3.h"
 #include "Engine/Math/Vector4.h"

@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/3D/Lights/LightManager.h"
-#include "ColorBuffer.h"
-#include "DepthBuffer.h"
+#include "Buffer/ColorBuffer.h"
+#include "Buffer/DepthBuffer.h"
 #include "PipelineState.h"
 #include <vector>
 

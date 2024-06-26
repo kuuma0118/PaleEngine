@@ -1,5 +1,5 @@
 #include "DepthBuffer.h"
-#include "GraphicsDirectionCenter.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include <cassert>
 
 void DepthBuffer::Create(uint32_t width, uint32_t height, DXGI_FORMAT format)

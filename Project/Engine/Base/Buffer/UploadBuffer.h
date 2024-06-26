@@ -1,5 +1,6 @@
 #pragma once
-#include "GpuResource.h"
+#include "Engine/Base/GpuResource.h"
+
 
 class UploadBuffer : public GpuResource
 {

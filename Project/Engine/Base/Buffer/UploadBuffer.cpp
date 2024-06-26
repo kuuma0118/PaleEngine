@@ -1,5 +1,5 @@
 #include "UploadBuffer.h"
-#include "GraphicsDirectionCenter.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include <cassert>
 
 void UploadBuffer::Create(size_t sizeInBytes)

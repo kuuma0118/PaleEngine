@@ -4,7 +4,7 @@
 void Display::Initialize(IDXGIFactory7* dxgiFactory, ID3D12CommandQueue* commandQueue)
 {
 	//Applicationのインスタンスを取得
-	application_ = WindowAppli::GetInstance();
+	ｗindowAppli_ = WindowAppli::GetInstance();
 
 	//スワップチェーンの作成
 	CreateSwapChain(dxgiFactory, commandQueue);
@@ -15,7 +15,7 @@ void Display::Initialize(IDXGIFactory7* dxgiFactory, ID3D12CommandQueue* command
 
 void Display::Present()
 {
-	//GPUとOSに画面の交換を行うよう通知する
+	//GPUとOSに画面の交換を行うよう通知
 	swapChain_->Present(1, 0);
 }
 
@@ -29,15 +29,15 @@ void Display::CreateSwapChain(IDXGIFactory7* dxgiFactory, ID3D12CommandQueue* co
 {
 	//スワップチェーンを作成する
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc{};
-	swapChainDesc.Width = application_->kClientWidth;//画面の幅。ウィンドウのクライアント領域と同じものにしておく
-	swapChainDesc.Height = application_->kClientHeight;//画面の高さ。ウィンドウのクライアント領域と同じものにしておく
+	swapChainDesc.Width = ｗindowAppli_->kClientWidth;//画面の幅。
+	swapChainDesc.Height = ｗindowAppli_->kClientHeight;//画面の高さ。
 	swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;//色の形式
-	swapChainDesc.SampleDesc.Count = 1;//マルチサンプルしない
-	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;//描画のターゲットとして利用する
+	swapChainDesc.SampleDesc.Count = 1;//マルチサンプルではない
+	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;//描画ターゲット
 	swapChainDesc.BufferCount = 2;//ダブルバッファ
-	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;//モニタに映したら、中身を破棄
-	//コマンドキュー、ウィンドウハンドル、設定を渡して生成する
-	HRESULT hr = dxgiFactory->CreateSwapChainForHwnd(commandQueue, application_->GetHwnd(), &swapChainDesc, nullptr, nullptr, reinterpret_cast<IDXGISwapChain1**>(swapChain_.GetAddressOf()));
+	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;//描画後破棄
+	//コマンドキュー、ウィンドウ、ハンドルの設定を渡して生成
+	HRESULT hr = dxgiFactory->CreateSwapChainForHwnd(commandQueue, ｗindowAppli_->GetHwnd(), &swapChainDesc, nullptr, nullptr, reinterpret_cast<IDXGISwapChain1**>(swapChain_.GetAddressOf()));
 	assert(SUCCEEDED(hr));
 }
 

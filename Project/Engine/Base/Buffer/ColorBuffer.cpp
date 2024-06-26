@@ -1,5 +1,5 @@
 #include "ColorBuffer.h"
-#include "GraphicsDirectionCenter.h"
+#include "Engine/Base/GraphicsDirectionCenter.h"
 #include <cassert>
 
 void ColorBuffer::CreateFromSwapChain(ID3D12Resource* baseResource)

@@ -4,7 +4,7 @@
 #include "SkiningAnimation.h"
 #include "Engine/Math/WorldTransform.h"
 #include "Engine/Base/Renderer.h"
-#include "Engine/Base/StructuredBuffer.h"
+#include "Engine/Base/Buffer/StructuredBuffer.h"
 #include "Engine/3D/Camera/Camera.h"
 #include <span>
 
