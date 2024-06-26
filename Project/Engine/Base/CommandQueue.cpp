@@ -30,7 +30,7 @@ void CommandQueue::WaitForFence()
 	//GPUがここまでたどり着いた時に、Fenceの値を指定した値に代入するようにSignalを送る
 	commandQueue_->Signal(fence_.Get(), fenceValue_);
 
-	//Fenceの値が指定したSignal値にたどり着いているか確認する
+	//Fenceの値が指定したSignal値にたどり着いているか確認
 	//GetCompletedValueの初期値はFence作成時に渡した初期値
 	if (fence_->GetCompletedValue() < fenceValue_)
 	{
@@ -38,7 +38,7 @@ void CommandQueue::WaitForFence()
 		HANDLE fenceEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
 		assert(fenceEvent != nullptr);
 
-		//指定したSignalにたどり着いていないので、たどり着くまで待つようにイベントを設定する
+		//指定したSignalにたどり着いていないので、たどり着くまで待つようにイベントを設定す
 		fence_->SetEventOnCompletion(fenceValue_, fenceEvent);
 
 		//イベントを待つ
