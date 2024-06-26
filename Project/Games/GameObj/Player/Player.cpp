@@ -30,7 +30,23 @@ void Player::Update()
 	//ヒットフラグのリセット
 	isHit_ = false;
 
+	//速さ
+	float kSpeed = 1.0f;
 
+	//移動量
+	if (input_->IsControllerConnected())
+	{
+		velocity_ = {
+			input_->GetLeftStickX(),
+			0.0f,
+			input_->GetLeftStickY(),
+		};
+	}
+
+	worldTransform_.translation_ += velocity_;
+
+	//移動量に速さを反映
+	velocity_ = Mathf::Normalize(velocity_) * kSpeed;
 
 	//移動限界座標
 	const float kMoveLimitX = 49;
