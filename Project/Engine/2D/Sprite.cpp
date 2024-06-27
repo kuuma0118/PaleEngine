@@ -3,32 +3,6 @@
 #include "Engine/Base/TextureManager.h"
 #include "Engine/Math/MathFunction.h"
 
-Sprite* Sprite::Create(const std::string& textureName, Vector2 position)
-{
-	Sprite* sprite = new Sprite();
-	sprite->Initialize(textureName, position);
-	return sprite;
-}
-
-void Sprite::Draw()
-{
-	if (isInvisible_) {
-		return;
-	}
-
-	UpdateVertexBuffer();
-	UpdateMaterialResource();
-	UpdateWVPResource();
-	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
-	TextureManager* textureManager = TextureManager::GetInstance();
-	commandContext->SetVertexBuffer(vertexBufferView_);
-	commandContext->SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	commandContext->SetConstantBuffer(0, materialConstBuffer_->GetGpuVirtualAddress());
-	commandContext->SetConstantBuffer(1, wvpResource_->GetGpuVirtualAddress());
-	commandContext->SetDescriptorTable(2, texture_->GetSRVHandle());
-	commandContext->DrawInstanced(kMaxVertices, 1);
-}
-
 void Sprite::Initialize(const std::string& textureName, Vector2 position)
 {
 	//座標を設定
@@ -54,6 +28,32 @@ void Sprite::Initialize(const std::string& textureName, Vector2 position)
 	CreateWVPResource();
 }
 
+void Sprite::Draw()
+{
+	if (isInvisible_) {
+		return;
+	}
+
+	UpdateVertexBuffer();
+	UpdateMaterialResource();
+	UpdateWVPResource();
+	CommandContext* commandContext = GraphicsDirectionCenter::GetInstance()->GetCommandContext();
+	TextureManager* textureManager = TextureManager::GetInstance();
+	commandContext->SetVertexBuffer(vertexBufferView_);
+	commandContext->SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	commandContext->SetConstantBuffer(0, materialConstBuffer_->GetGpuVirtualAddress());
+	commandContext->SetConstantBuffer(1, wvpResource_->GetGpuVirtualAddress());
+	commandContext->SetDescriptorTable(2, texture_->GetSRVHandle());
+	commandContext->DrawInstanced(kMaxVertices, 1);
+}
+
+Sprite* Sprite::Create(const std::string& textureName, Vector2 position)
+{
+	Sprite* sprite = new Sprite();
+	sprite->Initialize(textureName, position);
+	return sprite;
+}
+
 void Sprite::CreateVertexBuffer()
 {
 	//頂点リソースを作る
@@ -67,6 +67,24 @@ void Sprite::CreateVertexBuffer()
 	vertexBufferView_.StrideInBytes = sizeof(VertexDataPosUV);
 	//リソースに書き込む
 	UpdateVertexBuffer();
+}
+
+void Sprite::CreateMaterialResource()
+{
+	//マテリアル用のリソースを作る。今回はcolor1つ分のサイズを用意する
+	materialConstBuffer_ = std::make_unique<UploadBuffer>();
+	materialConstBuffer_->Create(sizeof(ConstBuffDataMaterial));
+	//リソースに書き込む
+	UpdateMaterialResource();
+}
+
+void Sprite::CreateWVPResource()
+{
+	//WVP用のリソースを作る。Matrix4x4 1つ分のサイズを用意する
+	wvpResource_ = std::make_unique<UploadBuffer>();
+	wvpResource_->Create(sizeof(Matrix4x4));
+	//リソースに書き込む
+	UpdateWVPResource();
 }
 
 void Sprite::UpdateVertexBuffer()
@@ -116,15 +134,6 @@ void Sprite::UpdateVertexBuffer()
 	vertexBuffer_->Unmap();
 }
 
-void Sprite::CreateMaterialResource()
-{
-	//マテリアル用のリソースを作る。今回はcolor1つ分のサイズを用意する
-	materialConstBuffer_ = std::make_unique<UploadBuffer>();
-	materialConstBuffer_->Create(sizeof(ConstBuffDataMaterial));
-	//リソースに書き込む
-	UpdateMaterialResource();
-}
-
 void Sprite::UpdateMaterialResource()
 {
 	//書き込むためのアドレスを取得
@@ -136,15 +145,6 @@ void Sprite::UpdateMaterialResource()
 	uvTransformMatrix = uvTransformMatrix * Mathf::MakeTranslateMatrix(Vector3{ uvTranslation_.x,uvTranslation_.y,0.0f });
 	materialData->uvTransform = uvTransformMatrix;
 	materialConstBuffer_->Unmap();
-}
-
-void Sprite::CreateWVPResource()
-{
-	//WVP用のリソースを作る。Matrix4x4 1つ分のサイズを用意する
-	wvpResource_ = std::make_unique<UploadBuffer>();
-	wvpResource_->Create(sizeof(Matrix4x4));
-	//リソースに書き込む
-	UpdateWVPResource();
 }
 
 void Sprite::UpdateWVPResource()
