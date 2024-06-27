@@ -23,9 +23,9 @@ void ShaderCompiler::Initialize()
 
 Microsoft::WRL::ComPtr<IDxcBlob> ShaderCompiler::CompileShader(const std::wstring& filePath, const wchar_t* profile)
 {
-	//これからシェーダーをコンパイルする旨をログに出す
+	//シェーダーをコンパイル時ログに出す
 	std::wstring combinedPath = kBaseDirectory + filePath;
-	MyUtility::Log(MyUtility::ConvertString(std::format(L"Begin CompileShader, path:{}, profile:{}\n", combinedPath, profile)));
+	Logs::Log(Logs::ConvertString(std::format(L"Begin CompileShader, path:{}, profile:{}\n", combinedPath, profile)));
 	//hlslファイルを読む
 	IDxcBlobEncoding* shaderSource = nullptr;
 	HRESULT hr = dxcUtils_->LoadFile(combinedPath.c_str(), nullptr, &shaderSource);
@@ -35,15 +35,15 @@ Microsoft::WRL::ComPtr<IDxcBlob> ShaderCompiler::CompileShader(const std::wstrin
 	DxcBuffer shaderSourceBuffer{};
 	shaderSourceBuffer.Ptr = shaderSource->GetBufferPointer();
 	shaderSourceBuffer.Size = shaderSource->GetBufferSize();
-	shaderSourceBuffer.Encoding = DXC_CP_UTF8;//UTF8の文字コードであることを通知
+	shaderSourceBuffer.Encoding = DXC_CP_UTF8;
 
 
 	LPCWSTR arguments[] ={
 		combinedPath.c_str(),//コンパイル対象のhlslファイル名
-		L"-E",L"main",//エントリーポイントの指定。基本的にmain以外にはしない
+		L"-E",L"main",//エントリーポイントの指定。
 		L"-T",profile,//ShaderProfileの設定
 		L"-Zi",L"-Qembed_debug",//デバッグ用の情報を埋め込む
-		L"-Od",//最適化を外しておく
+		L"-Od",//最適化を外す
 		L"-Zpr",//メモリレイアウトは行優先
 	};
 	//実際にShaderをコンパイルする
@@ -55,7 +55,7 @@ Microsoft::WRL::ComPtr<IDxcBlob> ShaderCompiler::CompileShader(const std::wstrin
 		includeHandler_.Get(),//includeが含まれた諸々
 		IID_PPV_ARGS(&shaderResult)//コンパイル結果
 	);
-	//コンパイルエラーではなくdxcが起動できないほど致命的な状況
+	//dxcが起動できない
 	assert(SUCCEEDED(hr));
 
 
@@ -64,8 +64,7 @@ Microsoft::WRL::ComPtr<IDxcBlob> ShaderCompiler::CompileShader(const std::wstrin
 	shaderResult->GetOutput(DXC_OUT_ERRORS, IID_PPV_ARGS(&shaderError), _In_opt_ nullptr);
 	if (shaderError != nullptr && shaderError->GetStringLength() != 0)
 	{
-		MyUtility::Log(shaderError->GetStringPointer());
-		//警告・エラーダメゼッタイ
+		Logs::Log(shaderError->GetStringPointer());
 		assert(false);
 	}
 
@@ -74,9 +73,8 @@ Microsoft::WRL::ComPtr<IDxcBlob> ShaderCompiler::CompileShader(const std::wstrin
 	Microsoft::WRL::ComPtr<IDxcBlob> shaderBlob = nullptr;
 	hr = shaderResult->GetOutput(DXC_OUT_OBJECT, IID_PPV_ARGS(&shaderBlob), nullptr);
 	assert(SUCCEEDED(hr));
-	//成功したログを出す
-	MyUtility::Log(MyUtility::ConvertString(std::format(L"Compile Succeeded, path:{}, profile:{}\n", combinedPath, profile)));
-	//もう使わないリソースを解放
+	Logs::Log(Logs::ConvertString(std::format(L"Compile Succeeded, path:{}, profile:{}\n", combinedPath, profile)));
+
 	shaderSource->Release();
 	shaderResult->Release();
 

@@ -75,7 +75,7 @@ void TextureManager::LoadInternal(const std::string& filename)
 DirectX::ScratchImage TextureManager::LoadTexture(const std::string& filePath) {
 	//テクスチャファイルを読んでプログラムで扱えるようにする
 	DirectX::ScratchImage image{};
-	std::wstring filePathW = MyUtility::ConvertString(filePath);
+	std::wstring filePathW = Logs::ConvertString(filePath);
 	HRESULT hr = DirectX::LoadFromWICFile(filePathW.c_str(), DirectX::WIC_FLAGS_FORCE_SRGB, nullptr, image);
 	assert(SUCCEEDED(hr));
 

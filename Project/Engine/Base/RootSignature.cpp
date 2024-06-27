@@ -31,7 +31,7 @@ void RootSignature::Finalize()
     HRESULT hr = D3D12SerializeRootSignature(&descriptionRootSignature,
         D3D_ROOT_SIGNATURE_VERSION_1, &signatureBlob, &errorBlob);
     if (FAILED(hr)) {
-        MyUtility::Log(reinterpret_cast<char*>(errorBlob->GetBufferPointer()));
+        Logs::Log(reinterpret_cast<char*>(errorBlob->GetBufferPointer()));
         assert(false);
     }
     //バイナリを元に生成

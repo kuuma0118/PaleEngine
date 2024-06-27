@@ -4,7 +4,7 @@ std::mt19937 Random::randomEngine_;
 
 void Random::Initialize() 
 {
-	//ランダムエンジンの初期化
+	//ランダムの初期化
 	std::random_device seedGenerator;
 	randomEngine_ = std::mt19937(seedGenerator());
 }

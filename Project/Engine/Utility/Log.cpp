@@ -1,6 +1,6 @@
 #include "Log.h"
 
-namespace MyUtility 
+namespace Logs 
 {
     void Log(const std::string& message) 
     {

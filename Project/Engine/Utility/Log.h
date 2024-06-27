@@ -3,7 +3,7 @@
 #include <string>
 #include <format>
 
-namespace MyUtility 
+namespace Logs 
 {
 	void Log(const std::string& message);
 

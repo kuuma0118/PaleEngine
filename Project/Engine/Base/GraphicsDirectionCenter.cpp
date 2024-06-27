@@ -57,7 +57,7 @@ void GraphicsDirectionCenter::Initialize()
 		if (!(adapterDesc.Flags & DXGI_ADAPTER_FLAG3_SOFTWARE))
 		{
 			//採用したアダプタの情報をログに出力
-			MyUtility::Log(MyUtility::ConvertString(std::format(L"Use Adapter:{}\n", adapterDesc.Description)));
+			Logs::Log(Logs::ConvertString(std::format(L"Use Adapter:{}\n", adapterDesc.Description)));
 			break;
 		}
 		//ソフトウェアアダプタの場合は見なかったことにする
@@ -81,14 +81,14 @@ void GraphicsDirectionCenter::Initialize()
 		if (SUCCEEDED(hr))
 		{
 			//生成できたのでログ出力を行ってループを抜ける
-			MyUtility::Log(std::format("FeatureLevel : {}\n", featureLevelStrings[i]));
+			Logs::Log(std::format("FeatureLevel : {}\n", featureLevelStrings[i]));
 			break;
 		}
 	}
 	//デバイスの生成がうまくできなかったので起動できない
 	assert(device_ != nullptr);
 	//初期化完了のログを出す
-	MyUtility::Log("Complete Create D3D12Device!!!\n");
+	Logs::Log("Complete Create D3D12Device!!!\n");
 
 
 #ifdef _DEBUG
