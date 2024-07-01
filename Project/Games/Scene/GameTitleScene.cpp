@@ -21,7 +21,7 @@ void GameTitleScene::Initialize()
 	
 	//プレイヤーの生成
 	playerModel_.reset(ModelManager::CreateFromModelFile("walk.gltf", Opaque));
-	playerModel_->GetMaterial()->SetEnableLighting(false);
+	playerModel_->GetMaterial()->SetEnableLighting(true);
 	playerModel_->GetMaterial()->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f });
 	player_ = GameObjectManager::CreateGameObject<Player>();
 	player_->SetModel(playerModel_.get());

@@ -7,23 +7,15 @@ void Player::Initialize()
 	//ワールドトランスフォームの初期化
 	worldTransform_.Initialize();
 	worldTransform_.translation_.z = 2.0f;
+	worldTransform_.scale_ = {5.0f,5.0f,5.0f};
 	
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
-
-	//パーティクルシステムの初期化
-	particleModel_.reset(ModelManager::CreateFromModelFile("Cube.obj", Opaque));
-	particleSystem_ = ParticleManager::Create("Dash");
-	particleSystem_->SetModel(particleModel_.get());
-	particleSystem_->SetIsBillBoard(false);
 
 }
 
 void Player::Update()
 {
-
-	//ヒットフラグのリセット
-	isHit_ = false;
 
 	//速さ
 	float kSpeed = 1.0f;
