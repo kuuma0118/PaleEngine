@@ -369,6 +369,9 @@
     <ClCompile Include="Games\Scene\GameTitleScene.cpp">
       <Filter>ソース ファイル\Project\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Games\GameObj\Player\PlayerBullet.cpp">
+      <Filter>ソース ファイル\Project\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\2D\Sprite.h">
@@ -631,6 +634,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Base\Buffer\StructuredBuffer.h">
       <Filter>ヘッダー ファイル\Engine\Base\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Player\PlayerBullet.h">
+      <Filter>ヘッダー ファイル\Project\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
