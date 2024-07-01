@@ -21,12 +21,25 @@ void GameTitleScene::Initialize()
 	
 	//プレイヤーの生成
 	playerModel_.reset(ModelManager::CreateFromModelFile("walk.gltf", Opaque));
-	playerModel_->GetMaterial()->SetEnableLighting(false);
+	playerModel_->GetMaterial()->SetEnableLighting(true);
 	playerModel_->GetMaterial()->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f });
 	player_ = GameObjectManager::CreateGameObject<Player>();
 	player_->SetModel(playerModel_.get());
 	player_->SetTag("Player");
 
+	//プレイヤーの生成
+	playerModelTypeB_.reset(ModelManager::CreateFromModelFile("sneakWalk.gltf", Opaque));
+	playerModelTypeB_->GetMaterial()->SetEnableLighting(true);
+	playerModelTypeB_->GetMaterial()->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f });
+	playerTypeB_ = GameObjectManager::CreateGameObject<PlayerTypeB>();
+	playerTypeB_->SetModel(playerModelTypeB_.get());
+	playerTypeB_->SetTag("PlayerTypeB");
+
+	//地面の生成
+	blockModel_.reset(ModelManager::CreateFromModelFile("Cube.obj", Opaque));
+	blockModel_->GetMaterial()->SetEnableLighting(false);
+	block_ = GameObjectManager::CreateGameObject<Block>();
+	block_->SetModel(blockModel_.get());
 }
 
 void GameTitleScene::Finalize()

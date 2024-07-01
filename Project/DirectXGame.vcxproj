@@ -92,7 +92,9 @@
     <ClCompile Include="Engine\Utility\Log.cpp" />
     <ClCompile Include="Engine\Utility\Random.cpp" />
     <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
+    <ClCompile Include="Games\GameObj\Player\Block.cpp" />
     <ClCompile Include="Games\GameObj\Player\Player.cpp" />
+    <ClCompile Include="Games\GameObj\Player\PlayerTypeB.cpp" />
     <ClCompile Include="Games\Game\GameManager.cpp" />
     <ClCompile Include="Games\Scene\GameClearScene.cpp" />
     <ClCompile Include="Games\Scene\GameOverScene.cpp" />
@@ -182,7 +184,9 @@
     <ClInclude Include="Engine\Utility\Log.h" />
     <ClInclude Include="Engine\Utility\Random.h" />
     <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
+    <ClInclude Include="Games\GameObj\Player\Block.h" />
     <ClInclude Include="Games\GameObj\Player\Player.h" />
+    <ClInclude Include="Games\GameObj\Player\PlayerTypeB.h" />
     <ClInclude Include="Games\Game\GameManager.h" />
     <ClInclude Include="Games\Scene\GameClearScene.h" />
     <ClInclude Include="Games\Scene\GameOverScene.h" />
@@ -190,6 +194,7 @@
     <ClInclude Include="Games\Scene\GameTitleScene.h" />
     <ClInclude Include="Games\Scene\LoadScene.h" />
     <ClInclude Include="Games\Scene\SceneFactory.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Engine\Externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">
@@ -338,6 +343,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DirectXGame.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

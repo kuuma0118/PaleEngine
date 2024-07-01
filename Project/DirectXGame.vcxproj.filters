@@ -369,6 +369,12 @@
     <ClCompile Include="Games\Scene\GameTitleScene.cpp">
       <Filter>ソース ファイル\Project\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Games\GameObj\Player\PlayerTypeB.cpp">
+      <Filter>ソース ファイル\Project\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Player\Block.cpp">
+      <Filter>ソース ファイル\Project\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\2D\Sprite.h">
@@ -632,6 +638,15 @@
     <ClInclude Include="Engine\Base\Buffer\StructuredBuffer.h">
       <Filter>ヘッダー ファイル\Engine\Base\Buffer</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Player\PlayerTypeB.h">
+      <Filter>ヘッダー ファイル\Project\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Player\Block.h">
+      <Filter>ヘッダー ファイル\Project\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Externals\imgui\LICENSE.txt">
@@ -743,5 +758,10 @@
     <FxCompile Include="Resources\Shaders\DebugObject3d.VS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DirectXGame.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

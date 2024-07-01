@@ -9,6 +9,8 @@
 #include "Engine/2D/Sprite.h"	
 #include "Engine/Math/MathFunction.h"
 #include "Games/GameObj/Player/Player.h"
+#include "Games/GameObj/Player/PlayerTypeB.h"
+#include "Games/GameObj/Player/Block.h"
 
 class GameTitleScene : public IScene
 {
@@ -44,6 +46,14 @@ private:
 	WorldTransform playerWorldTransform_{};
 	Player* player_ = nullptr;
 
+	//プレイヤーtypeB
+	std::unique_ptr<Model> playerModelTypeB_ = nullptr;
+	WorldTransform playerWorldTransformTypeB_{};
+	PlayerTypeB* playerTypeB_ = nullptr;
+
+	//ブロック
+	std::unique_ptr<Model> blockModel_ = nullptr;
+	Block* block_ = nullptr;
 
 	std::unique_ptr<Model> model_ = nullptr;
 };

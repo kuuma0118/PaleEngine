@@ -11,8 +11,6 @@
 #include "Engine/Math/MathFunction.h"
 #include <optional>
 
-class LockOn;
-
 class Player : public IGameObject, public Collider
 {
 public:
@@ -72,9 +70,6 @@ private:
 
 	//カメラ
 	const Camera* camera_ = nullptr;
-
-	//ロックオン
-	const LockOn* lockOn_ = nullptr;
 
 	//パーティクル
 	std::unique_ptr<Model> particleModel_ = nullptr;

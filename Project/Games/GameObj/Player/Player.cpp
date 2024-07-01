@@ -6,8 +6,10 @@ void Player::Initialize()
 {
 	//ワールドトランスフォームの初期化
 	worldTransform_.Initialize();
-	worldTransform_.translation_.z = 2.0f;
-	
+	worldTransform_.translation_.x = 5.0f;
+	worldTransform_.scale_ = { 8.0f,8.0f,8.0f };
+	//worldTransform_.rotation_ = { 0.0f,0.0f,180.0f };
+
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
 
