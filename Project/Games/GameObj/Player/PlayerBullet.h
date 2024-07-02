@@ -39,21 +39,25 @@ public: // メンバ関数
 	void OnCollision(Collider* collider) override;
 
 private: // メンバ変数
-	// ワールド変換データ
-	//WorldTransform worldTransform_;
-	// モデル
-	Model* model_ = nullptr;
-	// テクスチャハンドル
-	uint32_t bulletTexture_ = 0u;
+	//モデル
+	std::unique_ptr<Model> model_ = nullptr;
 
-	// 寿命<frm>
-	static const int32_t kLifeTime = 60 * 5;
-	// 死亡タイマー
-	int32_t deathTimer_ = kLifeTime;
-	// 死亡フラグ
+	//ワールドトランスフォーム
+	WorldTransform worldTransform_{};
+
+	//速度
+	Vector3 velocity_{};
+
+	//媒介変数
+	float trackingParameter_ = 0.0f;
+
+	//追尾
+	bool isTrackingComplete_ = false;
+
+	//追尾タイマー
+	uint32_t trackingTimer_ = 0;
+
+	//死亡フラグ
 	bool isDead_ = false;
-
-	// 速度
-	Vector3 velocity_;
 };
 
