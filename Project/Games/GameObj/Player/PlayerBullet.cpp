@@ -21,8 +21,8 @@ void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 		.max{worldTransform_.scale_.x,worldTransform_.scale_.y,worldTransform_.scale_.z}
 	};
 	SetAABB(aabb);
-	SetCollisionAttribute(kCollisionAttributeMissile);
-	SetCollisionMask(kCollisionMaskMissile);
+	SetCollisionAttribute(kCollisionAttributePlayerBullet);
+	SetCollisionMask(kCollisionMaskPlayerBullet);
 	SetCollisionPrimitive(kCollisionPrimitiveAABB);
 }
 
@@ -43,4 +43,9 @@ void PlayerBullet::Update()
 	{
 		isDead_ = true;
 	}
+}
+
+void PlayerBullet::Draw(const Camera& camera)
+{
+	model_->Draw(worldTransform_, camera);
 }

@@ -20,24 +20,52 @@ void Player::Update()
 	//速さ
 	float kSpeed = 1.0f;
 
-	//移動量
-	if (input_->IsControllerConnected())
+	//Behaviorの遷移処理
+	if (behaviorRequest_)
 	{
-		velocity_ = {
-			input_->GetLeftStickX(),
-			input_->GetLeftStickY(),
-			0.0f,
-		};
+		behavior_ = behaviorRequest_.value();
+		//プレイヤーの各行動の初期化を実行
+		switch (behavior_) {
+		case Behavior::kNormal:
+		default:
+			BehaviorNormalInitialize();
+			break;
+		case Behavior::kShot:
+			BehaviorShotInitialize();
+			break;
+		}
+		behaviorRequest_ = std::nullopt;
 	}
 
-	worldTransform_.translation_ += velocity_;
+	//Behaviorの実行
+	switch (behavior_)
+	{
+	case Behavior::kNormal:
+	default:
+		BehaviorNormalUpdate();
+		break;
+	case Behavior::kShot:
+		BehaviorShotUpdate();
+		break;
+	}
 
-	//速さを加算
-	velocity_ = Mathf::Normalize(velocity_) * kSpeed;
+	////移動量
+	//if (input_->IsControllerConnected())
+	//{
+	//	velocity_ = {
+	//		input_->GetLeftStickX(),
+	//		input_->GetLeftStickY(),
+	//		0.0f,
+	//	};
+	//}
+
+	//worldTransform_.translation_ += velocity_;
+
+	////速さを加算
+	//velocity_ = Mathf::Normalize(velocity_) * kSpeed;
 
 	//ワールドトランスフォームの更新
 	worldTransform_.quaternion_ = Mathf::Normalize(Mathf::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f));
-	worldTransform_.UpdateMatrixFromEuler();
 	worldTransform_.UpdateMatrixFromQuaternion();
 
 	//モデルの更新
@@ -53,6 +81,45 @@ void Player::Update()
 	ImGui::Begin("Player");
 	ImGui::Text("AnimationNumber : %d", animationNumber_);
 	ImGui::End();
+}
+
+void Player::BehaviorNormalInitialize()
+{
+	
+}
+
+void Player::BehaviorNormalUpdate()
+{
+	//移動処理
+	const float speed = 0.6f;
+	Move(speed);
+
+	if (input_->IsControllerConnected())
+	{
+		//ダッシュ行動に変更
+		if (input_->IsPressButtonEnter(XINPUT_GAMEPAD_RIGHT_SHOULDER))
+		{
+				behaviorRequest_ = Behavior::kShot;
+		}
+	}
+
+}
+
+void Player::BehaviorShotInitialize()
+{
+}
+
+void Player::BehaviorShotUpdate()
+{
+	//移動処理
+	const float speed = 0.6f;
+	Move(speed);
+
+	//ダッシュ行動に変更
+	if (!input_->IsPressButtonEnter(XINPUT_GAMEPAD_RIGHT_SHOULDER))
+	{
+		behaviorRequest_ = Behavior::kNormal;
+	}
 }
 
 void Player::Draw(const Camera& camera)
@@ -87,7 +154,41 @@ void Player::MoveAnimation()
 
 void Player::Move(const float speed)
 {
-	
+	if (input_->IsControllerConnected())
+	{
+		//しきい値
+		const float threshold = 0.7f;
+
+		//移動フラグ
+		bool isMoving = false;
+
+		//移動量
+		velocity_ = {
+			input_->GetLeftStickX(),
+			input_->GetLeftStickY(),
+			0.0f,
+		};
+
+		//スティックの押し込みが遊び範囲を超えていたら移動フラグをtrueにする
+		if (Mathf::Length(velocity_) > threshold)
+		{
+			isMoving = true;
+		}
+
+		//スティックによる入力がある場合
+		if (isMoving)
+		{
+			//移動量に速さを反映
+			velocity_ = Mathf::Normalize(velocity_) * speed;
+
+			//移動
+			worldTransform_.translation_ += velocity_;
+		}
+		else
+		{
+			velocity_ = { 0.0f,0.0f,0.0f };
+		}
+	}
 }
 
 void Player::Rotate(const Vector3& v)

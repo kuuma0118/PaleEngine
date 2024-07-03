@@ -11,6 +11,8 @@
 #include "Engine/Math/MathFunction.h"
 #include <optional>
 
+#include "PlayerBullet.h"
+
 class LockOn;
 
 class Player : public IGameObject, public Collider
@@ -19,7 +21,8 @@ public:
 	//プレイヤーの状態
 	enum class Behavior
 	{
-		kRoot,//通常状態
+		kNormal,//通常状態
+		kShot, //通常攻撃状態
 	};
 
 	void Initialize() override;
@@ -43,6 +46,14 @@ public:
 
 
 private:
+
+	void BehaviorNormalInitialize();
+
+	void BehaviorNormalUpdate();
+
+	void BehaviorShotInitialize();
+
+	void BehaviorShotUpdate();
 
 	void MoveAnimation();
 
@@ -75,6 +86,12 @@ private:
 
 	//ロックオン
 	const LockOn* lockOn_ = nullptr;
+
+	//プレイヤーの行動状態
+	Behavior behavior_ = Behavior::kNormal;
+
+	//次にする行動
+	std::optional<Behavior> behaviorRequest_ = std::nullopt;
 
 	//パーティクル
 	std::unique_ptr<Model> particleModel_ = nullptr;
