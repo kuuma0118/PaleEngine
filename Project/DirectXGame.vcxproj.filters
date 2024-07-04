@@ -163,6 +163,12 @@
     <Filter Include="ソース ファイル\Engine\Base\Buffer">
       <UniqueIdentifier>{5540e6ca-7fbc-4c6e-b91a-4c330c773324}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Object\SkyDome">
+      <UniqueIdentifier>{3d37177c-ef27-4b31-aa0c-e9356a6de336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Project\Object\SkyDome">
+      <UniqueIdentifier>{52eb42fe-eccb-4ee5-85d3-2c87e958a4e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -371,6 +377,9 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\Player\PlayerBullet.cpp">
       <Filter>ソース ファイル\Project\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Player\SkyDome.cpp">
+      <Filter>ソース ファイル\Project\Object\SkyDome</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -637,6 +646,9 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\Player\PlayerBullet.h">
       <Filter>ヘッダー ファイル\Project\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Player\SkyDome.h">
+      <Filter>ヘッダー ファイル\Project\Object\SkyDome</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

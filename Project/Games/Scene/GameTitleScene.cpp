@@ -27,6 +27,12 @@ void GameTitleScene::Initialize()
 	player_->SetModel(playerModel_.get());
 	player_->SetTag("Player");
 
+	//天球の作成
+	skydomeModel_.reset(ModelManager::CreateFromModelFile("Skydome.obj", Opaque));
+	skydomeModel_->GetMaterial()->SetEnableLighting(false);
+	skydome_ = GameObjectManager::CreateGameObject<Skydome>();
+	skydome_->SetModel(skydomeModel_.get());
+
 }
 
 void GameTitleScene::Finalize()

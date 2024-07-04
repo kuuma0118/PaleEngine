@@ -94,6 +94,7 @@
     <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
     <ClCompile Include="Games\GameObj\Player\Player.cpp" />
     <ClCompile Include="Games\GameObj\Player\PlayerBullet.cpp" />
+    <ClCompile Include="Games\GameObj\Player\SkyDome.cpp" />
     <ClCompile Include="Games\Game\GameManager.cpp" />
     <ClCompile Include="Games\Scene\GameClearScene.cpp" />
     <ClCompile Include="Games\Scene\GameOverScene.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
     <ClInclude Include="Games\GameObj\Player\Player.h" />
     <ClInclude Include="Games\GameObj\Player\PlayerBullet.h" />
+    <ClInclude Include="Games\GameObj\Player\SkyDome.h" />
     <ClInclude Include="Games\Game\GameManager.h" />
     <ClInclude Include="Games\Scene\GameClearScene.h" />
     <ClInclude Include="Games\Scene\GameOverScene.h" />

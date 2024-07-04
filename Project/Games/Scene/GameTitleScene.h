@@ -9,6 +9,7 @@
 #include "Engine/2D/Sprite.h"	
 #include "Engine/Math/MathFunction.h"
 #include "Games/GameObj/Player/Player.h"
+#include "Games/GameObj/Player/SkyDome.h"
 
 class GameTitleScene : public IScene
 {
@@ -44,6 +45,9 @@ private:
 	WorldTransform playerWorldTransform_{};
 	Player* player_ = nullptr;
 
+	//天球
+	std::unique_ptr<Model> skydomeModel_ = nullptr;
+	Skydome* skydome_ = nullptr;
 
 	std::unique_ptr<Model> model_ = nullptr;
 };
