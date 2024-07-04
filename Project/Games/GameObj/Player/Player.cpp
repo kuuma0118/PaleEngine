@@ -115,7 +115,7 @@ void Player::BehaviorShotUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
-	//ダッシュ行動に変更
+	//通常行動に変更
 	if (!input_->IsPressButtonEnter(XINPUT_GAMEPAD_RIGHT_SHOULDER))
 	{
 		behaviorRequest_ = Behavior::kNormal;

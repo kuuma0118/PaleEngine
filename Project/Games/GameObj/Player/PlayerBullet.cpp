@@ -28,12 +28,19 @@ void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 
 void PlayerBullet::Update()
 {
-	//移動処理
-	worldTransform_.translation_ += velocity_;
 
-	//回転処理
-	worldTransform_.rotation_.x += 0.2f;
-	worldTransform_.rotation_.y += 0.2f;
+	worldTransform_.rotation_.y = std::atan2(velocity_.x, velocity_.z);
+
+	// 横軸方向の長さを求める
+	float velocityXZ;
+	velocityXZ = sqrt(velocity_.x * velocity_.x + velocity_.z * velocity_.z);
+
+	worldTransform_.rotation_.x = std::atan2(-velocity_.y, velocityXZ);
+
+	Vector3 transAdd = worldTransform_.translation_ + velocity_;
+
+	//移動処理
+	worldTransform_.translation_ += transAdd;
 
 	//ワールドトランスフォームの更新
 	worldTransform_.UpdateMatrixFromEuler();
