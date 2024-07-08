@@ -94,6 +94,8 @@ void Player::BehaviorNormalUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
+	ShotAttack();
+
 	if (input_->IsControllerConnected())
 	{
 		//ダッシュ行動に変更
@@ -120,6 +122,11 @@ void Player::BehaviorShotUpdate()
 	{
 		behaviorRequest_ = Behavior::kNormal;
 	}
+}
+
+void Player::ShotAttack()
+{
+
 }
 
 void Player::Draw(const Camera& camera)

@@ -12,6 +12,7 @@
 #include <optional>
 
 #include "PlayerBullet.h"
+#include "Games/Scene/GameTitleScene.h"
 
 class LockOn;
 
@@ -43,7 +44,7 @@ public:
 
 	const Vector3& GetVelocity() const { return velocity_; };
 
-
+	void ShotAttack();
 
 private:
 
@@ -62,6 +63,8 @@ private:
 	void Rotate(const Vector3& v);
 	
 private:
+
+	GameTitleScene* titleScene_;
 
 	//ワールドトランスフォーム
 	WorldTransform worldTransforms_{};

@@ -169,6 +169,12 @@
     <Filter Include="ソース ファイル\Project\Object\SkyDome">
       <UniqueIdentifier>{52eb42fe-eccb-4ee5-85d3-2c87e958a4e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Object\Raticle">
+      <UniqueIdentifier>{fe1d566b-b92b-4ff2-a6e4-3b0c17be1547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Project\Object\Raticle">
+      <UniqueIdentifier>{5b81a656-d1be-49e5-90a0-59a1c0ff4b21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -380,6 +386,9 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\Player\SkyDome.cpp">
       <Filter>ソース ファイル\Project\Object\SkyDome</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Raticle\Raticle.cpp">
+      <Filter>ソース ファイル\Project\Object\Raticle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -649,6 +658,9 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\Player\SkyDome.h">
       <Filter>ヘッダー ファイル\Project\Object\SkyDome</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Raticle\Raticle.h">
+      <Filter>ヘッダー ファイル\Project\Object\Raticle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
