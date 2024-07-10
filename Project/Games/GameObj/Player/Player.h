@@ -26,10 +26,22 @@ public:
 		kShot, //通常攻撃状態
 	};
 
+	/// <summary>
+    /// 初期化
+    /// </summary>
+    /// <param name="model">モデル</param>
+    /// <param name="pos">初期座標</param>
 	void Initialize() override;
 
+	/// <summary>
+    /// 更新
+    /// </summary>
 	void Update() override;
 
+	/// <summary>
+    /// 描画
+    /// </summary>
+    /// <param name="viewProjection">ビュープロジェクション</param>
 	void Draw(const Camera& camemra) override;
 
 	void DrawUI() override;
@@ -89,6 +101,9 @@ private:
 
 	//ロックオン
 	const LockOn* lockOn_ = nullptr;
+
+	//プレイヤー弾
+	std::list<std::unique_ptr<PlayerBullet>> bullet_{};
 
 	//プレイヤーの行動状態
 	Behavior behavior_ = Behavior::kNormal;

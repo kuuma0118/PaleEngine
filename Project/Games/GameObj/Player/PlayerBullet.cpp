@@ -1,6 +1,7 @@
 #include "PlayerBullet.h"
 #include "Engine/Framework/Object/GameObjectManager.h"
 #include "Player.h"
+#include "Engine/Utility/GlobalVariables.h"
 
 void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 {
@@ -24,6 +25,11 @@ void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 	SetCollisionAttribute(kCollisionAttributePlayerBullet);
 	SetCollisionMask(kCollisionMaskPlayerBullet);
 	SetCollisionPrimitive(kCollisionPrimitiveAABB);
+
+	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
+	const char* groupName = "PlayerBullet";
+	// グループを追加
+	globalVariables->CreateGroup(groupName);
 }
 
 void PlayerBullet::Update()
@@ -55,4 +61,14 @@ void PlayerBullet::Update()
 void PlayerBullet::Draw(const Camera& camera)
 {
 	model_->Draw(worldTransform_, camera);
+}
+
+const Vector3 PlayerBullet::GetWorldPosition() const{
+	// ワールド座標を入れる変数
+	Vector3 worldPos;
+	// ワールド行列の平行移動成分を取得(ワールド座標)
+	worldPos.x = worldTransform_.matWorld_.m[3][0];
+	worldPos.y = worldTransform_.matWorld_.m[3][1];
+	worldPos.z = worldTransform_.matWorld_.m[3][2];
+	return worldPos;
 }

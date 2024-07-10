@@ -60,16 +60,6 @@ void Raticle::Update(const Camera& camera)
 
 	}
 
-	// ビューポート行列
-	Matrix4x4 matViewport = Mathf::MakeViewportMatrix(0, 0, WindowAppli::kClientWidth, WindowAppli::kClientHeight, 0, 1);
-	// ビュー行列とプロジェクション行列、ビューポート行列を合成する
-	Matrix4x4 matViewProjectionViewport = camera.matView_ * camera.matProjection_ * matViewport;
-	//ワールド座標からスクリーン座標に変換
-	Vector3 positionScreen = Mathf::Transform(positionWorld, matViewProjectionViewport);
-	//Vector2に格納
-	Vector2 positionScreenV2 = { positionScreen.x,positionScreen.y };
-	//スプライトの座標を設定
-	lockOnMark_->SetPosition(positionScreenV2);
 }
 
 void Raticle::Draw()

@@ -117,8 +117,14 @@ void Player::BehaviorShotUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
+	const float kBulletSpeed = 1.0f;
+	Vector3 velocity(0, 0, kBulletSpeed);
+
+	velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
+
+
 	//通常行動に変更
-	if (!input_->IsPressButtonEnter(XINPUT_GAMEPAD_RIGHT_SHOULDER))
+	if (input_->IsPressButtonEnter(XINPUT_GAMEPAD_RIGHT_SHOULDER))
 	{
 		behaviorRequest_ = Behavior::kNormal;
 	}

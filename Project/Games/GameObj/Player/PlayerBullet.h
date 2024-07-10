@@ -7,12 +7,17 @@
 #include "Engine/Components/Particle/ParticleManager.h"
 #include "Engine/2D/Sprite.h"
 #include "Engine/Math/MathFunction.h"
+#include "Engine/Math/WorldTransform.h"
 
 /// <summary>
 /// 自キャラの弾
 /// </summary>
 class PlayerBullet : public Collider {
 public: // メンバ関数
+
+	//弾が消える時間
+	static const int32_t kBulletTime = 300;
+
 	/// <summary>
 	/// 初期化
 	/// </summary>
@@ -25,10 +30,10 @@ public: // メンバ関数
 	/// </summary>
 	void Update();
 
-	/// <summary>
+    /// <summary>
 	/// 描画
 	/// </summary>
-	/// <param name="viewProjection">ビュープロジェクション</param>
+	/// <param name="viewProjection">ビュープロジェクション</param>	
 	void Draw(const Camera& camera);
 
 	// Getter
@@ -37,6 +42,13 @@ public: // メンバ関数
 	const Vector3 GetWorldPosition() const override;
 	// 衝突を検出したら呼び出されるコールバック関数
 	void OnCollision(Collider* collider) override;
+
+	/// <summary>
+    /// ワールドポジションを取得
+    /// </summary>
+    /// <returns></returns>
+	const Vector3 GetWorldPosition() const override;
+
 
 private: // メンバ変数
 	//モデル
