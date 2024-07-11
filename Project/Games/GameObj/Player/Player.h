@@ -100,7 +100,7 @@ private:
 	const LockOn* lockOn_ = nullptr;
 
 	//プレイヤー弾
-	//std::list<std::unique_ptr<PlayerBullet>> bullet_{};
+	std::list<std::unique_ptr<PlayerBullet>> bullet_{};
 
 	//プレイヤーの行動状態
 	Behavior behavior_ = Behavior::kNormal;

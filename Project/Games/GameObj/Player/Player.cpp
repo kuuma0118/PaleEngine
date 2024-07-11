@@ -80,7 +80,13 @@ void Player::BehaviorNormalUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
-	//ShotAttack();
+
+
+	//bulletの更新
+	for (const std::unique_ptr<PlayerBullet>& missile : bullet_)
+	{
+		missile->Update();
+	}
 
 	if (input_->IsControllerConnected())
 	{
@@ -103,11 +109,12 @@ void Player::BehaviorShotUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
-	//const float kBulletSpeed = 1.0f;
-	//Vector3 velocity(0, 0, kBulletSpeed);
+	const float kBulletSpeed = 1.0f;
+	Vector3 velocity(0, 0, kBulletSpeed);
 
-	//velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
+	velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
 
+	ShotAttack();
 
 	//通常行動に変更
 	if (input_->IsPressButtonEnter(XINPUT_GAMEPAD_RIGHT_SHOULDER))
@@ -118,12 +125,28 @@ void Player::BehaviorShotUpdate()
 
 void Player::ShotAttack()
 {
+	// 弾の速度
+	const float kBulletSpeed = 1.0f;
+	Vector3 velocity(0, 0, kBulletSpeed);
 
+	// 速度ベクトルを自機の向きに合わせて回転させる
+	velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
+
+	//// 弾を生成し、初期化
+	//PlayerBullet* newBullet = new PlayerBullet();
+	//Vector3 worldPos{};
+	//worldPos = Player::GetWorldPosition();
+	//newBullet->Initialize(worldPos, velocity);
 }
 
 void Player::Draw(const Camera& camera)
 {
 	model_->Draw(worldTransform_, camera);
+	//bulletの描画
+	for (const std::unique_ptr<PlayerBullet>& bullet : bullet_)
+	{
+		bullet->Draw(camera);
+	}
 }
 
 void Player::DrawUI()
