@@ -13,7 +13,8 @@
 
 #include "PlayerBullet.h"
 
-class LockOn;
+//前方宣言
+class GameScene;
 
 class Player : public IGameObject, public Collider
 {
@@ -75,6 +76,10 @@ private:
 	
 private:
 
+	//弾の発射タイマー
+	int32_t bulletTime;
+	int32_t bulletTimer_ = 0;
+
 	//ワールドトランスフォーム
 	WorldTransform worldTransforms_{};
 
@@ -96,8 +101,8 @@ private:
 	//カメラ
 	const Camera* camera_ = nullptr;
 
-	//ロックオン
-	const LockOn* lockOn_ = nullptr;
+	//ゲームシーン
+	GameScene* gameScene_ = nullptr;
 
 	//プレイヤー弾
 	std::list<std::unique_ptr<PlayerBullet>> bullet_{};

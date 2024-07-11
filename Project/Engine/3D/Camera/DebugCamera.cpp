@@ -15,25 +15,25 @@ void DebugCamera::Update() {
 		//追従対象からカメラまでのオフセット(0度の時の値)
 		Vector3 offset = offset_;
 		//オフセットをカメラの回転に合わせて回転させる
-		offset = Mathf::TransformNormal(offset, matRot_);
+		offset = Mathseries::TransformNormal(offset, matRot_);
 		//座標をコピーしてオフセット分ずらす
 		worldTransform_.translation_ = target_->translation_ + offset;
 	}
 	//追従対象からカメラまでのオフセット(0度の時の値)
 	Vector3 offset = offset_;
 	//オフセットをカメラの回転に合わせて回転させる
-	offset = Mathf::TransformNormal(offset, matRot_);
+	offset = Mathseries::TransformNormal(offset, matRot_);
 	//座標をコピーしてオフセット分ずらす
 	worldTransform_.translation_ = offset;
 
 	//座標から平行移動行列を計算する
-	Matrix4x4 translateMatrix = Mathf::MakeTranslateMatrix(worldTransform_.translation_);
+	Matrix4x4 translateMatrix = Mathseries::MakeTranslateMatrix(worldTransform_.translation_);
 	//ワールド行列を計算
 	worldTransform_.matWorld_ = matRot_ * translateMatrix;
 	//ビュー行列の計算
-	viewProjection_.matView_ = Mathf::Inverse(translateMatrix) * Mathf::Inverse(matRot_);
+	viewProjection_.matView_ = Mathseries::Inverse(translateMatrix) * Mathseries::Inverse(matRot_);
 	//プロジェクション行列の計算
-	viewProjection_.matProjection_ = Mathf::MakePerspectiveFovMatrix(viewProjection_.fov_, viewProjection_.aspectRatio_, viewProjection_.nearClip_, viewProjection_.farClip_);
+	viewProjection_.matProjection_ = Mathseries::MakePerspectiveFovMatrix(viewProjection_.fov_, viewProjection_.aspectRatio_, viewProjection_.nearClip_, viewProjection_.farClip_);
 
 	//前後移動
 	if (input_->GetWheel() > 0) {
@@ -94,8 +94,8 @@ void DebugCamera::Update() {
 		//速さ
 		const float speed = 0.02f;
 		//追加回転分の回転行列を生成
-		Matrix4x4 matRotDelta = Mathf::MakeIdentity4x4();
-		matRotDelta *= Mathf::MakeRotateXMatrix(speed);
+		Matrix4x4 matRotDelta = Mathseries::MakeIdentity4x4();
+		matRotDelta *= Mathseries::MakeRotateXMatrix(speed);
 		//累積の回転行列を合成
 		matRot_ *= matRotDelta;
 	}
@@ -103,8 +103,8 @@ void DebugCamera::Update() {
 		//速さ
 		const float speed = -0.02f;
 		//追加回転分の回転行列を生成
-		Matrix4x4 matRotDelta = Mathf::MakeIdentity4x4();
-		matRotDelta *= Mathf::MakeRotateXMatrix(speed);
+		Matrix4x4 matRotDelta = Mathseries::MakeIdentity4x4();
+		matRotDelta *= Mathseries::MakeRotateXMatrix(speed);
 		//累積の回転行列を合成
 		matRot_ *= matRotDelta;
 	}
@@ -114,8 +114,8 @@ void DebugCamera::Update() {
 		//速さ
 		const float speed = 0.02f;
 		//追加回転分の回転行列を生成
-		Matrix4x4 matRotDelta = Mathf::MakeIdentity4x4();
-		matRotDelta *= Mathf::MakeRotateYMatrix(speed);
+		Matrix4x4 matRotDelta = Mathseries::MakeIdentity4x4();
+		matRotDelta *= Mathseries::MakeRotateYMatrix(speed);
 		//累積の回転行列を合成
 		matRot_ *= matRotDelta;
 	}
@@ -123,8 +123,8 @@ void DebugCamera::Update() {
 		//速さ
 		const float speed = -0.02f;
 		//追加回転分の回転行列を生成
-		Matrix4x4 matRotDelta = Mathf::MakeIdentity4x4();
-		matRotDelta *= Mathf::MakeRotateYMatrix(speed);
+		Matrix4x4 matRotDelta = Mathseries::MakeIdentity4x4();
+		matRotDelta *= Mathseries::MakeRotateYMatrix(speed);
 		//累積の回転行列を合成
 		matRot_ *= matRotDelta;
 	}

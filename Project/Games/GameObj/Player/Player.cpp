@@ -51,7 +51,7 @@ void Player::Update()
 
 
 	//ワールドトランスフォームの更新
-	worldTransform_.quaternion_ = Mathf::Normalize(Mathf::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f));
+	worldTransform_.quaternion_ = Mathseries::Normalize(Mathseries::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f));
 	worldTransform_.UpdateMatrixFromQuaternion();
 
 	//モデルの更新
@@ -112,7 +112,7 @@ void Player::BehaviorShotUpdate()
 	const float kBulletSpeed = 1.0f;
 	Vector3 velocity(0, 0, kBulletSpeed);
 
-	velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
+	velocity = Mathseries::TransformNormal(velocity, worldTransform_.matWorld_);
 
 	ShotAttack();
 
@@ -130,7 +130,7 @@ void Player::ShotAttack()
 	Vector3 velocity(0, 0, kBulletSpeed);
 
 	// 速度ベクトルを自機の向きに合わせて回転させる
-	velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
+	velocity = Mathseries::TransformNormal(velocity, worldTransform_.matWorld_);
 
 	//// 弾を生成し、初期化
 	//PlayerBullet* newBullet = new PlayerBullet();
@@ -192,7 +192,7 @@ void Player::Move(const float speed)
 		};
 
 		//スティックの押し込みが遊び範囲を超えていたら移動フラグをtrueにする
-		if (Mathf::Length(velocity_) > threshold)
+		if (Mathseries::Length(velocity_) > threshold)
 		{
 			isMoving = true;
 		}
@@ -201,7 +201,7 @@ void Player::Move(const float speed)
 		if (isMoving)
 		{
 			//移動量に速さを反映
-			velocity_ = Mathf::Normalize(velocity_) * speed;
+			velocity_ = Mathseries::Normalize(velocity_) * speed;
 
 			//移動
 			worldTransform_.translation_ += velocity_;

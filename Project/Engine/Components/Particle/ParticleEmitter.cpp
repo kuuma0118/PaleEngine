@@ -47,10 +47,10 @@ void ParticleEmitter::Update()
 				{
 					//距離を計算
 					Vector3 sub = gravityField_.center - particleIterator->get()->GetTranslation();
-					float distance = Mathf::Length(sub);
+					float distance = Mathseries::Length(sub);
 
 					//引力を計算
-					Vector3 gravityForce = Mathf::Normalize(sub) * gravityField_.strength;
+					Vector3 gravityForce = Mathseries::Normalize(sub) * gravityField_.strength;
 
 					//中心に近づいたら速度を0にする
 					if (distance < gravityField_.stopDistance)

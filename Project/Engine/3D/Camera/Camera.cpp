@@ -10,17 +10,17 @@ void Camera::Initialize()
 
 void Camera::UpdateViewMatrix()
 {
-	Matrix4x4 translateMatrix = Mathf::MakeTranslateMatrix(translation_);
-	Matrix4x4 rotateXMatrix = Mathf::MakeRotateXMatrix(rotation_.x);
-	Matrix4x4 rotateYMatrix = Mathf::MakeRotateYMatrix(rotation_.y);
-	Matrix4x4 rotateZMatrix = Mathf::MakeRotateZMatrix(rotation_.z);
+	Matrix4x4 translateMatrix = Mathseries::MakeTranslateMatrix(translation_);
+	Matrix4x4 rotateXMatrix = Mathseries::MakeRotateXMatrix(rotation_.x);
+	Matrix4x4 rotateYMatrix = Mathseries::MakeRotateYMatrix(rotation_.y);
+	Matrix4x4 rotateZMatrix = Mathseries::MakeRotateZMatrix(rotation_.z);
 	Matrix4x4 rotateMatrix = rotateXMatrix * rotateYMatrix * rotateZMatrix;
-	matView_ = Mathf::Inverse(translateMatrix) * Mathf::Inverse(rotateMatrix);
+	matView_ = Mathseries::Inverse(translateMatrix) * Mathseries::Inverse(rotateMatrix);
 }
 
 void Camera::UpdateProjectionMatrix()
 {
-	matProjection_ = Mathf::MakePerspectiveFovMatrix(fov_, aspectRatio_, nearClip_, farClip_);
+	matProjection_ = Mathseries::MakePerspectiveFovMatrix(fov_, aspectRatio_, nearClip_, farClip_);
 }
 
 void Camera::UpdateMatrix()

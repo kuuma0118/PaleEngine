@@ -8,7 +8,7 @@ void SkiningAnimation::Initialize(const std::vector<AnimationData>& animationDat
 	animationData_ = animationData;
 
 	//ワールド行列の初期化
-	localMatrix_ = Mathf::MakeIdentity4x4();
+	localMatrix_ = Mathseries::MakeIdentity4x4();
 
 	//スケルトンを作成
 	skeletonData_ = CreateSkeleton(rootNode);
@@ -19,7 +19,7 @@ void SkiningAnimation::Update()
 	//全てのJointの更新。親が若いので通常ループで処理可能になっている
 	for (Joint& joint : skeletonData_.joints)
 	{
-		joint.localMatrix = Mathf::MakeAffineMatrix(joint.scale, joint.rotate, joint.translate);
+		joint.localMatrix = Mathseries::MakeAffineMatrix(joint.scale, joint.rotate, joint.translate);
 		if (joint.parent)//親がいれば親の行列を掛ける
 		{
 			joint.skeletonSpaceMatrix = joint.localMatrix * skeletonData_.joints[*joint.parent].skeletonSpaceMatrix;
@@ -55,7 +55,7 @@ void SkiningAnimation::ApplyAnimation(const std::string& name, const uint32_t an
 				if (isLoop_)
 				{
 					animationTime_ = 0.0f;
-					localMatrix_ = Mathf::MakeIdentity4x4();
+					localMatrix_ = Mathseries::MakeIdentity4x4();
 				}
 				else
 				{
@@ -72,7 +72,7 @@ void SkiningAnimation::ApplyAnimation(const std::string& name, const uint32_t an
 			Vector3 translate = CalculateValue(rootNodeAnimation.translate.keyframes, animationTime_);
 			Quaternion rotate = CalculateValue(rootNodeAnimation.rotate.keyframes, animationTime_);
 			Vector3 scale = CalculateValue(rootNodeAnimation.scale.keyframes, animationTime_);
-			localMatrix_ = Mathf::MakeAffineMatrix(scale, rotate, translate);
+			localMatrix_ = Mathseries::MakeAffineMatrix(scale, rotate, translate);
 		}
 
 		//SkeletonAnimation
@@ -94,7 +94,7 @@ void SkiningAnimation::PlayAnimation()
 {
 	if (!isPause_)
 	{
-		localMatrix_ = Mathf::MakeIdentity4x4();
+		localMatrix_ = Mathseries::MakeIdentity4x4();
 		animationTime_ = 0.0f;
 	}
 	isPlay_ = true;
@@ -111,7 +111,7 @@ void SkiningAnimation::StopAnimation()
 	animationTime_ = 0.0f;
 	isPlay_ = false;
 	isPause_ = false;
-	localMatrix_ = Mathf::MakeIdentity4x4();
+	localMatrix_ = Mathseries::MakeIdentity4x4();
 }
 
 Vector3 SkiningAnimation::CalculateValue(const std::vector<KeyframeVector3>& keyframes, float time)
@@ -131,7 +131,7 @@ Vector3 SkiningAnimation::CalculateValue(const std::vector<KeyframeVector3>& key
 		{
 			//範囲内を補間する
 			float t = (time - keyframes[index].time) / (keyframes[nextIndex].time - keyframes[index].time);
-			return Mathf::Lerp(keyframes[index].value, keyframes[nextIndex].value, t);
+			return Mathseries::Lerp(keyframes[index].value, keyframes[nextIndex].value, t);
 		}
 	}
 	return (*keyframes.rbegin()).value;
@@ -154,7 +154,7 @@ Quaternion SkiningAnimation::CalculateValue(const std::vector<KeyframeQuaternion
 		{
 			//範囲内を補間する
 			float t = (time - keyframes[index].time) / (keyframes[nextIndex].time - keyframes[index].time);
-			return Mathf::Slerp(keyframes[index].value, keyframes[nextIndex].value, t);
+			return Mathseries::Slerp(keyframes[index].value, keyframes[nextIndex].value, t);
 		}
 	}
 	return (*keyframes.rbegin()).value;
@@ -179,7 +179,7 @@ int32_t SkiningAnimation::CreateJoint(const Node& node, const std::optional<int3
 	Joint joint;
 	joint.name = node.name;
 	joint.localMatrix = node.localMatrix;
-	joint.skeletonSpaceMatrix = Mathf::MakeIdentity4x4();
+	joint.skeletonSpaceMatrix = Mathseries::MakeIdentity4x4();
 	joint.scale = node.scale;
 	joint.rotate = node.rotate;
 	joint.translate = node.translate;

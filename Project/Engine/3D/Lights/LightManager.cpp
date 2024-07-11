@@ -35,7 +35,7 @@ void LightManager::Update()
 	for (uint32_t i = 0; i < kNumDirectionalLight; ++i)
 	{
 		lightData->directionalLights[i].color = directionalLights_[i].GetColor();
-		lightData->directionalLights[i].direction = Mathf::Normalize(directionalLights_[i].GetDirection());
+		lightData->directionalLights[i].direction = Mathseries::Normalize(directionalLights_[i].GetDirection());
 		lightData->directionalLights[i].intensity = directionalLights_[i].GetIntensity();
 		lightData->directionalLights[i].isEnable = directionalLights_[i].GetIsEnable();
 	}
@@ -53,7 +53,7 @@ void LightManager::Update()
 		lightData->spotLights[i].color = spotLights_[i].GetColor();
 		lightData->spotLights[i].position = spotLights_[i].GetPosition();
 		lightData->spotLights[i].intensity = spotLights_[i].GetIntensity();
-		lightData->spotLights[i].direction = Mathf::Normalize(spotLights_[i].GetDirection());
+		lightData->spotLights[i].direction = Mathseries::Normalize(spotLights_[i].GetDirection());
 		lightData->spotLights[i].distance = spotLights_[i].GetDistance();
 		lightData->spotLights[i].decay = spotLights_[i].GetDecay();
 		lightData->spotLights[i].cosFalloffStart = spotLights_[i].GetCosFalloffStart();

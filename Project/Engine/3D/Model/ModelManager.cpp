@@ -129,11 +129,11 @@ Model::ModelData ModelManager::LoadModelFile(const std::string& directoryPath, c
 			aiQuaternion rotate;
 			bindPoseMatrixAssimp.Decompose(scale, rotate, translate);//成分を抽出
 			//左手系のBindPoseMatrixを作る
-			Matrix4x4 bindPoseMatrix = Mathf::MakeAffineMatrix({ scale.x,scale.y,scale.z },
+			Matrix4x4 bindPoseMatrix = Mathseries::MakeAffineMatrix({ scale.x,scale.y,scale.z },
 				{ rotate.x,-rotate.y,-rotate.z,rotate.w },
 				{ -translate.x,translate.y,translate.z });
 			//InverseBindPoseMatrixにする
-			jointWeightData.inverseBindPoseMatrix = Mathf::Inverse(bindPoseMatrix);
+			jointWeightData.inverseBindPoseMatrix = Mathseries::Inverse(bindPoseMatrix);
 
 			//Weight情報を取り出す
 			for (uint32_t weightIndex = 0; weightIndex < bone->mNumWeights; ++weightIndex)
@@ -170,7 +170,7 @@ SkiningAnimation::Node ModelManager::ReadNode(aiNode* node)
 	result.scale = { scale.x,scale.y,scale.z };//Scaleはそのまま
 	result.rotate = { rotate.x,-rotate.y,-rotate.z,rotate.w };//X軸を反転、さらに回転方向が逆なので軸を反転させる
 	result.translate = { -translate.x,translate.y,translate.z };//X軸を反転
-	result.localMatrix = Mathf::MakeAffineMatrix(result.scale, result.rotate, result.translate);
+	result.localMatrix = Mathseries::MakeAffineMatrix(result.scale, result.rotate, result.translate);
 	result.name = node->mName.C_Str();//Node名を格納
 	result.children.resize(node->mNumChildren);//子供の数だけ確保
 	for (uint32_t childIndex = 0; childIndex < node->mNumChildren; ++childIndex)

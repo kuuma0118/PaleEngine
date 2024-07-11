@@ -173,7 +173,7 @@ void CollisionManager::CheckCollisionPair(Collider* colliderA, Collider* collide
 bool CollisionManager::CheckCollisionSphere(const Sphere& sphereA, const Sphere& sphereB)
 {
 	//コライダーAとコライダーBの距離を計算
-	float distance = Mathf::Length(sphereA.center - sphereB.center);
+	float distance = Mathseries::Length(sphereA.center - sphereB.center);
 	//球と球の交差判定
 	if (distance <= sphereA.radius + sphereB.radius)
 	{
@@ -191,7 +191,7 @@ bool CollisionManager::CheckCollisionSphereAABB(const Sphere& sphere, const AABB
 		std::clamp(sphere.center.z,aabb.min.z,aabb.max.z)
 	};
 	//最近接点と球の中心との距離を求める
-	float distance = Mathf::Length(closestPoint - sphere.center);
+	float distance = Mathseries::Length(closestPoint - sphere.center);
 	//距離が半径よりも小さければ衝突
 	if (distance <= sphere.radius)
 	{
@@ -238,27 +238,27 @@ bool CollisionManager::CheckCollisionAABBOBB(const AABB& aabb, const OBB& obb)
 	Vector3 Interval = aabbCenter - obb.center;
 
 	//文理軸 Ae1
-	float rA = Mathf::Length(Ae1);
+	float rA = Mathseries::Length(Ae1);
 	float rB = LenSegOnSeparateAxis(&NAe1, &Be1, &Be2, &Be3);
-	float L = fabs(Mathf::Dot(Interval, NAe1));
+	float L = fabs(Mathseries::Dot(Interval, NAe1));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : Ae2
-	rA = Mathf::Length(Ae2);
+	rA = Mathseries::Length(Ae2);
 	rB = LenSegOnSeparateAxis(&NAe2, &Be1, &Be2, &Be3);
-	L = fabs(Mathf::Dot(Interval, NAe2));
+	L = fabs(Mathseries::Dot(Interval, NAe2));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : Ae3
-	rA = Mathf::Length(Ae3);
+	rA = Mathseries::Length(Ae3);
 	rB = LenSegOnSeparateAxis(&NAe3, &Be1, &Be2, &Be3);
-	L = fabs(Mathf::Dot(Interval, NAe3));
+	L = fabs(Mathseries::Dot(Interval, NAe3));
 	if (L > rA + rB)
 	{
 		return false;
@@ -266,8 +266,8 @@ bool CollisionManager::CheckCollisionAABBOBB(const AABB& aabb, const OBB& obb)
 
 	// 分離軸 : Be1
 	rA = LenSegOnSeparateAxis(&NBe1, &Ae1, &Ae2, &Ae3);
-	rB = Mathf::Length(Be1);
-	L = fabs(Mathf::Dot(Interval, NBe1));
+	rB = Mathseries::Length(Be1);
+	L = fabs(Mathseries::Dot(Interval, NBe1));
 	if (L > rA + rB)
 	{
 		return false;
@@ -275,8 +275,8 @@ bool CollisionManager::CheckCollisionAABBOBB(const AABB& aabb, const OBB& obb)
 
 	// 分離軸 : Be2
 	rA = LenSegOnSeparateAxis(&NBe2, &Ae1, &Ae2, &Ae3);
-	rB = Mathf::Length(Be2);
-	L = fabs(Mathf::Dot(Interval, NBe2));
+	rB = Mathseries::Length(Be2);
+	L = fabs(Mathseries::Dot(Interval, NBe2));
 	if (L > rA + rB)
 	{
 		return false;
@@ -284,98 +284,98 @@ bool CollisionManager::CheckCollisionAABBOBB(const AABB& aabb, const OBB& obb)
 
 	// 分離軸 : Be3
 	rA = LenSegOnSeparateAxis(&NBe3, &Ae1, &Ae2, &Ae3);
-	rB = Mathf::Length(Be3);
-	L = fabs(Mathf::Dot(Interval, NBe3));
+	rB = Mathseries::Length(Be3);
+	L = fabs(Mathseries::Dot(Interval, NBe3));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C11
-	Vector3 Cross = Mathf::Cross(NAe1, NBe1);
+	Vector3 Cross = Mathseries::Cross(NAe1, NBe1);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae2, &Ae3, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be2, &Be3, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C12
-	Cross = Mathf::Cross(NAe1, NBe2);
+	Cross = Mathseries::Cross(NAe1, NBe2);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae2, &Ae3, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be1, &Be3, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C13
-	Cross = Mathf::Cross(NAe1, NBe3);
+	Cross = Mathseries::Cross(NAe1, NBe3);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae2, &Ae3, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be1, &Be2, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C21
-	Cross = Mathf::Cross(NAe2, NBe1);
+	Cross = Mathseries::Cross(NAe2, NBe1);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae1, &Ae3, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be2, &Be3, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C22
-	Cross = Mathf::Cross(NAe2, NBe2);
+	Cross = Mathseries::Cross(NAe2, NBe2);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae1, &Ae3, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be1, &Be3, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C23
-	Cross = Mathf::Cross(NAe2, NBe3);
+	Cross = Mathseries::Cross(NAe2, NBe3);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae1, &Ae3, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be1, &Be2, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C31
-	Cross = Mathf::Cross(NAe3, NBe1);
+	Cross = Mathseries::Cross(NAe3, NBe1);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae1, &Ae2, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be2, &Be3, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C32
-	Cross = Mathf::Cross(NAe3, NBe2);
+	Cross = Mathseries::Cross(NAe3, NBe2);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae1, &Ae2, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be1, &Be3, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
 	}
 
 	// 分離軸 : C33
-	Cross = Mathf::Cross(NAe3, NBe3);
+	Cross = Mathseries::Cross(NAe3, NBe3);
 	rA = LenSegOnSeparateAxis(&Cross, &Ae1, &Ae2, 0);
 	rB = LenSegOnSeparateAxis(&Cross, &Be1, &Be2, 0);
-	L = fabs(Mathf::Dot(Interval, Cross));
+	L = fabs(Mathseries::Dot(Interval, Cross));
 	if (L > rA + rB)
 	{
 		return false;
@@ -386,8 +386,8 @@ bool CollisionManager::CheckCollisionAABBOBB(const AABB& aabb, const OBB& obb)
 
 float CollisionManager::LenSegOnSeparateAxis(Vector3* Sep, Vector3* e1, Vector3* e2, Vector3* e3)
 {
-	float r1 = fabs(Mathf::Dot(*Sep, *e1));
-	float r2 = fabs(Mathf::Dot(*Sep, *e2));
-	float r3 = e3 ? (fabs(Mathf::Dot(*Sep, *e3))) : 0;
+	float r1 = fabs(Mathseries::Dot(*Sep, *e1));
+	float r2 = fabs(Mathseries::Dot(*Sep, *e2));
+	float r3 = e3 ? (fabs(Mathseries::Dot(*Sep, *e3))) : 0;
 	return r1 + r2 + r3;
 }

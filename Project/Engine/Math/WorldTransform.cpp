@@ -12,13 +12,13 @@ void WorldTransform::TransferMatrix()
 {
 	ConstBuffDataWorldTransform* worldTransformData = static_cast<ConstBuffDataWorldTransform*>(constBuff_->Map());
 	worldTransformData->world = matWorld_;
-	worldTransformData->worldInverseTranspse = Mathf::Transpose(Mathf::Inverse(matWorld_));
+	worldTransformData->worldInverseTranspse = Mathseries::Transpose(Mathseries::Inverse(matWorld_));
 	constBuff_->Unmap();
 }
 
 void WorldTransform::UpdateMatrixFromEuler()
 {
-	matWorld_ = Mathf::MakeAffineMatrix(scale_, rotation_, translation_);
+	matWorld_ = Mathseries::MakeAffineMatrix(scale_, rotation_, translation_);
 
 	if (parent_) 
 	{
@@ -30,7 +30,7 @@ void WorldTransform::UpdateMatrixFromEuler()
 
 void WorldTransform::UpdateMatrixFromQuaternion()
 {
-	matWorld_ = Mathf::MakeAffineMatrix(scale_, quaternion_, translation_);
+	matWorld_ = Mathseries::MakeAffineMatrix(scale_, quaternion_, translation_);
 
 	if (parent_)
 	{

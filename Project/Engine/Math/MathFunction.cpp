@@ -2,7 +2,13 @@
 #include <cassert>
 #include <numbers>
 
-namespace Mathf
+void Move(Vector3& transform, Vector3& move) {
+	transform.x += move.x;
+	transform.y += move.y;
+	transform.z += move.z;
+}
+
+namespace Mathseries
 {
 
 	float Dot(const Vector3& v1, const Vector3& v2)

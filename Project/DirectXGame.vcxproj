@@ -97,6 +97,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Games\GameObj\Player\SkyDome.cpp" />
+    <ClCompile Include="Games\GameObj\RailCamera\RailCamera.cpp" />
     <ClCompile Include="Games\GameObj\Raticle\Raticle.cpp" />
     <ClCompile Include="Games\Game\GameManager.cpp" />
     <ClCompile Include="Games\Scene\GameClearScene.cpp" />
@@ -192,6 +193,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Games\GameObj\Player\SkyDome.h" />
+    <ClInclude Include="Games\GameObj\RailCamera\RailCamera.h" />
     <ClInclude Include="Games\GameObj\Raticle\Raticle.h" />
     <ClInclude Include="Games\Game\GameManager.h" />
     <ClInclude Include="Games\Scene\GameClearScene.h" />

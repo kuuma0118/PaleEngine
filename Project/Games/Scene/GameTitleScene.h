@@ -10,6 +10,7 @@
 #include "Engine/Math/MathFunction.h"
 #include "Games/GameObj/Player/Player.h"
 #include "Games/GameObj/Player/SkyDome.h"
+#include "Games/GameObj/RailCamera/RailCamera.h"
 
 class GameTitleScene : public IScene
 {
@@ -48,6 +49,9 @@ private:
 	//天球
 	std::unique_ptr<Model> skydomeModel_ = nullptr;
 	Skydome* skydome_ = nullptr;
+
+	//RailCamera
+	RailCamera* railCamera_ = nullptr;
 
 	std::unique_ptr<Model> model_ = nullptr;
 };

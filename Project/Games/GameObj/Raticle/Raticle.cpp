@@ -43,7 +43,7 @@ void Raticle::Update(const Camera& camera)
 		};
 
 		//スティックの押し込みが遊び範囲を超えていたら移動フラグをtureにする
-		if (Mathf::Length(rotation) > threshold)
+		if (Mathseries::Length(rotation) > threshold)
 		{
 			isRotation = true;
 		}

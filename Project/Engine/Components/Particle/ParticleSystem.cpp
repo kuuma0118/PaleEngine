@@ -88,7 +88,7 @@ void ParticleSystem::CreateInstancingResource()
 	//単位行列を書き込んでおく
 	for (uint32_t index = 0; index < kMaxInstance; ++index)
 	{
-		instancingData_[index].world = Mathf::MakeIdentity4x4();
+		instancingData_[index].world = Mathseries::MakeIdentity4x4();
 		instancingData_[index].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 	instancingResource_->Unmap();
@@ -106,7 +106,7 @@ void ParticleSystem::UpdateInstancingResource(const Camera& camera)
 		//billboardMatrix.m[3][0] = 0.0f;
 		//billboardMatrix.m[3][1] = 0.0f;
 		//billboardMatrix.m[3][2] = 0.0f;
-		billboardMatrix = Mathf::MakeAffineMatrix({ 1.0f,1.0f,1.0f }, camera.rotation_, camera.translation_);;
+		billboardMatrix = Mathseries::MakeAffineMatrix({ 1.0f,1.0f,1.0f }, camera.rotation_, camera.translation_);;
 		billboardMatrix.m[3][0] = 0.0f;
 		billboardMatrix.m[3][1] = 0.0f;
 		billboardMatrix.m[3][2] = 0.0f;
@@ -121,19 +121,19 @@ void ParticleSystem::UpdateInstancingResource(const Camera& camera)
 			Matrix4x4 worldMatrix{};
 			if (isBillboard_)
 			{
-				Matrix4x4 scaleMatrix = Mathf::MakeScaleMatrix(particleIterator->get()->GetScale());
-				Matrix4x4 translateMatrix = Mathf::MakeTranslateMatrix(particleIterator->get()->GetTranslation());
+				Matrix4x4 scaleMatrix = Mathseries::MakeScaleMatrix(particleIterator->get()->GetScale());
+				Matrix4x4 translateMatrix = Mathseries::MakeTranslateMatrix(particleIterator->get()->GetTranslation());
 				worldMatrix = scaleMatrix * billboardMatrix * translateMatrix;
 			}
 			else
 			{
 				if (particleIterator->get()->GetRotation() != Vector3{ 0.0f, 0.0f, 0.0f })
 				{
-					worldMatrix = Mathf::MakeAffineMatrix(particleIterator->get()->GetScale(), particleIterator->get()->GetRotation(), particleIterator->get()->GetTranslation());
+					worldMatrix = Mathseries::MakeAffineMatrix(particleIterator->get()->GetScale(), particleIterator->get()->GetRotation(), particleIterator->get()->GetTranslation());
 				}
 				else
 				{
-					worldMatrix = Mathf::MakeAffineMatrix(particleIterator->get()->GetScale(), particleIterator->get()->GetQuaternion(), particleIterator->get()->GetTranslation());
+					worldMatrix = Mathseries::MakeAffineMatrix(particleIterator->get()->GetScale(), particleIterator->get()->GetQuaternion(), particleIterator->get()->GetTranslation());
 				}
 			}
 

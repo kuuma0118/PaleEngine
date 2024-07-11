@@ -175,6 +175,12 @@
     <Filter Include="ソース ファイル\Project\Object\Raticle">
       <UniqueIdentifier>{5b81a656-d1be-49e5-90a0-59a1c0ff4b21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Project\Object\RailCamera">
+      <UniqueIdentifier>{3f694c23-360f-47ec-82e5-9c7553a0e923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Object\RailCamera">
+      <UniqueIdentifier>{ae2af71e-7f85-4567-86cb-c2c46885cc64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -389,6 +395,9 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\Raticle\Raticle.cpp">
       <Filter>ソース ファイル\Project\Object\Raticle</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\RailCamera\RailCamera.cpp">
+      <Filter>ソース ファイル\Project\Object\RailCamera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -661,6 +670,9 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\Raticle\Raticle.h">
       <Filter>ヘッダー ファイル\Project\Object\Raticle</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\RailCamera\RailCamera.h">
+      <Filter>ヘッダー ファイル\Project\Object\RailCamera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

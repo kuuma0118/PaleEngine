@@ -52,7 +52,7 @@ void Model::Update(WorldTransform& worldTransform, const uint32_t animationNumbe
 	{
 		assert(jointIndex < skinCluster_.inverseBindPoseMatrices.size());
 		skinCluster_.mappedPalette[jointIndex].skeletonSpaceMatrix = skinCluster_.inverseBindPoseMatrices[jointIndex] * joints[jointIndex].skeletonSpaceMatrix;
-		skinCluster_.mappedPalette[jointIndex].skeletonSpaceInverseTransposeMatrix = Mathf::Transpose(Mathf::Inverse(skinCluster_.mappedPalette[jointIndex].skeletonSpaceMatrix));
+		skinCluster_.mappedPalette[jointIndex].skeletonSpaceInverseTransposeMatrix = Mathseries::Transpose(Mathseries::Inverse(skinCluster_.mappedPalette[jointIndex].skeletonSpaceMatrix));
 	}
 }
 
@@ -110,7 +110,7 @@ Model::SkinCluster Model::CreateSkinCluster(const SkiningAnimation::Skeleton& sk
 	skinCluster.inverseBindPoseMatrices.resize(skeleton.joints.size());
 	for (Matrix4x4& inverseBindPoseMatrix : skinCluster.inverseBindPoseMatrices)
 	{
-		inverseBindPoseMatrix = Mathf::MakeIdentity4x4();
+		inverseBindPoseMatrix = Mathseries::MakeIdentity4x4();
 	}
 
 	//ModelDataを解析してInfluenceを埋める

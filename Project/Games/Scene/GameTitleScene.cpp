@@ -11,6 +11,10 @@ void GameTitleScene::Initialize()
 
 	audio_ = Audio::GetInstance();
 
+	// RailCamera
+	railCamera_ = new RailCamera();
+	railCamera_->Initialize({ 0, 0, -50 }, { 0, 0, 0 });
+
 	//ゲームオブジェクトをクリア
 	gameObjectManager_ = GameObjectManager::GetInstance();
 	gameObjectManager_->Clear();

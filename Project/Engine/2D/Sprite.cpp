@@ -140,9 +140,9 @@ void Sprite::UpdateMaterialResource()
 	ConstBuffDataMaterial* materialData = static_cast<ConstBuffDataMaterial*>(materialConstBuffer_->Map());
 	//データを書き込む
 	materialData->color = color_;
-	Matrix4x4 uvTransformMatrix = Mathf::MakeScaleMatrix(Vector3{ uvScale_.x,uvScale_.y,1.0f });
-	uvTransformMatrix = uvTransformMatrix * Mathf::MakeRotateZMatrix(uvRotation_);
-	uvTransformMatrix = uvTransformMatrix * Mathf::MakeTranslateMatrix(Vector3{ uvTranslation_.x,uvTranslation_.y,0.0f });
+	Matrix4x4 uvTransformMatrix = Mathseries::MakeScaleMatrix(Vector3{ uvScale_.x,uvScale_.y,1.0f });
+	uvTransformMatrix = uvTransformMatrix * Mathseries::MakeRotateZMatrix(uvRotation_);
+	uvTransformMatrix = uvTransformMatrix * Mathseries::MakeTranslateMatrix(Vector3{ uvTranslation_.x,uvTranslation_.y,0.0f });
 	materialData->uvTransform = uvTransformMatrix;
 	materialConstBuffer_->Unmap();
 }
@@ -150,11 +150,11 @@ void Sprite::UpdateMaterialResource()
 void Sprite::UpdateWVPResource()
 {
 	//ワールド行列の作成
-	Matrix4x4 worldMatrix = Mathf::MakeAffineMatrix(Vector3(scale_.x, scale_.y, 1.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(position_.x, position_.y, 0.0f));
+	Matrix4x4 worldMatrix = Mathseries::MakeAffineMatrix(Vector3(scale_.x, scale_.y, 1.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(position_.x, position_.y, 0.0f));
 	//ビュー行列の作成
-	Matrix4x4 viewMatrix = Mathf::MakeIdentity4x4();
+	Matrix4x4 viewMatrix = Mathseries::MakeIdentity4x4();
 	//平行投影行列の作成
-	Matrix4x4 matProjection_ = Mathf::MakeOrthographicMatrix(0.0f, 0.0f, 1280.0f, 720.0f, 0.0f, 100.0f);
+	Matrix4x4 matProjection_ = Mathseries::MakeOrthographicMatrix(0.0f, 0.0f, 1280.0f, 720.0f, 0.0f, 100.0f);
 	//WVPMatrixの作成
 	Matrix4x4 worldViewProjectionMatrix = worldMatrix * viewMatrix * matProjection_;
 
