@@ -49,20 +49,6 @@ void Player::Update()
 		break;
 	}
 
-	////移動量
-	//if (input_->IsControllerConnected())
-	//{
-	//	velocity_ = {
-	//		input_->GetLeftStickX(),
-	//		input_->GetLeftStickY(),
-	//		0.0f,
-	//	};
-	//}
-
-	//worldTransform_.translation_ += velocity_;
-
-	////速さを加算
-	//velocity_ = Mathf::Normalize(velocity_) * kSpeed;
 
 	//ワールドトランスフォームの更新
 	worldTransform_.quaternion_ = Mathf::Normalize(Mathf::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f));
@@ -94,7 +80,7 @@ void Player::BehaviorNormalUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
-	ShotAttack();
+	//ShotAttack();
 
 	if (input_->IsControllerConnected())
 	{
@@ -117,10 +103,10 @@ void Player::BehaviorShotUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
-	const float kBulletSpeed = 1.0f;
-	Vector3 velocity(0, 0, kBulletSpeed);
+	//const float kBulletSpeed = 1.0f;
+	//Vector3 velocity(0, 0, kBulletSpeed);
 
-	velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
+	//velocity = Mathf::TransformNormal(velocity, worldTransform_.matWorld_);
 
 
 	//通常行動に変更
@@ -154,7 +140,7 @@ const Vector3 Player::GetWorldPosition() const
 {
 	Vector3 pos{};
 	pos.x = worldTransform_.matWorld_.m[3][0];
-	pos.y = worldTransform_.matWorld_.m[3][1] + 1.0f;
+	pos.y = worldTransform_.matWorld_.m[3][1];
 	pos.z = worldTransform_.matWorld_.m[3][2];
 	return pos;
 }

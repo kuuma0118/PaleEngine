@@ -93,7 +93,9 @@
     <ClCompile Include="Engine\Utility\Random.cpp" />
     <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
     <ClCompile Include="Games\GameObj\Player\Player.cpp" />
-    <ClCompile Include="Games\GameObj\Player\PlayerBullet.cpp" />
+    <ClCompile Include="Games\GameObj\Player\PlayerBullet.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Games\GameObj\Player\SkyDome.cpp" />
     <ClCompile Include="Games\GameObj\Raticle\Raticle.cpp" />
     <ClCompile Include="Games\Game\GameManager.cpp" />
@@ -186,7 +188,9 @@
     <ClInclude Include="Engine\Utility\Random.h" />
     <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
     <ClInclude Include="Games\GameObj\Player\Player.h" />
-    <ClInclude Include="Games\GameObj\Player\PlayerBullet.h" />
+    <ClInclude Include="Games\GameObj\Player\PlayerBullet.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Games\GameObj\Player\SkyDome.h" />
     <ClInclude Include="Games\GameObj\Raticle\Raticle.h" />
     <ClInclude Include="Games\Game\GameManager.h" />

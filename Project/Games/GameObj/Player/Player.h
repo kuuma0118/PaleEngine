@@ -12,7 +12,6 @@
 #include <optional>
 
 #include "PlayerBullet.h"
-#include "Games/Scene/GameTitleScene.h"
 
 class LockOn;
 
@@ -76,8 +75,6 @@ private:
 	
 private:
 
-	GameTitleScene* titleScene_;
-
 	//ワールドトランスフォーム
 	WorldTransform worldTransforms_{};
 
@@ -103,7 +100,7 @@ private:
 	const LockOn* lockOn_ = nullptr;
 
 	//プレイヤー弾
-	std::list<std::unique_ptr<PlayerBullet>> bullet_{};
+	//std::list<std::unique_ptr<PlayerBullet>> bullet_{};
 
 	//プレイヤーの行動状態
 	Behavior behavior_ = Behavior::kNormal;
