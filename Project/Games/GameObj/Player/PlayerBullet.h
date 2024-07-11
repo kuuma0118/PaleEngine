@@ -12,7 +12,7 @@
 /// <summary>
 /// 自キャラの弾
 /// </summary>
-class PlayerBullet : public Collider {
+class PlayerBullet : public IGameObject, public Collider {
 public: // メンバ関数
 
 	//弾が消える時間
@@ -54,8 +54,6 @@ public: // メンバ関数
 
 
 private: // メンバ変数
-	//モデル
-	std::unique_ptr<Model> model_ = nullptr;
 
 	//ワールドトランスフォーム
 	WorldTransform worldTransform_{};
@@ -66,11 +64,8 @@ private: // メンバ変数
 	//媒介変数
 	float trackingParameter_ = 0.0f;
 
-	//追尾
-	bool isTrackingComplete_ = false;
-
-	//追尾タイマー
-	uint32_t trackingTimer_ = 0;
+	//デスタイマー
+	int32_t deathTimer_ = kBulletTime;
 
 	//死亡フラグ
 	bool isDead_ = false;

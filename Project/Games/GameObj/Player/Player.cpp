@@ -20,6 +20,8 @@ void Player::Update()
 	//速さ
 	float kSpeed = 1.0f;
 
+	worldTransform_.translation_.z += 0.2f;
+
 	//Behaviorの遷移処理
 	if (behaviorRequest_)
 	{
