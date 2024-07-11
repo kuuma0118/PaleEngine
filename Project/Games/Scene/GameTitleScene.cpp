@@ -13,7 +13,8 @@ void GameTitleScene::Initialize()
 
 	// RailCamera
 	railCamera_ = new RailCamera();
-	railCamera_->Initialize({ 0, 0, -50 }, { 0, 0, 0 });
+
+	Vector3 radian = { 0.0f, 0.0f, 0.0f };
 
 	//ゲームオブジェクトをクリア
 	gameObjectManager_ = GameObjectManager::GetInstance();
@@ -31,6 +32,9 @@ void GameTitleScene::Initialize()
 	player_->SetModel(playerModel_.get());
 	player_->SetTag("Player");
 
+	railCamera_->Initialize(player_->GetWorldPosition(), radian);
+	player_->SetParent(&railCamera_->GetWorldTransform());
+
 	//天球の作成
 	skydomeModel_.reset(ModelManager::CreateFromModelFile("Skydome.obj", Opaque));
 	skydomeModel_->GetMaterial()->SetEnableLighting(false);
@@ -47,10 +51,15 @@ void GameTitleScene::Finalize()
 void GameTitleScene::Update() 
 {
 
-	camera_.UpdateMatrix();
+	// Camera
+	railCamera_->Update();
 
 	//ゲームオブジェクトの更新
 	gameObjectManager_->Update();
+
+	camera_.matView_ = railCamera_->GetViewProjection().matView_;
+	camera_.matProjection_ = railCamera_->GetViewProjection().matProjection_;
+	camera_.TransferMatrix();
 
 	ImGui::Begin("GameTitleScene");
 	ImGui::DragFloat3("WorldTransform.translation", &playerWorldTransform_.translation_.x, 0.1f);

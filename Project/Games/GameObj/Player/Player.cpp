@@ -159,6 +159,13 @@ void Player::OnCollision(Collider* collider)
 	
 }
 
+void Player::SetParent(const WorldTransform* parent)
+{
+
+	worldTransform_.parent_ = parent;
+
+}
+
 const Vector3 Player::GetWorldPosition() const
 {
 	Vector3 pos{};

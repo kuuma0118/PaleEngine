@@ -56,6 +56,8 @@ public:
 
 	const Vector3& GetVelocity() const { return velocity_; };
 
+	void SetParent(const WorldTransform* parent);
+
 	void ShotAttack();
 
 private:
