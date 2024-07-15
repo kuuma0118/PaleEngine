@@ -3,6 +3,12 @@
 #include "Engine/Base/TextureManager.h"	
 #include <numbers>
 
+GameTitleScene::GameTitleScene() {}
+
+GameTitleScene::~GameTitleScene() {
+	delete railCamera_;
+}
+
 void GameTitleScene::Initialize()
 {
 	renderer_ = Renderer::GetInstance();

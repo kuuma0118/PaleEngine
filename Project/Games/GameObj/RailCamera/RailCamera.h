@@ -27,7 +27,11 @@ public:
 	/// <returns></returns>
 	const WorldTransform& GetWorldTransform() { return worldTransform_; };
 
+	void SetTarget(const WorldTransform* target) { target_ = target; };
+
 private:
 	WorldTransform worldTransform_;
 	Camera camera_;
+	//追従対象
+	const WorldTransform* target_ = nullptr;
 };

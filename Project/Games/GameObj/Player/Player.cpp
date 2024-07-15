@@ -12,6 +12,7 @@ void Player::Initialize()
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
 
+	
 }
 
 void Player::Update()

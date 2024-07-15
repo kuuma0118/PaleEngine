@@ -15,6 +15,17 @@
 class GameTitleScene : public IScene
 {
 public:
+
+	/// <summary>
+	/// コンストクラタ
+	/// </summary>
+	GameTitleScene();
+
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
+	~GameTitleScene();
+
 	void Initialize() override;
 
 	void Finalize() override;
