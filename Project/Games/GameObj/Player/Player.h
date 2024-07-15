@@ -19,6 +19,9 @@ class GameScene;
 class Player : public IGameObject, public Collider
 {
 public:
+
+	~Player();
+
 	//プレイヤーの状態
 	enum class Behavior
 	{
@@ -107,7 +110,8 @@ private:
 	GameScene* gameScene_ = nullptr;
 
 	//プレイヤー弾
-	std::list<std::unique_ptr<PlayerBullet>> bullet_{};
+	std::unique_ptr<Model> bulletModel_ = nullptr;
+	PlayerBullet* bullet_ = nullptr;
 
 	//プレイヤーの行動状態
 	Behavior behavior_ = Behavior::kNormal;

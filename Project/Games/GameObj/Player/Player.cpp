@@ -12,7 +12,10 @@ void Player::Initialize()
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
 
-	
+	bulletModel_.reset(ModelManager::CreateFromModelFile("Cube.obj", Opaque));
+	bulletModel_->GetMaterial()->SetEnableLighting(false);
+	bullet_ = GameObjectManager::CreateGameObject<PlayerBullet>();
+
 }
 
 void Player::Update()
@@ -84,13 +87,6 @@ void Player::BehaviorNormalUpdate()
 	Move(speed);
 
 
-
-	//bulletの更新
-	for (const std::unique_ptr<PlayerBullet>& missile : bullet_)
-	{
-		missile->Update();
-	}
-
 	if (input_->IsControllerConnected())
 	{
 		//ダッシュ行動に変更
@@ -145,11 +141,7 @@ void Player::ShotAttack()
 void Player::Draw(const Camera& camera)
 {
 	model_->Draw(worldTransform_, camera);
-	//bulletの描画
-	for (const std::unique_ptr<PlayerBullet>& bullet : bullet_)
-	{
-		bullet->Draw(camera);
-	}
+
 }
 
 void Player::DrawUI()
