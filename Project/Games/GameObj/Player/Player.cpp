@@ -15,7 +15,7 @@ void Player::Initialize()
 	bulletModel_.reset(ModelManager::CreateFromModelFile("Cube.obj", Opaque));
 	bulletModel_->GetMaterial()->SetEnableLighting(false);
 	bullet_ = GameObjectManager::CreateGameObject<PlayerBullet>();
-
+	bullet_-> SetModel(bulletModel_.get());
 }
 
 void Player::Update()
@@ -100,6 +100,8 @@ void Player::BehaviorNormalUpdate()
 
 void Player::BehaviorShotInitialize()
 {
+	bullet_->SetTranslation()
+
 }
 
 void Player::BehaviorShotUpdate()
@@ -142,6 +144,7 @@ void Player::Draw(const Camera& camera)
 {
 	model_->Draw(worldTransform_, camera);
 
+	bullet_->SetIsVisible(true);
 }
 
 void Player::DrawUI()

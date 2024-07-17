@@ -52,6 +52,21 @@ public: // メンバ関数
 
 	const bool GetIsDead() const { return isDead_; };
 
+	void SetTranslation(const Vector3& translation) { worldTransform_.translation_ = translation; };
+
+	const Vector3& GetRotation() const { return worldTransform_.rotation_; };
+
+	void SetRotation(const Vector3& rotation) { worldTransform_.rotation_ = rotation; };
+
+	void SetParent(const WorldTransform* worldTransform) { worldTransform_.parent_ = worldTransform; };
+
+	bool GetIsAttack() const { return isAttack_; };
+
+	void SetIsAttack(bool isAttack) { isAttack_ = isAttack; };
+
+	bool GetIsHit() const { return isHit_; };
+
+	void SetIsHit(bool isHit) { isHit_ = isHit; };
 
 private: // メンバ変数
 
@@ -66,6 +81,12 @@ private: // メンバ変数
 
 	//デスタイマー
 	int32_t deathTimer_ = kBulletTime;
+
+	//攻撃フラグ
+	bool isAttack_ = false;
+
+	//ヒットフラグ
+	bool isHit_ = false;
 
 	//死亡フラグ
 	bool isDead_ = false;
