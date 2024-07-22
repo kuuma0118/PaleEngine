@@ -26,7 +26,7 @@ enum BlendMode
 	kBlendModeMultiply,
 	//スクリーン
 	kBlendModeScreen,
-	//利用してはいけない
+
 	kCountOfBlendMode,
 };
 
@@ -45,6 +45,7 @@ public:
 		kTexture,
 		//ライト
 		kDirectionalLight,
+		//MatrixPalette
 		kMatrixPalette,
 	};
 
@@ -65,8 +66,8 @@ public:
 		UINT indexCount,
 		DrawPass drawPass);
 
-	void AddDebugObject(D3D12_VERTEX_BUFFER_VIEW vertexBufferView, 
-	D3D12_GPU_VIRTUAL_ADDRESS worldTransformCBV,
+	void AddDebugObject(D3D12_VERTEX_BUFFER_VIEW vertexBufferView,
+		D3D12_GPU_VIRTUAL_ADDRESS worldTransformCBV,
 		D3D12_GPU_VIRTUAL_ADDRESS cameraCBV,
 		UINT indexCount);
 
@@ -88,6 +89,10 @@ public:
 
 	void PostDrawParticles();
 
+	void PreDrawSkybox();
+
+	void PostDrawSkybox();
+
 	const DescriptorHandle& GetSceneColorDescriptorHandle() const { return sceneColorBuffer_->GetSRVHandle(); };
 
 	const DescriptorHandle& GetLinearDepthDescriptorHandle() const { return linearDepthColorBuffer_->GetSRVHandle(); };
@@ -102,13 +107,15 @@ private:
 
 	void CreateSkinningModelPipelineState();
 
+	void CreateDebugPipelineState();
+
 	void CreateSpritePipelineState();
 
 	void CreateParticlePipelineState();
 
-	void Sort();
+	void CreateSkyboxPipelineState();
 
-	void CreateDebugPipelineState();
+	void Sort();
 
 private:
 	struct SortObject {
@@ -150,19 +157,23 @@ private:
 
 	RootSignature skinningModelRootSignature_{};
 
+	RootSignature debugRootSignature_{};
+
 	RootSignature spriteRootSignature_{};
 
 	RootSignature particleRootSignature_{};
 
-	RootSignature debugRootSignature_{};
+	RootSignature skyboxRootSignature_{};
 
 	std::vector<PipelineState> modelPipelineStates_{};
 
 	std::vector<PipelineState> skinningModelPipelineStates_{};
 
+	std::vector<PipelineState> debugPipelineStates_{};
+
 	std::vector<PipelineState> spritePipelineStates_{};
 
 	std::vector<PipelineState> particlePipelineStates_{};
 
-	std::vector<PipelineState> debugPipelineStates_{};
+	std::vector<PipelineState> skyboxPipelineStates_{};
 };

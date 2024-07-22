@@ -40,6 +40,12 @@ void GameTitleScene::Initialize()
 	blockModel_->GetMaterial()->SetEnableLighting(false);
 	block_ = GameObjectManager::CreateGameObject<Block>();
 	block_->SetModel(blockModel_.get());
+
+	//Skyboxの生成
+	TextureManager::Load("rostock_laage_airport_4k.dds");
+	skybox_.reset(Skybox::Create("rostock_laage_airport_4k.dds"));
+	backGround_ = std::make_unique<BackGround>();
+	backGround_->Initialize(skybox_.get());
 }
 
 void GameTitleScene::Finalize()
@@ -51,6 +57,9 @@ void GameTitleScene::Update()
 {
 
 	camera_.UpdateMatrix();
+
+	//背景の更新
+	backGround_->Update();
 
 	//ゲームオブジェクトの更新
 	gameObjectManager_->Update();
@@ -76,6 +85,17 @@ void GameTitleScene::Draw()
 
 	//深度バッファをクリア
 	renderer_->ClearDepthBuffer();
+
+#pragma region Skyboxの描画
+	//Skybox描画前処理
+	renderer_->PreDrawSkybox();
+
+	//Skyboxの描画
+	backGround_->Draw(camera_);
+
+	//Skybox描画処理
+	renderer_->PostDrawSkybox();
+#pragma endregion
 
 #pragma region 3Dオブジェクト描画
 

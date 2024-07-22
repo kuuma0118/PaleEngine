@@ -11,6 +11,8 @@
 #include "Games/GameObj/Player/Player.h"
 #include "Games/GameObj/Player/PlayerTypeB.h"
 #include "Games/GameObj/Player/Block.h"
+#include <Games/GameObj/Skybox/Skybox.h>
+#include <Games/GameObj/BackSky/BackSky.h>
 
 class GameTitleScene : public IScene
 {
@@ -56,5 +58,9 @@ private:
 	Block* block_ = nullptr;
 
 	std::unique_ptr<Model> model_ = nullptr;
+
+	//Skybox
+	std::unique_ptr<Skybox> skybox_ = nullptr;
+	std::unique_ptr<BackGround> backGround_ = nullptr;
 };
 

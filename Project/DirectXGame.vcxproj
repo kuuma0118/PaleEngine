@@ -92,9 +92,11 @@
     <ClCompile Include="Engine\Utility\Log.cpp" />
     <ClCompile Include="Engine\Utility\Random.cpp" />
     <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
+    <ClCompile Include="Games\GameObj\BackSky\BackSky.cpp" />
     <ClCompile Include="Games\GameObj\Player\Block.cpp" />
     <ClCompile Include="Games\GameObj\Player\Player.cpp" />
     <ClCompile Include="Games\GameObj\Player\PlayerTypeB.cpp" />
+    <ClCompile Include="Games\GameObj\Skybox\Skybox.cpp" />
     <ClCompile Include="Games\Game\GameManager.cpp" />
     <ClCompile Include="Games\Scene\GameClearScene.cpp" />
     <ClCompile Include="Games\Scene\GameOverScene.cpp" />
@@ -184,9 +186,11 @@
     <ClInclude Include="Engine\Utility\Log.h" />
     <ClInclude Include="Engine\Utility\Random.h" />
     <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
+    <ClInclude Include="Games\GameObj\BackSky\BackSky.h" />
     <ClInclude Include="Games\GameObj\Player\Block.h" />
     <ClInclude Include="Games\GameObj\Player\Player.h" />
     <ClInclude Include="Games\GameObj\Player\PlayerTypeB.h" />
+    <ClInclude Include="Games\GameObj\Skybox\Skybox.h" />
     <ClInclude Include="Games\Game\GameManager.h" />
     <ClInclude Include="Games\Scene\GameClearScene.h" />
     <ClInclude Include="Games\Scene\GameOverScene.h" />
@@ -238,6 +242,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
     <None Include="Resources\Shaders\PostEffects.hlsli">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Resources\Shaders\Skybox.hlsli">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
@@ -326,6 +334,20 @@
     <FxCompile Include="Resources\Shaders\SkinningObject3d.VS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Resources\Shaders\Skybox.PS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">6.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">6.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Resources\Shaders\Skybox.VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">6.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">6.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="Resources\Shaders\Sprite.PS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

@@ -163,6 +163,18 @@
     <Filter Include="ソース ファイル\Engine\Base\Buffer">
       <UniqueIdentifier>{5540e6ca-7fbc-4c6e-b91a-4c330c773324}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\3D\SkyBox">
+      <UniqueIdentifier>{dbd91d8f-033c-462c-b0a0-5d4e3a93ec81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\3D\SkyBox">
+      <UniqueIdentifier>{63be7533-92bf-41cf-b2e9-af0c4c5d2734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Object\BackSky">
+      <UniqueIdentifier>{5cbf5ca0-21c2-44e7-9a52-7d868bdadf0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Framework\Object\BackSky">
+      <UniqueIdentifier>{a9a29476-95d8-4d28-80ab-8b45236daf9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -374,6 +386,12 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\Player\Block.cpp">
       <Filter>ソース ファイル\Project\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Skybox\Skybox.cpp">
+      <Filter>ソース ファイル\Engine\3D\SkyBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\BackSky\BackSky.cpp">
+      <Filter>ソース ファイル\Engine\Framework\Object\BackSky</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -647,6 +665,12 @@
     <ClInclude Include="Games\GameObj\Player\Block.h">
       <Filter>ヘッダー ファイル\Project\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Games\GameObj\Skybox\Skybox.h">
+      <Filter>ヘッダー ファイル\Engine\3D\SkyBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\BackSky\BackSky.h">
+      <Filter>ヘッダー ファイル\Project\Object\BackSky</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Externals\imgui\LICENSE.txt">
@@ -685,6 +709,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Resources\Shaders\DebugObject3d.hlsli">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Resources\Shaders\Skybox.hlsli">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
@@ -756,6 +783,12 @@
       <Filter>Shaders</Filter>
     </FxCompile>
     <FxCompile Include="Resources\Shaders\DebugObject3d.VS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Resources\Shaders\Skybox.PS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Resources\Shaders\Skybox.VS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>
