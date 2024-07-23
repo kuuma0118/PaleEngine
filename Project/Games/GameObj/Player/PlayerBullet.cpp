@@ -4,6 +4,10 @@
 
 void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 {
+	//モデルの生成
+	model_.reset(ModelManager::CreateFromModelFile("Cube.obj", Opaque));
+	model_->GetMaterial()->SetEnableLighting(true);
+
 	//速度の初期化
 	velocity_ = velocity;
 
@@ -11,6 +15,8 @@ void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 	worldTransform_.Initialize();
 	worldTransform_.translation_ = position;
 	worldTransform_.scale_ = { 0.6f,0.6f,0.6f };
+
+	
 
 	AABB aabb = {
 		.min{-worldTransform_.scale_.x,-worldTransform_.scale_.y,-worldTransform_.scale_.z,},
@@ -21,10 +27,6 @@ void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 	SetCollisionMask(kCollisionMaskPlayerBullet);
 	SetCollisionPrimitive(kCollisionPrimitiveAABB);
 
-	GlobalVariables* globalVariables = GlobalVariables::GetInstance();
-	const char* groupName = "PlayerBullet";
-	// グループを追加
-	globalVariables->CreateGroup(groupName);
 }
 
 void PlayerBullet::OnCollision(Collider* collider)
@@ -37,17 +39,17 @@ void PlayerBullet::Update()
 
 	Move(worldTransform_.translation_, velocity_);
 
-	if (--deathTimer_ <= 0) {
+	/*if (--deathTimer_ <= 0) {
 		isDead_ = true;
-	}
+	}*/
 	//ワールドトランスフォームの更新
 	worldTransform_.UpdateMatrixFromEuler();
 
 	//フィールド外に出たら死亡フラグを立てる
-	if (worldTransform_.translation_.x <= -100.0f || worldTransform_.translation_.x >= 100.0f || worldTransform_.translation_.y <= 1.0f || worldTransform_.translation_.z <= -100.0f || worldTransform_.translation_.z >= 100.0f)
-	{
-		isDead_ = true;
-	}
+	//if (worldTransform_.translation_.x <= -100.0f || worldTransform_.translation_.x >= 100.0f || worldTransform_.translation_.y <= 100.0f || worldTransform_.translation_.z <= -100.0f || worldTransform_.translation_.z >= 100.0f)
+	//{
+	//	isDead_ = true;
+	//}
 }
 
 void PlayerBullet::Draw(const Camera& camera)

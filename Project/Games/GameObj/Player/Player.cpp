@@ -2,6 +2,14 @@
 #include "Engine/Framework/Object/GameObjectManager.h"
 #include <numbers>
 
+
+Player::~Player() {
+	for (std::unique_ptr<PlayerBullet>& bullet : bullet_) {
+		bullet.release();
+	}
+	delete sprite2DReticle_;
+}
+
 void Player::Initialize()
 {
 	//ワールドトランスフォームの初期化
@@ -12,11 +20,25 @@ void Player::Initialize()
 	//入力クラスのインスタンスを取得
 	input_ = Input::GetInstance();
 
-	
+	//3Dレティクルのワールドトランスフォーム初期化
+	worldTransform3DReticle_.Initialize();
+
 }
 
 void Player::Update()
 {
+
+	//死亡フラグの立ったミサイルを削除
+	bullet_.remove_if([](std::unique_ptr<PlayerBullet>& bullet)
+		{
+			if (bullet->GetIsDead())
+			{
+				bullet.reset();
+				return true;
+			}
+			return false;
+		}
+	);
 
 	//速さ
 	float kSpeed = 1.0f;
@@ -60,6 +82,12 @@ void Player::Update()
 	//モデルの更新
 	model_->Update(worldTransform_, animationNumber_);
 
+	//ミサイルの更新
+	for (const std::unique_ptr<PlayerBullet>& bullets : bullet_)
+	{
+		bullets->Update();
+	}
+
 	//アニメーションを再生
 	if (!model_->GetAnimation()->IsPlaying())
 	{
@@ -83,14 +111,6 @@ void Player::BehaviorNormalUpdate()
 	const float speed = 0.6f;
 	Move(speed);
 
-
-
-	//bulletの更新
-	for (const std::unique_ptr<PlayerBullet>& missile : bullet_)
-	{
-		missile->Update();
-	}
-
 	if (input_->IsControllerConnected())
 	{
 		//ダッシュ行動に変更
@@ -104,21 +124,17 @@ void Player::BehaviorNormalUpdate()
 
 void Player::BehaviorShotInitialize()
 {
+
 }
 
 void Player::BehaviorShotUpdate()
 {
 	//移動処理
-	const float speed = 0.6f;
+	const float speed = 2.6f;
 	Move(speed);
 
-	const float kBulletSpeed = 1.0f;
-	Vector3 velocity(0, 0, kBulletSpeed);
-
-	velocity = Mathseries::TransformNormal(velocity, worldTransform_.matWorld_);
-
 	ShotAttack();
-
+	
 	//通常行動に変更
 	if (input_->IsPressButtonEnter(XINPUT_GAMEPAD_RIGHT_SHOULDER))
 	{
@@ -128,27 +144,28 @@ void Player::BehaviorShotUpdate()
 
 void Player::ShotAttack()
 {
-	// 弾の速度
-	const float kBulletSpeed = 1.0f;
-	Vector3 velocity(0, 0, kBulletSpeed);
-
-	// 速度ベクトルを自機の向きに合わせて回転させる
-	velocity = Mathseries::TransformNormal(velocity, worldTransform_.matWorld_);
-
-	//// 弾を生成し、初期化
-	//PlayerBullet* newBullet = new PlayerBullet();
-	//Vector3 worldPos{};
-	//worldPos = Player::GetWorldPosition();
-	//newBullet->Initialize(worldPos, velocity);
+	if (input_->IsPressButtonEnter(XINPUT_GAMEPAD_A))
+	{
+		PlayerBullet* newbullet = new PlayerBullet();
+		Vector3 velocity[2];
+		velocity[0] = { 0.0f,0.0f,0.01f };
+		velocity[0] = Mathseries::TransformNormal(velocity[0], worldTransform_.matWorld_);
+		Vector3 worldPos;
+		worldPos = Player::GetWorldPosition();
+		Vector3 translation = worldPos;
+		newbullet->Initialize(translation, velocity[0]);
+		//弾を登録する
+		bullet_.push_back(std::unique_ptr<PlayerBullet>(newbullet));
+	}
 }
 
 void Player::Draw(const Camera& camera)
 {
 	model_->Draw(worldTransform_, camera);
 	//bulletの描画
-	for (const std::unique_ptr<PlayerBullet>& bullet : bullet_)
+	for (const std::unique_ptr<PlayerBullet>& bullets : bullet_)
 	{
-		bullet->Draw(camera);
+		bullets->Draw(camera);
 	}
 }
 

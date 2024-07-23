@@ -19,6 +19,9 @@ class GameScene;
 class Player : public IGameObject, public Collider
 {
 public:
+
+	~Player();
+
 	//プレイヤーの状態
 	enum class Behavior
 	{
@@ -58,7 +61,17 @@ public:
 
 	void SetParent(const WorldTransform* parent);
 
+	Vector3 Get3DReticleWorldPosition();
+
+	void Set3DReticlePosition(const Camera& viewProjection);
+
+	void Set3DReticleMousePosition(const Camera& viewProjection);
+
 	void ShotAttack();
+
+	const std::list<std::unique_ptr<PlayerBullet>>& Getbullets() const { return bullet_; };
+
+	void AddMissile(PlayerBullet* bullet) { bullet_.push_back(std::unique_ptr<PlayerBullet>(bullet)); };
 
 private:
 
@@ -121,5 +134,11 @@ private:
 
 	//アニメーションの番号
 	uint32_t animationNumber_ = 0;
+
+	//3Dレティクル用ワールドトランスフォーム
+	WorldTransform worldTransform3DReticle_;
+
+	//2Dレティクル用スプライト
+	Sprite* sprite2DReticle_ = nullptr;
 };
 

@@ -12,48 +12,31 @@
 /// <summary>
 /// 自キャラの弾
 /// </summary>
-class PlayerBullet : public IGameObject, public Collider {
+class PlayerBullet :  public Collider {
 public: // メンバ関数
 
 	//弾が消える時間
 	static const int32_t kBulletTime = 300;
 
-	/// <summary>
-	/// 初期化
-	/// </summary>
-	/// <param name="model">モデル</param>
-	/// <param name="pos">初期座標</param>
-	void Initialize(const Vector3& pos, const Vector3& velocity);
+	void Initialize(const Vector3& position, const Vector3& velocity);
 
-	/// <summary>
-	/// 更新
-	/// </summary>
 	void Update();
 
-    /// <summary>
-	/// 描画
-	/// </summary>
-	/// <param name="viewProjection">ビュープロジェクション</param>	
 	void Draw(const Camera& camera);
 
-	// Getter
-	bool IsDead() const { return isDead_; }
-
-	// 衝突を検出したら呼び出されるコールバック関数
 	void OnCollision(Collider* collider) override;
 
-	/// <summary>
-    /// ワールドポジションを取得
-    /// </summary>
-    /// <returns></returns>
 	const Vector3 GetWorldPosition() const override;
 
 	const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
 
 	const bool GetIsDead() const { return isDead_; };
 
+	void SetTranslation(const Vector3& translation) { worldTransform_.translation_ = translation; };
 
-private: // メンバ変数
+private:
+	//モデル
+	std::unique_ptr<Model> model_ = nullptr;
 
 	//ワールドトランスフォーム
 	WorldTransform worldTransform_{};
@@ -69,5 +52,10 @@ private: // メンバ変数
 
 	//死亡フラグ
 	bool isDead_ = false;
-};
 
+	//オーディオハンドル
+	uint32_t audioHandle_ = 0;
+
+	//プレイヤーにはじかれたかどうか
+	bool isRepelled_ = false;
+};
