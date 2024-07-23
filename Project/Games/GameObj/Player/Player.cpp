@@ -7,7 +7,6 @@ Player::~Player() {
 	for (std::unique_ptr<PlayerBullet>& bullet : bullet_) {
 		bullet.release();
 	}
-	delete sprite2DReticle_;
 }
 
 void Player::Initialize()
@@ -22,6 +21,10 @@ void Player::Initialize()
 
 	//3Dレティクルのワールドトランスフォーム初期化
 	worldTransform3DReticle_.Initialize();
+
+	TextureManager::Load("Raticle.png");
+	spriteRaticle_.reset(Sprite::Create("Raticle.png", { 640.0f,360.0f }));
+	spriteRaticle_->SetColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 
 }
 
