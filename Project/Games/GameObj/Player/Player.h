@@ -61,11 +61,14 @@ public:
 
 	void SetParent(const WorldTransform* parent);
 
+	void SetRaticleParent(const WorldTransform* parent);
+
+	void ReticleAim() ;
+
 	Vector3 Get3DReticleWorldPosition();
 
-	void Set3DReticlePosition(const Camera& viewProjection);
+	void Set3DReticlePosition();
 
-	void Set3DReticleMousePosition(const Camera& viewProjection);
 
 	void ShotAttack();
 
