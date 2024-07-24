@@ -181,6 +181,12 @@
     <Filter Include="ヘッダー ファイル\Project\Object\RailCamera">
       <UniqueIdentifier>{ae2af71e-7f85-4567-86cb-c2c46885cc64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Project\Object\Enemy">
+      <UniqueIdentifier>{dbbc8c20-e4f4-49ea-afc6-3b7a83045740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Object\Enemy">
+      <UniqueIdentifier>{ea8a8048-2156-4715-afdd-77e6d4e78cd9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -398,6 +404,21 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\RailCamera\RailCamera.cpp">
       <Filter>ソース ファイル\Project\Object\RailCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Enemy\Enemy.cpp">
+      <Filter>ソース ファイル\Project\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Enemy\EnemyBullet.cpp">
+      <Filter>ソース ファイル\Project\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Enemy\EnemyStateApproach.cpp">
+      <Filter>ソース ファイル\Project\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Enemy\EnemyStateLeave.cpp">
+      <Filter>ソース ファイル\Project\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\Enemy\TimeCall.cpp">
+      <Filter>ソース ファイル\Project\Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -673,6 +694,24 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\RailCamera\RailCamera.h">
       <Filter>ヘッダー ファイル\Project\Object\RailCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Enemy\Enemy.h">
+      <Filter>ヘッダー ファイル\Project\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Enemy\EnemyBullet.h">
+      <Filter>ヘッダー ファイル\Project\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Enemy\EnemyStateApproach.h">
+      <Filter>ヘッダー ファイル\Project\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Enemy\EnemyStateLeave.h">
+      <Filter>ヘッダー ファイル\Project\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Enemy\IEnemyState.h">
+      <Filter>ヘッダー ファイル\Project\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\Enemy\TimeCall.h">
+      <Filter>ヘッダー ファイル\Project\Object\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

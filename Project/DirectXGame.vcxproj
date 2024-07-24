@@ -92,6 +92,11 @@
     <ClCompile Include="Engine\Utility\Log.cpp" />
     <ClCompile Include="Engine\Utility\Random.cpp" />
     <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
+    <ClCompile Include="Games\GameObj\Enemy\Enemy.cpp" />
+    <ClCompile Include="Games\GameObj\Enemy\EnemyBullet.cpp" />
+    <ClCompile Include="Games\GameObj\Enemy\EnemyStateApproach.cpp" />
+    <ClCompile Include="Games\GameObj\Enemy\EnemyStateLeave.cpp" />
+    <ClCompile Include="Games\GameObj\Enemy\TimeCall.cpp" />
     <ClCompile Include="Games\GameObj\Player\Player.cpp" />
     <ClCompile Include="Games\GameObj\Player\PlayerBullet.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -188,6 +193,12 @@
     <ClInclude Include="Engine\Utility\Log.h" />
     <ClInclude Include="Engine\Utility\Random.h" />
     <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
+    <ClInclude Include="Games\GameObj\Enemy\Enemy.h" />
+    <ClInclude Include="Games\GameObj\Enemy\EnemyBullet.h" />
+    <ClInclude Include="Games\GameObj\Enemy\EnemyStateApproach.h" />
+    <ClInclude Include="Games\GameObj\Enemy\EnemyStateLeave.h" />
+    <ClInclude Include="Games\GameObj\Enemy\IEnemyState.h" />
+    <ClInclude Include="Games\GameObj\Enemy\TimeCall.h" />
     <ClInclude Include="Games\GameObj\Player\Player.h" />
     <ClInclude Include="Games\GameObj\Player\PlayerBullet.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>

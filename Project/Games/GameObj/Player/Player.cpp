@@ -86,7 +86,7 @@ void Player::Update()
 	//モデルの更新
 	model_->Update(worldTransform_, animationNumber_);
 
-	ReticleAim();
+	//ReticleAim();
 
 	//ミサイルの更新
 	for (const std::unique_ptr<PlayerBullet>& bullets : bullet_)
@@ -269,88 +269,23 @@ void Player::ReticleAim()
 }
 
 void Player::Set3DReticlePosition() {
-	// 自機から3Dレティクルへのオフセット(Z+向き)
-	Vector3 offset{ 0, 0, kDistanceObject };
+	//// 自機から3Dレティクルへのオフセット(Z+向き)
+	//Vector3 offset{ 0, 0, kDistanceObject };
 
-	// 回転行列を合成
-	Matrix4x4 rotateMatrix = Mathseries::MakeRotateMatrix(worldTransform3DReticle_.rotation_ + worldTransform3DReticle_.parent_->rotation_);
-	// 自機のワールド行列の回転を反映する
-	offset = Mathseries::TransformNormal(offset, rotateMatrix);
+	//// 回転行列を合成
+	//Matrix4x4 rotateMatrix = Mathseries::MakeRotateMatrix(worldTransform3DReticle_.rotation_ + worldTransform3DReticle_.parent_->rotation_);
+	//// 自機のワールド行列の回転を反映する
+	//offset = Mathseries::TransformNormal(offset, rotateMatrix);
 
-	// 3Dレティクルの座標を設定
-	worldTransform3DReticle_.translation_ = GetWorldPosition() + offset;
+	//// 3Dレティクルの座標を設定
+	//worldTransform3DReticle_.translation_ = GetWorldPosition() + offset;
 
-	worldTransform3DReticle_.quaternion_ = Mathseries::Normalize(Mathseries::Slerp(worldTransform3DReticle_.quaternion_, destinationQuaternion_, 0.4f));
-	worldTransform3DReticle_.UpdateMatrixFromQuaternion();
+	//worldTransform3DReticle_.quaternion_ = Mathseries::Normalize(Mathseries::Slerp(worldTransform3DReticle_.quaternion_, destinationQuaternion_, 0.4f));
+	//worldTransform3DReticle_.UpdateMatrixFromQuaternion();
 
 }
 
-void Player::Set3DReticleMousePosition(const Camera& viewProjection) {
-	//スプライトの現在座標を取得
-	Vector2 spritePosition = sprite2DReticle_->GetPosition();
 
-	// ゲームパッドの状態を得る変数(XINPUT)
-	XINPUT_STATE joyState;
-
-	//ジョイスティック状態取得
-	if (Input::GetInstance()->GetJoystickState(0, joyState)) {
-		spritePosition.x += (float)joyState.Gamepad.sThumbRX / SHRT_MAX * 5.0f;
-		spritePosition.y -= (float)joyState.Gamepad.sThumbRY / SHRT_MAX * 5.0f;
-		//スプライトの座標変更を反映
-		sprite2DReticle_->SetPosition(spritePosition);
-	}
-
-	if (!Input::GetInstance()->GetJoystickState(0, joyState)) {
-		POINT mousePosition;
-		// マウス座標(スクリーン座標)を取得する
-		GetCursorPos(&mousePosition);
-		// クライアントエリア座標に変換する
-		HWND hwnd = WinApp::GetInstance()->GetHwnd();
-		ScreenToClient(hwnd, &mousePosition);
-		// マウス座標を2Dレティクルのスプライトに代入する
-		sprite2DReticle_->SetPosition(Vector2(float(mousePosition.x), float(mousePosition.y)));
-	}
-
-
-	// ビューポート行列
-	Matrix4x4 matViewport =
-		MakeViewportMatrix(0, 0, WinApp::kWindowWidth, WinApp::kWindowHeight, 0, 1);
-	// ビュープロジェクションビューポート合成行列
-	Matrix4x4 matVPV =
-		Multiply(viewProjection.matView, Multiply(viewProjection.matProjection, matViewport));
-	// 合成行列を計算する
-	Matrix4x4 matInverseVPV = Inverse(matVPV);
-
-	// スクリーン座標
-	Vector3 posNear = Vector3(
-		float(sprite2DReticle_->GetPosition().x), float(sprite2DReticle_->GetPosition().y), 0);
-	Vector3 posFar = Vector3(
-		float(sprite2DReticle_->GetPosition().x), float(sprite2DReticle_->GetPosition().y), 1);
-
-	// スクリーン座標系からワールド座標系へ
-	posNear = Transform(posNear, matInverseVPV);
-	posFar = Transform(posFar, matInverseVPV);
-
-	// マウスレイの方向
-	Vector3 mouseDirection = Subtract(posFar, posNear);
-	mouseDirection = Normalize(mouseDirection);
-	// カメラから照準オブジェクトの距離
-	const float kDistanceTestObject = 50;
-	worldTransform3DReticle_.translation_.x = posNear.x + (mouseDirection.x * kDistanceTestObject);
-	worldTransform3DReticle_.translation_.y = posNear.y + (mouseDirection.y * kDistanceTestObject);
-	worldTransform3DReticle_.translation_.z = posNear.z + (mouseDirection.z * kDistanceTestObject);
-	worldTransform3DReticle_.UpdateMatrix();
-
-	ImGui::Begin("Reticle");
-	ImGui::Text(
-		"2DReticle:(%f,&f)", sprite2DReticle_->GetPosition().x, sprite2DReticle_->GetPosition().y);
-	ImGui::Text("Near:(%+.2f,%+.2f,%+.2f)", posNear.x, posNear.y, posNear.z);
-	ImGui::Text("Far:(%+.2f,%+.2f,%+.2f)", posFar.x, posFar.y, posFar.z);
-	ImGui::Text(
-		"3DReticle:(%+.2f,%+.2f,%+.2f)", worldTransform3DReticle_.translation_.x,
-		worldTransform3DReticle_.translation_.y, worldTransform3DReticle_.translation_.z);
-	ImGui::End();
-}
 
 void Player::Rotate(const Vector3& v)
 {
