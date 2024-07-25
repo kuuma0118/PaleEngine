@@ -1,5 +1,4 @@
 #include "TimeCall.h"
-#include "ImGuiManager.h"
 
 TimedCall::TimedCall(std::function<void(void)> f,uint32_t time) { 
 	this->f = f;

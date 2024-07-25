@@ -14,7 +14,7 @@
 #include "PlayerBullet.h"
 
 //前方宣言
-class GameScene;
+class GameTitleScene;
 
 class Player : public IGameObject, public Collider
 {
@@ -120,7 +120,7 @@ private:
 	const Camera* camera_ = nullptr;
 
 	//ゲームシーン
-	GameScene* gameScene_ = nullptr;
+	GameTitleScene* gameScene_ = nullptr;
 
 	//プレイヤー弾
 	std::list<std::unique_ptr<PlayerBullet>> bullet_{};

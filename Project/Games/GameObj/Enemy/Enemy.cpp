@@ -1,23 +1,27 @@
-#include "GameScene.h"
 #include "Enemy.h"
-#include <cassert>
-#include "ImGuiManager.h"
-#include "MathFunction.h"
-#include "player/Player.h"
-#include "collider/CollisionConfig.h"
+#include "Games/GameObj/Player/Player.h"
+#include "Engine/Framework/Object/GameObjectManager.h"
 
 Enemy::~Enemy() {
 	for (TimedCall* timedCall : timedCalls_) {
 		delete timedCall;
 	}
+	for (std::unique_ptr<EnemyBullet>& bullet : bullet_) {
+		bullet.release();
+	}
+	delete state_;
 }
 
-void Enemy::Initialize(Model* model, uint32_t textureHandle,const Vector3& pos) {
-	assert(model);
-	model_ = model;
-	textureHandle_ = textureHandle;
+void Enemy::Initialize() {
+
+	//モデルの生成
+	model_.reset(ModelManager::CreateFromModelFile("Cube.obj", Opaque));
+	model_->GetMaterial()->SetEnableLighting(false);
+
 	worldTransform_.Initialize();
-	worldTransform_.translation_ = pos;
+
+	worldTransform_.scale_ = { 2.0f,2.0f,2.0f };
+
 	state_ = new EnemyStateApproach();
 	state_->Initialize(this);
 	// 衝突属性を設定
@@ -33,12 +37,13 @@ void Enemy::ChangeState(IEnemyState* newState) {
 }
 
 void Enemy::EnemyMove(Vector3 move) {
-	worldTransform_.translation_ = Add(worldTransform_.translation_, move);
+	Move(worldTransform_.translation_, move);
 }
 
-void Enemy::OnCollision(){ 
-	isDead_ = true; 
-};
+void Enemy::OnCollision(Collider* collider)
+{
+	isDead_ = true;
+}
 
 void Enemy::Update() {
 	// 弾の削除
@@ -53,30 +58,25 @@ void Enemy::Update() {
 	state_->Update(this);
 
 	//行列の更新
-	worldTransform_.UpdateMatrix();
+	worldTransform_.UpdateMatrixFromEuler();
+	
+	model_->Update(worldTransform_, 0);
 }
 
 void Enemy::Fire() {
-	assert(player_);
-
 	//弾の速度
 	const float kBulletSpeed = 0.5f;
 
-	//自キャラのワールド座標を取得する
-	Vector3 playerPos = player_->GetWorldPosition();
 	//敵キャラのワールド座標を取得する
 	Vector3 enemyPos = worldTransform_.translation_;
-	Vector3 targetPos = Subtract(playerPos,enemyPos);
-	Vector3 n = Normalize(targetPos);
-	Vector3 velocity = {n.x * kBulletSpeed, n.y * kBulletSpeed, n.z * kBulletSpeed};
+	Vector3 velocity = {0,0,kBulletSpeed};
 
 	//弾の生成
 	EnemyBullet* newBullet = new EnemyBullet();
-	newBullet->Initialize(model_, worldTransform_.translation_,velocity);
-	newBullet->SetPlayer(player_);
+	newBullet->Initialize(worldTransform_.translation_,velocity);
 
 	//弾を登録する
-	gameScene_->AddEnemyBullet(newBullet);
+	bullet_.push_back(std::unique_ptr<EnemyBullet>(newBullet));
 }
 
 void Enemy::FireReset() {
@@ -89,16 +89,24 @@ void Enemy::FireReset() {
 	timedCalls_.push_back(timedCall);
 }
 
-void Enemy::Draw(ViewProjection viewProjection) {
-	model_->Draw(worldTransform_, viewProjection, textureHandle_);
+void Enemy::Draw(const Camera& camera) {
+	model_->Draw(worldTransform_, camera);
+	//bulletの描画
+	for (const std::unique_ptr<EnemyBullet>& bullets : bullet_)
+	{
+		bullets->Draw(camera);
+	}
 }
 
-Vector3 Enemy::GetWorldPosition() {
-	// ワールド座標を入れる変数
-	Vector3 worldPos;
-	// ワールド行列の平行移動成分を取得(ワールド座標)
-	worldPos.x = worldTransform_.matWorld_.m[3][0];
-	worldPos.y = worldTransform_.matWorld_.m[3][1];
-	worldPos.z = worldTransform_.matWorld_.m[3][2];
-	return worldPos;
-};
+void Enemy::DrawUI()
+{
+}
+
+const Vector3 Enemy::GetWorldPosition() const
+{
+	Vector3 pos{};
+	pos.x = worldTransform_.matWorld_.m[3][0];
+	pos.y = worldTransform_.matWorld_.m[3][1];
+	pos.z = worldTransform_.matWorld_.m[3][2];
+	return pos;
+}

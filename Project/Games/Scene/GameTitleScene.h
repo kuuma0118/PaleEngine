@@ -9,8 +9,10 @@
 #include "Engine/2D/Sprite.h"	
 #include "Engine/Math/MathFunction.h"
 #include "Games/GameObj/Player/Player.h"
+#include "Games/GameObj/Enemy/Enemy.h"
 #include "Games/GameObj/Player/SkyDome.h"
 #include "Games/GameObj/RailCamera/RailCamera.h"
+#include <Engine/Components/Collision/CollisionManager.h>
 
 class GameTitleScene : public IScene
 {
@@ -38,6 +40,27 @@ public:
 
 	void UpdateTransition();
 
+	/// <summary>
+    /// 敵弾を追加する
+    /// </summary>
+    /// <param name="enemyBullet"></param>
+	void AddEnemyBullet(EnemyBullet* enemyBullet);
+
+	/// <summary>
+	/// 敵発生データの読み込み
+	/// </summary>
+	void LoadEnemyPopData();
+
+	/// <summary>
+	/// 敵発生コマンドの更新
+	/// </summary>
+	void UpdateEnemyPopCommands();
+
+	/// <summary>
+	/// 敵生成
+	/// </summary>
+	void AddEnemy(const Vector3& pos);
+
 private:
 	Renderer* renderer_ = nullptr;
 
@@ -49,6 +72,9 @@ private:
 
 	WorldTransform worldTransform_{};
 
+	// 衝突マネージャー
+	CollisionManager* collisionManager_ = nullptr;
+
 	//ゲームオブジェクトマネージャー	
 	GameObjectManager* gameObjectManager_ = nullptr;
 
@@ -56,6 +82,23 @@ private:
 	std::unique_ptr<Model> playerModel_ = nullptr;
 	WorldTransform playerWorldTransform_{};
 	Player* player_ = nullptr;
+
+	// 敵
+	std::list<Enemy*> enemys_;
+	std::unique_ptr<Model> enemyModel_ = nullptr;
+	Enemy* enemy_ = nullptr;
+	WorldTransform enemyWorldTransform_{};
+
+	//待機中フラグ
+	bool waitingFlag;
+
+	uint32_t waitTimer;
+
+	//敵発生コマンド
+	std::stringstream enemyPopCommands;
+
+	// 弾
+	std::list<std::unique_ptr<EnemyBullet>> enemyBullets_;
 
 	//天球
 	std::unique_ptr<Model> skydomeModel_ = nullptr;

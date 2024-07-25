@@ -8,6 +8,8 @@
 
 void Move(Vector3& transform, Vector3& move);
 
+Vector3 Subtract(const Vector3& v1, const Vector3& v2);
+
 namespace Mathseries
 {
 
