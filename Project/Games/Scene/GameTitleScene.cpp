@@ -42,7 +42,7 @@ void GameTitleScene::Initialize()
 	railCamera_->Initialize(player_->GetWorldPosition(), radian);
 	player_->SetParent(&railCamera_->GetWorldTransform());
 
-	namedEnemyModel_.reset(ModelManager::CreateFromModelFile("walk.gltf", Opaque));
+	namedEnemyModel_.reset(ModelManager::CreateFromModelFile("sneakWalk.gltf", Opaque));
 	namedEnemyModel_->GetMaterial()->SetEnableLighting(false);
 	namedEnemyModel_->GetMaterial()->SetColor({ 0.9f, 0.5f, 0.9f, 1.0f });
 	namedEnemyWorldTransform_.Initialize();
@@ -87,6 +87,10 @@ void GameTitleScene::Update()
 	camera_.matProjection_ = railCamera_->GetViewProjection().matProjection_;
 	camera_.TransferMatrix();
 
+	namedEnemyWorldTransform_.UpdateMatrixFromQuaternion();
+
+	namedEnemyModel_->Update(namedEnemyWorldTransform_, 0);
+
 	ImGui::Begin("GameTitleScene");
 	ImGui::DragFloat3("WorldTransform.translation", &playerWorldTransform_.translation_.x, 0.1f);
 	ImGui::DragFloat3("WorldTransform.rotation", &playerWorldTransform_.rotation_.x, 0.1f);
@@ -113,6 +117,8 @@ void GameTitleScene::Draw()
 
 	////enemyのモデルの描画
 	//enemyModel_->Draw(enemyWorldTransform_, camera_);
+
+	namedEnemyModel_->Draw(namedEnemyWorldTransform_, camera_);
 
 	//ゲームオブジェクトのモデル描画
 	gameObjectManager_->Draw(camera_);
