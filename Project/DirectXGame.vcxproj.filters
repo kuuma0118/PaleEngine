@@ -187,6 +187,18 @@
     <Filter Include="ヘッダー ファイル\Project\Object\Enemy">
       <UniqueIdentifier>{ea8a8048-2156-4715-afdd-77e6d4e78cd9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Project\Object\NamedEnemy">
+      <UniqueIdentifier>{5e449148-b995-4351-8f06-abe4da685fa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Object\NamedEnemy">
+      <UniqueIdentifier>{3025beb5-24bd-4a78-8345-f517ee39712a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Project\Object\NamedEnemy\state">
+      <UniqueIdentifier>{4e2bcc8f-91f8-45b6-a987-5306b6cf0136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Project\Object\NamedEnemy\state">
+      <UniqueIdentifier>{c1450b05-c634-4690-aec4-369e165faca4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -419,6 +431,18 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\Enemy\TimeCall.cpp">
       <Filter>ソース ファイル\Project\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\NamedEnemy\NamedEnemy.cpp">
+      <Filter>ソース ファイル\Project\Object\NamedEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\NamedEnemy\EnemyState\StateMissileAttack.cpp">
+      <Filter>ソース ファイル\Project\Object\NamedEnemy\state</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\NamedEnemy\EnemyState\StateNormal.cpp">
+      <Filter>ソース ファイル\Project\Object\NamedEnemy\state</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\NamedEnemy\Missile.cpp">
+      <Filter>ソース ファイル\Project\Object\NamedEnemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -712,6 +736,21 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\Enemy\TimeCall.h">
       <Filter>ヘッダー ファイル\Project\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\NamedEnemy\NamedEnemy.h">
+      <Filter>ヘッダー ファイル\Project\Object\NamedEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\NamedEnemy\EnemyState\INamedEnemyState.h">
+      <Filter>ヘッダー ファイル\Project\Object\NamedEnemy\state</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\NamedEnemy\EnemyState\StateMissileAttack.h">
+      <Filter>ヘッダー ファイル\Project\Object\NamedEnemy\state</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\NamedEnemy\EnemyState\StateNormal.h">
+      <Filter>ヘッダー ファイル\Project\Object\NamedEnemy\state</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\NamedEnemy\Missile.h">
+      <Filter>ヘッダー ファイル\Project\Object\NamedEnemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

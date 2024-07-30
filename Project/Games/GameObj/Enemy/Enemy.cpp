@@ -14,10 +14,6 @@ Enemy::~Enemy() {
 
 void Enemy::Initialize() {
 
-	//モデルの生成
-	model_.reset(ModelManager::CreateFromModelFile("Cube.obj", Opaque));
-	model_->GetMaterial()->SetEnableLighting(false);
-
 	worldTransform_.Initialize();
 
 	worldTransform_.scale_ = { 2.0f,2.0f,2.0f };
@@ -60,7 +56,6 @@ void Enemy::Update() {
 	//行列の更新
 	worldTransform_.UpdateMatrixFromEuler();
 	
-	model_->Update(worldTransform_, 0);
 }
 
 void Enemy::Fire() {
@@ -92,10 +87,10 @@ void Enemy::FireReset() {
 void Enemy::Draw(const Camera& camera) {
 	model_->Draw(worldTransform_, camera);
 	//bulletの描画
-	for (const std::unique_ptr<EnemyBullet>& bullets : bullet_)
-	{
-		bullets->Draw(camera);
-	}
+	//for (const std::unique_ptr<EnemyBullet>& bullets : bullet_)
+	//{
+	//	bullets->Draw(camera);
+	//}
 }
 
 void Enemy::DrawUI()

@@ -59,6 +59,8 @@ public:
 
 	const Vector3& GetVelocity() const { return velocity_; };
 
+	const float GetDamage() const { return workAttack_.damage; };
+
 	void SetParent(const WorldTransform* parent);
 
 	void SetRaticleParent(const WorldTransform* parent);
@@ -93,6 +95,19 @@ private:
 	void Rotate(const Vector3& v);
 	
 private:
+
+	//攻撃用ワーク
+	struct WorkAttack
+	{
+		uint32_t attackParameter = 0;
+		uint32_t collisionParameter = 0;
+		int32_t comboIndex = 0;
+		int32_t inComboPhase = 0;
+		float inComboPhaseAttackParameter = 0;
+		bool comboNext = false;
+		bool isAttack = false;
+		float damage = 0.0f;
+	};
 
 	//弾の発射タイマー
 	int32_t bulletTime;
@@ -130,6 +145,9 @@ private:
 
 	//次にする行動
 	std::optional<Behavior> behaviorRequest_ = std::nullopt;
+
+	//攻撃用ワーク
+	WorkAttack workAttack_{};
 
 	//パーティクル
 	std::unique_ptr<Model> particleModel_ = nullptr;

@@ -9,6 +9,7 @@
 #include "Engine/2D/Sprite.h"	
 #include "Engine/Math/MathFunction.h"
 #include "Games/GameObj/Player/Player.h"
+#include "Games/GameObj/NamedEnemy/NamedEnemy.h"
 #include "Games/GameObj/Enemy/Enemy.h"
 #include "Games/GameObj/Player/SkyDome.h"
 #include "Games/GameObj/RailCamera/RailCamera.h"
@@ -41,9 +42,9 @@ public:
 	void UpdateTransition();
 
 	/// <summary>
-    /// 敵弾を追加する
-    /// </summary>
-    /// <param name="enemyBullet"></param>
+	/// 敵弾を追加する
+	/// </summary>
+	/// <param name="enemyBullet"></param>
 	void AddEnemyBullet(EnemyBullet* enemyBullet);
 
 	/// <summary>
@@ -84,10 +85,13 @@ private:
 	Player* player_ = nullptr;
 
 	// 敵
-	std::list<Enemy*> enemys_;
-	std::unique_ptr<Model> enemyModel_ = nullptr;
-	Enemy* enemy_ = nullptr;
-	WorldTransform enemyWorldTransform_{};
+	//std::list<Enemy*> enemys_;
+	//std::unique_ptr<Model> enemyModel_ = nullptr;
+	//Enemy* enemy_ = nullptr;
+	//WorldTransform enemyWorldTransform_{};
+
+	std::unique_ptr<Model> namedEnemyModel_ = nullptr;
+	WorldTransform namedEnemyWorldTransform_ = {};
 
 	//待機中フラグ
 	bool waitingFlag;
