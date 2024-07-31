@@ -90,8 +90,10 @@ private:
 	//Enemy* enemy_ = nullptr;
 	//WorldTransform enemyWorldTransform_{};
 
+	//NamedEnemy
 	std::unique_ptr<Model> namedEnemyModel_ = nullptr;
 	WorldTransform namedEnemyWorldTransform_ = {};
+	NamedEnemy* namedEnemy_ = nullptr;
 
 	//待機中フラグ
 	bool waitingFlag;

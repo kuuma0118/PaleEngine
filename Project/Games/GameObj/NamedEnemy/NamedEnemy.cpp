@@ -11,8 +11,9 @@ void NamedEnemy::Initialize()
 {
 	//ワールドトランスフォームの初期化
 	worldTransform_.Initialize();
-	worldTransform_.translation_.y = 3.0f;
-	worldTransform_.scale_ = { 3.0f,3.0f,3.0f };
+	worldTransform_.translation_ = { 0.0f,8.0f,100.0f };
+	worldTransform_.rotation_ = { 0.0f,0.0f,0.0f };
+	worldTransform_.scale_ = { 5.0f,5.0f,5.0f };
 
 	//状態の初期化
 	state_ = new NamedEnemyStateNormal();
@@ -40,14 +41,16 @@ void NamedEnemy::Initialize()
 
 void NamedEnemy::Update()
 {
-	//プレイヤーが動いたらボスも動き出す
-	if (!isActive_)
-	{
-		if (GameObjectManager::GetInstance()->GetGameObject<Player>("Player")->GetVelocity() != Vector3{ 0.0f,0.0f,0.0f })
-		{
-			isActive_ = true;
-		}
-	}
+	////プレイヤーが動いたらボスも動き出す
+	//if (!isActive_)
+	//{
+	//	if (GameObjectManager::GetInstance()->GetGameObject<Player>("Player")->GetVelocity() != Vector3{ 0.0f,0.0f,0.0f })
+	//	{
+	//		isActive_ = true;
+	//	}
+	//}
+
+	isActive_ = true;
 
 	//前のフレームの当たり判定のフラグを取得
 	preOnCollision_ = onCollision_;
@@ -94,9 +97,16 @@ void NamedEnemy::Update()
 	worldTransform_.UpdateMatrixFromQuaternion();
 	model_->Update(worldTransform_, 0);
 
-	//HPバーの処理
-	hpBarSize_ = { (hp_ / kMaxHP) * 480.0f,16.0f };
-	spriteHpBar_->SetSize(hpBarSize_);
+	//アニメーションを再生
+	if (!model_->GetAnimation()->IsPlaying())
+	{
+		animationNumber_ = 0;
+		model_->GetAnimation()->PlayAnimation();
+	}
+
+	////HPバーの処理
+	//hpBarSize_ = { (hp_ / kMaxHP) * 480.0f,16.0f };
+	//spriteHpBar_->SetSize(hpBarSize_);
 }
 
 void NamedEnemy::Draw(const Camera& camera)
@@ -150,6 +160,13 @@ const Vector3 NamedEnemy::GetWorldPosition() const
 	pos.y = worldTransform_.matWorld_.m[3][1];
 	pos.z = worldTransform_.matWorld_.m[3][2];
 	return pos;
+}
+
+void NamedEnemy::SetParent(const WorldTransform* parent)
+{
+
+	worldTransform_.parent_ = parent;
+
 }
 
 void NamedEnemy::ChangeState(INamedEnemyState* newState)

@@ -88,7 +88,7 @@ void Player::Update()
 
 	//ReticleAim();
 
-	//ミサイルの更新
+	//bulletの更新
 	for (const std::unique_ptr<PlayerBullet>& bullets : bullet_)
 	{
 		bullets->Update();
@@ -136,7 +136,7 @@ void Player::BehaviorShotInitialize()
 void Player::BehaviorShotUpdate()
 {
 	//移動処理
-	const float speed = 2.6f;
+	const float speed = 0.6f;
 	Move(speed);
 
 	ShotAttack();
@@ -154,7 +154,7 @@ void Player::ShotAttack()
 	{
 		PlayerBullet* newbullet = new PlayerBullet();
 		Vector3 velocity[2];
-		velocity[0] = { 0.0f,0.0f,0.01f };
+		velocity[0] = { 0.0f,0.0f,0.3f };
 		velocity[0] = Mathseries::TransformNormal(velocity[0], worldTransform_.matWorld_);
 		Vector3 worldPos;
 		worldPos = Player::GetWorldPosition();

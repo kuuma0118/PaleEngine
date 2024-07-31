@@ -18,8 +18,9 @@ void GameTitleScene::Initialize()
 
 	audio_ = Audio::GetInstance();
 
-	// RailCamera
 	railCamera_ = new RailCamera();
+	/*railCamera_ = RailCamera::GetInstance();
+	railCamera_->Initialize({ 0, 0, -30 }, { 0, 0, 0 });*/
 
 	Vector3 radian = { 0.0f, 0.0f, 0.0f };
 
@@ -44,9 +45,12 @@ void GameTitleScene::Initialize()
 
 	namedEnemyModel_.reset(ModelManager::CreateFromModelFile("sneakWalk.gltf", Opaque));
 	namedEnemyModel_->GetMaterial()->SetEnableLighting(false);
-	namedEnemyModel_->GetMaterial()->SetColor({ 0.9f, 0.5f, 0.9f, 1.0f });
+	namedEnemyModel_->GetMaterial()->SetColor({ 0.5f, 0.5f, 0.9f, 1.0f });
+	namedEnemy_ = GameObjectManager::CreateGameObject<NamedEnemy>();
+	namedEnemy_->SetModel(namedEnemyModel_.get());
+	namedEnemy_->SetTag("NamedEnemy");
+	//namedEnemy_->SetParent(&railCamera_->GetWorldTransform());
 	namedEnemyWorldTransform_.Initialize();
-	namedEnemyWorldTransform_.translation_.y = 3.0f;
 	namedEnemyWorldTransform_.scale_ = { 3.0f,3.0f,3.0f };
 	namedEnemyWorldTransform_.quaternion_ = Mathseries::MakeRotateAxisAngleQuaternion({ 0.0f,1.0f,0.0f }, std::numbers::pi_v<float>);
 
@@ -87,10 +91,6 @@ void GameTitleScene::Update()
 	camera_.matProjection_ = railCamera_->GetViewProjection().matProjection_;
 	camera_.TransferMatrix();
 
-	namedEnemyWorldTransform_.UpdateMatrixFromQuaternion();
-
-	namedEnemyModel_->Update(namedEnemyWorldTransform_, 0);
-
 	ImGui::Begin("GameTitleScene");
 	ImGui::DragFloat3("WorldTransform.translation", &playerWorldTransform_.translation_.x, 0.1f);
 	ImGui::DragFloat3("WorldTransform.rotation", &playerWorldTransform_.rotation_.x, 0.1f);
@@ -114,11 +114,6 @@ void GameTitleScene::Draw()
 	renderer_->ClearDepthBuffer();
 
 #pragma region 3Dオブジェクト描画
-
-	////enemyのモデルの描画
-	//enemyModel_->Draw(enemyWorldTransform_, camera_);
-
-	namedEnemyModel_->Draw(namedEnemyWorldTransform_, camera_);
 
 	//ゲームオブジェクトのモデル描画
 	gameObjectManager_->Draw(camera_);

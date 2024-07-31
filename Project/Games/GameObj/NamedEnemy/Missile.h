@@ -9,7 +9,7 @@ class Missile : public Collider
 {
 public:
 	//追尾時間
-	static const uint32_t kTrackingTime = 60 * 2;
+	static const uint32_t kTrackingTime = 120 * 2;
 
 	void Initialize(const Vector3& position, const Vector3& velocity);
 

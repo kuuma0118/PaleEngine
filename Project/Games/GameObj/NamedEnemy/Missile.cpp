@@ -55,10 +55,20 @@ void Missile::Update()
 		trackingTimer_++;
 	}
 
+	if (trackingTimer_ <= kTrackingTime / 4.0f)
+	{
+		velocity_.z = 1.0f / 2.0f;
+	}
+
 	//一定時間追尾するようにする
-	if (trackingTimer_ >= kTrackingTime)
+	if (trackingTimer_ >= kTrackingTime / 2.0f)
 	{
 		isTrackingComplete_ = true;
+	}
+
+	if (trackingTimer_ >= kTrackingTime)
+	{
+		isDead_ = true;
 	}
 
 	//追捕終了していなかったら
@@ -73,17 +83,17 @@ void Missile::Update()
 	worldTransform_.translation_ += velocity_;
 
 	//回転処理
-	worldTransform_.rotation_.x += 0.2f;
-	worldTransform_.rotation_.y += 0.2f;
+	/*worldTransform_.rotation_.x += 0.2f;
+	worldTransform_.rotation_.y += 0.2f;*/
 
 	//ワールドトランスフォームの更新
 	worldTransform_.UpdateMatrixFromEuler();
 
-	//フィールド外に出たら死亡フラグを立てる
-	if (worldTransform_.translation_.x <= -100.0f || worldTransform_.translation_.x >= 100.0f || worldTransform_.translation_.y <= 1.0f || worldTransform_.translation_.z <= -100.0f || worldTransform_.translation_.z >= 100.0f)
-	{
-		isDead_ = true;
-	}
+	////フィールド外に出たら死亡フラグを立てる
+	//if (worldTransform_.translation_.x <= -100.0f || worldTransform_.translation_.x >= 100.0f || worldTransform_.translation_.y <= 100.0f || worldTransform_.translation_.z <= -100.0f || worldTransform_.translation_.z >= 100.0f)
+	//{
+	//	isDead_ = true;
+	//}
 }
 
 void Missile::Draw(const Camera& camera)

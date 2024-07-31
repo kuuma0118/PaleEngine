@@ -3,7 +3,7 @@
 void Skydome::Initialize()
 {
 	worldTransform_.Initialize();
-	worldTransform_.scale_ = { 500.0f,500.0f,500.0f };
+	worldTransform_.scale_ = { 100.0f,100.0f,100.0f };
 }
 
 void Skydome::Update()
