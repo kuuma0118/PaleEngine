@@ -13,49 +13,60 @@ void NamedEnemyStateNormal::Initialize(NamedEnemy* pBoss)
 
 void NamedEnemyStateNormal::Update(NamedEnemy* pBoss)
 {
-	////移動方向を計算
-	//Vector3 targetPosition = GameObjectManager::GetInstance()->GetGameObject<Player>("Player")->GetWorldPosition();
-	//Vector3 sub = targetPosition - worldTransform_.translation_;
-	//sub.y = 0.0f;
+	//移動方向を計算
+	Vector3 targetPosition = GameObjectManager::GetInstance()->GetGameObject<Player>("Player")->GetWorldPosition();
+	Vector3 sub = targetPosition - worldTransform_.translation_;
+	sub.y = 0.0f;
 
-	////距離を計算
-	//float distance = Mathseries::Length(sub);
+	//距離を計算
+	float distance = Mathseries::Length(sub);
 
-	////正規化して移動量を掛ける
-	//sub = Mathseries::Normalize(sub);
-	//float kSpeed = 0.2f;
-	//if (pBoss->GetIsSlow())
-	//{
-	//	kSpeed = 0.1f;
-	//}
+	//正規化して移動量を掛ける
+	sub = Mathseries::Normalize(sub);
+	float kSpeed = 0.2f;
+	if (pBoss->GetIsSlow())
+	{
+		kSpeed = 0.1f;
+	}
 
-	////回転処理
-	//Vector3 cross = Mathseries::Normalize(Mathseries::Cross({ 0.0f,0.0f,1.0f }, sub));
-	//float dot = Mathseries::Dot({ 0.0f,0.0f,1.0f }, sub);
-	//destinationQuaternion_ = Mathseries::Normalize(Mathseries::MakeRotateAxisAngleQuaternion(cross, std::acos(dot)));
-	//worldTransform_.quaternion_ = Mathseries::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f);
+	//回転処理
+	Vector3 cross = Mathseries::Normalize(Mathseries::Cross({ 0.0f,0.0f,1.0f }, sub));
+	float dot = Mathseries::Dot({ 0.0f,0.0f,1.0f }, sub);
+	destinationQuaternion_ = Mathseries::Normalize(Mathseries::MakeRotateAxisAngleQuaternion(cross, std::acos(dot)));
+	worldTransform_.quaternion_ = Mathseries::Slerp(worldTransform_.quaternion_, destinationQuaternion_, 0.4f);
 
-	////移動処理
-	//if (distance >= 10.0f)
-	//{
-	//	worldTransform_.translation_ += sub * kSpeed;
-	//}
+	//移動処理
+	if (distance >= 10.0f)
+	{
+		worldTransform_.translation_ += sub * kSpeed;
+	}
 
 	//攻撃処理
 	if (++attackTimer_ > attackTime_ && !pBoss->GetIsSlow())
 	{
-		//uint32_t attackNum = 1;
+		uint32_t attackNum = 1;
 		INamedEnemyState* newState = nullptr;
-	/*	switch (attackNum)
+		switch (attackNum)
 		{
 
-		case 0:*/
+		case 0:
 			newState = new NamedEnemyStateMissileAttack();
 			newState->Initialize(pBoss);
-		/*	break;
+			break;
 	
-		}*/
+		}
 		pBoss->ChangeState(newState);
+	}
+
+	//ノックバックの処理
+	if (isKnockBack_)
+	{
+		if (++knockBackTimer_ >= knockBackTime_)
+		{
+			isKnockBack_ = false;
+		}
+
+		worldTransform_.translation_ += knockBackVelocity_;
 	}
 
 	//移動限界座標

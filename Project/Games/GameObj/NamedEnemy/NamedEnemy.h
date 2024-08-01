@@ -50,14 +50,9 @@ public:
 
 	const bool GetIsSlow() { return isSlow_; };
 
-	void SetParent(const WorldTransform* parent);
-
 private:
 	//状態
 	INamedEnemyState* state_ = nullptr;
-
-	//アニメーションの番号
-	uint32_t animationNumber_ = 0;
 
 	//ミサイル
 	std::list<std::unique_ptr<Missile>> missiles_{};

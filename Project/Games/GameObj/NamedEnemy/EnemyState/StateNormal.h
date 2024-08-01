@@ -6,9 +6,9 @@ class NamedEnemyStateNormal : public INamedEnemyState
 {
 public:
 	//攻撃までの最小時間
-	static const uint32_t kMinAttackInterval = 60 * 1;
+	static const uint32_t kMinAttackInterval = 60 * 2;
 	//攻撃までの最大時間
-	static const uint32_t kMaxAttackInterval = 60 * 5;
+	static const uint32_t kMaxAttackInterval = 60 * 4;
 
 	void Initialize(NamedEnemy* pBoss) override;
 

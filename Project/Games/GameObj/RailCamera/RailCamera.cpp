@@ -1,11 +1,5 @@
 #include "RailCamera.h"
 
-RailCamera* RailCamera::GetInstance()
-{
-	static RailCamera instance;
-	return &instance;
-}
-
 void RailCamera::Initialize(Vector3 translation, Vector3 rotation) {
 	//ワールドトランスフォームの初期設定
 	worldTransform_.translation_ = translation;

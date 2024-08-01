@@ -5,9 +5,6 @@
 
 class RailCamera {
 public:
-
-	static RailCamera* GetInstance();
-
 	/// <summary>
 	/// 初期化
 	/// </summary>
