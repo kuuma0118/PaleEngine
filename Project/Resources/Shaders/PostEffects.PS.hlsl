@@ -18,12 +18,19 @@ struct Vignette
     float intensity;
 };
 
+struct GrayScale
+{
+    int32_t isEnable;
+    int32_t isSepiaEnable;
+};
+
 Texture2D<float32_t4> gTexture : register(t0);
 Texture2D<float32_t4> gRenderedEffectsTexture : register(t1);
 SamplerState gSampler : register(s0);
 
 ConstantBuffer<LensDistortion> gLensDistortionParameter : register(b0);
 ConstantBuffer<Vignette> gVignetteParameter : register(b1);
+ConstantBuffer<GrayScale> gGrayScaleParameter : register(b2);
 
 PixelShaderOutput main(VertexShaderOutput input)
 {
@@ -42,15 +49,15 @@ PixelShaderOutput main(VertexShaderOutput input)
         output.color = effectsColor;
 
     }
-    
+
     //レンズディストーション
     if (gLensDistortionParameter.isEnable)
     {
         const float2 uvNormalized = input.texcoord * 2 - 1;
         const float distortionMagnitude = abs(uvNormalized.x * uvNormalized.y);
         const float smoothDistortionMagnitude = pow(distortionMagnitude, gLensDistortionParameter.tightness);
-		//const float smoothDistortionMagnitude = 1 - sqrt(1 - pow(distortionMagnitude, gLensDistortionParameter.tightness));
-		//const float smoothDistortionMagnitude = pow(sin(1.57079632679f * distortionMagnitude), gLensDistortionParameter.tightness);
+        //const float smoothDistortionMagnitude = 1 - sqrt(1 - pow(distortionMagnitude, gLensDistortionParameter.tightness));
+        //const float smoothDistortionMagnitude = pow(sin(1.57079632679f * distortionMagnitude), gLensDistortionParameter.tightness);
         float2 uvDistorted = input.texcoord + uvNormalized * smoothDistortionMagnitude * gLensDistortionParameter.strength;
         if (uvDistorted[0] < 0 || uvDistorted[0] > 1 || uvDistorted[1] < 0 || uvDistorted[1] > 1)
         {
@@ -73,7 +80,7 @@ PixelShaderOutput main(VertexShaderOutput input)
             }
         }
     }
-    
+
     //ビネット
     if (gVignetteParameter.isEnable)
     {
@@ -81,6 +88,20 @@ PixelShaderOutput main(VertexShaderOutput input)
         uv = gVignetteParameter.intensity * uv - gVignetteParameter.intensity / 2;
         output.color *= 1.0 - dot(uv, uv);
     }
-    
+
+    //GrayScale
+    if (gGrayScaleParameter.isEnable)
+    {
+        float32_t value = dot(output.color.rgb, float32_t3(0.2125f, 0.7154f, 0.0721f));
+        if (gGrayScaleParameter.isSepiaEnable)
+        {
+            output.color.rgb = value * float32_t3(1.0f, 74.0f / 107.0f, 43.0f / 107.0f);
+        }
+        else
+        {
+            output.color.rgb = float32_t3(value, value, value);
+        }
+    }
+
     return output;
 }

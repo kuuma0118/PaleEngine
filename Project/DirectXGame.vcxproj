@@ -58,6 +58,7 @@
     <ClCompile Include="Engine\Components\PostEffects\DepthOfField.cpp" />
     <ClCompile Include="Engine\Components\PostEffects\Fog.cpp" />
     <ClCompile Include="Engine\Components\PostEffects\GaussianBlur.cpp" />
+    <ClCompile Include="Engine\Components\PostEffects\GrayScale.cpp" />
     <ClCompile Include="Engine\Components\PostEffects\LensDistortion.cpp" />
     <ClCompile Include="Engine\Components\PostEffects\PostEffects.cpp" />
     <ClCompile Include="Engine\Components\PostEffects\Vignette.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Engine\Components\PostEffects\DepthOfField.h" />
     <ClInclude Include="Engine\Components\PostEffects\Fog.h" />
     <ClInclude Include="Engine\Components\PostEffects\GaussianBlur.h" />
+    <ClInclude Include="Engine\Components\PostEffects\GrayScale.h" />
     <ClInclude Include="Engine\Components\PostEffects\LensDistortion.h" />
     <ClInclude Include="Engine\Components\PostEffects\PostEffects.h" />
     <ClInclude Include="Engine\Components\PostEffects\Vignette.h" />

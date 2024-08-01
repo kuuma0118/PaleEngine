@@ -444,6 +444,9 @@
     <ClCompile Include="Games\GameObj\NamedEnemy\Missile.cpp">
       <Filter>ソース ファイル\Project\Object\NamedEnemy</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Components\PostEffects\GrayScale.cpp">
+      <Filter>ソース ファイル\Engine\Components\PostEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\2D\Sprite.h">
@@ -751,6 +754,9 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\NamedEnemy\Missile.h">
       <Filter>ヘッダー ファイル\Project\Object\NamedEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\PostEffects\GrayScale.h">
+      <Filter>ヘッダー ファイル\Engine\Component\PostEffects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

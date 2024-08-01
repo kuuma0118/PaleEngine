@@ -2,6 +2,7 @@
 #include "Engine/Framework/Scene/SceneManager.h"	
 #include "Engine/Base/TextureManager.h"	
 #include <numbers>
+#include <Engine/Components/PostEffects/PostEffects.h>
 
 GameTitleScene::GameTitleScene() {}
 
@@ -80,6 +81,8 @@ void GameTitleScene::Finalize()
 
 void GameTitleScene::Update() 
 {
+
+	PostEffects::GetInstance()->GetGrayScale()->SetIsEnable(true);
 
 	// Camera
 	railCamera_->Update();
