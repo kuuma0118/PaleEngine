@@ -9,6 +9,7 @@ struct Material
     int32_t specularReflectionType;
     float32_t shininess;
     float32_t3 specularColor;
+    float32_t environmentCoefficient;
 };
 
 struct DirectionLight
@@ -53,6 +54,7 @@ struct LightGroup
 };
 
 Texture2D<float32_t4> gTexture : register(t0);
+TextureCube<float32_t4> gEnvironmentTexture : register(t1);
 SamplerState gSampler : register(s0);
 ConstantBuffer<Material> gMaterial : register(b0);
 ConstantBuffer<LightGroup> gLightGroup : register(b1);
@@ -69,19 +71,19 @@ PixelShaderOutput main(VertexShaderOutput input)
     float32_t4 transformUV = mul(float32_t4(input.texcoord, 0.0f, 1.0f), gMaterial.uvTransform);
     float32_t4 textureColor = gTexture.Sample(gSampler, transformUV.xy);
     float32_t4 finalColor = { 0, 0, 0, 1 };
-    
+
     //textureのa値が0のときにPixelを棄却
-    if(textureColor.a == 0.0f)
+    if (textureColor.a == 0.0f)
     {
         discard;
     }
-    
+
     if (gMaterial.enableLighting != 0)
     {
         //DirectionalLight
         for (int32_t i = 0; i < kNumDirectionalLight; ++i)
         {
-            if(gLightGroup.directionalLights[i].isEnable)
+            if (gLightGroup.directionalLights[i].isEnable)
             {
                 float32_t cos = 0.0f;
                 if (gMaterial.diffuseReflectionType == 0)
@@ -93,7 +95,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                     float32_t NdotL = dot(normalize(input.normal), -gLightGroup.directionalLights[i].direction);
                     cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
                 }
-        
+
                 float32_t specularPow = 0.0f;
                 if (gMaterial.specularReflectionType == 0)
                 {
@@ -110,7 +112,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                     float32_t NDotH = dot(normalize(input.normal), halfVector);
                     specularPow = pow(saturate(NDotH), gMaterial.shininess); //反射強度
                 }
-        
+
                 //拡散反射
                 float32_t3 diffuse = gMaterial.color.rgb * textureColor.rgb * gLightGroup.directionalLights[i].color.rgb * cos * gLightGroup.directionalLights[i].intensity;
                 //鏡面反射
@@ -129,7 +131,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                 float32_t distance = length(gLightGroup.pointLights[i].position - input.worldPosition); //ポイントライトへの距離
                 float32_t factor = pow(saturate(-distance / gLightGroup.pointLights[i].radius + 1.0f), gLightGroup.pointLights[i].decay); //指数によるコントロール
                 float32_t3 pointLightColor = gLightGroup.pointLights[i].color.rgb * gLightGroup.pointLights[i].intensity * factor;
-            
+
                 float32_t cos = 0.0f;
                 if (gMaterial.diffuseReflectionType == 0)
                 {
@@ -140,7 +142,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                     float32_t NdotL = dot(normalize(input.normal), -pointLightDirection);
                     cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
                 }
-        
+
                 float32_t specularPow = 0.0f;
                 if (gMaterial.specularReflectionType == 0)
                 {
@@ -157,7 +159,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                     float32_t NDotH = dot(normalize(input.normal), halfVector);
                     specularPow = pow(saturate(NDotH), gMaterial.shininess); //反射強度
                 }
- 
+
                 //拡散反射
                 float32_t3 diffuse = gMaterial.color.rgb * textureColor.rgb * pointLightColor.rgb * cos;
                 //鏡面反射
@@ -165,8 +167,8 @@ PixelShaderOutput main(VertexShaderOutput input)
                 //すべて加算
                 finalColor.rgb += diffuse + specular;
             }
-        }  
-        
+        }
+
         //SpotLight
         for (i = 0; i < kNumSpotLight; ++i)
         {
@@ -178,7 +180,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                 float32_t distance = length(gLightGroup.pointLights[i].position - input.worldPosition);
                 float32_t attenuationFactor = pow(saturate(-distance / gLightGroup.spotLights[i].distance + 1.0f), gLightGroup.spotLights[i].decay);
                 float32_t3 spotLightColor = gLightGroup.spotLights[i].color.rgb * gLightGroup.spotLights[i].intensity * attenuationFactor * falloffFactor;
-            
+
                 float32_t cos = 0.0f;
                 if (gMaterial.diffuseReflectionType == 0)
                 {
@@ -189,7 +191,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                     float32_t NdotL = dot(normalize(input.normal), -spotLightDirectionOnSurface);
                     cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
                 }
-        
+
                 float32_t specularPow = 0.0f;
                 if (gMaterial.specularReflectionType == 0)
                 {
@@ -206,7 +208,7 @@ PixelShaderOutput main(VertexShaderOutput input)
                     float32_t NDotH = dot(normalize(input.normal), halfVector);
                     specularPow = pow(saturate(NDotH), gMaterial.shininess); //反射強度
                 }
-            
+
                 //拡散反射
                 float32_t3 diffuse = gMaterial.color.rgb * textureColor.rgb * spotLightColor.rgb * cos;
                 //鏡面反射
@@ -215,24 +217,29 @@ PixelShaderOutput main(VertexShaderOutput input)
                 finalColor.rgb += diffuse + specular;
             }
         }
+
+        //環境マップのLighting
+        float32_t3 reflectedVector = reflect(input.cameraToPosition, normalize(input.normal));
+        float32_t4 environmentColor = gEnvironmentTexture.Sample(gSampler, reflectedVector);
+        finalColor.rgb *= environmentColor.rgb * gMaterial.environmentCoefficient;
     }
     else
     {
         finalColor.rgb = gMaterial.color.rgb * textureColor.rgb;
     }
-    
+
     //最終的な色を決定
     output.color.rgb = finalColor.rgb;
     //アルファは今まで道り
     output.color.a = gMaterial.color.a * textureColor.a;
     //深度
     output.depth = input.depth;
-    
+
     //output.colorのa値が0のときにPixelを棄却
     if (output.color.a == 0.0f)
     {
         discard;
     }
-    
+
     return output;
 }

@@ -110,11 +110,14 @@ void Renderer::Render()
 	//DirectionalLightを設定
 	commandContext->SetConstantBuffer(kDirectionalLight, lightManager_->GetConstantBuffer()->GetGpuVirtualAddress());
 
+	//EnvironmentTextureを設定	
+	commandContext->SetDescriptorTable(kEnvironmentTexture, lightManager_->GetEnvironmentTexture()->GetSRVHandle());
+
 	for (const SortObject& sortObject : sortObjects_) {
 		//不透明オブジェクトに切り替わったらPSOも変える
 		if (currentRenderingType != sortObject.type) {
 			currentRenderingType = sortObject.type;
-			commandContext->SetPipelineState(modelPipelineStates_[currentRenderingType]);
+			commandContext->SetPipelineState(skinningModelPipelineStates_[currentRenderingType]);
 		}
 			//VertexBufferViewを設定
 			D3D12_VERTEX_BUFFER_VIEW vbvs[2] = {
@@ -122,10 +125,10 @@ void Renderer::Render()
 				sortObject.influenceBufferView//InfluenceのVBV
 			};
 		commandContext->SetVertexBuffers(0, 2, vbvs);
-		//IndexBufferViewを設定
-		commandContext->SetIndexBuffer(sortObject.indexBufferView);
 		//形状を設定。PSOに設定しているものとは別。同じものを設定すると考えておけば良い
 		commandContext->SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		//IndexBufferViewを設定	//マテリアルを設定
+		commandContext->SetIndexBuffer(sortObject.indexBufferView);
 		//マテリアルを設定
 		commandContext->SetConstantBuffer(kMaterial, sortObject.materialCBV);
 		//WorldTransformを設定
@@ -268,7 +271,7 @@ void Renderer::PostDrawSkybox()
 void Renderer::CreateModelPipelineState()
 {
 	//RootSignatureの作成
-	modelRootSignature_.Create(5, 1);
+	modelRootSignature_.Create(6, 1);
 
 	//RootParameterを設定
 	modelRootSignature_[0].InitAsConstantBuffer(0, D3D12_SHADER_VISIBILITY_PIXEL);
@@ -276,7 +279,7 @@ void Renderer::CreateModelPipelineState()
 	modelRootSignature_[2].InitAsConstantBuffer(1, D3D12_SHADER_VISIBILITY_VERTEX);
 	modelRootSignature_[3].InitAsDescriptorRange(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 0, 1, D3D12_SHADER_VISIBILITY_PIXEL);
 	modelRootSignature_[4].InitAsConstantBuffer(1, D3D12_SHADER_VISIBILITY_PIXEL);
-
+	modelRootSignature_[5].InitAsDescriptorRange(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 1, 1, D3D12_SHADER_VISIBILITY_PIXEL);
 	//StaticSamplerを設定
 	D3D12_STATIC_SAMPLER_DESC staticSamplers[1]{};
 	staticSamplers[0].Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;//バイリニアフィルタ
@@ -367,7 +370,7 @@ void Renderer::CreateModelPipelineState()
 void Renderer::CreateSkinningModelPipelineState()
 {
 	//RootSignatureの作成
-	skinningModelRootSignature_.Create(6, 1);
+	skinningModelRootSignature_.Create(7, 1);
 
 	//RootParameterを設定
 	skinningModelRootSignature_[0].InitAsConstantBuffer(0, D3D12_SHADER_VISIBILITY_PIXEL);
@@ -376,7 +379,7 @@ void Renderer::CreateSkinningModelPipelineState()
 	skinningModelRootSignature_[3].InitAsDescriptorRange(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 0, 1, D3D12_SHADER_VISIBILITY_PIXEL);
 	skinningModelRootSignature_[4].InitAsConstantBuffer(1, D3D12_SHADER_VISIBILITY_PIXEL);
 	skinningModelRootSignature_[5].InitAsDescriptorRange(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 0, 1, D3D12_SHADER_VISIBILITY_VERTEX);
-
+	skinningModelRootSignature_[6].InitAsDescriptorRange(D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 1, 1, D3D12_SHADER_VISIBILITY_PIXEL);
 	//StaticSamplerを設定
 	D3D12_STATIC_SAMPLER_DESC staticSamplers[1]{};
 	staticSamplers[0].Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;//バイリニアフィルタ
@@ -393,19 +396,16 @@ void Renderer::CreateSkinningModelPipelineState()
 	inputElementDescs[0].SemanticName = "POSITION";
 	inputElementDescs[0].SemanticIndex = 0;
 	inputElementDescs[0].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
-	inputElementDescs[0].InputSlot = 0;
 	inputElementDescs[0].AlignedByteOffset = D3D12_APPEND_ALIGNED_ELEMENT;
 
 	inputElementDescs[1].SemanticName = "TEXCOORD";
 	inputElementDescs[1].SemanticIndex = 0;
 	inputElementDescs[1].Format = DXGI_FORMAT_R32G32_FLOAT;
-	inputElementDescs[1].InputSlot = 0;
 	inputElementDescs[1].AlignedByteOffset = D3D12_APPEND_ALIGNED_ELEMENT;
 
 	inputElementDescs[2].SemanticName = "NORMAL";
 	inputElementDescs[2].SemanticIndex = 0;
 	inputElementDescs[2].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-	inputElementDescs[2].InputSlot = 0;
 	inputElementDescs[2].AlignedByteOffset = D3D12_APPEND_ALIGNED_ELEMENT;
 
 	inputElementDescs[3].SemanticName = "WEIGHT";

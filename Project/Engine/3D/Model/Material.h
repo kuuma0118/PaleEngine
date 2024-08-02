@@ -74,6 +74,10 @@ public:
 
 	const UploadBuffer* GetConstantBuffer() const { return materialConstBuffer_.get(); };
 
+	const float GetEnvironmentCoefficient() const { return environmentCoefficient_; };	
+
+	void SetEnvironmentCoefficient(const float environmentCoefficient) { environmentCoefficient_ = environmentCoefficient; };
+
 private:
 	std::unique_ptr<UploadBuffer> materialConstBuffer_ = nullptr;
 
@@ -96,5 +100,7 @@ private:
 	Vector3 specularColor_ = { 1.0f,1.0f,1.0f };
 
 	const Texture* texture_ = nullptr;
+
+	float environmentCoefficient_ = 0.6f;
 };
 

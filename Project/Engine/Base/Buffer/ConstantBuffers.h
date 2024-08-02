@@ -5,7 +5,7 @@
 #include "Engine/Math/Matrix4x4.h"
 #include <cstdint>
 
-struct VertexDataPosUVNormal 
+struct VertexDataPosUVNormal
 {
 	Vector4 position;
 	Vector2 texcoord;
@@ -27,6 +27,7 @@ struct ConstBuffDataMaterial
 	int32_t specularReflectionType;
 	float shininess;
 	Vector3 specularColor;
+	float environmentCoefficient;
 };
 
 struct ConstBuffDataWorldTransform
@@ -35,7 +36,7 @@ struct ConstBuffDataWorldTransform
 	Matrix4x4 worldInverseTranspse;
 };
 
-struct ConstBuffDataCamera 
+struct ConstBuffDataCamera
 {
 	Vector3 worldPosition;
 	float padding;
@@ -43,7 +44,7 @@ struct ConstBuffDataCamera
 	Matrix4x4 projection;
 };
 
-struct ConstBuffDataDirectionalLight 
+struct ConstBuffDataDirectionalLight
 {
 	Vector4 color;
 	Vector3 direction;
@@ -124,5 +125,12 @@ struct ConstBuffDataLensDistortion
 struct ConstBuffDataVignette
 {
 	bool isEnable;
+	float scale;
 	float intensity;
+};
+
+struct ConstBuffDataGrayScale
+{
+	int32_t isEnable;
+	int32_t isSepiaEnabled;
 };

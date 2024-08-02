@@ -4,6 +4,7 @@
 #include "DirectionalLight.h"
 #include "PointLight.h"
 #include "SpotLight.h"
+#include "Engine/Base/Texture.h"
 #include <array>
 #include <memory>
 
@@ -32,6 +33,10 @@ public:
 
 	void Update();
 
+	void SetEnvironmentTexture(const std::string& textureName);
+	
+	const Texture* GetEnvironmentTexture() const { return environmentTexture_; };
+
 	UploadBuffer* GetConstantBuffer() const { return constBuff_.get(); };
 
 	DirectionalLight& GetDirectionalLight(uint32_t index) { return directionalLights_[index]; };
@@ -56,5 +61,7 @@ private:
 	std::array<PointLight, kNumPointLight> pointLights_{};
 
 	std::array<SpotLight, kNumSpotLight> spotLights_{};
+
+	const Texture* environmentTexture_ = nullptr;
 };
 

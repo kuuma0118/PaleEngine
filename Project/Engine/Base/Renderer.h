@@ -47,6 +47,8 @@ public:
 		kDirectionalLight,
 		//MatrixPalette
 		kMatrixPalette,
+		//環境テクスチャ	
+		kEnvironmentTexture,
 	};
 
 	static Renderer* GetInstance();
