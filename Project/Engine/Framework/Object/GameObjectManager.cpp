@@ -3,7 +3,7 @@
 //実体定義
 GameObjectManager* GameObjectManager::instance_ = nullptr;
 
-GameObjectManager* GameObjectManager::GetInstance() 
+GameObjectManager* GameObjectManager::GetInstance()
 {
 	if (instance_ == nullptr)
 	{
@@ -12,7 +12,7 @@ GameObjectManager* GameObjectManager::GetInstance()
 	return instance_;
 }
 
-void GameObjectManager::Destroy() 
+void GameObjectManager::Destroy()
 {
 	if (instance_)
 	{
@@ -38,6 +38,12 @@ void GameObjectManager::Update()
 		{
 			gameObject->Update();
 		}
+	}
+
+	//カメラの更新
+	for (std::unique_ptr<Camera>& camera : cameras_)
+	{
+		camera->UpdateMatrix();
 	}
 }
 
@@ -66,4 +72,34 @@ void GameObjectManager::Clear()
 {
 	//ゲームオブジェクトをクリア
 	gameObjects_.clear();
+}
+
+IGameObject* GameObjectManager::CreateGameObject(const std::string& objectName)
+{
+	IGameObject* newObject = GameObjectManager::GetInstance()->CreateGameObjectInternal(objectName);
+	return newObject;
+}
+
+Camera* GameObjectManager::CreateCamera(const std::string& cameraName)
+{
+	Camera* newCamera = GameObjectManager::GetInstance()->CreateCameraInternal(cameraName);
+	return newCamera;
+}
+
+IGameObject* GameObjectManager::CreateGameObjectInternal(const std::string& objectName)
+{
+	assert(gameDirectionCenter_);
+	IGameObject* newGameObject = gameDirectionCenter_->CreateGameObject(objectName);
+	newGameObject->Initialize();
+	newGameObject->SetGameObjectManager(this);
+	gameObjects_.push_back(std::unique_ptr<IGameObject>(newGameObject));
+	return newGameObject;
+}
+
+Camera* GameObjectManager::CreateCameraInternal(const std::string& cameraName)
+{
+	Camera* newCamera = new Camera();
+	newCamera->Initialize();
+	cameras_.push_back(std::unique_ptr<Camera>(newCamera));
+	return newCamera;
 }

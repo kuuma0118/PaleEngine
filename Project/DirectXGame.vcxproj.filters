@@ -294,9 +294,6 @@
     <ClCompile Include="Engine\Components\Particle\ParticleSystem.cpp">
       <Filter>ソース ファイル\Engine\Components\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Framework\Game\GameDirectionCenter.cpp">
-      <Filter>ソース ファイル\Engine\Framework\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Framework\Object\GameObjectManager.cpp">
       <Filter>ソース ファイル\Engine\Framework\Object</Filter>
     </ClCompile>
@@ -443,6 +440,12 @@
     </ClCompile>
     <ClCompile Include="Games\GameObj\NamedEnemy\Missile.cpp">
       <Filter>ソース ファイル\Project\Object\NamedEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\Collision\Collider.cpp">
+      <Filter>ソース ファイル\Engine\Components\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Framework\Game\GameDirectionCenter.cpp">
+      <Filter>ソース ファイル\Engine\Framework\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -751,6 +754,9 @@
     </ClInclude>
     <ClInclude Include="Games\GameObj\NamedEnemy\Missile.h">
       <Filter>ヘッダー ファイル\Project\Object\NamedEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Framework\Object\IntangibleObject.h">
+      <Filter>ヘッダー ファイル\Engine\Framework\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

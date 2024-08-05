@@ -36,7 +36,7 @@ public:
 protected:
 	D3DResourceLeakChecker leakChecker{};
 
-	WindowAppli* windowAppli_ = nullptr;
+	WindowAppli* application_ = nullptr;
 
 	GraphicsDirectionCenter* graphicsCore_ = nullptr;
 
@@ -60,6 +60,8 @@ protected:
 
 	std::unique_ptr<IntangibleScene> sceneFactory_ = nullptr;
 
+	std::unique_ptr<GameDirectionCenter> gameObjectFactory_ = nullptr;
+
 	std::mutex mutex;
 
 	std::condition_variable condition;
@@ -70,4 +72,3 @@ protected:
 
 	bool isLoading_ = false;
 };
-

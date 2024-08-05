@@ -47,6 +47,7 @@
     <ClCompile Include="Engine\Base\Texture.cpp" />
     <ClCompile Include="Engine\Base\TextureManager.cpp" />
     <ClCompile Include="Engine\Components\Audio\Audio.cpp" />
+    <ClCompile Include="Engine\Components\Collision\Collider.cpp" />
     <ClCompile Include="Engine\Components\Collision\CollisionManager.cpp" />
     <ClCompile Include="Engine\Components\Input\Input.cpp" />
     <ClCompile Include="Engine\Components\Particle\Particle.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Engine\Framework\Game\GameDirectionCenter.h" />
     <ClInclude Include="Engine\Framework\Object\GameObjectManager.h" />
     <ClInclude Include="Engine\Framework\Object\IGameObject.h" />
+    <ClInclude Include="Engine\Framework\Object\IntangibleObject.h" />
     <ClInclude Include="Engine\Framework\Scene\IntangibleScene.h" />
     <ClInclude Include="Engine\Framework\Scene\IScene.h" />
     <ClInclude Include="Engine\Framework\Scene\SceneManager.h" />

@@ -43,5 +43,7 @@ private:
 private:
 	static ModelManager* instance_;
 
+	std::map<std::string, std::unique_ptr<Model>> models_{};
+
 	std::unordered_map<std::string, std::pair<Model::ModelData, std::vector<SkiningAnimation::AnimationData>>> modelDatas_;
 };

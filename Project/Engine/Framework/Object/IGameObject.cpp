@@ -19,3 +19,11 @@ void IGameObject::Draw(const Camera& camera)
 		model_->Draw(worldTransform_, camera);
 	}
 }
+
+void IGameObject::DrawUI()
+{
+}
+
+void IGameObject::OnCollision(Collider* collider)
+{
+}
