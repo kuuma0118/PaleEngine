@@ -24,11 +24,11 @@ public: // メンバ関数
 
 	void Draw(const Camera& camera);
 
-	void OnCollision(Collider* collider) override;
+	//void OnCollision(Collider* collider) override;
 
-	const Vector3 GetWorldPosition() const override;
+	//const Vector3 GetWorldPosition() const override;
 
-	const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
+	//const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
 
 	const bool GetIsDead() const { return isDead_; };
 

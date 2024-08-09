@@ -18,13 +18,13 @@ public:
 	void Initialize() override;
 	void Update() override;
 	void OnCollision(Collider* collider) override;
-	const Vector3 GetWorldPosition() const override;
+	//const Vector3 GetWorldPosition() const override;
 	void Fire();
 	void FireReset();
 	void Draw(const Camera& viewProjection) override;
 	void DrawUI()override;
 	void ChangeState(IEnemyState* newState);
-	const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
+	//const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
 	void EnemyMove(Vector3 move);
 	int32_t GetFireTimer() { return fireTimer_; };
 	void SetFireTimer(int32_t fireTimer) { this->fireTimer_ = fireTimer; };

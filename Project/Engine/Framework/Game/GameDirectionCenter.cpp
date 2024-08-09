@@ -5,8 +5,8 @@
 void GameDirectionCenter::Initialize()
 {
 	//Applicationの初期化
-	windowAppli_ = WindowAppli::GetInstance();
-	windowAppli_->CreateGameWindow(L"PaleEngine", WindowAppli::kClientWidth, WindowAppli::kClientHeight);
+	application_ = WindowAppli::GetInstance();
+	application_->CreateGameWindow(L"PaleEngine", WindowAppli::kClientWidth, WindowAppli::kClientHeight);
 
 	//GraphicsCoreの初期化
 	graphicsCore_ = GraphicsDirectionCenter::GetInstance();
@@ -93,7 +93,7 @@ void GameDirectionCenter::Finalize()
 	GraphicsDirectionCenter::Destroy();
 
 	//ゲームウィンドウを閉じる
-	windowAppli_->CloseGameWindow();
+	application_->CloseGameWindow();
 }
 
 void GameDirectionCenter::Update()
@@ -158,7 +158,7 @@ void GameDirectionCenter::Draw()
 
 bool GameDirectionCenter::IsEndRequest()
 {
-	bool endRequest = windowAppli_->ProcessMessage();
+	bool endRequest = application_->ProcessMessage();
 	return endRequest;
 }
 

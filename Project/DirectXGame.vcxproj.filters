@@ -199,6 +199,12 @@
     <Filter Include="ヘッダー ファイル\Project\Object\NamedEnemy\state">
       <UniqueIdentifier>{c1450b05-c634-4690-aec4-369e165faca4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Engine\Lorder">
+      <UniqueIdentifier>{efaa2e82-da78-4011-bf3f-d59873fe9fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Loder">
+      <UniqueIdentifier>{2b9d18b7-d5c2-440b-abdf-57926a8d89a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\2D\Sprite.cpp">
@@ -446,6 +452,15 @@
     </ClCompile>
     <ClCompile Include="Engine\Framework\Game\GameDirectionCenter.cpp">
       <Filter>ソース ファイル\Engine\Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Loder\Loder.cpp">
+      <Filter>ソース ファイル\Engine\Lorder</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Framework\Object\IntangbleObject.cpp">
+      <Filter>ソース ファイル\Engine\Framework\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Games\GameObj\CreateGameObj\CreateGameObj.cpp">
+      <Filter>ソース ファイル\Project\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -757,6 +772,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Framework\Object\IntangibleObject.h">
       <Filter>ヘッダー ファイル\Engine\Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Loder.h">
+      <Filter>ヘッダー ファイル\Engine\Loder</Filter>
+    </ClInclude>
+    <ClInclude Include="Games\GameObj\CreateGameObj\CreateGameObj.h">
+      <Filter>ヘッダー ファイル\Project\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

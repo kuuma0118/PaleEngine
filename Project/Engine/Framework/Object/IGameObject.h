@@ -54,6 +54,8 @@ public:
 
 	void SetGameObjectManager(const GameObjectManager* gameObjectManager) { gameObjectManager_ = gameObjectManager; };
 
+
+
 protected:
 	//ゲームオブジェクトマネージャー
 	const GameObjectManager* gameObjectManager_ = nullptr;

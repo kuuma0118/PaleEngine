@@ -60,7 +60,7 @@ protected:
 
 	std::unique_ptr<IntangibleScene> sceneFactory_ = nullptr;
 
-	std::unique_ptr<GameDirectionCenter> gameObjectFactory_ = nullptr;
+	std::unique_ptr<IntangbleObject> gameObjectFactory_ = nullptr;
 
 	std::mutex mutex;
 

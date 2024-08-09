@@ -88,8 +88,8 @@ Camera* GameObjectManager::CreateCamera(const std::string& cameraName)
 
 IGameObject* GameObjectManager::CreateGameObjectInternal(const std::string& objectName)
 {
-	assert(gameDirectionCenter_);
-	IGameObject* newGameObject = gameDirectionCenter_->CreateGameObject(objectName);
+	assert(intangbleObject_);
+	IGameObject* newGameObject = intangbleObject_->CreateGameObject(objectName);
 	newGameObject->Initialize();
 	newGameObject->SetGameObjectManager(this);
 	gameObjects_.push_back(std::unique_ptr<IGameObject>(newGameObject));

@@ -28,10 +28,10 @@ void EnemyBullet::Initialize(const Vector3& position,const Vector3& velocity) {
 	SetCollisionMask(kCollisionMaskPlayerBullet);
 	SetCollisionPrimitive(kCollisionPrimitiveAABB);
 }
-
-void EnemyBullet::OnCollision(Collider* collider) {
-	isDead_ = true;
-}
+//
+//void EnemyBullet::OnCollision(Collider* collider) {
+//	isDead_ = true;
+//}
 
 void EnemyBullet::Update() {
 	SetPlayer(player_);
@@ -65,12 +65,12 @@ void EnemyBullet::Draw(const Camera& camera) {
 	model_->Draw(worldTransform_, camera);
 }
 
-const Vector3 EnemyBullet::GetWorldPosition() const {
-	// ワールド座標を入れる変数
-	Vector3 worldPos;
-	// ワールド行列の平行移動成分を取得(ワールド座標)
-	worldPos.x = worldTransform_.matWorld_.m[3][0];
-	worldPos.y = worldTransform_.matWorld_.m[3][1];
-	worldPos.z = worldTransform_.matWorld_.m[3][2];
-	return worldPos;
-}
+//const Vector3 EnemyBullet::GetWorldPosition() const {
+//	// ワールド座標を入れる変数
+//	Vector3 worldPos;
+//	// ワールド行列の平行移動成分を取得(ワールド座標)
+//	worldPos.x = worldTransform_.matWorld_.m[3][0];
+//	worldPos.y = worldTransform_.matWorld_.m[3][1];
+//	worldPos.z = worldTransform_.matWorld_.m[3][2];
+//	return worldPos;
+//}

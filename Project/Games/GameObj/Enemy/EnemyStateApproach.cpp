@@ -17,9 +17,9 @@ void EnemyStateApproach::Update(Enemy* pEnemy) {
 	// 座標移動(ベクトルの加算)
 	pEnemy->EnemyMove(move);
 	// 既定の位置に到達したら離脱
-	if (pEnemy->GetWorldTransform().translation_.z < 0.0f) {
+	/*if (pEnemy->GetWorldTransform().translation_.z < 0.0f) {
 		pEnemy->ChangeState(new EnemyStateLeave());
-	}
+	}*/
 
 	// 範囲forでリストの全要素について回す
 	for (TimedCall* timedCall : pEnemy->GetTimedCall()) {

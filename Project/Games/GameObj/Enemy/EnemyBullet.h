@@ -9,9 +9,9 @@ class EnemyBullet : public Collider{
 public:
 	static const int32_t kLifeTime = 30;
 	void Initialize(const Vector3& position, const Vector3& velocity);
-	void OnCollision(Collider* collider) override;
-	const Vector3 GetWorldPosition() const override;
-	const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
+	//void OnCollision(Collider* collider) override;
+//	const Vector3 GetWorldPosition() const override;
+//	const WorldTransform& GetWorldTransform() const override { return worldTransform_; };
 	void Update();
 	void Draw(const Camera& viewProjection);
 	void SetPlayer(Player* player) { player_ = player; };

@@ -6,7 +6,7 @@
 
 void NamedEnemyStateNormal::Initialize(NamedEnemy* pBoss)
 {
-	worldTransform_ = pBoss->GetWorldTransform();
+	//worldTransform_ = pBoss->GetWorldTransform();
 	destinationQuaternion_ = worldTransform_.quaternion_;
 	attackTime_ = Random::GetRandomInt(kMinAttackInterval, kMaxAttackInterval);
 }
