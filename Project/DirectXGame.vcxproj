@@ -86,13 +86,16 @@
     <ClCompile Include="Engine\Framework\Game\GameDirectionCenter.cpp" />
     <ClCompile Include="Engine\Framework\Object\GameObjectManager.cpp" />
     <ClCompile Include="Engine\Framework\Object\IGameObject.cpp" />
+    <ClCompile Include="Engine\Framework\Object\IntangbleObject.cpp" />
     <ClCompile Include="Engine\Framework\Scene\SceneManager.cpp" />
+    <ClCompile Include="Engine\Loder\Loder.cpp" />
     <ClCompile Include="Engine\Math\MathFunction.cpp" />
     <ClCompile Include="Engine\Math\WorldTransform.cpp" />
     <ClCompile Include="Engine\Utility\GlobalVariables.cpp" />
     <ClCompile Include="Engine\Utility\Log.cpp" />
     <ClCompile Include="Engine\Utility\Random.cpp" />
     <ClCompile Include="Engine\Utility\ShaderCompiler.cpp" />
+    <ClCompile Include="Games\GameObj\CreateGameObj\CreateGameObj.cpp" />
     <ClCompile Include="Games\GameObj\Enemy\Enemy.cpp" />
     <ClCompile Include="Games\GameObj\Enemy\EnemyBullet.cpp" />
     <ClCompile Include="Games\GameObj\Enemy\EnemyStateApproach.cpp" />
@@ -199,6 +202,7 @@
     <ClInclude Include="Engine\Utility\Log.h" />
     <ClInclude Include="Engine\Utility\Random.h" />
     <ClInclude Include="Engine\Utility\ShaderCompiler.h" />
+    <ClInclude Include="Games\GameObj\CreateGameObj\CreateGameObj.h" />
     <ClInclude Include="Games\GameObj\Enemy\Enemy.h" />
     <ClInclude Include="Games\GameObj\Enemy\EnemyBullet.h" />
     <ClInclude Include="Games\GameObj\Enemy\EnemyStateApproach.h" />
@@ -224,6 +228,7 @@
     <ClInclude Include="Games\Scene\GameTitleScene.h" />
     <ClInclude Include="Games\Scene\LoadScene.h" />
     <ClInclude Include="Games\Scene\SceneFactory.h" />
+    <ClInclude Include="Loder.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Engine\Externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">

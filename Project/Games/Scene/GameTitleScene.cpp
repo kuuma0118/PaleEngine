@@ -32,12 +32,11 @@ void GameTitleScene::Initialize()
 	worldTransform_.Initialize();
 	
 	//プレイヤーの生成
-	playerModel_.reset(ModelManager::CreateFromModelFile("walk.gltf", Opaque));
-	playerModel_->GetMaterial()->SetEnableLighting(true);
-	playerModel_->GetMaterial()->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f });
-	player_ = GameObjectManager::CreateGameObject<Player>();
-	player_->SetModel(playerModel_.get());
-	player_->SetTag("Player");
+	player_ = gameObjectManager_->GetGameObject<Player>("Player");
+	player_->SetCamera(&camera_);
+	player_->GetCollider()->SetCollisionAttribute(kCollisionAttributePlayer);
+	player_->GetCollider()->SetCollisionMask(kCollisionMaskPlayer);
+	player_->GetCollider()->SetCollisionPrimitive(kCollisionPrimitiveAABB);
 
 	railCamera_->Initialize(player_->GetWorldPosition(), radian);
 	player_->SetParent(&railCamera_->GetWorldTransform());
@@ -64,7 +63,7 @@ void GameTitleScene::Initialize()
 	//天球の作成
 	skydomeModel_.reset(ModelManager::CreateFromModelFile("Skydome.obj", Opaque));
 	skydomeModel_->GetMaterial()->SetEnableLighting(false);
-	skydome_ = GameObjectManager::CreateGameObject<Skydome>();
+	skydome_ = gameObjectManager_->GetGameObject<Skydome>("Skydome");
 	skydome_->SetModel(skydomeModel_.get());
 
 }

@@ -58,7 +58,9 @@ void Missile::Update()
 	//一定時間追尾するようにする
 	if (trackingTimer_ >= kTrackingTime)
 	{
-		isTrackingComplete_ = true;
+		velocity_ = Mathseries::Slerp(velocity_, sub, trackingParameter_);
+		const float kSpeed = 0.6f;
+		velocity_ *= kSpeed;
 	}
 
 	//追捕終了していなかったら
@@ -91,41 +93,41 @@ void Missile::Draw(const Camera& camera)
 	model_->Draw(worldTransform_, camera);
 }
 
-void Missile::OnCollision(Collider* collider)
-{
-	if (collider->GetCollisionAttribute() == kCollisionAttributeWeapon && !isDead_)
-	{
-		SetCollisionAttribute(kCollisionAttributeWeapon);
-		SetCollisionMask(kCollisionMaskWeapon);
-		isRepelled_ = true;
-		const float kSpeed = 0.6f;
-		Vector3 targetPosition = GameObjectManager::GetInstance()->GetGameObject<NamedEnemy>("NamedEnemy")->GetWorldPosition();
-		Vector3 sub = targetPosition - worldTransform_.translation_;
-		sub = Mathseries::Normalize(sub);
-		velocity_ = sub * kSpeed;
-	}
-
-	if (isRepelled_)
-	{
-		if (collider->GetCollisionAttribute() & kCollisionAttributeEnemy)
-		{
-			isDead_ = true;
-		}
-	}
-	else
-	{
-		if (collider->GetCollisionAttribute() & kCollisionAttributePlayer)
-		{
-			isDead_ = true;
-		}
-	}
-}
-
-const Vector3 Missile::GetWorldPosition() const
-{
-	Vector3 pos{};
-	pos.x = worldTransform_.matWorld_.m[3][0];
-	pos.y = worldTransform_.matWorld_.m[3][1];
-	pos.z = worldTransform_.matWorld_.m[3][2];
-	return pos;
-}
+//void Missile::OnCollision(Collider* collider)
+//{
+//	if (collider->GetCollisionAttribute() == kCollisionAttributeWeapon && !isDead_)
+//	{
+//		SetCollisionAttribute(kCollisionAttributeWeapon);
+//		SetCollisionMask(kCollisionMaskWeapon);
+//		isRepelled_ = true;
+//		const float kSpeed = 0.6f;
+//		Vector3 targetPosition = GameObjectManager::GetInstance()->GetGameObject<NamedEnemy>("NamedEnemy")->GetWorldPosition();
+//		Vector3 sub = targetPosition - worldTransform_.translation_;
+//		sub = Mathseries::Normalize(sub);
+//		velocity_ = sub * kSpeed;
+//	}
+//
+//	if (isRepelled_)
+//	{
+//		if (collider->GetCollisionAttribute() & kCollisionAttributeEnemy)
+//		{
+//			isDead_ = true;
+//		}
+//	}
+//	else
+//	{
+//		if (collider->GetCollisionAttribute() & kCollisionAttributePlayer)
+//		{
+//			isDead_ = true;
+//		}
+//	}
+//}
+//
+//const Vector3 Missile::GetWorldPosition() const
+//{
+//	Vector3 pos{};
+//	pos.x = worldTransform_.matWorld_.m[3][0];
+//	pos.y = worldTransform_.matWorld_.m[3][1];
+//	pos.z = worldTransform_.matWorld_.m[3][2];
+//	return pos;
+//}

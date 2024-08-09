@@ -9,11 +9,6 @@ class IGameObject;
 class Collider
 {
 public:
-	virtual void OnCollision(Collider* collider) = 0;
-
-	virtual const Vector3 GetWorldPosition() const = 0;
-
-	virtual const WorldTransform& GetWorldTransform() const = 0;
 
 	void OnCollision(Collider* collider);
 

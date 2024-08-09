@@ -143,14 +143,14 @@ void NamedEnemy::OnCollision(Collider* collider)
 	}
 }
 
-const Vector3 NamedEnemy::GetWorldPosition() const
-{
-	Vector3 pos{};
-	pos.x = worldTransform_.matWorld_.m[3][0];
-	pos.y = worldTransform_.matWorld_.m[3][1];
-	pos.z = worldTransform_.matWorld_.m[3][2];
-	return pos;
-}
+//const Vector3 NamedEnemy::GetWorldPosition() const
+//{
+//	Vector3 pos{};
+//	pos.x = worldTransform_.matWorld_.m[3][0];
+//	pos.y = worldTransform_.matWorld_.m[3][1];
+//	pos.z = worldTransform_.matWorld_.m[3][2];
+//	return pos;
+//}
 
 void NamedEnemy::ChangeState(INamedEnemyState* newState)
 {

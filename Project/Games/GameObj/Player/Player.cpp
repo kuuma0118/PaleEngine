@@ -198,15 +198,15 @@ void Player::SetRaticleParent(const WorldTransform* parent)
 	worldTransform3DReticle_.parent_ = parent;
 
 }
-
-const Vector3 Player::GetWorldPosition() const
-{
-	Vector3 pos{};
-	pos.x = worldTransform_.matWorld_.m[3][0];
-	pos.y = worldTransform_.matWorld_.m[3][1];
-	pos.z = worldTransform_.matWorld_.m[3][2];
-	return pos;
-}
+//
+//const Vector3 Player::GetWorldPosition() const
+//{
+//	Vector3 pos{};
+//	pos.x = worldTransform_.matWorld_.m[3][0];
+//	pos.y = worldTransform_.matWorld_.m[3][1];
+//	pos.z = worldTransform_.matWorld_.m[3][2];
+//	return pos;
+//}
 
 Vector3 Player::Get3DReticleWorldPosition() {
 	// ワールド座標を入れる変数

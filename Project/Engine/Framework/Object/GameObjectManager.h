@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/Framework/Game/GameDirectionCenter.h"
+#include "IntangibleObject.h"
 #include "IGameObject.h"
 #include <vector>
 
@@ -22,7 +22,7 @@ public:
 
 	void Clear();
 
-	void SetGameObjectFactory(GameDirectionCenter* gameDirectionCenter) { gameDirectionCenter_ = gameDirectionCenter; };
+	void SetGameObjectFactory(IntangbleObject* intangbleObject) { intangbleObject_ = intangbleObject; };
 
 	template <typename Type>
 	static Type* CreateGameObjectFromType();
@@ -53,7 +53,7 @@ private:
 
 	std::vector<std::unique_ptr<Camera>> cameras_{};
 
-	GameDirectionCenter* gameDirectionCenter_ = nullptr;
+	IntangbleObject* intangbleObject_ = nullptr;
 };
 
 template <typename Type>

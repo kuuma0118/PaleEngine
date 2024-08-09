@@ -29,11 +29,6 @@ void PlayerBullet::Initialize(const Vector3& position, const Vector3& velocity)
 
 }
 
-void PlayerBullet::OnCollision(Collider* collider)
-{
-	isDead_ = true;
-}
-
 void PlayerBullet::Update()
 {
 
@@ -56,13 +51,17 @@ void PlayerBullet::Draw(const Camera& camera)
 {
 	model_->Draw(worldTransform_, camera);
 }
-
-const Vector3 PlayerBullet::GetWorldPosition() const{
-	// ワールド座標を入れる変数
-	Vector3 worldPos;
-	// ワールド行列の平行移動成分を取得(ワールド座標)
-	worldPos.x = worldTransform_.matWorld_.m[3][0];
-	worldPos.y = worldTransform_.matWorld_.m[3][1];
-	worldPos.z = worldTransform_.matWorld_.m[3][2];
-	return worldPos;
-}
+//
+//void PlayerBullet::OnCollision(IGameObject* gameObject)
+//{
+//	//破壊フラグを立てる
+//	isDead_ = true;
+//}
+//
+//void PlayerBullet::OnCollisionEnter(IGameObject* gameObject)
+//{
+//}
+//
+//void PlayerBullet::OnCollisionExit(IGameObject* gameObject)
+//{
+//}
