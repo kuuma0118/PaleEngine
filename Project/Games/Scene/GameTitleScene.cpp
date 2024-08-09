@@ -2,6 +2,7 @@
 #include "Engine/Framework/Scene/SceneManager.h"	
 #include "Engine/Base/TextureManager.h"	
 #include <numbers>
+#include "Loder.h"
 
 GameTitleScene::GameTitleScene() {}
 
@@ -26,6 +27,8 @@ void GameTitleScene::Initialize()
 	//ゲームオブジェクトをクリア
 	gameObjectManager_ = GameObjectManager::GetInstance();
 	gameObjectManager_->Clear();
+
+	LevelLoader::Load("GameScene");
 
 	camera_.Initialize();
 
